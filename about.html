@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me — Adhith Shanmuga Sundaram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --border-subtle: #222222;
+    --border-medium: #2A2A2A;
+
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-muted: #888888;
+
+    --pastel-peach: #F4A89A;
+    --pastel-mint: #8ED8B0;
+    --pastel-lavender: #B8A9E8;
+    --pastel-sky: #8AC4E8;
+    --pastel-lemon: #E8D88A;
+    --pastel-rose: #E89AB8;
+
+    --section-gap: clamp(80px, 10vw, 140px);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--pastel-rose);
+    color: var(--bg-primary);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ─── CONTAINER ─── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: 160px;
+    padding-bottom: var(--section-gap);
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232, 154, 184, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-greeting {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--pastel-sky);
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    margin-bottom: 24px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  /* ─── STORY SECTION ─── */
+  .story {
+    margin-bottom: var(--section-gap);
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .story-image {
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    border: 1.5px dashed var(--border-medium);
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .story-image:hover {
+    border-color: rgba(232, 154, 184, 0.3);
+  }
+
+  .story-image .placeholder-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .story-image .placeholder-inner svg {
+    opacity: 0.35;
+    color: var(--text-muted);
+  }
+
+  .story-image .placeholder-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  .story-content h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .story-content p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .story-content p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .story-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 100px;
+    background: var(--pastel-sky);
+    color: #FFFFFF;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .story-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(138, 196, 232, 0.25);
+  }
+
+  .story-btn svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.25s ease;
+  }
+
+  .story-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-subtle);
+    margin: var(--section-gap) 0;
+  }
+
+  /* ─── INTERESTS ─── */
+  .interests {
+    margin-bottom: var(--section-gap);
+  }
+
+  .interests-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .interests-header h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .interests-header p {
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .interest-card {
+    padding: 28px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    text-align: center;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .interest-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-3px);
+  }
+
+  .interest-emoji {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .interest-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .interest-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── GALLERY ─── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  .gallery-item {
+    border-radius: 14px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-card);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallery-item:hover {
+    border-color: rgba(232, 154, 184, 0.3);
+  }
+
+  .gallery-item--wide {
+    grid-column: 1 / -1;
+  }
+
+  .gallery-item--tall {
+    grid-column: auto;
+  }
+
+  .gallery-item--bottom {
+    grid-column: auto;
+  }
+
+  .gallery-image-area {
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-image-area svg {
+    opacity: 0.25;
+    color: var(--text-muted);
+  }
+
+  .gallery-caption {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── PHILOSOPHY ─── */
+  .philosophy {
+    margin-bottom: var(--section-gap);
+  }
+
+  .philosophy-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .philosophy-header h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .philosophy-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .philosophy-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease, transform 0.25s ease;
+  }
+
+  .philosophy-item:hover {
+    border-color: var(--border-medium);
+    transform: translateX(4px);
+  }
+
+  .philosophy-marker {
+    flex-shrink: 0;
+    width: 4px;
+    height: 32px;
+    border-radius: 2px;
+  }
+
+  .philosophy-marker--rose { background: var(--pastel-rose); }
+  .philosophy-marker--lavender { background: var(--pastel-lavender); }
+  .philosophy-marker--mint { background: var(--pastel-mint); }
+  .philosophy-marker--sky { background: var(--pastel-sky); }
+
+  .philosophy-text {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section {
+    padding: 80px 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .contact-inner {
+    text-align: center;
+    padding: 64px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(232, 154, 184, 0.04), rgba(184, 169, 232, 0.03), transparent 60%);
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    background: var(--pastel-lavender);
+    color: #FFFFFF;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(184, 169, 232, 0.25);
+  }
+
+  .contact-btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.25s ease;
+  }
+
+  .contact-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .footer-links a:hover { color: var(--text-secondary); }
+
+  .footer-copy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.8125rem; }
+    .hero { padding-top: 120px; }
+
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .story-image {
+      aspect-ratio: 4 / 3;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .interests-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-item--wide {
+      grid-column: auto;
+    }
+
+    .contact-inner {
+      padding: 48px 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+
+    .interests-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero container">
+  <p class="hero-greeting">Nice to meet you</p>
+  <h1>Hey there again, you can call me "Adi" in short</h1>
+  <p class="hero-description">Thank you for taking the time to get to know me better. I'm passionate about creating meaningful experiences that bridge business needs with user delight.</p>
+</header>
+
+<!-- STORY -->
+<section class="story container animate-on-scroll" aria-labelledby="story-heading">
+  <div class="story-grid">
+    <div class="story-image" style="border:none;">
+      <img src="PTF_AboutMe_IMG1.png" alt="Adhith Shanmuga Sundaram — Profile" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+    </div>
+    <div class="story-content">
+      <h2 id="story-heading">My Journey in Design</h2>
+      <p>At the age of 14, I sketched construction machinery for <strong>JCB Equipments India</strong>, earning praise from their leadership. Their encouragement fueled my passion for design, leading me to pursue a career focused on solving usability issues across various objects.</p>
+      <p>At work, I like to shape strategic decisions of stakeholders to transform virtual data concepts into useful, simple, and beautiful visual elements.</p>
+      <p>I am also keen on working with design systems, as it helps in developing the product growth and development. I believe that great design is not just about aesthetics — it's about creating systems that empower teams and scale with the business.</p>
+      <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" class="story-btn">
+        View My Resume
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- INTERESTS -->
+<section class="interests container animate-on-scroll" aria-labelledby="interests-heading">
+  <div class="interests-header">
+    <h2 id="interests-heading">When I'm not designing...</h2>
+    <p>I explore the world through different lenses</p>
+  </div>
+
+  <div class="interests-grid">
+    <div class="interest-card">
+      <span class="interest-emoji">&#127757;</span>
+      <div class="interest-name">Travel</div>
+      <div class="interest-desc">Explored more than 10+ countries, collecting stories and perspectives along the way</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-emoji">&#127850;</span>
+      <div class="interest-name">Baking</div>
+      <div class="interest-desc">Creating anything sweet and savory — precision and creativity in perfect harmony</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-emoji">&#9992;&#65039;</span>
+      <div class="interest-name">Plane Spotting</div>
+      <div class="interest-desc">One day I will learn to fly. Until then, I marvel at the engineering beauty</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-emoji">&#127843;</span>
+      <div class="interest-name">Explore Restaurants</div>
+      <div class="interest-desc">A food connoisseur in the making, always seeking the next culinary adventure</div>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery-grid">
+    <div class="gallery-item gallery-item--wide">
+      <div class="gallery-image-area" style="padding:0;aspect-ratio:16/9;">
+        <img src="About_Ptf_Img2.jpg" alt="Titanium cycle built in Denmark" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+      </div>
+      <div class="gallery-caption">I hand built this Titanium cycle in Denmark and went on a 1200 km stretch road trip across Scandinavia</div>
+    </div>
+    <div class="gallery-item gallery-item--tall">
+      <div class="gallery-image-area" style="padding:0;aspect-ratio:4/3;">
+        <img src="About_Ptf_Img3.jpg" alt="Chocolate Tart creation" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="gallery-caption">One of my favorite baked creations — Chocolate Tart</div>
+    </div>
+    <div class="gallery-item gallery-item--bottom">
+      <div class="gallery-image-area" style="padding:0;aspect-ratio:4/3;">
+        <img src="About_Ptf_Img4.jpg" alt="Brooklyn, NY — Travel diary" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="gallery-caption">At Brooklyn, NY — A photo from my travel diary</div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy container animate-on-scroll" aria-labelledby="philosophy-heading">
+  <div class="philosophy-header">
+    <h2 id="philosophy-heading">My Design Philosophy</h2>
+  </div>
+
+  <div class="philosophy-items">
+    <div class="philosophy-item">
+      <div class="philosophy-marker philosophy-marker--rose"></div>
+      <div class="philosophy-text">I drive feature solutions from problem to impact.</div>
+    </div>
+    <div class="philosophy-item">
+      <div class="philosophy-marker philosophy-marker--lavender"></div>
+      <div class="philosophy-text">I leverage AI to accelerate exploration, not replace thinking.</div>
+    </div>
+    <div class="philosophy-item">
+      <div class="philosophy-marker philosophy-marker--mint"></div>
+      <div class="philosophy-text">I design through storytelling.</div>
+    </div>
+    <div class="philosophy-item">
+      <div class="philosophy-marker philosophy-marker--sky"></div>
+      <div class="philosophy-text">I embrace ambiguity as opportunity for discovery.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-inner animate-on-scroll">
+      <h2 class="contact-title">Let's create something meaningful together</h2>
+      <a href="mailto:adhith_s@rediffmail.com" class="contact-btn" role="button">
+        Get in Touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <ul class="footer-links">
+    <li><a href="mailto:adhith_s@rediffmail.com">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

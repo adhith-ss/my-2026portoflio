@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allocatr Insights — Adhith Shanmuga Sundaram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --bg-card-hover: #1C1C1C;
+    --border-subtle: #222222;
+    --border-medium: #2A2A2A;
+
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-muted: #888888;
+
+    --pastel-peach: #F4A89A;
+    --pastel-mint: #8ED8B0;
+    --pastel-lavender: #B8A9E8;
+    --pastel-sky: #8AC4E8;
+    --pastel-lemon: #E8D88A;
+    --pastel-rose: #E89AB8;
+
+    --section-gap: clamp(80px, 10vw, 140px);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--pastel-sky);
+    color: var(--bg-primary);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ─── CONTAINER ─── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: 160px;
+    padding-bottom: var(--section-gap);
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138, 196, 232, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border-medium);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-card);
+    aspect-ratio: 16 / 8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-image:hover {
+    border-color: rgba(138, 196, 232, 0.3);
+  }
+
+  /* ─── META ROW ─── */
+  .meta-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: var(--section-gap);
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .meta-item {
+    background: var(--bg-card);
+    padding: 28px 32px;
+    text-align: center;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .meta-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* ─── SECTION SHARED ─── */
+  .section {
+    margin-bottom: var(--section-gap);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+
+  .section-label--peach { color: var(--pastel-peach); background: rgba(244, 168, 154, 0.1); }
+  .section-label--mint { color: var(--pastel-mint); background: rgba(142, 216, 176, 0.1); }
+  .section-label--lavender { color: var(--pastel-lavender); background: rgba(184, 169, 232, 0.1); }
+  .section-label--sky { color: var(--pastel-sky); background: rgba(138, 196, 232, 0.1); }
+  .section-label--lemon { color: var(--pastel-lemon); background: rgba(232, 216, 138, 0.1); }
+  .section-label--rose { color: var(--pastel-rose); background: rgba(232, 154, 184, 0.1); }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    color: var(--text-secondary);
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* ─── CHALLENGE ─── */
+  .challenge-statement {
+    text-align: center;
+    padding: 56px 32px;
+    border-radius: 16px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-secondary);
+    margin-top: 40px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .challenge-statement::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(138, 196, 232, 0.04), rgba(232, 216, 138, 0.04));
+    pointer-events: none;
+  }
+
+  .challenge-question-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pastel-sky);
+    margin-bottom: 16px;
+  }
+
+  .challenge-question {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-primary);
+  }
+
+  /* ─── PAIN POINTS ─── */
+  .pain-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .pain-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  .pain-point:hover { border-color: var(--border-medium); }
+
+  .pain-index {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--bg-primary);
+    background: var(--pastel-sky);
+  }
+
+  .pain-text {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-top: 4px;
+  }
+
+  /* ─── IMAGE PLACEHOLDERS ─── */
+  .image-placeholders {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .image-placeholder {
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+
+  .image-caption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .image-placeholder:hover {
+    border-color: rgba(138, 196, 232, 0.3);
+  }
+
+  .placeholder-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-muted);
+  }
+
+  .placeholder-inner svg {
+    opacity: 0.35;
+  }
+
+  .placeholder-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  /* ─── WORKFLOW ─── */
+  .workflow {
+    display: flex;
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+    align-items: stretch;
+  }
+
+  .workflow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--border-medium);
+    z-index: 0;
+  }
+
+  .workflow-step {
+    flex: 1;
+    padding: 24px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .workflow-step:first-child { border-radius: 14px 0 0 14px; }
+  .workflow-step:last-child { border-radius: 0 14px 14px 0; }
+
+  .workflow-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin: 0 auto 12px;
+    color: var(--bg-primary);
+  }
+
+  .workflow-num--1 { background: var(--pastel-sky); }
+  .workflow-num--2 { background: var(--pastel-lemon); }
+  .workflow-num--3 { background: var(--pastel-lavender); }
+
+  .workflow-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .workflow-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .workflow-callout {
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: rgba(138, 196, 232, 0.06);
+    border: 1px solid rgba(138, 196, 232, 0.15);
+    border-radius: 12px;
+  }
+
+  .workflow-callout-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pastel-sky);
+    margin-bottom: 6px;
+  }
+
+  .workflow-callout-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ─── INSIGHT CARDS ─── */
+  .insight-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .insight-card {
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease;
+  }
+
+  .insight-card:hover { border-color: var(--border-medium); }
+
+  .insight-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .insight-icon--mint { background: rgba(142, 216, 176, 0.12); color: var(--pastel-mint); }
+  .insight-icon--lavender { background: rgba(184, 169, 232, 0.12); color: var(--pastel-lavender); }
+  .insight-icon--sky { background: rgba(138, 196, 232, 0.12); color: var(--pastel-sky); }
+  .insight-icon--rose { background: rgba(232, 154, 184, 0.12); color: var(--pastel-rose); }
+  .insight-icon--lemon { background: rgba(232, 216, 138, 0.12); color: var(--pastel-lemon); }
+  .insight-icon--peach { background: rgba(244, 168, 154, 0.12); color: var(--pastel-peach); }
+
+  .insight-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .insight-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── STRATEGY ─── */
+  .strategy-principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .principle-card {
+    padding: 28px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease;
+  }
+
+  .principle-card:hover { border-color: var(--border-medium); }
+
+  .principle-marker {
+    width: 4px;
+    height: 24px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .principle-marker--sky { background: var(--pastel-sky); }
+  .principle-marker--lemon { background: var(--pastel-lemon); }
+  .principle-marker--lavender { background: var(--pastel-lavender); }
+
+  .principle-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .principle-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .strategy-decisions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .strategy-decision {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  .strategy-decision:hover { border-color: var(--border-medium); }
+
+  .decision-arrow {
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--pastel-sky);
+    padding-top: 1px;
+  }
+
+  .decision-text {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ─── SOLUTIONS GRID ─── */
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .solution-card {
+    padding: 32px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease, transform 0.25s ease;
+  }
+
+  .solution-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+  }
+
+  .solution-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .solution-tag--peach { color: var(--pastel-peach); background: rgba(244, 168, 154, 0.1); }
+  .solution-tag--mint { color: var(--pastel-mint); background: rgba(142, 216, 176, 0.1); }
+  .solution-tag--lavender { color: var(--pastel-lavender); background: rgba(184, 169, 232, 0.1); }
+  .solution-tag--sky { color: var(--pastel-sky); background: rgba(138, 196, 232, 0.1); }
+  .solution-tag--lemon { color: var(--pastel-lemon); background: rgba(232, 216, 138, 0.1); }
+
+  .solution-name {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .solution-problem {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── IMPACT ─── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+
+  .impact-card {
+    padding: 32px 20px;
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease, transform 0.25s ease;
+  }
+
+  .impact-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+  }
+
+  .impact-number {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+
+  .stat-number--peach { color: var(--pastel-peach); }
+  .stat-number--mint { color: var(--pastel-mint); }
+  .stat-number--lavender { color: var(--pastel-lavender); }
+  .stat-number--sky { color: var(--pastel-sky); }
+  .stat-number--lemon { color: var(--pastel-lemon); }
+  .stat-number--rose { color: var(--pastel-rose); }
+
+  .impact-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .impact-notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .impact-note {
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .impact-note-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .impact-note-text {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-subtle);
+    margin: var(--section-gap) 0;
+  }
+
+  /* ─── CASE STUDY CTA ─── */
+  .case-study-cta {
+    padding: 24px 0 80px;
+    margin-bottom: 40px;
+  }
+
+  .case-study-cta-inner {
+    text-align: center;
+    padding: 56px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-study-cta-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(138, 196, 232, 0.04), rgba(232, 216, 138, 0.03), transparent 60%);
+    pointer-events: none;
+  }
+
+  .case-study-cta-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .case-study-cta-body {
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  .case-study-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    color: #FFFFFF;
+  }
+
+  .btn-primary {
+    background: var(--pastel-sky);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(138, 196, 232, 0.25);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-medium);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
+  }
+
+  .btn-primary svg,
+  .btn-secondary svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.25s ease;
+  }
+
+  .btn-primary:hover svg,
+  .btn-secondary:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .footer-links a:hover { color: var(--text-secondary); }
+
+  .footer-copy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.8125rem; }
+    .hero { padding-top: 120px; }
+    .meta-row { grid-template-columns: 1fr; }
+    .insight-cards { grid-template-columns: 1fr; }
+    .workflow { flex-direction: column; gap: 12px; }
+    .workflow::before { display: none; }
+    .workflow-step { border-radius: 12px !important; }
+    .strategy-principles { grid-template-columns: 1fr; }
+    .solutions-grid { grid-template-columns: 1fr; }
+    .image-placeholders { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .impact-notes { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .impact-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .footer-links { flex-direction: column; gap: 16px; }
+    .case-study-cta-buttons { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .case-study-cta-inner { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero container">
+  <span class="hero-tag">Enterprise Finance Platform · 2025–2026</span>
+  <h1>Allocatr Insights</h1>
+  <p class="hero-description">Empowering merchants and analysts to drive strategic financial decisions through data-driven forecasting that reduces planning cycle time by 24% while increasing accountability by 38%.</p>
+
+  <div class="hero-image">
+    <img src="Allocatr_Ptf_Cover.png" alt="Allocatr Insights — Cover" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+</header>
+
+<!-- META -->
+<div class="container">
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="meta-label">Timeline</div>
+      <div class="meta-value">2024 – 2025</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Senior Product Designer</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Impact</div>
+      <div class="meta-value">50% manual workflows replaced</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHALLENGE -->
+<section class="section container animate-on-scroll" aria-labelledby="challenge-heading">
+  <span class="section-label section-label--peach">Business Challenge</span>
+  <h2 id="challenge-heading" class="section-title">Manual Excel workflows challenge forecast planning</h2>
+  <p class="section-subtitle">Merchant and financial teams printed forecast documents weekly with constant back-and-forth communication. Managing adjustments in offline Excel sheets lacked audit trails, causing teams to lose track of adjustments and undermining data accuracy.</p>
+
+  <div class="challenge-statement">
+    <div class="challenge-question-label">The Core Question</div>
+    <p class="challenge-question">How might we empower Category Managers and Finance teams to harness reporting and business intelligence for strategic category growth?</p>
+  </div>
+
+  <div class="pain-points">
+    <div class="pain-point">
+      <div class="pain-index">1</div>
+      <div class="pain-text">No audit trail for forecast adjustments leading to accountability gaps</div>
+    </div>
+    <div class="pain-point">
+      <div class="pain-index">2</div>
+      <div class="pain-text">Intuition-based projections without scientific guidance from corporate finance</div>
+    </div>
+    <div class="pain-point">
+      <div class="pain-index">3</div>
+      <div class="pain-text">Manual data re-entry causing version control issues and lost visibility</div>
+    </div>
+  </div>
+
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- RESEARCH -->
+<section class="section container animate-on-scroll" aria-labelledby="research-heading">
+  <span class="section-label section-label--mint">User Research</span>
+  <h2 id="research-heading" class="section-title">Understanding complex financial workflows</h2>
+  <p class="section-subtitle">Through design workshops with merchants, finance teams, and leadership, we mapped the intricate approval hierarchy and identified critical friction points in forecast management.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="workflow-num workflow-num--1">1</div>
+      <div class="workflow-title">Design Workshop</div>
+      <div class="workflow-desc">Collaborative sessions to understand users, processes, and identify product opportunities</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num workflow-num--2">2</div>
+      <div class="workflow-title">Journey Mapping</div>
+      <div class="workflow-desc">Mapped existing workflows to identify gaps between reporting and forecast visualization</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num workflow-num--3">3</div>
+      <div class="workflow-title">Key Insights</div>
+      <div class="workflow-desc">Discovered adjustment flow from ASM → SM through VPMM → NM → NVPMM hierarchy</div>
+    </div>
+  </div>
+
+  <div class="workflow-callout">
+    <div class="workflow-callout-label">Key Insight</div>
+    <div class="workflow-callout-text">Adjustment flow from ASM → SM with performance rolling up through VPMM → NM → NVPMM required flexible design for multiple approval paths across the organizational hierarchy.</div>
+  </div>
+
+  <div class="insight-cards" style="margin-top: 40px;">
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--sky">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="insight-title">Excel-Dependent Culture</div>
+      <div class="insight-desc">Teams relied on offline Excel sheets for forecast adjustments, creating version control nightmares and no source of truth.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--lavender">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="insight-title">Complex Approval Hierarchy</div>
+      <div class="insight-desc">Multi-layered approval paths across divisions required flexible design that could accommodate different organizational structures.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--lemon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="insight-title">Missing Accountability</div>
+      <div class="insight-desc">No mechanism to capture reasons behind forecast adjustments, making it impossible to learn from past decisions.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--peach">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="insight-title">Reporting-Visualization Gap</div>
+      <div class="insight-desc">Disconnection between reporting data and forecast visualization forced teams to manually bridge insights across tools.</div>
+    </div>
+  </div>
+
+  <div class="image-placeholders">
+    <div class="image-placeholder">
+      <img src="Allocatr_Ptf_Research1.png" alt="Allocatr — Research Artifact 1" style="width:100%;height:100%;object-fit:contain;background:#e8e8e8;">
+    </div>
+    <div class="image-placeholder">
+      <img src="Allocatr_Ptf_Research2.png" alt="Allocatr — Research Artifact 2" style="width:100%;height:100%;object-fit:contain;background:#fde68a;">
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- STRATEGY -->
+<section class="section container animate-on-scroll" aria-labelledby="strategy-heading">
+  <span class="section-label section-label--lavender">Design Strategy</span>
+  <h2 id="strategy-heading" class="section-title">Building trust through transparent decisions</h2>
+  <p class="section-subtitle">Established strategic approach focusing on Excel-familiar interfaces while introducing audit trails, real-time validation, and cross-functional collaboration features.</p>
+
+  <div class="strategy-principles">
+    <div class="principle-card">
+      <div class="principle-marker principle-marker--sky"></div>
+      <div class="principle-name">Dashboard</div>
+      <div class="principle-desc">Data visualization with read-only insights for quick decision-making across all hierarchy levels</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-marker principle-marker--lemon"></div>
+      <div class="principle-name">Worksheet</div>
+      <div class="principle-desc">Editable forecast adjustments with full audit history and reasoning capture per line item</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-marker principle-marker--lavender"></div>
+      <div class="principle-name">Familiarity</div>
+      <div class="principle-desc">Excel-style format based on user feedback, maintaining comfort while following UDS guidelines</div>
+    </div>
+  </div>
+
+  <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px;">Strategic Decisions</h3>
+
+  <div class="strategy-decisions">
+    <div class="strategy-decision">
+      <span class="decision-arrow">→</span>
+      <span class="decision-text">Retained Excel-style format based on user feedback while following UDS Design guidelines</span>
+    </div>
+    <div class="strategy-decision">
+      <span class="decision-arrow">→</span>
+      <span class="decision-text">Created dual-table system: Dashboard (view-only) and Worksheet (editable with audit trail)</span>
+    </div>
+    <div class="strategy-decision">
+      <span class="decision-arrow">→</span>
+      <span class="decision-text">Explored AI-powered budget allocation using historical trends for future implementation</span>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- SOLUTION OVERVIEW -->
+<section class="section container animate-on-scroll" aria-labelledby="solutions-heading">
+  <span class="section-label section-label--sky">Solution Overview</span>
+  <h2 id="solutions-heading" class="section-title">Strategic improvements across the platform</h2>
+  <p class="section-subtitle">Designed an integrated dashboard and worksheet system addressing transparency, accountability, and future AI-powered optimization.</p>
+
+  <div class="solutions-grid">
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--sky">Dashboard</span>
+      <div class="solution-name">Information Architecture</div>
+      <div class="solution-problem">Hierarchical view from Quarter to Desk level with timestamp tracking, action bar, and advanced filtering by timeframe, division, department, and desk.</div>
+    </div>
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--lemon">Worksheet</span>
+      <div class="solution-name">Forecast Management</div>
+      <div class="solution-problem">Adjustment drawer for line item updates with alerts, reason selection, and comments. Forecast adjustments across multiple lines with full audit history.</div>
+    </div>
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--lavender">Audit Trail</span>
+      <div class="solution-name">Accountability &amp; Transparency</div>
+      <div class="solution-problem">Comprehensive audit history capturing all divisional changes with clear highlighting of impacted vs. non-impacted desks by department.</div>
+    </div>
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--mint">AI Exploration</span>
+      <div class="solution-name">Future-State Innovation</div>
+      <div class="solution-problem">AI-powered aggregator for automatic budget allocation using historical trends and prediction of adjustment reasons using market data.</div>
+    </div>
+  </div>
+
+  <div class="image-placeholders" style="grid-template-columns:1fr;">
+    <div>
+      <div class="image-placeholder">
+        <img src="Allocatr_Ptf_Solution1.png" alt="Allocatr — Solution Screen 1" style="width:100%;height:100%;object-fit:contain;background:#c4cdd5;">
+      </div>
+      <p class="image-caption">Allocatr Insights dashboard and adjustment worksheet for forecast planning</p>
+    </div>
+    <div>
+      <div class="image-placeholder">
+        <video src="Alloctar_AI_Ptf_video.mov" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:contain;background:#c4cdd5;border-radius:14px;"></video>
+      </div>
+      <p class="image-caption">AI-powered budget allocation and trend prediction exploration</p>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- IMPACT -->
+<section class="section container animate-on-scroll" aria-labelledby="impact-heading">
+  <span class="section-label section-label--lemon">Impact</span>
+  <h2 id="impact-heading" class="section-title">Measurable outcomes delivered</h2>
+  <p class="section-subtitle">Quantifiable improvements across planning efficiency, data visibility, accountability, and digital transformation of manual workflows.</p>
+
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-number stat-number--sky">↓24%</div>
+      <div class="impact-desc">Reduction in planning cycle time</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--lavender">42%</div>
+      <div class="impact-desc">Increase in visibility on granular metrics</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--lemon">38%</div>
+      <div class="impact-desc">Increase in reason capturing</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--mint">50%</div>
+      <div class="impact-desc">Manual workflows replaced</div>
+    </div>
+  </div>
+
+  <div class="impact-notes">
+    <div class="impact-note">
+      <div class="impact-note-title">Design System Impact</div>
+      <div class="impact-note-text">Created first-of-its-kind Excel-style table within the APP ecosystem using core UDS components. Developed hybrid components tailored to business needs with AI assistance.</div>
+    </div>
+    <div class="impact-note">
+      <div class="impact-note-title">Process Innovation</div>
+      <div class="impact-note-text">Balanced business requirements with user experience. Empowered offshore engineering team autonomy while maintaining quality through design audits.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <ul class="footer-links">
+    <li><a href="mailto:adhith_s@rediffmail.com">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

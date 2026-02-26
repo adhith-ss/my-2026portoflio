@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RxToGo Product Suite — Adhith Shanmuga Sundaram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --bg-card-hover: #1C1C1C;
+    --border-subtle: #222222;
+    --border-medium: #2A2A2A;
+
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-muted: #888888;
+
+    --pastel-peach: #F4A89A;
+    --pastel-mint: #8ED8B0;
+    --pastel-lavender: #B8A9E8;
+    --pastel-sky: #8AC4E8;
+    --pastel-lemon: #E8D88A;
+    --pastel-rose: #E89AB8;
+
+    --section-gap: clamp(80px, 10vw, 140px);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--pastel-mint);
+    color: var(--bg-primary);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ─── CONTAINER ─── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: 160px;
+    padding-bottom: var(--section-gap);
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(142, 216, 176, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border-medium);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-card);
+    aspect-ratio: 16 / 8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .section-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 12px;
+    background: var(--bg-card);
+  }
+
+  .image-placeholders--single {
+    grid-template-columns: 1fr;
+  }
+
+  .image-placeholder--full {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* ─── META ROW ─── */
+  .meta-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: var(--section-gap);
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .meta-item {
+    background: var(--bg-card);
+    padding: 28px 32px;
+    text-align: center;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .meta-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* ─── SECTION SHARED ─── */
+  .section {
+    margin-bottom: var(--section-gap);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+
+  .section-label--peach { color: var(--pastel-peach); background: rgba(244, 168, 154, 0.1); }
+  .section-label--mint { color: var(--pastel-mint); background: rgba(142, 216, 176, 0.1); }
+  .section-label--lavender { color: var(--pastel-lavender); background: rgba(184, 169, 232, 0.1); }
+  .section-label--sky { color: var(--pastel-sky); background: rgba(138, 196, 232, 0.1); }
+  .section-label--lemon { color: var(--pastel-lemon); background: rgba(232, 216, 138, 0.1); }
+  .section-label--rose { color: var(--pastel-rose); background: rgba(232, 154, 184, 0.1); }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    color: var(--text-secondary);
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* ─── CHALLENGE ─── */
+  .challenge-statement {
+    text-align: center;
+    padding: 56px 32px;
+    border-radius: 16px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-secondary);
+    margin-top: 40px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .challenge-statement::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(142, 216, 176, 0.04), rgba(138, 196, 232, 0.04));
+    pointer-events: none;
+  }
+
+  .challenge-question-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pastel-mint);
+    margin-bottom: 16px;
+  }
+
+  .challenge-question {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-primary);
+  }
+
+  /* ─── STATS GRID ─── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .stat-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+  }
+
+  .stat-number {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+
+  .stat-number--peach { color: var(--pastel-peach); }
+  .stat-number--mint { color: var(--pastel-mint); }
+  .stat-number--lavender { color: var(--pastel-lavender); }
+  .stat-number--sky { color: var(--pastel-sky); }
+  .stat-number--lemon { color: var(--pastel-lemon); }
+  .stat-number--rose { color: var(--pastel-rose); }
+
+  .stat-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── PAIN POINTS ─── */
+  .pain-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .pain-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  .pain-point:hover { border-color: var(--border-medium); }
+
+  .pain-index {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--bg-primary);
+    background: var(--pastel-mint);
+  }
+
+  .pain-text {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-top: 4px;
+  }
+
+  /* ─── IMAGE PLACEHOLDERS ─── */
+  .image-placeholders {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .image-placeholder {
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+
+  .image-caption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .placeholder-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-muted);
+  }
+
+  .placeholder-inner svg {
+    opacity: 0.35;
+  }
+
+  .placeholder-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  /* ─── WORKFLOW ─── */
+  .workflow {
+    display: flex;
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+    align-items: stretch;
+  }
+
+  .workflow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--border-medium);
+    z-index: 0;
+  }
+
+  .workflow-step {
+    flex: 1;
+    padding: 24px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .workflow-step:first-child { border-radius: 14px 0 0 14px; }
+  .workflow-step:last-child { border-radius: 0 14px 14px 0; }
+
+  .workflow-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin: 0 auto 12px;
+    color: var(--bg-primary);
+  }
+
+  .workflow-num--1 { background: var(--pastel-mint); }
+  .workflow-num--2 { background: var(--pastel-sky); }
+  .workflow-num--3 { background: var(--pastel-lavender); }
+
+  .workflow-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .workflow-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── INSIGHT CARDS ─── */
+  .insight-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .insight-card {
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease;
+  }
+
+  .insight-card:hover { border-color: var(--border-medium); }
+
+  .insight-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .insight-icon--mint { background: rgba(142, 216, 176, 0.12); color: var(--pastel-mint); }
+  .insight-icon--lavender { background: rgba(184, 169, 232, 0.12); color: var(--pastel-lavender); }
+  .insight-icon--sky { background: rgba(138, 196, 232, 0.12); color: var(--pastel-sky); }
+  .insight-icon--rose { background: rgba(232, 154, 184, 0.12); color: var(--pastel-rose); }
+
+  .insight-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .insight-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── SOLUTIONS GRID ─── */
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .solution-card {
+    padding: 32px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease, transform 0.25s ease;
+  }
+
+  .solution-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+  }
+
+  .solution-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .solution-tag--peach { color: var(--pastel-peach); background: rgba(244, 168, 154, 0.1); }
+  .solution-tag--mint { color: var(--pastel-mint); background: rgba(142, 216, 176, 0.1); }
+  .solution-tag--lavender { color: var(--pastel-lavender); background: rgba(184, 169, 232, 0.1); }
+  .solution-tag--sky { color: var(--pastel-sky); background: rgba(138, 196, 232, 0.1); }
+
+  .solution-name {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .solution-problem {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .solution-impact {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .solution-impact strong { color: var(--text-primary); }
+
+  /* ─── IMPACT ─── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+
+  .impact-card {
+    padding: 32px 24px;
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.3s ease, transform 0.25s ease;
+  }
+
+  .impact-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+  }
+
+  .impact-number {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+
+  .impact-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .impact-notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .impact-note {
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .impact-note-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .impact-note-text {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── TAKEAWAYS ─── */
+  .takeaway-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+
+  .takeaway-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  .takeaway-card:hover { border-color: var(--border-medium); }
+
+  .takeaway-index {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--bg-primary);
+  }
+
+  .takeaway-index--1 { background: var(--pastel-sky); }
+  .takeaway-index--2 { background: var(--pastel-lavender); }
+  .takeaway-index--3 { background: var(--pastel-lemon); }
+
+  .takeaway-content { padding-top: 2px; }
+
+  .takeaway-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .takeaway-text {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .takeaway-notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .takeaway-note {
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .takeaway-note-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .takeaway-note-text {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-subtle);
+    margin: var(--section-gap) 0;
+  }
+
+  /* ─── CASE STUDY CTA ─── */
+  .case-study-cta {
+    padding: 24px 0 80px;
+    margin-bottom: 40px;
+  }
+
+  .case-study-cta-inner {
+    text-align: center;
+    padding: 56px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-study-cta-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(142, 216, 176, 0.04), rgba(138, 196, 232, 0.03), transparent 60%);
+    pointer-events: none;
+  }
+
+  .case-study-cta-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .case-study-cta-body {
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  .case-study-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    color: #FFFFFF;
+  }
+
+  .btn-primary {
+    background: var(--pastel-mint);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(142, 216, 176, 0.25);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-medium);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
+  }
+
+  .btn-primary svg,
+  .btn-secondary svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.25s ease;
+  }
+
+  .btn-primary:hover svg,
+  .btn-secondary:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .footer-links a:hover { color: var(--text-secondary); }
+
+  .footer-copy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.8125rem; }
+    .hero { padding-top: 120px; }
+    .meta-row { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-cards { grid-template-columns: 1fr; }
+    .workflow { flex-direction: column; gap: 12px; }
+    .workflow::before { display: none; }
+    .workflow-step { border-radius: 12px !important; }
+    .solutions-grid { grid-template-columns: 1fr; }
+    .image-placeholders { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .impact-notes { grid-template-columns: 1fr; }
+    .takeaway-notes { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .footer-links { flex-direction: column; gap: 16px; }
+    .case-study-cta-buttons { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .case-study-cta-inner { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero container">
+  <span class="hero-tag">Pharmacy Associate Tool · 2023–2024</span>
+  <h1>RxToGo Product Suite</h1>
+  <p class="hero-description">An end-to-end associate tool for dispensing pharmacy orders — reducing delivery dispense time by 55% while automating 40% of checkout processes for seamless prescription fulfillment.</p>
+
+  <div class="hero-image">
+    <img src="RxToGo_Ptf_Projectcover.png" alt="RxToGo Product Suite — cover showing the pharmacy fulfillment interface" class="hero-img">
+  </div>
+</header>
+
+<!-- META -->
+<div class="container">
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="meta-label">Timeline</div>
+      <div class="meta-value">2023 – 2024</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Senior Product Designer</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Impact</div>
+      <div class="meta-value">800+ orders fulfilled · 92% satisfaction</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHALLENGE -->
+<section class="section container animate-on-scroll" aria-labelledby="challenge-heading">
+  <span class="section-label section-label--peach">Business Challenge</span>
+  <h2 id="challenge-heading" class="section-title">Time consuming process impacted on-site duties</h2>
+  <p class="section-subtitle">Amy, a Sam's Club pharmacy technician, spent most of her time addressing customers beyond fulfilling orders. The overwhelming process of dispensing prescriptions for delivery orders led to human errors and business disruption.</p>
+
+  <div class="challenge-statement">
+    <div class="challenge-question-label">The Core Question</div>
+    <p class="challenge-question">How might we assist pharmacy associates to recognize and schedule delivery orders within the existing platform?</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number stat-number--mint">90d</div>
+      <div class="stat-desc">Refills preferred by focused customer segment</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number stat-number--lavender">21%</div>
+      <div class="stat-desc">Customers not enrolled on auto refill updates</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number stat-number--peach">37%</div>
+      <div class="stat-desc">Customers 55+ and mostly non-tech savvy</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number stat-number--sky">46%</div>
+      <div class="stat-desc">Pharmacy revenue from delivery-preferred customers</div>
+    </div>
+  </div>
+
+  <div class="pain-points">
+    <div class="pain-point">
+      <div class="pain-index">1</div>
+      <div class="pain-text">Lack of transparency and multiple levels of interaction in legacy system</div>
+    </div>
+    <div class="pain-point">
+      <div class="pain-index">2</div>
+      <div class="pain-text">GoLocal third-party application not easily accessible for associates</div>
+    </div>
+    <div class="pain-point">
+      <div class="pain-index">3</div>
+      <div class="pain-text">Numerous back-and-forth movements between hardware and applications</div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- RESEARCH -->
+<section class="section container animate-on-scroll" aria-labelledby="research-heading">
+  <span class="section-label section-label--mint">User Research</span>
+  <h2 id="research-heading" class="section-title">Mapping the InClub order fulfillment journey</h2>
+  <p class="section-subtitle">Documented the complete delivery order process from creation through fulfillment, identifying key friction points across three major stages involving pharmacy technicians and pharmacists.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="workflow-num workflow-num--1">1</div>
+      <div class="workflow-title">Create Order</div>
+      <div class="workflow-desc">Technicians select and review orders for delivery using the legacy Connexus application</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num workflow-num--2">2</div>
+      <div class="workflow-title">Fulfill RX Order</div>
+      <div class="workflow-desc">Scan items, fill orders manually, print labels, and drop bags in Will Call rack</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num workflow-num--3">3</div>
+      <div class="workflow-title">Schedule Payment</div>
+      <div class="workflow-desc">Pharmacist verifies order, schedules payment via GoLocal, completes checkout on TC53</div>
+    </div>
+  </div>
+
+  <div class="insight-cards" style="margin-top: 40px;">
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--mint">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="insight-title">Time-Intensive Process</div>
+      <div class="insight-desc">Average dispense time of 10 - 15 minutes per order with 18 steps across hardware and applications.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--lavender">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="insight-title">Dual User Handoff</div>
+      <div class="insight-desc">Technicians and pharmacists had disconnected workflows, requiring manual coordination for verification and payment.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--sky">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="insight-title">Hardware Fragmentation</div>
+      <div class="insight-desc">Associates switched between desktop and TC53 handheld devices, causing context loss and inefficiency.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon insight-icon--rose">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="insight-title">Error-Prone Legacy</div>
+      <div class="insight-desc">Manual label printing, stock checks, and bag scanning across disconnected systems increased human error rates.</div>
+    </div>
+  </div>
+
+  <div class="image-placeholders">
+    <div class="image-placeholder">
+      <img src="RxToGo_Research1.png" alt="User journey map showing the InClub order fulfillment process" class="section-img">
+    </div>
+    <div class="image-placeholder">
+      <img src="RxToGo_Research_2.png" alt="Research artifact documenting pharmacy workflow findings" class="section-img">
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- SOLUTION OVERVIEW -->
+<section class="section container animate-on-scroll" aria-labelledby="solutions-heading">
+  <span class="section-label section-label--sky">Solution Overview</span>
+  <h2 id="solutions-heading" class="section-title">Integrated web &amp; mobile product suite</h2>
+  <p class="section-subtitle">Designed a cohesive two-part system - Order Maintenance web app for order management and a Checkout mobile app for in-store fulfillment-unifying workflows.</p>
+
+  <div class="solutions-grid">
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--mint">Web App</span>
+      <div class="solution-name">RxToGo Order Maintenance</div>
+      <div class="solution-problem">Centralized order management dashboard replacing fragmented legacy tools for pharmacists and technicians.</div>
+      <div class="solution-impact"><strong>Result:</strong> Single source of truth for all delivery orders with real-time status tracking</div>
+    </div>
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--lavender">Mobile App</span>
+      <div class="solution-name">RxToGo Checkout</div>
+      <div class="solution-problem">Handheld TC53 app streamlining the on-floor checkout and scanning workflow for pharmacy associates.</div>
+      <div class="solution-impact"><strong>Result:</strong> 40% of checkout process automated with guided step-by-step fulfillment</div>
+    </div>
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--peach">Automation</span>
+      <div class="solution-name">Process Streamlining</div>
+      <div class="solution-problem">Reduced 6 steps from the overall 18-step delivery dispense process through intelligent automation.</div>
+      <div class="solution-impact"><strong>Result:</strong> Average time reduced from 10–15 min to 5–7 min per order</div>
+    </div>
+    <div class="solution-card">
+      <span class="solution-tag solution-tag--sky">Integration</span>
+      <div class="solution-name">GoLocal &amp; Connexus Bridge</div>
+      <div class="solution-problem">Third-party GoLocal application was inaccessible; Connexus required manual context-switching.</div>
+      <div class="solution-impact"><strong>Result:</strong> Unified interface bridging payment scheduling and order verification</div>
+    </div>
+  </div>
+
+  <div class="image-placeholders" style="grid-template-columns:1fr;">
+    <div>
+      <div class="image-placeholder">
+        <img src="RxToGo_Solution_1.png" alt="RxToGo solution screen showing the integrated web and mobile product suite" class="section-img" style="object-fit:contain;background:var(--bg-card);">
+      </div>
+      <p class="image-caption">Order Maintenance web app for pharmacy order management</p>
+    </div>
+    <div>
+      <div class="image-placeholder" style="background:#000000;">
+        <video src="Ptf_RxToGo_Solution2.mov" autoplay loop muted playsinline class="section-video" style="background:#000000;" aria-label="RxToGo solution walkthrough video"></video>
+      </div>
+      <p class="image-caption">Checkout mobile app for in-store prescription fulfillment</p>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- IMPACT -->
+<section class="section container animate-on-scroll" aria-labelledby="impact-heading">
+  <span class="section-label section-label--lemon">Impact</span>
+  <h2 id="impact-heading" class="section-title">Measurable outcomes delivered</h2>
+  <p class="section-subtitle">Quantifiable improvements across associate efficiency, customer satisfaction, and operational workflows through integrated web and mobile solutions.</p>
+
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-number stat-number--mint">55%</div>
+      <div class="impact-desc">Reduction in delivery dispense time</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--lavender">800+</div>
+      <div class="impact-desc">Orders fulfilled successfully in Q4 2023</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--peach">84%</div>
+      <div class="impact-desc">Customers comfortable with delivery</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--sky">92%</div>
+      <div class="impact-desc">Associates prefer this portal</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--lemon">5-7m</div>
+      <div class="impact-desc">Average time vs earlier 10–15 min</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-number stat-number--rose">40%</div>
+      <div class="impact-desc">Checkout process automated</div>
+    </div>
+  </div>
+
+  <div class="impact-notes">
+    <div class="impact-note">
+      <div class="impact-note-title">Process Efficiency</div>
+      <div class="impact-note-text">Reduced 6 steps from overall 18-step delivery dispense process. MVP delivery checkout workflow was time-efficient, allowing associates to focus on in-store customers.</div>
+    </div>
+    <div class="impact-note">
+      <div class="impact-note-title">Future Expansion</div>
+      <div class="impact-note-text">Explored expedited counter pickup and curbside opportunities through vision workshops. Dynamic checkout product enabled quick turnaround for other dispensing methods.</div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- KEY TAKEAWAYS -->
+<section class="section container animate-on-scroll" aria-labelledby="takeaways-heading">
+  <span class="section-label section-label--rose">Key Takeaways</span>
+  <h2 id="takeaways-heading" class="section-title">Lessons gained from the journey</h2>
+  <p class="section-subtitle">Insights on collaboration, research foundations, and product language that shaped the design process and outcomes.</p>
+
+  <div class="takeaway-cards">
+    <div class="takeaway-card">
+      <div class="takeaway-index takeaway-index--1">1</div>
+      <div class="takeaway-content">
+        <div class="takeaway-title">Transparency &amp; Communication</div>
+        <div class="takeaway-text">Each partner has unique approaches. Maintaining transparency throughout product development proved beneficial for cross-functional alignment.</div>
+      </div>
+    </div>
+    <div class="takeaway-card">
+      <div class="takeaway-index takeaway-index--2">2</div>
+      <div class="takeaway-content">
+        <div class="takeaway-title">Research Foundation</div>
+        <div class="takeaway-text">Set a strong foundation through research and connect the dots of the process to justify product requirements with stakeholders and engineering teams.</div>
+      </div>
+    </div>
+    <div class="takeaway-card">
+      <div class="takeaway-index takeaway-index--3">3</div>
+      <div class="takeaway-content">
+        <div class="takeaway-title">Product Language</div>
+        <div class="takeaway-text">Resonating the product's language with field associates is important. Setting the right tone throughout their journey can alleviate chances of making errors.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="takeaway-notes">
+    <div class="takeaway-note">
+      <div class="takeaway-note-title">MVP Approach Success</div>
+      <div class="takeaway-note-text">Time constraints led to smart prioritization. Focused on primary workflow enabled rapid delivery while maintaining quality and gathering feedback for future iterations.</div>
+    </div>
+    <div class="takeaway-note">
+      <div class="takeaway-note-title">System Integration</div>
+      <div class="takeaway-note-text">Leveraging existing platforms (Connexus, Walmart Mail Order app) provided familiar touchpoints while introducing improved workflows and modern design patterns.</div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- CASE STUDY CTA -->
+<section class="case-study-cta container animate-on-scroll" aria-labelledby="casestudy-heading">
+  <div class="case-study-cta-inner">
+    <h2 id="casestudy-heading" class="case-study-cta-title">View Complete Case Study</h2>
+    <p class="case-study-cta-body">As the nature of this work is confidential, only a limited part of this project is available above. If you are a hiring manager or recruiter, use the password to view the case study.</p>
+    <div class="case-study-cta-buttons">
+      <a href="#" class="btn-primary" role="button">
+        View Case Study
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </a>
+      <a href="allocatr.html" class="btn-secondary" role="button">
+        View Next Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <ul class="footer-links">
+    <li><a href="mailto:adhith_s@rediffmail.com">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

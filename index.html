@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adhith Shanmuga Sundaram — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --bg-card-hover: #1C1C1C;
+    --border-subtle: #222222;
+    --border-medium: #2A2A2A;
+
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-muted: #888888;
+
+    --pastel-peach: #F4A89A;
+    --pastel-mint: #8ED8B0;
+    --pastel-lavender: #B8A9E8;
+    --pastel-sky: #8AC4E8;
+    --pastel-lemon: #E8D88A;
+    --pastel-rose: #E89AB8;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--pastel-lavender);
+    color: var(--bg-primary);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ─── CONTAINER ─── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: 160px;
+    padding-bottom: 48px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(184, 169, 232, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 200px;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(138, 196, 232, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-greeting {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--pastel-lavender);
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+    max-width: 720px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-description {
+    font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-role {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.3s ease both;
+    line-height: 1.7;
+  }
+
+  .hero-role strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* ─── STATS ─── */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 64px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .hero-stat {
+    background: var(--bg-card);
+    padding: 32px 28px;
+    text-align: center;
+  }
+
+  .hero-stat-number {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ─── WORK SECTION ─── */
+  .work-section {
+    padding-bottom: 120px;
+  }
+
+  .work-title-centered {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  /* ─── PROJECT CARDS ─── */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  }
+
+  .project-image {
+    border-right: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+
+  .project-image-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .project-image-bg--lavender {
+    background: linear-gradient(145deg, rgba(184, 169, 232, 0.08), rgba(184, 169, 232, 0.02));
+  }
+
+  .project-image-bg--mint {
+    background: linear-gradient(145deg, rgba(142, 216, 176, 0.08), rgba(142, 216, 176, 0.02));
+  }
+
+  .project-image-bg--sky {
+    background: linear-gradient(145deg, rgba(138, 196, 232, 0.08), rgba(138, 196, 232, 0.02));
+  }
+
+  .project-card-img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .project-content {
+    padding: 36px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .project-tag {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-medium);
+    color: var(--text-muted);
+  }
+
+  .project-tag--accent-lavender {
+    color: var(--pastel-lavender);
+    border-color: rgba(184, 169, 232, 0.2);
+    background: rgba(184, 169, 232, 0.06);
+  }
+
+  .project-tag--accent-mint {
+    color: var(--pastel-mint);
+    border-color: rgba(142, 216, 176, 0.2);
+    background: rgba(142, 216, 176, 0.06);
+  }
+
+  .project-tag--accent-sky {
+    color: var(--pastel-sky);
+    border-color: rgba(138, 196, 232, 0.2);
+    background: rgba(138, 196, 232, 0.06);
+  }
+
+  .project-name {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .project-link-primary,
+  .project-link-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    color: #FFFFFF;
+  }
+
+  .project-link-primary {
+    background: var(--pastel-lavender);
+  }
+
+  .project-link-primary--mint {
+    background: var(--pastel-mint);
+  }
+
+  .project-link-primary--sky {
+    background: var(--pastel-sky);
+  }
+
+  .project-link-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(184, 169, 232, 0.25);
+  }
+
+  .project-link-primary--mint:hover {
+    box-shadow: 0 4px 16px rgba(142, 216, 176, 0.25);
+  }
+
+  .project-link-primary--sky:hover {
+    box-shadow: 0 4px 16px rgba(138, 196, 232, 0.25);
+  }
+
+  .project-link-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-medium);
+  }
+
+  .project-link-secondary:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .project-link-primary svg,
+  .project-link-secondary svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* ─── CONTACT SECTION ─── */
+  .contact-section {
+    padding: 80px 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .contact-inner {
+    text-align: center;
+    padding: 64px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(184, 169, 232, 0.04), rgba(138, 196, 232, 0.03), transparent 60%);
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    background: var(--pastel-lavender);
+    color: #FFFFFF;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(184, 169, 232, 0.25);
+  }
+
+  .contact-btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.25s ease;
+  }
+
+  .contact-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .footer-links a:hover { color: var(--text-secondary); }
+
+  .footer-copy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.8125rem; }
+    .hero { padding-top: 120px; }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .project-card {
+      grid-template-columns: 1fr;
+    }
+
+    .project-image {
+      aspect-ratio: 16 / 9;
+      border-right: none;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .project-content {
+      padding: 28px 24px;
+    }
+
+    .contact-inner {
+      padding: 48px 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.25rem; }
+
+    .project-links {
+      flex-direction: column;
+    }
+
+    .project-link-primary,
+    .project-link-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero container">
+  <p class="hero-greeting">Hello, I'm Adhith</p>
+  <h1>Designing enterprise solutions that drive impact</h1>
+  <p class="hero-description">Transforming complex enterprise workflows into intuitive experiences. 5+ years specializing in B2B and SaaS products with measurable business outcomes.</p>
+  <p class="hero-role"><strong>Senior Product Designer at Albertsons Companies</strong><br>Previously at <strong>Walmart</strong></p>
+
+
+</header>
+
+<!-- WORK -->
+<section id="work" class="work-section container">
+  <h2 class="work-title-centered">Work</h2>
+
+  <div class="project-list">
+
+    <!-- PROJECT 1 — Item Management -->
+    <article class="project-card animate-on-scroll stagger-1">
+      <div class="project-image">
+        <div class="project-image-bg project-image-bg--lavender"></div>
+        <img src="Item_Index_ptf.png" alt="Item Management project preview" class="project-card-img">
+      </div>
+      <div class="project-content">
+        <div class="project-tags">
+          <span class="project-tag project-tag--accent-lavender">Enterprise Web</span>
+          <span class="project-tag">B2B Platform</span>
+          <span class="project-tag">Retail</span>
+        </div>
+        <h3 class="project-name">Enhanced Item Onboarding Experience at Albertsons Merchandising</h3>
+        <p class="project-desc">Led design enhancements for enterprise web platform, reducing vendor-to-store onboarding from 6 days to 2. Streamlined workflows saved merchants 21 hours weekly across the organization.</p>
+        <div class="project-links">
+          <a href="item-management.html" class="project-link-secondary">
+            Preview
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 2 — RxToGo -->
+    <article class="project-card animate-on-scroll stagger-2">
+      <div class="project-image">
+        <div class="project-image-bg project-image-bg--mint"></div>
+        <img src="RxToGo_Ptf_Projectcover.png" alt="RxToGo Product Suite project preview" class="project-card-img">
+      </div>
+      <div class="project-content">
+        <div class="project-tags">
+          <span class="project-tag project-tag--accent-mint">Healthcare</span>
+          <span class="project-tag">Mobile &amp; Web</span>
+          <span class="project-tag">Retail</span>
+        </div>
+        <h3 class="project-name">Crafted Pharmacy Fulfillment Experience at Sam's Club</h3>
+        <p class="project-desc">Spearheaded the pharmacy delivery workflow redesign, cutting checkout time from 15 to 7 minutes. Automated 40% of tasks and reduced process steps from 18 to 12, deployed across 600+ locations nationwide.</p>
+        <div class="project-links">
+          <a href="rxtogo.html" class="project-link-secondary">
+            Preview
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 3 — Allocatr -->
+    <article class="project-card animate-on-scroll stagger-3">
+      <div class="project-image">
+        <div class="project-image-bg project-image-bg--sky"></div>
+        <img src="AIlocatr_Index_ptf.png" alt="Allocatr Insights project preview" class="project-card-img">
+      </div>
+      <div class="project-content">
+        <div class="project-tags">
+          <span class="project-tag project-tag--accent-sky">AI-Powered</span>
+          <span class="project-tag">Web Data Platform</span>
+          <span class="project-tag">Retail</span>
+        </div>
+        <h3 class="project-name">Empowering Merchants with Growth Intelligence at Albertsons</h3>
+        <p class="project-desc">Led UX strategy and design for enterprise forecasting platform, identifying critical workflows and prioritizing high-impact actions. Streamlined decision flows, empowering teams to make faster, data-informed adjustments.</p>
+        <div class="project-links">
+          <a href="allocatr.html" class="project-link-secondary">
+            Preview
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-inner animate-on-scroll">
+      <h2 class="contact-title">Let's create something meaningful together</h2>
+      <a href="mailto:adhith_s@rediffmail.com" class="contact-btn" role="button">
+        Get in Touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <ul class="footer-links">
+    <li><a href="mailto:adhith_s@rediffmail.com">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
