@@ -11,6 +11,8 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<link rel="prefetch" href="item-management.html">
+<link rel="prefetch" href="allocatr.html">
 <style>
   :root {
     --bg-primary: #0A0A0A;
@@ -1042,10 +1044,10 @@
 
   <div class="image-placeholders">
     <div class="image-placeholder">
-      <img src="RxToGo_Research1.png" alt="User journey map showing the InClub order fulfillment process" class="section-img">
+      <img src="RxToGo_Research1.png" alt="User journey map showing the InClub order fulfillment process" class="section-img" loading="lazy">
     </div>
     <div class="image-placeholder">
-      <img src="RxToGo_Research_2.png" alt="Research artifact documenting pharmacy workflow findings" class="section-img">
+      <img src="RxToGo_Research_2.png" alt="Research artifact documenting pharmacy workflow findings" class="section-img" loading="lazy">
     </div>
   </div>
 </section>
@@ -1088,13 +1090,13 @@
   <div class="image-placeholders" style="grid-template-columns:1fr;">
     <div>
       <div class="image-placeholder">
-        <img src="RxToGo_Solution_1.png" alt="RxToGo solution screen showing the integrated web and mobile product suite" class="section-img" style="object-fit:contain;background:var(--bg-card);">
+        <img src="RxToGo_Solution_1.png" alt="RxToGo solution screen showing the integrated web and mobile product suite" class="section-img" loading="lazy" style="object-fit:contain;background:var(--bg-card);">
       </div>
       <p class="image-caption">Order Maintenance web app for pharmacy order management</p>
     </div>
     <div>
       <div class="image-placeholder" style="background:#000000;">
-        <video src="Ptf_RxToGo_Solution2.mov" autoplay loop muted playsinline class="section-video" style="background:#000000;" aria-label="RxToGo solution walkthrough video"></video>
+        <video src="Ptf_RxToGo_Solution2.mov" autoplay loop muted playsinline preload="none" class="section-video" style="background:#000000;" aria-label="RxToGo solution walkthrough video"></video>
       </div>
       <p class="image-caption">Checkout mobile app for in-store prescription fulfillment</p>
     </div>
