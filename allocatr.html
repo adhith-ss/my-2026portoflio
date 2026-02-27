@@ -56,7 +56,7 @@
   }
 
   /* ─── NAV ─── */
-  nav {
+  nav[role="navigation"] {
     position: fixed;
     top: 0;
     left: 0;
@@ -821,7 +821,7 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
+    nav[role="navigation"] { padding: 16px 20px; }
     .nav-links { gap: 20px; }
     .nav-links a { font-size: 0.8125rem; }
     .hero { padding-top: 120px; }
