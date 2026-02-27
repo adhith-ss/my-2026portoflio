@@ -770,101 +770,55 @@
     margin: var(--section-gap) 0;
   }
 
-  /* ─── CASE STUDY CTA ─── */
-  .case-study-cta {
-    padding: 24px 0 80px;
-    margin-bottom: 40px;
-  }
-
-  .case-study-cta-inner {
+  /* ─── PROJECT NAVIGATION ─── */
+  .project-nav {
+    padding: 60px 0 40px;
     text-align: center;
-    padding: 56px 40px;
-    border-radius: 20px;
-    border: 1px solid var(--border-medium);
-    background: var(--bg-secondary);
-    position: relative;
-    overflow: hidden;
   }
 
-  .case-study-cta-inner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, rgba(142, 216, 176, 0.04), rgba(138, 196, 232, 0.03), transparent 60%);
-    pointer-events: none;
-  }
-
-  .case-study-cta-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-    color: var(--text-primary);
-  }
-
-  .case-study-cta-body {
-    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
-    color: var(--text-muted);
-    line-height: 1.7;
-    max-width: 520px;
-    margin: 0 auto 36px;
-  }
-
-  .case-study-cta-buttons {
+  .project-nav-buttons {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     gap: 16px;
     flex-wrap: wrap;
   }
 
-  .btn-primary,
-  .btn-secondary {
+  .nav-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 14px 32px;
-    border-radius: 100px;
+    padding: 14px 28px;
+    border-radius: 12px;
     font-family: 'Geist', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 500;
     text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    color: #FFFFFF;
+    transition: all 0.3s ease;
   }
 
-  .btn-primary {
-    background: var(--pastel-mint);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(142, 216, 176, 0.25);
-  }
-
-  .btn-secondary {
-    background: rgba(255, 255, 255, 0.08);
+  .nav-btn--prev,
+  .nav-btn--next {
+    background: var(--bg-card);
     border: 1px solid var(--border-medium);
+    color: var(--text-primary);
   }
 
-  .btn-secondary:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
+  .nav-btn--prev:hover,
+  .nav-btn--next:hover {
+    border-color: var(--pastel-mint);
+    box-shadow: 0 4px 16px rgba(142, 216, 176, 0.15);
   }
 
-  .btn-primary svg,
-  .btn-secondary svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.25s ease;
+  .nav-btn--top {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
   }
 
-  .btn-primary:hover svg,
-  .btn-secondary:hover svg {
-    transform: translateX(3px);
+  .nav-btn--top:hover {
+    border-color: var(--border-medium);
+    color: var(--text-primary);
   }
 
   /* ─── FOOTER ─── */
@@ -937,9 +891,8 @@
     .impact-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2rem; }
     .footer-links { flex-direction: column; gap: 16px; }
-    .case-study-cta-buttons { flex-direction: column; }
-    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-    .case-study-cta-inner { padding: 40px 24px; }
+    .project-nav-buttons { flex-direction: column; }
+    .nav-btn { width: 100%; justify-content: center; }
   }
 </style>
 </head>
@@ -956,7 +909,7 @@
 </nav>
 
 <!-- HERO -->
-<header class="hero container">
+<header id="hero" class="hero container">
   <span class="hero-tag">Pharmacy Associate Tool · 2023–2024</span>
   <h1>RxToGo Product Suite</h1>
   <p class="hero-description">An end-to-end associate tool for dispensing pharmacy orders — reducing delivery dispense time by 55% while automating 40% of checkout processes for seamless prescription fulfillment.</p>
@@ -1241,23 +1194,14 @@
 
 <div class="container"><div class="divider"></div></div>
 
-<!-- CASE STUDY CTA -->
-<section class="case-study-cta container animate-on-scroll" aria-labelledby="casestudy-heading">
-  <div class="case-study-cta-inner">
-    <h2 id="casestudy-heading" class="case-study-cta-title">View Complete Case Study</h2>
-    <p class="case-study-cta-body">As the nature of this work is confidential, only a limited part of this project is available above. If you are a hiring manager or recruiter, use the password to view the case study.</p>
-    <div class="case-study-cta-buttons">
-      <a href="#" class="btn-primary" role="button">
-        View Case Study
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </a>
-      <a href="allocatr.html" class="btn-secondary" role="button">
-        View Next Project
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
+<!-- PROJECT NAVIGATION -->
+<nav class="project-nav container animate-on-scroll" aria-label="Project navigation">
+  <div class="project-nav-buttons">
+    <a href="item-management.html" class="nav-btn nav-btn--prev">← View Previous Project</a>
+    <a href="#hero" class="nav-btn nav-btn--top">↑ Back to Top</a>
+    <a href="allocatr.html" class="nav-btn nav-btn--next">View Next Project →</a>
   </div>
-</section>
+</nav>
 
 <!-- FOOTER -->
 <footer>
