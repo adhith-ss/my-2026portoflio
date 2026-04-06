@@ -539,11 +539,7 @@
     inset: 0;
     z-index: 9999;
     background: var(--bg-primary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
+    overflow: hidden;
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -556,71 +552,80 @@
 
   /* ─── Loader Stage ─── */
   .loader-stage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* ─── Loader Bars ─── */
+  .bar {
+    position: absolute;
+    background: var(--text-primary);
+    height: 7%;
+    transition: all 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .bar:nth-child(1) { width: 45%; left: 30%; top: 4%; }
+  .bar:nth-child(2) { width: 55%; left: 8%;  top: 17%; }
+  .bar:nth-child(3) { width: 45%; left: 18%; top: 30%; }
+  .bar:nth-child(4) { width: 50%; left: 28%; top: 43%; }
+  .bar:nth-child(5) { width: 45%; left: 35%; top: 56%; }
+  .bar:nth-child(6) { width: 40%; left: 20%; top: 69%; }
+  .bar:nth-child(7) { width: 48%; left: 5%;  top: 82%; }
+
+  /* Phase 1: Bars align into grid */
+  .loader-stage.aligned .bar {
+    left: 22%;
+    width: 50%;
+  }
+  .loader-stage.aligned .bar:nth-child(1) { top: 5%; }
+  .loader-stage.aligned .bar:nth-child(2) { top: 18.3%; }
+  .loader-stage.aligned .bar:nth-child(3) { top: 31.6%; }
+  .loader-stage.aligned .bar:nth-child(4) { top: 44.9%; }
+  .loader-stage.aligned .bar:nth-child(5) { top: 58.2%; }
+  .loader-stage.aligned .bar:nth-child(6) { top: 71.5%; }
+  .loader-stage.aligned .bar:nth-child(7) { top: 84.8%; }
+
+  /* Phase 2: Bars merge into solid rectangle */
+  .loader-stage.solid .bar {
+    left: 22%;
+    width: 50%;
+    top: 10%;
+    height: 80%;
+    transition: all 1s cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   /* ─── Loader Logo ─── */
-  .loader-logo {
-    height: 160px;
-    width: auto;
-    opacity: 0;
-    transform: scale(0.85);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .loader-logo.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* ─── Loader Text ─── */
-  .loader-text {
+  .logo-container {
+    position: absolute;
+    top: 10%;
+    left: 22%;
+    width: 50%;
+    height: 80%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 8px;
-  }
-
-  .loader-name {
-    font-family: 'Geist', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-    margin: 0;
+    justify-content: center;
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition: opacity 0.8s ease;
+    z-index: 10;
+    pointer-events: none;
   }
 
-  .loader-name.visible {
+  .loader-stage.show-logo .logo-container {
     opacity: 1;
-    transform: translateY(0);
   }
 
-  .loader-welcome {
-    font-family: 'Geist', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    letter-spacing: 0;
-    margin: 0;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
-  }
-
-  .loader-welcome.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .logo-container img {
+    max-height: 65%;
+    max-width: 65%;
+    object-fit: contain;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .loader-logo,
-    .loader-name,
-    .loader-welcome {
+    .bar {
+      transition-duration: 0.01ms !important;
+    }
+    .logo-container {
       transition-duration: 0.01ms !important;
     }
     #page-loader {
@@ -716,12 +721,17 @@
 
 <!-- LOADER -->
 <div id="page-loader" aria-hidden="true">
-  <div class="loader-stage">
-    <img src="AS_Logo_PtfTab_b.png" alt="" class="loader-logo" id="loader-logo">
-  </div>
-  <div class="loader-text">
-    <p class="loader-name" id="loader-name">Adhith Sundaram</p>
-    <p class="loader-welcome" id="loader-welcome">Welcome to my portfolio</p>
+  <div class="loader-stage" id="loader-stage">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="logo-container">
+      <img src="AS_Logo_PtfTab_b.png" alt="" class="loader-logo" />
+    </div>
   </div>
 </div>
 
@@ -856,9 +866,7 @@
       return;
     }
 
-    var logo = document.getElementById('loader-logo');
-    var nameText = document.getElementById('loader-name');
-    var welcomeText = document.getElementById('loader-welcome');
+    var stage = document.getElementById('loader-stage');
 
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var seenBefore = false;
@@ -869,38 +877,35 @@
       window.addEventListener('load', function() { pageLoaded = true; });
     }
 
+    var EXIT_DURATION = 500;
+
     // Abbreviated loader for return visits
     if (seenBefore || reducedMotion) {
-      logo.classList.add('visible');
+      stage.classList.add('solid', 'show-logo');
       setTimeout(function() {
         doExit();
       }, 800);
       return;
     }
 
-    // Animation timeline
-    var PHASE_LOGO_REVEAL = 50;
-    var PHASE_NAME_REVEAL = 400;
-    var PHASE_WELCOME_REVEAL = 800;
-    var PHASE_EXIT_START = 1600;
-    var EXIT_DURATION = 500;
-
-    // Show logo
+    // Full animation timeline
+    // Phase 1: Bars align into grid
     setTimeout(function() {
-      logo.classList.add('visible');
-    }, PHASE_LOGO_REVEAL);
+      stage.classList.add('aligned');
+    }, 800);
 
-    // Show name
+    // Phase 2: Bars merge into solid rectangle
     setTimeout(function() {
-      nameText.classList.add('visible');
-    }, PHASE_NAME_REVEAL);
+      stage.classList.remove('aligned');
+      stage.classList.add('solid');
+    }, 2400);
 
-    // Show welcome text
+    // Phase 3: Logo reveals over solid block
     setTimeout(function() {
-      welcomeText.classList.add('visible');
-    }, PHASE_WELCOME_REVEAL);
+      stage.classList.add('show-logo');
+    }, 3400);
 
-    // Exit: wait for both animation timeline AND page load
+    // Phase 4: Exit — wait for both animation timeline AND page load
     setTimeout(function() {
       if (!pageLoaded) {
         var poll = setInterval(function() {
@@ -912,7 +917,7 @@
       } else {
         doExit();
       }
-    }, PHASE_EXIT_START);
+    }, 4800);
 
     function doExit() {
       loader.classList.add('loader-exit');
