@@ -554,97 +554,25 @@
     pointer-events: none;
   }
 
-  /* ─── Loader Stage (spinner + logo overlap) ─── */
+  /* ─── Loader Stage ─── */
   .loader-stage {
-    position: relative;
-    width: 100px;
-    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  /* ─── Spinner ─── */
-  .spinner {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-  }
-
-  .spinner.active {
-    opacity: 1;
-  }
-
-  .spinner.fade-out {
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .spinner-line {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 5px;
-    height: 18px;
-    margin-left: -2.5px;
-    background: var(--text-primary);
-    border-radius: 2.5px;
-    transform-origin: 50% 0%;
-    opacity: 0;
-    will-change: transform, opacity;
-  }
-
-  /* Individual line rotations */
-  .spinner-line:nth-child(1) { --rotation: 0deg; }
-  .spinner-line:nth-child(2) { --rotation: 45deg; }
-  .spinner-line:nth-child(3) { --rotation: 90deg; }
-  .spinner-line:nth-child(4) { --rotation: 135deg; }
-  .spinner-line:nth-child(5) { --rotation: 180deg; }
-  .spinner-line:nth-child(6) { --rotation: 225deg; }
-  .spinner-line:nth-child(7) { --rotation: 270deg; }
-  .spinner-line:nth-child(8) { --rotation: 315deg; }
-
-  /* Converge animation: lines spiral inward */
-  @keyframes spinnerConverge {
-    0% {
-      transform: rotate(calc(var(--rotation) - 20deg)) translateY(22px);
-      opacity: 0;
-    }
-    12% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(var(--rotation)) translateY(2px);
-      opacity: 1;
-    }
-  }
-
-  .spinner.active .spinner-line {
-    animation: spinnerConverge 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  /* Stagger each line for organic feel */
-  .spinner.active .spinner-line:nth-child(1) { animation-delay: 0ms; }
-  .spinner.active .spinner-line:nth-child(2) { animation-delay: 30ms; }
-  .spinner.active .spinner-line:nth-child(3) { animation-delay: 60ms; }
-  .spinner.active .spinner-line:nth-child(4) { animation-delay: 90ms; }
-  .spinner.active .spinner-line:nth-child(5) { animation-delay: 120ms; }
-  .spinner.active .spinner-line:nth-child(6) { animation-delay: 150ms; }
-  .spinner.active .spinner-line:nth-child(7) { animation-delay: 180ms; }
-  .spinner.active .spinner-line:nth-child(8) { animation-delay: 210ms; }
 
   /* ─── Loader Logo ─── */
   .loader-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.85);
-    height: 104px;
+    height: 160px;
     width: auto;
     opacity: 0;
+    transform: scale(0.85);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
   .loader-logo.visible {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
   }
 
   /* ─── Loader Text ─── */
@@ -690,10 +618,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .spinner-line {
-      animation-duration: 0.01ms !important;
-      animation-delay: 0ms !important;
-    }
     .loader-logo,
     .loader-name,
     .loader-welcome {
@@ -793,16 +717,6 @@
 <!-- LOADER -->
 <div id="page-loader" aria-hidden="true">
   <div class="loader-stage">
-    <div class="spinner" id="loader-spinner">
-      <div class="spinner-line"></div>
-      <div class="spinner-line"></div>
-      <div class="spinner-line"></div>
-      <div class="spinner-line"></div>
-      <div class="spinner-line"></div>
-      <div class="spinner-line"></div>
-      <div class="spinner-line"></div>
-      <div class="spinner-line"></div>
-    </div>
     <img src="AS_Logo_PtfTab_b.png" alt="" class="loader-logo" id="loader-logo">
   </div>
   <div class="loader-text">
@@ -942,7 +856,6 @@
       return;
     }
 
-    var spinner = document.getElementById('loader-spinner');
     var logo = document.getElementById('loader-logo');
     var nameText = document.getElementById('loader-name');
     var welcomeText = document.getElementById('loader-welcome');
@@ -965,31 +878,24 @@
       return;
     }
 
-    // Full animation timeline
-    var PHASE_CONVERGE_START = 50;
-    var PHASE_LOGO_REVEAL = 1400;
-    var PHASE_NAME_REVEAL = 1700;
-    var PHASE_WELCOME_REVEAL = 2400;
-    var PHASE_EXIT_START = 3000;
+    // Animation timeline
+    var PHASE_LOGO_REVEAL = 50;
+    var PHASE_NAME_REVEAL = 400;
+    var PHASE_WELCOME_REVEAL = 800;
+    var PHASE_EXIT_START = 1600;
     var EXIT_DURATION = 500;
 
-    // Phase 1-2: Start spinner converge
+    // Show logo
     setTimeout(function() {
-      spinner.classList.add('active');
-    }, PHASE_CONVERGE_START);
-
-    // Phase 3: Crossfade spinner -> logo
-    setTimeout(function() {
-      spinner.classList.add('fade-out');
       logo.classList.add('visible');
     }, PHASE_LOGO_REVEAL);
 
-    // Phase 3 continued: Show name
+    // Show name
     setTimeout(function() {
       nameText.classList.add('visible');
     }, PHASE_NAME_REVEAL);
 
-    // Phase 4: Show welcome text
+    // Show welcome text
     setTimeout(function() {
       welcomeText.classList.add('visible');
     }, PHASE_WELCOME_REVEAL);
