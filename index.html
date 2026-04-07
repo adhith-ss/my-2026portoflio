@@ -682,6 +682,39 @@
     .contact-inner {
       padding: 48px 24px;
     }
+
+    /* ─── MOBILE LOADER: Square shape ─── */
+
+    /* Aligned phase: bars converge toward square bounds */
+    .loader-stage.aligned .bar {
+      left: 15vw;
+      width: 70vw;
+    }
+    .loader-stage.aligned .bar:nth-child(1) { top: 34%; }
+    .loader-stage.aligned .bar:nth-child(2) { top: 39.3%; }
+    .loader-stage.aligned .bar:nth-child(3) { top: 44.6%; }
+    .loader-stage.aligned .bar:nth-child(4) { top: 50%; }
+    .loader-stage.aligned .bar:nth-child(5) { top: 55.3%; }
+    .loader-stage.aligned .bar:nth-child(6) { top: 60.6%; }
+    .loader-stage.aligned .bar:nth-child(7) { top: 66%; }
+
+    /* Solid phase: bars merge into a centered square */
+    .loader-stage.solid .bar {
+      left: 15vw;
+      width: 70vw;
+      height: 70vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Logo container: match the square */
+    .logo-container {
+      left: 15vw;
+      width: 70vw;
+      height: 70vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   @media (max-width: 480px) {
