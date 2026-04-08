@@ -148,8 +148,6 @@
     font-weight: 500;
     color: var(--pastel-lavender);
     margin-bottom: 16px;
-    opacity: 0;
-    transform: translateY(20px);
   }
 
   .hero h1 {
@@ -159,8 +157,6 @@
     letter-spacing: -0.04em;
     margin-bottom: 24px;
     max-width: 720px;
-    opacity: 0;
-    transform: translateY(20px);
   }
 
   .hero-description {
@@ -170,8 +166,6 @@
     max-width: 560px;
     line-height: 1.7;
     margin-bottom: 32px;
-    opacity: 0;
-    transform: translateY(20px);
   }
 
   .hero-role {
@@ -179,8 +173,6 @@
     color: var(--text-muted);
     margin-bottom: 56px;
     line-height: 1.7;
-    opacity: 0;
-    transform: translateY(20px);
   }
 
   .hero-role strong {
@@ -197,29 +189,6 @@
     border-radius: 14px;
     overflow: hidden;
     margin-bottom: 64px;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  /* ─── HERO ANIMATIONS (gated by loader completion) ─── */
-  body.loaded .hero-greeting {
-    animation: fadeUp 0.6s ease both;
-  }
-
-  body.loaded .hero h1 {
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  body.loaded .hero-description {
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  body.loaded .hero-role {
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  body.loaded .hero-stats {
-    animation: fadeUp 0.6s 0.4s ease both;
   }
 
   .hero-stat {
@@ -533,53 +502,6 @@
     color: var(--text-muted);
   }
 
-  /* ─── PAGE LOADER ─── */
-  #page-loader {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: #000000;
-    overflow: hidden;
-  }
-
-  .loader-stage {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* ─── Loader Frames (crossfade stack) ─── */
-  .loader-frame {
-    position: absolute;
-    max-width: 640px;
-    width: 80%;
-    height: auto;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .loader-frame.active {
-    opacity: 1;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .loader-frame {
-      transition-duration: 0.01ms !important;
-    }
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   .animate-on-scroll {
     opacity: 0;
     transform: translateY(24px);
@@ -624,19 +546,9 @@
       padding: 48px 24px;
     }
 
-    /* ─── MOBILE LOADER ─── */
-    .loader-frame {
-      max-width: 440px;
-      width: 70%;
-    }
   }
 
   @media (max-width: 480px) {
-    .loader-frame {
-      max-width: 340px;
-      width: 65%;
-    }
-
     .hero h1 { font-size: 2.25rem; }
 
     .project-links {
@@ -655,30 +567,8 @@
     }
   }
 </style>
-<noscript>
-  <style>
-    #page-loader { display: none !important; }
-    .hero-greeting,
-    .hero h1,
-    .hero-description,
-    .hero-role,
-    .hero-stats {
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  </style>
-</noscript>
 </head>
 <body>
-
-<!-- LOADER -->
-<div id="page-loader" aria-hidden="true">
-  <div class="loader-stage" id="loader-stage">
-    <img src="Loader_Frame_HI.png" alt="" class="loader-frame" id="frame-hi" />
-    <img src="Loader_Frame_IM.png" alt="" class="loader-frame" id="frame-im" />
-    <img src="Loader_Frame_ADHITH.png" alt="" class="loader-frame" id="frame-adhith" />
-  </div>
-</div>
 
 <!-- NAV -->
 <nav role="navigation" aria-label="Main navigation">
@@ -803,92 +693,6 @@
 </footer>
 
 <script>
-  // ─── PAGE LOADER ───
-  (function() {
-    var loader = document.getElementById('page-loader');
-    if (!loader) {
-      document.body.classList.add('loaded');
-      return;
-    }
-
-    var frameHi = document.getElementById('frame-hi');
-    var frameIm = document.getElementById('frame-im');
-    var frameAdhith = document.getElementById('frame-adhith');
-
-    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var seenBefore = false;
-    try { seenBefore = sessionStorage.getItem('loaderSeen') === '1'; } catch(e) {}
-
-    var pageLoaded = document.readyState === 'complete';
-    if (!pageLoaded) {
-      window.addEventListener('load', function() { pageLoaded = true; });
-    }
-
-    // ─── Timing constants (ms) ───
-    var CROSSFADE      = 600;   // matches CSS transition duration
-    var FRAME_HOLD     = 1000;  // how long each frame stays fully visible
-    var INITIAL_DELAY  = 400;   // pause before first frame
-    var EXIT_HOLD      = 400;   // pause after last frame before exit
-    var EXIT_FADE      = 500;   // last frame fade-out duration
-
-    function showFrame(f) { f.classList.add('active'); }
-    function hideFrame(f) { f.classList.remove('active'); }
-
-    function doExit() {
-      hideFrame(frameHi);
-      hideFrame(frameIm);
-      hideFrame(frameAdhith);
-      try { sessionStorage.setItem('loaderSeen', '1'); } catch(e) {}
-
-      setTimeout(function() {
-        loader.remove();
-        document.body.classList.add('loaded');
-      }, EXIT_FADE + 100);
-    }
-
-    // ─── Abbreviated loader for return visits / reduced motion ───
-    if (seenBefore || reducedMotion) {
-      showFrame(frameAdhith);
-      setTimeout(function() { doExit(); }, 800);
-      return;
-    }
-
-    // ─── Full animation timeline ───
-    // Frame 1: "HI" fades in
-    setTimeout(function() {
-      showFrame(frameHi);
-    }, INITIAL_DELAY);
-
-    // Crossfade: "HI" → "IM"
-    var t1 = INITIAL_DELAY + FRAME_HOLD;
-    setTimeout(function() {
-      hideFrame(frameHi);
-      showFrame(frameIm);
-    }, t1);
-
-    // Crossfade: "IM" → "ADHITH"
-    var t2 = t1 + CROSSFADE + FRAME_HOLD;
-    setTimeout(function() {
-      hideFrame(frameIm);
-      showFrame(frameAdhith);
-    }, t2);
-
-    // Exit: fade out last frame, then remove loader
-    var t3 = t2 + CROSSFADE + FRAME_HOLD + EXIT_HOLD;
-    setTimeout(function() {
-      if (!pageLoaded) {
-        var poll = setInterval(function() {
-          if (pageLoaded) {
-            clearInterval(poll);
-            doExit();
-          }
-        }, 100);
-      } else {
-        doExit();
-      }
-    }, t3);
-  })();
-
   // ─── SCROLL ANIMATIONS ───
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
