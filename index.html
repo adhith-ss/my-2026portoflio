@@ -227,179 +227,123 @@
   .project-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 2.5rem;
   }
 
   .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
     overflow: hidden;
-    transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
+    border: 0.5px solid var(--border-subtle);
+    background: var(--bg-card);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   }
 
   .project-card:hover {
+    background: #1a1a1a;
     border-color: var(--border-medium);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
   }
 
   .project-image {
-    border-right: 1px solid var(--border-subtle);
     position: relative;
-    overflow: hidden;
-    min-height: 280px;
-  }
-
-  .project-image-bg {
-    position: absolute;
-    inset: 0;
-  }
-
-  .project-image-bg--lavender {
-    background: linear-gradient(145deg, rgba(184, 169, 232, 0.08), rgba(184, 169, 232, 0.02));
-  }
-
-  .project-image-bg--mint {
-    background: linear-gradient(145deg, rgba(142, 216, 176, 0.08), rgba(142, 216, 176, 0.02));
-  }
-
-  .project-image-bg--sky {
-    background: linear-gradient(145deg, rgba(138, 196, 232, 0.08), rgba(138, 196, 232, 0.02));
-  }
-
-  .project-card-img {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    overflow: hidden;
+    background: #050505;
   }
 
-  .project-content {
-    padding: 36px 36px;
+  .project-image img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.02);
+  }
+
+  .project-body {
+    padding: 1.75rem 2rem 2rem;
+  }
+
+  .project-meta-row {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project-num {
+    font-family: 'Geist', sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
   }
 
   .project-tags {
     display: flex;
+    gap: 6px;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
   }
 
   .project-tag {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border-medium);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    padding: 4px 11px;
+    background: rgba(255, 255, 255, 0.04);
     color: var(--text-muted);
+    border-radius: 100px;
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
   }
 
-  .project-tag--accent-lavender {
-    color: var(--pastel-lavender);
-    border-color: rgba(184, 169, 232, 0.2);
-    background: rgba(184, 169, 232, 0.06);
-  }
-
-  .project-tag--accent-mint {
-    color: var(--pastel-mint);
-    border-color: rgba(142, 216, 176, 0.2);
-    background: rgba(142, 216, 176, 0.06);
-  }
-
-  .project-tag--accent-sky {
-    color: var(--pastel-sky);
-    border-color: rgba(138, 196, 232, 0.2);
-    background: rgba(138, 196, 232, 0.06);
-  }
-
-  .project-name {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+  .project-title {
+    font-family: 'Geist', sans-serif;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 500;
     line-height: 1.3;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
     color: var(--text-primary);
   }
 
   .project-desc {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 24px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin-bottom: 1.25rem;
   }
 
-  .project-links {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .project-link-primary,
-  .project-link-secondary {
+  .project-cta {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 10px 22px;
-    border-radius: 100px;
-    font-family: 'Geist', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    color: #FFFFFF;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    transition: gap 0.2s;
   }
 
-  .project-link-primary {
-    background: var(--pastel-lavender);
+  .project-card:hover .project-cta {
+    gap: 11px;
   }
 
-  .project-link-primary--mint {
-    background: var(--pastel-mint);
-  }
-
-  .project-link-primary--sky {
-    background: var(--pastel-sky);
-  }
-
-  .project-link-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(184, 169, 232, 0.25);
-  }
-
-  .project-link-primary--mint:hover {
-    box-shadow: 0 4px 16px rgba(142, 216, 176, 0.25);
-  }
-
-  .project-link-primary--sky:hover {
-    box-shadow: 0 4px 16px rgba(138, 196, 232, 0.25);
-  }
-
-  .project-link-secondary {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-medium);
-  }
-
-  .project-link-secondary:hover {
-    transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  .project-link-primary svg,
-  .project-link-secondary svg {
+  .project-cta svg {
     width: 14px;
     height: 14px;
+    transition: transform 0.2s;
+  }
+
+  .project-card:hover .project-cta svg {
+    transform: translateX(2px);
   }
 
   /* ─── CONTACT SECTION ─── */
@@ -528,18 +472,16 @@
       grid-template-columns: 1fr;
     }
 
-    .project-card {
-      grid-template-columns: 1fr;
+    .project-body {
+      padding: 1.25rem 1.25rem 1.5rem;
     }
 
-    .project-image {
-      aspect-ratio: 16 / 9;
-      border-right: none;
-      border-bottom: 1px solid var(--border-subtle);
+    .project-meta-row {
+      gap: 0.75rem;
     }
 
-    .project-content {
-      padding: 28px 24px;
+    .project-num {
+      font-size: 22px;
     }
 
     .contact-inner {
@@ -550,16 +492,6 @@
 
   @media (max-width: 480px) {
     .hero h1 { font-size: 2.25rem; }
-
-    .project-links {
-      flex-direction: column;
-    }
-
-    .project-link-primary,
-    .project-link-secondary {
-      width: 100%;
-      justify-content: center;
-    }
 
     .footer-links {
       flex-direction: column;
@@ -597,73 +529,64 @@
   <div class="project-list">
 
     <!-- PROJECT 1 — Item Management -->
-    <article class="project-card animate-on-scroll stagger-1">
+    <a class="project-card animate-on-scroll stagger-1" href="item-management.html">
       <div class="project-image">
-        <div class="project-image-bg project-image-bg--lavender"></div>
-        <img src="Item_Index_ptf.png" alt="Item Management project preview" class="project-card-img" loading="lazy">
+        <img src="Item_Index_ptf.png" alt="Item Management project preview" loading="lazy">
       </div>
-      <div class="project-content">
-        <div class="project-tags">
-          <span class="project-tag project-tag--accent-lavender">Enterprise Web</span>
-          <span class="project-tag">B2B Platform</span>
-          <span class="project-tag">Retail</span>
+      <div class="project-body">
+        <div class="project-meta-row">
+          <span class="project-num">01</span>
+          <div class="project-tags">
+            <span class="project-tag">Enterprise Web</span>
+            <span class="project-tag">B2B Platform</span>
+            <span class="project-tag">Retail</span>
+          </div>
         </div>
-        <h3 class="project-name">Enhanced Item Onboarding Experience at Albertsons Merchandising</h3>
+        <h3 class="project-title">Enhanced Item Onboarding Experience at Albertsons Merchandising</h3>
         <p class="project-desc">Led design enhancements for enterprise web platform, reducing vendor-to-store onboarding from 6 days to 2. Streamlined workflows saved merchants 21 hours weekly across the organization.</p>
-        <div class="project-links">
-          <a href="item-management.html" class="project-link-secondary">
-            Preview
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
+        <span class="project-cta">Preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
       </div>
-    </article>
+    </a>
 
     <!-- PROJECT 2 — RxToGo -->
-    <article class="project-card animate-on-scroll stagger-2">
+    <a class="project-card animate-on-scroll stagger-2" href="rxtogo.html">
       <div class="project-image">
-        <div class="project-image-bg project-image-bg--mint"></div>
-        <img src="RxToGo_TN_ptf.png" alt="RxToGo Product Suite project preview" class="project-card-img" loading="lazy">
+        <img src="RxToGo_TN_ptf.png" alt="RxToGo Product Suite project preview" loading="lazy">
       </div>
-      <div class="project-content">
-        <div class="project-tags">
-          <span class="project-tag project-tag--accent-mint">Healthcare</span>
-          <span class="project-tag">Mobile &amp; Web</span>
-          <span class="project-tag">Retail</span>
+      <div class="project-body">
+        <div class="project-meta-row">
+          <span class="project-num">02</span>
+          <div class="project-tags">
+            <span class="project-tag">Healthcare</span>
+            <span class="project-tag">Mobile &amp; Web</span>
+            <span class="project-tag">Retail</span>
+          </div>
         </div>
-        <h3 class="project-name">Crafted Pharmacy Fulfillment Experience at Sam's Club</h3>
+        <h3 class="project-title">Crafted Pharmacy Fulfillment Experience at Sam's Club</h3>
         <p class="project-desc">Spearheaded the pharmacy delivery workflow redesign, cutting checkout time from 15 to 7 minutes. Automated 40% of tasks and reduced process steps from 18 to 12, deployed across 600+ locations nationwide.</p>
-        <div class="project-links">
-          <a href="rxtogo.html" class="project-link-secondary">
-            Preview
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
+        <span class="project-cta">Preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
       </div>
-    </article>
+    </a>
 
     <!-- PROJECT 3 — Allocatr -->
-    <article class="project-card animate-on-scroll stagger-3">
+    <a class="project-card animate-on-scroll stagger-3" href="allocatr.html">
       <div class="project-image">
-        <div class="project-image-bg project-image-bg--sky"></div>
-        <img src="AIlocatr_Index_ptf.png" alt="Allocatr Insights project preview" class="project-card-img" loading="lazy">
+        <img src="AIlocatr_Index_ptf.png" alt="Allocatr Insights project preview" loading="lazy">
       </div>
-      <div class="project-content">
-        <div class="project-tags">
-          <span class="project-tag project-tag--accent-sky">AI-Powered</span>
-          <span class="project-tag">Web Data Platform</span>
-          <span class="project-tag">Retail</span>
+      <div class="project-body">
+        <div class="project-meta-row">
+          <span class="project-num">03</span>
+          <div class="project-tags">
+            <span class="project-tag">AI-Powered</span>
+            <span class="project-tag">Web Data Platform</span>
+            <span class="project-tag">Retail</span>
+          </div>
         </div>
-        <h3 class="project-name">Empowering Merchants with Growth Intelligence at Albertsons</h3>
+        <h3 class="project-title">Empowering Merchants with Growth Intelligence at Albertsons</h3>
         <p class="project-desc">Led UX strategy and design for enterprise forecasting platform, identifying critical workflows and prioritizing high-impact actions. Streamlined decision flows, empowering teams to make faster, data-informed adjustments.</p>
-        <div class="project-links">
-          <a href="allocatr.html" class="project-link-secondary">
-            Preview
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
+        <span class="project-cta">Preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
       </div>
-    </article>
+    </a>
 
   </div>
 </section>
