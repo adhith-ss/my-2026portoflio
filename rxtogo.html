@@ -214,21 +214,53 @@
     aspect-ratio: 16 / 9;
   }
 
-  /* ─── META ROW ─── */
-  .meta-row {
+  /* ─── IMPACT STRIP ─── */
+  .impact-strip {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--border-subtle);
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: var(--section-gap);
+    margin-bottom: 24px;
+  }
+
+  .impact-cell {
+    background: var(--bg-card);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .impact-cell .impact-number {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .impact-cell .impact-label {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ─── META ROW ─── */
+  .meta-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
     animation: fadeUp 0.6s 0.4s ease both;
   }
 
   .meta-item {
     background: var(--bg-card);
-    padding: 28px 32px;
+    padding: 28px 24px;
     text-align: center;
   }
 
@@ -246,6 +278,69 @@
     font-weight: 500;
     color: var(--text-primary);
   }
+
+  /* ─── MY ROLE ─── */
+  .role-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin-bottom: var(--section-gap);
+  }
+
+  .role-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .role-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .role-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .role-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    max-width: 720px;
+  }
+
+  .role-body strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .role-tag {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border-medium);
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+  }
+
 
   /* ─── SECTION SHARED ─── */
   .section {
@@ -878,7 +973,9 @@
     .nav-links { gap: 20px; }
     .nav-links a { font-size: 0.8125rem; }
     .hero { padding-top: 120px; }
-    .meta-row { grid-template-columns: 1fr; }
+    .meta-row { grid-template-columns: 1fr 1fr; }
+    .impact-strip { grid-template-columns: 1fr 1fr; }
+    .role-section { padding: 24px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .insight-cards { grid-template-columns: 1fr; }
     .workflow { flex-direction: column; gap: 12px; }
@@ -915,14 +1012,36 @@
 
 <!-- HERO -->
 <header id="hero" class="hero container">
-  <span class="hero-tag">Pharmacy Associate Tool · 2023–2024</span>
-  <h1>RxToGo Product Suite</h1>
-  <p class="hero-description">An end-to-end associate tool for dispensing pharmacy orders — reducing delivery dispense time by 55% while automating 40% of checkout processes for seamless prescription fulfillment.</p>
+  <span class="hero-tag">Sam's Club Health &amp; Wellness · Pharmacy Associate Tool · 2023–2024</span>
+  <h1>Transformed pharmacy delivery for 600+ Sam's Club stores</h1>
+  <p class="hero-description">I led the end-to-end design of a web + mobile product suite that replaced a fragmented 18-step dispensing workflow — cutting delivery time by 55% and automating 40% of checkout for pharmacy associates.</p>
 
   <div class="hero-image">
     <img src="RxToGo_TN_ptf.png" alt="RxToGo Product Suite — cover showing the pharmacy fulfillment interface" class="hero-img">
   </div>
 </header>
+
+<!-- IMPACT STRIP -->
+<div class="container animate-on-scroll">
+  <div class="impact-strip">
+    <div class="impact-cell">
+      <div class="impact-number">55%</div>
+      <div class="impact-label">Faster delivery dispense</div>
+    </div>
+    <div class="impact-cell">
+      <div class="impact-number">800+</div>
+      <div class="impact-label">Orders fulfilled in Q4 '23</div>
+    </div>
+    <div class="impact-cell">
+      <div class="impact-number">40%</div>
+      <div class="impact-label">Checkout automated</div>
+    </div>
+    <div class="impact-cell">
+      <div class="impact-number">92%</div>
+      <div class="impact-label">Associate satisfaction</div>
+    </div>
+  </div>
+</div>
 
 <!-- META -->
 <div class="container">
@@ -936,8 +1055,35 @@
       <div class="meta-value">Senior Product Designer</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Impact</div>
-      <div class="meta-value">800+ orders fulfilled · 92% satisfaction</div>
+      <div class="meta-label">Team</div>
+      <div class="meta-value">20+ Engineers · 1 PM</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Platform</div>
+      <div class="meta-value">Web + Mobile</div>
+    </div>
+  </div>
+</div>
+
+<!-- MY ROLE -->
+<div class="container animate-on-scroll">
+  <div class="role-section">
+    <div class="role-header">
+      <div class="role-icon" style="background: rgba(142, 216, 176, 0.12);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8ED8B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="role-title">My role</div>
+    </div>
+    <p class="role-body">
+      I was the <strong>lead designer on the Checkout mobile app</strong> and Order Maintenance web dashboard. My scope included <strong>field research with pharmacy technicians</strong> at multiple Sam's Club locations, journey mapping the existing 18-step fulfillment flow, and redefining the interaction patterns for the TC53 handheld device.
+    </p>
+    <div class="role-tags">
+      <span class="role-tag">Field research</span>
+      <span class="role-tag">Journey mapping</span>
+      <span class="role-tag">Interaction design</span>
+      <span class="role-tag">Mobile (TC53)</span>
+      <span class="role-tag">Stakeholder facilitation</span>
+      <span class="role-tag">Design system</span>
     </div>
   </div>
 </div>
