@@ -555,8 +555,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
     margin-bottom: 16px;
+  }
+  .insight-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .insight-icon--mint {
@@ -1176,6 +1179,196 @@
       justify-content: center;
     }
   }
+
+  /* ─── FRICTION ROWS ─── */
+  .friction-header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  .friction-rows {
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .friction-row {
+    display: grid;
+    grid-template-columns: 48px 200px 1fr;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .friction-row:last-child { border-bottom: none; }
+
+  .friction-row-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-subtle);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .friction-row-title {
+    padding: 18px 20px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+  }
+
+  .friction-row-desc {
+    padding: 18px 24px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ─── DESIGN DECISIONS ─── */
+  .decision-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: border-color 0.3s ease;
+  }
+
+  .decision-card:hover { border-color: var(--border-medium); }
+  .decision-card:last-child { margin-bottom: 0; }
+
+  .decision-number {
+    position: absolute;
+    top: 32px;
+    right: 36px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--border-medium);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .decision-label-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .decision-title {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    max-width: 600px;
+    color: var(--text-primary);
+  }
+
+  .decision-fork {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .fork-option {
+    padding: 16px 20px;
+    border-radius: 12px;
+  }
+
+  .fork-option.considered {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    opacity: 0.75;
+  }
+
+  .fork-option.chosen {
+    background: rgba(184, 169, 232, 0.06);
+    border: 1px solid rgba(184, 169, 232, 0.2);
+  }
+
+  .fork-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+  }
+
+  .considered .fork-badge {
+    background: var(--bg-primary);
+    color: var(--text-muted);
+    border: 2px solid var(--border-subtle);
+  }
+
+  .chosen .fork-badge {
+    background: var(--pastel-lavender);
+    color: var(--bg-primary);
+  }
+
+  .fork-text {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .decision-detail { margin-top: 8px; }
+
+  .detail-row {
+    padding: 14px 0;
+    border-top: 1px solid var(--border-subtle);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+  }
+
+  .detail-key {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .detail-value {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    .friction-row { grid-template-columns: 40px 1fr; }
+    .friction-row-num { grid-row: 1 / 3; }
+    .friction-row-title { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+    .friction-row-desc { align-items: flex-start; padding-top: 12px; }
+    .decision-fork { grid-template-columns: 1fr; }
+    .detail-row { grid-template-columns: 1fr; gap: 4px; }
+    .decision-number { font-size: 2.25rem; top: 24px; right: 24px; }
+    .decision-card { padding: 28px 24px; }
+  }
 </style>
 </head>
 <body>
@@ -1193,7 +1386,7 @@
 <!-- HERO -->
 <header id="hero" class="hero container">
   <span class="hero-tag">Albertsons Companies · Enterprise B2B Platform · 2024–2025</span>
-  <h1>Streamlined onboarding for 600+ Albertsons vendors</h1>
+  <h1>Streamlined item onboarding for 600+ vendors in the Albertsons Partner Portal</h1>
   <p class="hero-description">I led the redesign of an enterprise item lifecycle management platform that reduced product setup from 6 days to 4, saving merchants 21 hours weekly, and mitigating $2.5B in compliance risk through real-time data validation.</p>
 
   <div class="hero-image">
@@ -1249,13 +1442,15 @@
 <div class="container animate-on-scroll">
   <div class="role-section">
     <div class="role-header">
-      <div class="role-icon" style="background: rgba(184, 169, 232, 0.12);">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8A9E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div class="role-icon" style="background: rgba(184, 169, 232, 0.12); color: var(--pastel-lavender);">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:18px;height:18px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
       </div>
       <div class="role-title">My role</div>
     </div>
     <p class="role-body">
-      I owned the end-to-end redesign of the item creation and attribute management workflows. I led discovery with divisional merchants, national merchants, and MDS teams to map the complex multi-layer approval ecosystem.
+      I <strong>owned the end-to-end redesign</strong> of the item creation and attribute management workflows. I led discovery with <strong>divisional merchants, national merchants, and MDS teams</strong> to map the complex multi-layer approval ecosystem.
+      <br><br>
+      My key contribution was <strong>partnering with the data science team to implement real-time validation</strong> across 10 of 11 critical attributes that directly addressed the 28.4% data mismatch rate. I also <strong>grew the component library by 60%</strong> using the Universal Design System (UDS), creating reusable patterns that partner and cost pods adopted for development feasibility.
     </p>
     <div class="role-tags">
       <span class="role-tag">Stakeholder research</span>
@@ -1268,16 +1463,11 @@
   </div>
 </div>
 
-<!-- CHALLENGE -->
+<!-- THE PROBLEM -->
 <section class="section container animate-on-scroll" aria-labelledby="challenge-heading">
-  <span class="section-label section-label--peach">Business Challenge</span>
-  <h2 id="challenge-heading" class="section-title">Legacy tools creating operational bottlenecks</h2>
-  <p class="section-subtitle">Salsify and Syndigo tools became cumbersome, causing a 46.5% drop in user engagement and 62.8% increase in vendor disputes with potential legal implications.</p>
-
-  <div class="challenge-statement">
-    <div class="challenge-question-label">The Core Question</div>
-    <p class="challenge-question">How might we help vendors, merchants, and distributors maintain transparent, high-quality item data while seamlessly collaborating across business units?</p>
-  </div>
+  <span class="section-label section-label--peach">The Problem</span>
+  <h2 id="challenge-heading" class="section-title">Legacy tools created operational bottlenecks across 600+ vendor relationships</h2>
+  <p class="section-subtitle">Legacy tools Salsify and Syndigo were driving down engagement, increasing vendor disputes, and producing unreliable item data across a complex approval chain, creating serious compliance risk for Albertsons.</p>
 
   <div class="stats-grid">
     <div class="stat-card">
@@ -1286,7 +1476,7 @@
     </div>
     <div class="stat-card">
       <div class="stat-number stat-number--lavender">8</div>
-      <div class="stat-desc">Approvals causing communication bottlenecks</div>
+      <div class="stat-desc">Approval steps causing bottlenecks</div>
     </div>
     <div class="stat-card">
       <div class="stat-number stat-number--sky">4.5 hrs</div>
@@ -1298,19 +1488,29 @@
     </div>
   </div>
 
-  <div class="pain-points">
-    <div class="pain-point">
-      <div class="pain-index">1</div>
-      <div class="pain-text">Fragmented legacy systems prevented scalability for growing business needs</div>
+  <div class="friction-header">Where the workflow broke down</div>
+
+  <div class="friction-rows">
+    <div class="friction-row">
+      <div class="friction-row-num">01</div>
+      <div class="friction-row-title">Fragmented legacy systems</div>
+      <div class="friction-row-desc">The item attribute transaction between legacy system and Albertsons merchant platform was inefficient in terms of scaling the product.</div>
     </div>
-    <div class="pain-point">
-      <div class="pain-index">2</div>
-      <div class="pain-text">Inaccurate item attributes and asset collection led to $2.5B legal risk exposure</div>
+    <div class="friction-row">
+      <div class="friction-row-num">02</div>
+      <div class="friction-row-title">Compliance exposure</div>
+      <div class="friction-row-desc">Inaccurate item attributes and unstructured asset collection led to $2.5B in potential legal risk exposure.</div>
     </div>
-    <div class="pain-point">
-      <div class="pain-index">3</div>
-      <div class="pain-text">Operational inefficiency from manual workarounds disrupted merchant and vendor workflows</div>
+    <div class="friction-row">
+      <div class="friction-row-num">03</div>
+      <div class="friction-row-title">Lacking accountability</div>
+      <div class="friction-row-desc">Poor visibility into merchant-vendor approvals caused discrepancies and delays, prolonging item onboarding.</div>
     </div>
+  </div>
+
+  <div class="challenge-statement">
+    <div class="challenge-question-label">The Core Question</div>
+    <p class="challenge-question">How might we help vendors, merchants, and distributors maintain transparent, high-quality item data while seamlessly collaborating across business units?</p>
   </div>
 </section>
 
@@ -1318,7 +1518,7 @@
 
 <!-- RESEARCH -->
 <section class="section container animate-on-scroll" aria-labelledby="research-heading">
-  <span class="section-label section-label--mint">User Research</span>
+  <span class="section-label section-label--sky">User Research</span>
   <h2 id="research-heading" class="section-title">Understanding the complex approval ecosystem</h2>
   <p class="section-subtitle">Mapped the intricate workflow between vendors and internal merchants to identify friction points and design opportunities across multiple approval layers.</p>
 
@@ -1347,97 +1547,174 @@
 
   <div class="insight-cards" style="margin-top: 40px;">
     <div class="insight-card">
-      <div class="insight-icon insight-icon--mint">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
+      <div class="insight-icon insight-icon--mint"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg></div>
       <div class="insight-title">Fragmented User Groups</div>
       <div class="insight-desc">Vendors, Divisional Merchants, National Merchants, and MDS teams — each with distinct workflows and decision-making powers.</div>
     </div>
     <div class="insight-card">
-      <div class="insight-icon insight-icon--lavender">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      </div>
+      <div class="insight-icon insight-icon--lavender"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg></div>
       <div class="insight-title">Navigation-Centric Legacy</div>
       <div class="insight-desc">The old tools primarily helped users navigate systems rather than efficiently manage item data and approvals.</div>
     </div>
     <div class="insight-card">
-      <div class="insight-icon insight-icon--sky">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </div>
+      <div class="insight-icon insight-icon--sky"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg></div>
       <div class="insight-title">Data Mismatch</div>
       <div class="insight-desc">28.4% information mismatch due to edge case handling failures across vendor-submitted item attributes.</div>
     </div>
     <div class="insight-card">
-      <div class="insight-icon insight-icon--rose">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-      </div>
+      <div class="insight-icon insight-icon--rose"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/></svg></div>
       <div class="insight-title">Long Creation Flow</div>
       <div class="insight-desc">Multiple approval steps with no clear starting point led to high drop-off rates and communication bottlenecks.</div>
     </div>
   </div>
 
   <div class="image-placeholders">
-    <div class="image-placeholder">
-      <img src="Item_Ptf_Research%201.png" alt="Item Management research artifact — workflow mapping" class="section-img" style="object-fit:contain;background:#ffffff;border-radius:12px;" loading="lazy">
+    <div>
+      <div class="image-placeholder">
+        <img src="Item_Ptf_Research%201.png" alt="Salsify tool screenshot" class="section-img" style="object-fit:contain;background:#ffffff;border-radius:12px;" loading="lazy">
+      </div>
+      <p class="image-caption">Salsify tool screenshot</p>
     </div>
-    <div class="image-placeholder">
-      <img src="Item_Ptf_Research%202.png" alt="Item Management research artifact — user insights" class="section-img" loading="lazy" style="object-fit:contain;background:#ffffff;border-radius:12px;">
+    <div>
+      <div class="image-placeholder" style="aspect-ratio: unset; height: auto;">
+        <img src="Item_UXR_2.png" alt="Syndigo tool screenshot" class="section-img" loading="lazy" style="width:100%;height:auto;object-fit:unset;background:#ffffff;border-radius:12px;">
+      </div>
+      <p class="image-caption">Syndigo tool screenshot</p>
     </div>
   </div>
 </section>
 
 <div class="container"><div class="divider"></div></div>
 
-<!-- STRATEGY -->
-<section class="section container animate-on-scroll" aria-labelledby="strategy-heading">
-  <span class="section-label section-label--lavender">Design Strategy</span>
-  <h2 id="strategy-heading" class="section-title">Core principles guiding the solution</h2>
-  <p class="section-subtitle">Established strategic principles to address complexity while maintaining clarity and accountability throughout the 250+ million SKU management system.</p>
+<!-- DESIGN DECISIONS -->
+<section class="section container animate-on-scroll" aria-labelledby="decisions-heading">
+  <span class="section-label section-label--lavender">Design Decisions</span>
 
-  <div class="strategy-principles">
-    <div class="principle-card">
-      <div class="principle-marker principle-marker--peach"></div>
-      <div class="principle-name">Evaluation</div>
-      <div class="principle-desc">Validation through forms enables successful item setup with merchant oversight</div>
-    </div>
-    <div class="principle-card">
-      <div class="principle-marker principle-marker--mint"></div>
-      <div class="principle-name">Organization</div>
-      <div class="principle-desc">Frictionless data management between vendors and merchants for optimal item health</div>
-    </div>
-    <div class="principle-card">
-      <div class="principle-marker principle-marker--lavender"></div>
-      <div class="principle-name">Accountability</div>
-      <div class="principle-desc">Data segmented by supply chain, compliance, and digital attributes for clarity</div>
-    </div>
-  </div>
+  <div style="margin-top: 24px;">
+    <div class="decision-card">
+      <div class="decision-number">01</div>
+      <div class="decision-label-tag">Decision · Task accountability</div>
+      <h3 class="decision-title">Redesigned existing components for informed interactions</h3>
 
-  <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px;">Six-Phase Item Creation Structure</h3>
+      <div class="decision-fork">
+        <div class="fork-option considered">
+          <span class="fork-badge">Considered</span>
+          <div class="fork-text">Autofilled forms to reduce manual workflow by vendors</div>
+        </div>
+        <div class="fork-option chosen">
+          <span class="fork-badge">✓ Chose</span>
+          <div class="fork-text">Form restructuring and reusable components based on product timeline prioritization</div>
+        </div>
+      </div>
 
-  <div class="phase-grid">
-    <div class="phase-item">
-      <div class="phase-name">Overview</div>
-      <div class="phase-desc">Logistic specifications</div>
+      <div class="decision-detail">
+        <div class="detail-row">
+          <div class="detail-key">Why</div>
+          <div class="detail-value">Decluttered the form designs for easy readability and helped vendors and merchants more accountable to changes and approvals in item onboarding stages by scaling existing component structures.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Tradeoff</div>
+          <div class="detail-value">Although the item onboarding process forms were lengthy in nature, the number of clicks were reduced with the new design and engineering team handoffs were faster.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Signal it worked</div>
+          <div class="detail-value">Vendor and merchant feedback revealed 60% time efficiency in attribute collection and approvals with less back and forth communication.</div>
+        </div>
+      </div>
     </div>
-    <div class="phase-item">
-      <div class="phase-name">Hierarchy</div>
-      <div class="phase-desc">Pallet / Case / Pack structure</div>
+
+    <div class="decision-card">
+      <div class="decision-number">02</div>
+      <div class="decision-label-tag">Decision · Data validation</div>
+      <h3 class="decision-title">Informed validation vs. non actionable instances</h3>
+
+      <div class="decision-fork">
+        <div class="fork-option considered">
+          <span class="fork-badge">Considered</span>
+          <div class="fork-text">Individual data validation modal for all compliance attributes</div>
+        </div>
+        <div class="fork-option chosen">
+          <span class="fork-badge">✓ Chose</span>
+          <div class="fork-text">Inline validation rules and guided instructions for vendors</div>
+        </div>
+      </div>
+
+      <div class="decision-detail">
+        <div class="detail-row">
+          <div class="detail-key">Why</div>
+          <div class="detail-value">I partnered with product and data science team to co-create validation rules for each non-negotiable attribute to inform vendors about certain show stopper attributes.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Tradeoff</div>
+          <div class="detail-value">Restarting the item setup process from a discontinued compliance form was unavoidable due to compliance industry standards.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Signal it worked</div>
+          <div class="detail-value">Fewer than 12% vendor and merchant interactions for compliance related communication. Error validation rates reduced by 78%.</div>
+        </div>
+      </div>
     </div>
-    <div class="phase-item">
-      <div class="phase-name">Compliance</div>
-      <div class="phase-desc">Safety standards</div>
+
+    <div class="image-placeholders" style="margin-top: 16px; margin-bottom: 16px;">
+      <div>
+        <div class="image-placeholder">
+          <video src="Compliance_Ptf_Item_Decision2_1.mov" autoplay loop muted playsinline preload="none" class="section-video" style="object-fit:contain;background:var(--bg-card);border-radius:12px;" aria-label="Data validation design decision — inline validation rules"></video>
+        </div>
+        <p class="image-caption">Elongated compliance form broke the user item setup process led to legal risks in data capture</p>
+      </div>
+      <div>
+        <div class="image-placeholder">
+          <video src="Item_ptf_Compliance.mov" autoplay loop muted playsinline preload="none" class="section-video" style="object-fit:contain;background:var(--bg-card);border-radius:12px;" aria-label="Compliance attribute validation workflow"></video>
+        </div>
+        <p class="image-caption">A simpler form redesigned to reduce risk and confusion</p>
+      </div>
     </div>
-    <div class="phase-item">
-      <div class="phase-name">Selling Attributes</div>
-      <div class="phase-desc">Digital assets</div>
+
+    <div class="decision-card">
+      <div class="decision-number">03</div>
+      <div class="decision-label-tag">Decision · Asset management</div>
+      <h3 class="decision-title">Table format vs. card gallery for digital assets</h3>
+
+      <div class="decision-fork">
+        <div class="fork-option considered">
+          <span class="fork-badge">Considered</span>
+          <div class="fork-text">Visual card/gallery layout for updating product images and digital assets</div>
+        </div>
+        <div class="fork-option chosen">
+          <span class="fork-badge">✓ Chose</span>
+          <div class="fork-text">Table format validated via A/B testing, easily scalable for hierarchy structures</div>
+        </div>
+      </div>
+
+      <div class="decision-detail">
+        <div class="detail-row">
+          <div class="detail-key">Why</div>
+          <div class="detail-value">The table format was solving 2 problems in one by addressing merchant image attribute requirements and marketing team needs that cut down on additional repository.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Tradeoff</div>
+          <div class="detail-value">Merging two product requirements into one. I negotiated with engineering and product teams to build a single repository that could enhance the product experience much better.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Signal it worked</div>
+          <div class="detail-value">Merchants and vendors cut down additional workaround for image capture by 85% and merchant portal remained single source of truth for item image based attributes.</div>
+        </div>
+      </div>
     </div>
-    <div class="phase-item">
-      <div class="phase-name">Category</div>
-      <div class="phase-desc">Item-specific data</div>
-    </div>
-    <div class="phase-item">
-      <div class="phase-name">Distribution</div>
-      <div class="phase-desc">Warehouse / DSD channels</div>
+
+    <div class="image-placeholders" style="margin-top: 16px; margin-bottom: 16px;">
+      <div>
+        <div class="image-placeholder" style="aspect-ratio: unset; height: auto; background: transparent;">
+          <img src="Item_Decision3_1.png" alt="Horizontal Carousel pattern for digital asset management" class="section-img" loading="lazy" style="width:100%;height:auto;object-fit:unset;border-radius:12px;">
+        </div>
+        <p class="image-caption">Horizontal Carousel pattern</p>
+      </div>
+      <div>
+        <div class="image-placeholder" style="aspect-ratio: unset; height: auto; background: transparent;">
+          <img src="Item_Decision3_2.png" alt="Gallery preview — Thumbnail Carousel pattern for digital assets" class="section-img" loading="lazy" style="width:100%;height:auto;object-fit:unset;border-radius:12px;">
+        </div>
+        <p class="image-caption">Gallery preview - Thumbnail Carousel pattern</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1446,37 +1723,7 @@
 
 <!-- SOLUTIONS -->
 <section class="section container animate-on-scroll" aria-labelledby="solutions-heading">
-  <span class="section-label section-label--sky">Solution Overview</span>
-  <h2 id="solutions-heading" class="section-title">Strategic improvements across the platform</h2>
-  <p class="section-subtitle">Targeted solutions addressing temperature handling, real-time validation, compliance restructuring, and asset management.</p>
-
-  <div class="solutions-grid">
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--peach">Attribute Formatting</span>
-      <div class="solution-name">Formatted the Attribute list</div>
-      <div class="solution-problem">More than 160+ unique attributes were spread across platform without a standard format</div>
-      <div class="solution-impact"><strong>Impact:</strong> Merchant and Vendor community saved half the time to set up the item</div>
-    </div>
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--mint">Real-time Validation</span>
-      <div class="solution-name">Data Catalog Integration</div>
-      <div class="solution-problem">28.4% information mismatch due to edge case handling failures across attributes.</div>
-      <div class="solution-impact"><strong>Impact:</strong> 10 of 11 attributes validated in real-time with data science team support</div>
-    </div>
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--lavender">Compliance</span>
-      <div class="solution-name">Mitigated $2.5B Legal Risk</div>
-      <div class="solution-problem">Step-by-step compliance created friction; unstructured attributes caused confusion.</div>
-      <div class="solution-impact"><strong>Impact:</strong> Strengthened safety standards, draft previews improved accuracy</div>
-    </div>
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--sky">Asset Management</span>
-      <div class="solution-name">Streamlined Digital Asset Library</div>
-      <div class="solution-problem">Unscalable asset management needed a new approach for hierarchy structures.</div>
-      <div class="solution-impact"><strong>Impact:</strong> Table format via A/B testing, easily scalable for hierarchy structures</div>
-    </div>
-  </div>
-
+  <span class="section-label section-label--lemon">Solution Overview</span>
   <div class="image-placeholders image-placeholders--stacked">
     <div>
       <div class="image-placeholder image-placeholder--wide">
@@ -1488,7 +1735,7 @@
       <div class="image-placeholder image-placeholder--wide">
         <video src="Ptf_Item_IamgeAtt.mp4" autoplay loop muted playsinline preload="none" class="section-video" style="object-fit:contain;background:var(--bg-card);" aria-label="Item Management image attribute workflow walkthrough"></video>
       </div>
-      <p class="image-caption">Digital asset management workflow for product image attributes</p>
+      <p class="image-caption">Final production of Digital asset management workflow for product image attributes</p>
     </div>
   </div>
 </section>
@@ -1497,7 +1744,7 @@
 
 <!-- IMPACT -->
 <section class="section container animate-on-scroll" aria-labelledby="impact-heading">
-  <span class="section-label section-label--lemon">Impact</span>
+  <span class="section-label section-label--rose">Impact</span>
   <h2 id="impact-heading" class="section-title">Measurable outcomes delivered</h2>
   <p class="section-subtitle">Quantifiable improvements across vendor engagement, merchant productivity, and operational efficiency while building scalable design systems.</p>
 
