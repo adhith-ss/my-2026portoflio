@@ -336,7 +336,7 @@
     font-weight: 500;
     padding: 5px 12px;
     border-radius: 100px;
-    border: 1px solid var(--border-medium);
+    border: 2px solid var(--border-medium);
     color: var(--text-secondary);
     background: var(--bg-secondary);
   }
@@ -996,6 +996,204 @@
     .project-nav-buttons { flex-direction: column; }
     .nav-btn { width: 100%; justify-content: center; }
   }
+
+  .inline-stat {
+    color: var(--pastel-peach);
+    font-weight: 600;
+    background: rgba(244, 168, 154, 0.1);
+    padding: 1px 8px;
+    border-radius: 4px;
+  }
+
+  .friction-header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  .friction-rows {
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .friction-row {
+    display: grid;
+    grid-template-columns: 48px 200px 1fr;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .friction-row:last-child { border-bottom: none; }
+
+  .friction-row-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-subtle);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .friction-row-title {
+    padding: 18px 20px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+  }
+
+  .friction-row-desc {
+    padding: 18px 24px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ─── DESIGN DECISIONS ─── */
+  .decision-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: border-color 0.3s ease;
+  }
+
+  .decision-card:hover { border-color: var(--border-medium); }
+
+  .decision-card:last-child { margin-bottom: 0; }
+
+  .decision-number {
+    position: absolute;
+    top: 32px;
+    right: 36px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--border-medium);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .decision-label-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .decision-title {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    max-width: 600px;
+    color: var(--text-primary);
+  }
+
+  .decision-fork {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .fork-option {
+    padding: 16px 20px;
+    border-radius: 12px;
+  }
+
+  .fork-option.considered {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    opacity: 0.75;
+  }
+
+  .fork-option.chosen {
+    background: rgba(142, 216, 176, 0.06);
+    border: 1px solid rgba(142, 216, 176, 0.2);
+  }
+
+  .fork-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+  }
+
+  .considered .fork-badge {
+    background: var(--bg-primary);
+    color: var(--text-muted);
+    border: 2px solid var(--border-subtle);
+  }
+
+  .chosen .fork-badge {
+    background: var(--pastel-mint);
+    color: var(--bg-primary);
+  }
+
+  .fork-text {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .decision-detail { margin-top: 8px; }
+
+  .detail-row {
+    padding: 14px 0;
+    border-top: 1px solid var(--border-subtle);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+  }
+
+  .detail-key {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .detail-value {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    .friction-row { grid-template-columns: 40px 1fr; }
+    .friction-row-num { grid-row: 1 / 3; }
+    .friction-row-title { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+    .friction-row-desc { align-items: flex-start; padding-top: 12px; }
+    .decision-fork { grid-template-columns: 1fr; }
+    .detail-row { grid-template-columns: 1fr; gap: 4px; }
+    .decision-number { font-size: 2.25rem; top: 24px; right: 24px; }
+    .decision-card { padding: 28px 24px; }
+  }
 </style>
 </head>
 <body>
@@ -1014,7 +1212,7 @@
 <header id="hero" class="hero container">
   <span class="hero-tag">Sam's Club Health &amp; Wellness · Pharmacy Associate Tool · 2023–2024</span>
   <h1>Transformed pharmacy delivery for 600+ Sam's Club stores</h1>
-  <p class="hero-description">I led the end-to-end design of a web + mobile product suite that replaced a fragmented 18-step dispensing workflow — cutting delivery time by 55% and automating 40% of checkout for pharmacy associates.</p>
+  <p class="hero-description">I led the end-to-end design of a web + mobile product suite that replaced a fragmented 18-step dispensing workflow that cut delivery time by 55% and automated 40% of checkout for pharmacy associates.</p>
 
   <div class="hero-image">
     <img src="RxToGo_TN_ptf.png" alt="RxToGo Product Suite — cover showing the pharmacy fulfillment interface" class="hero-img">
@@ -1088,49 +1286,59 @@
   </div>
 </div>
 
-<!-- CHALLENGE -->
-<section class="section container animate-on-scroll" aria-labelledby="challenge-heading">
-  <span class="section-label section-label--peach">Business Challenge</span>
-  <h2 id="challenge-heading" class="section-title">Time consuming process impacted on-site duties</h2>
-  <p class="section-subtitle">Amy, a Sam's Club pharmacy technician, spent most of her time addressing customers beyond fulfilling orders. The overwhelming process of dispensing prescriptions for delivery orders led to human errors and business disruption.</p>
-
-  <div class="challenge-statement">
-    <div class="challenge-question-label">The Core Question</div>
-    <p class="challenge-question">How might we assist pharmacy associates to recognize and schedule delivery orders within the existing platform?</p>
-  </div>
+<!-- THE PROBLEM -->
+<section class="section container animate-on-scroll" aria-labelledby="problem-heading">
+  <span class="section-label section-label--peach">The Problem</span>
+  <h2 id="problem-heading" class="section-title">A 10–15 minute dispensing process kept technicians off the pharmacy floor</h2>
+  <p class="section-subtitle">Sam's Club pharmacy technicians like Amy were spending most of their shift on prescription dispensing rather than serving customers. The legacy process took <span class="inline-stat">10–15 minutes per delivery order</span> across <strong>18 manual steps</strong> — spread across two disconnected applications and a handheld device, with <span class="inline-stat">46% of pharmacy revenue</span> depending on a workflow that was the most broken.</p>
 
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-number stat-number--mint">90d</div>
-      <div class="stat-desc">Refills preferred by focused customer segment</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number stat-number--lavender">21%</div>
-      <div class="stat-desc">Customers not enrolled on auto refill updates</div>
-    </div>
-    <div class="stat-card">
       <div class="stat-number stat-number--peach">56%</div>
-      <div class="stat-desc">Customers 55+ and mostly non-tech savvy</div>
+      <div class="stat-desc">Customers are 55+ age group</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number stat-number--sky">46%</div>
-      <div class="stat-desc">Pharmacy revenue from delivery-preferred customers</div>
+      <div class="stat-number stat-number--peach">70%</div>
+      <div class="stat-desc">Of revenue comes from this age group</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number stat-number--peach">21%</div>
+      <div class="stat-desc">Not enrolled on auto-refill</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number stat-number--peach">46%</div>
+      <div class="stat-desc">Pharmacy revenue from delivery orders</div>
     </div>
   </div>
 
-  <div class="pain-points">
-    <div class="pain-point">
-      <div class="pain-index">1</div>
-      <div class="pain-text">Lack of transparency and multiple levels of interaction in legacy system</div>
+  <div class="friction-header">Where the workflow broke down <span style="font-weight:400;font-size:0.75rem;text-transform:none;letter-spacing:0;color:var(--text-muted)">(Based on pharmacy user study)</span></div>
+
+  <div class="friction-rows">
+    <div class="friction-row">
+      <div class="friction-row-num">01</div>
+      <div class="friction-row-title">Hardware fragmentation</div>
+      <div class="friction-row-desc">Associates switched between Connexus – GoLocal desktop applications and the TC53 handheld device, losing context at every transition.</div>
     </div>
-    <div class="pain-point">
-      <div class="pain-index">2</div>
-      <div class="pain-text">GoLocal third-party application not easily accessible for associates</div>
+    <div class="friction-row">
+      <div class="friction-row-num">02</div>
+      <div class="friction-row-title">Dual-user handoff</div>
+      <div class="friction-row-desc">Technicians and pharmacists had disconnected workflows, requiring manual coordination for verification and payment.</div>
     </div>
-    <div class="pain-point">
-      <div class="pain-index">3</div>
-      <div class="pain-text">Numerous back-and-forth movements between hardware and applications</div>
+    <div class="friction-row">
+      <div class="friction-row-num">03</div>
+      <div class="friction-row-title">Additional third-party tools</div>
+      <div class="friction-row-desc">The GoLocal delivery application and TasCo POS were additional layers for the associate workflow, forcing workarounds.</div>
     </div>
+    <div class="friction-row">
+      <div class="friction-row-num">04</div>
+      <div class="friction-row-title">Error-prone legacy system</div>
+      <div class="friction-row-desc">Manual work on label printing, Rx checks, and bag scanning across multiple systems increased error rates.</div>
+    </div>
+  </div>
+
+  <div class="challenge-statement">
+    <div class="challenge-question-label">The Core Question</div>
+    <p class="challenge-question">How might we help pharmacy associates recognize, schedule, and fulfill delivery orders within a unified workflow?</p>
   </div>
 </section>
 
@@ -1160,38 +1368,7 @@
     </div>
   </div>
 
-  <div class="insight-cards" style="margin-top: 40px;">
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--mint">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <div class="insight-title">Time-Intensive Process</div>
-      <div class="insight-desc">Average dispense time of 10 - 15 minutes per order with 18 steps across hardware and applications.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--lavender">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div class="insight-title">Dual User Handoff</div>
-      <div class="insight-desc">Technicians and pharmacists had disconnected workflows, requiring manual coordination for verification and payment.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--sky">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </div>
-      <div class="insight-title">Hardware Fragmentation</div>
-      <div class="insight-desc">Associates switched between desktop and TC53 handheld devices, causing context loss and inefficiency.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--rose">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      </div>
-      <div class="insight-title">Error-Prone Legacy</div>
-      <div class="insight-desc">Manual label printing, stock checks, and bag scanning across disconnected systems increased human error rates.</div>
-    </div>
-  </div>
-
-  <div class="image-placeholders">
+  <div class="image-placeholders" style="grid-template-columns: 1fr;">
     <div class="image-placeholder">
       <img src="RxToGo_Research1.png" alt="User journey map showing the InClub order fulfillment process" class="section-img" loading="lazy">
     </div>
@@ -1203,38 +1380,142 @@
 
 <div class="container"><div class="divider"></div></div>
 
+<!-- DESIGN DECISIONS -->
+<section class="section container animate-on-scroll" aria-labelledby="decisions-heading">
+  <span class="section-label section-label--lavender">Design Decisions</span>
+  <h2 id="decisions-heading" class="section-title">3 decisions that shaped the outcome</h2>
+  <p class="section-subtitle">Key tradeoffs made during the design process — where we went, what we considered, and why it worked.</p>
+
+  <div style="margin-top: 40px;">
+    <div class="decision-card">
+      <div class="decision-number">01</div>
+      <div class="decision-label-tag">Decision · Architecture</div>
+      <h3 class="decision-title">Two apps or one?</h3>
+
+      <div class="decision-fork">
+        <div class="fork-option considered">
+          <span class="fork-badge">Considered</span>
+          <div class="fork-text">Single unified app running on both desktop and TC53 handheld</div>
+        </div>
+        <div class="fork-option chosen">
+          <span class="fork-badge">✓ Chose</span>
+          <div class="fork-text">Two purpose-built apps: Web dashboard + mobile checkout</div>
+        </div>
+      </div>
+
+      <div class="decision-detail">
+        <div class="detail-row">
+          <div class="detail-key">Why</div>
+          <div class="detail-value">Pharmacists and technicians had fundamentally different jobs. Pharmacists needed a multi-order overview for prescription and patient verification; technicians needed a guided, single-order flow for fulfilling orders on the pharmacy floor. Forcing both into one responsive app would have compromised both.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Tradeoff</div>
+          <div class="detail-value">Higher engineering cost and two codebases to maintain. I mitigated this by reutilizing a Walmart pharmacy app for mobile for less engineering effort and a common data model across both apps.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Signal it worked</div>
+          <div class="detail-value">Through usability testing done across multiple clubs, 92% of associates preferred the new portal and the single-purpose flow reduced cognitive load on the floor.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decision 01 mockups -->
+    <div style="display:grid; grid-template-columns:1.6fr 1fr; gap:24px; align-items:end; margin-top:24px; margin-bottom:16px;">
+      <!-- Web app — full natural width, no height crop -->
+      <div>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border-subtle); background:var(--bg-card);">
+          <img src="RxToGo_Decision1_2.png" alt="Order Maintenance web dashboard" style="width:100%; display:block; object-fit:contain;">
+        </div>
+        <p class="image-caption" style="margin-top:10px;">Order Maintenance — web dashboard</p>
+      </div>
+      <!-- Mobile app — smaller -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <img src="RxToGoDecision1_1.png" alt="RxToGo Checkout mobile app" style="height:349px; width:auto; display:block; object-fit:contain;">
+        <p class="image-caption" style="margin-top:10px;">Checkout — mobile app (TC53)</p>
+      </div>
+    </div>
+
+    <div class="decision-card">
+      <div class="decision-number">02</div>
+      <div class="decision-label-tag">Decision · Automation</div>
+      <h3 class="decision-title">What to automate vs. keep manual in checkout</h3>
+
+      <div class="decision-fork">
+        <div class="fork-option considered">
+          <span class="fork-badge">Considered</span>
+          <div class="fork-text">Automate end-to-end associate customer interaction</div>
+        </div>
+        <div class="fork-option chosen">
+          <span class="fork-badge">✓ Chose</span>
+          <div class="fork-text">Integrated delivery scheduling and payment processing in the new application flow</div>
+        </div>
+      </div>
+
+      <div class="decision-detail">
+        <div class="detail-row">
+          <div class="detail-key">Why</div>
+          <div class="detail-value">Integrating TasCo POS and GoLocal delivery scheduling eliminated phone-based friction, streamlined associate workflows by consolidating multi-app and hardware juggling, saved time for both customers and associates, all while maintaining strict HIPAA compliance.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Tradeoff</div>
+          <div class="detail-value">Engineering workarounds for replacing legacy payment and GoLocal integration. I provided a clear and intuitive component for these specific actions saving development time.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Signal it worked</div>
+          <div class="detail-value">This reduced 18 steps to 12 steps, automating 40% of the checkout process — giving back more time to associates in-store and customers felt confident sharing details through SMS.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="decision-card">
+      <div class="decision-number">03</div>
+      <div class="decision-label-tag">Decision · Less learning curve</div>
+      <h3 class="decision-title">Walmart Mail Order native patterns vs. custom design language</h3>
+
+      <div class="decision-fork">
+        <div class="fork-option considered">
+          <span class="fork-badge">Considered</span>
+          <div class="fork-text">Recreate a brand new checkout app with Sam's Club DLS</div>
+        </div>
+        <div class="fork-option chosen">
+          <span class="fork-badge">✓ Chose</span>
+          <div class="fork-text">Reutilized the Walmart checkout app</div>
+        </div>
+      </div>
+
+      <div class="decision-detail">
+        <div class="detail-row">
+          <div class="detail-key">Why</div>
+          <div class="detail-value">To support the MVP timeframe, adopting Walmart checkout highly solved the end user and business needs, including minimal engineering efforts.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Tradeoff</div>
+          <div class="detail-value">Design system mismatch and lack of heuristics. As this was a Sam's Club only app, I solved this by adapting Sam's Club BlueSteel DLS without compromising the key design components and actions through heuristic evaluation.</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Signal it worked</div>
+          <div class="detail-value">Familiarity in the tasks and brand design guideline alignment echoed instant familiarity among pharmacy associates with less learning curve.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decision 03 mockup -->
+    <div style="margin-top:24px; margin-bottom:16px;">
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border-subtle); background:var(--bg-primary);">
+        <img src="RxToGo_Decision3_1.png" alt="Walmart Mail Order app adapted for Sam's Club RxToGo" style="width:100%; display:block; object-fit:contain;">
+      </div>
+      <p class="image-caption" style="margin-top:10px;">Walmart checkout app adapted for Sam's Club RxToGo</p>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
 <!-- SOLUTION OVERVIEW -->
 <section class="section container animate-on-scroll" aria-labelledby="solutions-heading">
   <span class="section-label section-label--sky">Solution Overview</span>
   <h2 id="solutions-heading" class="section-title">Integrated web &amp; mobile product suite</h2>
   <p class="section-subtitle">Designed a cohesive two-part system - Order Maintenance web app for order management and a Checkout mobile app for in-store fulfillment-unifying workflows.</p>
-
-  <div class="solutions-grid">
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--mint">Web App</span>
-      <div class="solution-name">RxToGo Order Maintenance</div>
-      <div class="solution-problem">Centralized order management dashboard replacing fragmented legacy tools for pharmacists and technicians.</div>
-      <div class="solution-impact"><strong>Result:</strong> Single source of truth for all delivery orders with real-time status tracking</div>
-    </div>
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--lavender">Mobile App</span>
-      <div class="solution-name">RxToGo Checkout</div>
-      <div class="solution-problem">Handheld TC53 app streamlining the on-floor checkout and scanning workflow for pharmacy associates.</div>
-      <div class="solution-impact"><strong>Result:</strong> 40% of checkout process automated with guided step-by-step fulfillment</div>
-    </div>
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--peach">Automation</span>
-      <div class="solution-name">Process Streamlining</div>
-      <div class="solution-problem">Reduced 6 steps from the overall 18-step delivery dispense process through intelligent automation.</div>
-      <div class="solution-impact"><strong>Result:</strong> Average time reduced from 10–15 min to 5–7 min per order</div>
-    </div>
-    <div class="solution-card">
-      <span class="solution-tag solution-tag--sky">Integration</span>
-      <div class="solution-name">GoLocal &amp; Connexus Bridge</div>
-      <div class="solution-problem">Third-party GoLocal application was inaccessible; Connexus required manual context-switching.</div>
-      <div class="solution-impact"><strong>Result:</strong> Unified interface bridging payment scheduling and order verification</div>
-    </div>
-  </div>
 
   <div class="image-placeholders" style="grid-template-columns:1fr;">
     <div>
