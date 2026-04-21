@@ -908,6 +908,89 @@
     line-height: 1.6;
   }
 
+  /* ── Impact hero stat hierarchy ── */
+  .impact-hero {
+    background: rgba(184, 169, 232, 0.07);
+    border: 1px solid rgba(184, 169, 232, 0.18);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+
+  .impact-hero__micro {
+    display: block;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .impact-hero__row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .impact-hero__number {
+    font-size: clamp(3rem, 6vw, 3.75rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .impact-hero__unit {
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    font-weight: 400;
+    opacity: 0.6;
+  }
+
+  .impact-hero__context {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    max-width: 380px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .impact-support-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .impact-support-stat {
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    transition: border-color 0.25s ease;
+  }
+
+  .impact-support-stat:hover { border-color: var(--border-medium); }
+
+  .impact-support-stat__number {
+    font-size: 1.375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .impact-support-stat__label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 640px) {
+    .impact-support-grid { grid-template-columns: repeat(2, 1fr); }
+    .impact-hero__row { gap: 12px; }
+  }
+
   /* ─── IMAGE PLACEHOLDERS ─── */
   .image-placeholders {
     display: grid;
@@ -1748,30 +1831,32 @@
   <h2 id="impact-heading" class="section-title">Measurable outcomes delivered</h2>
   <p class="section-subtitle">Quantifiable improvements across vendor engagement, merchant productivity, and operational efficiency while building scalable design systems.</p>
 
-  <div class="impact-grid">
-    <div class="impact-card">
-      <div class="impact-number stat-number--peach">$2.5B</div>
-      <div class="impact-desc">Potential savings through compliance redesign</div>
+  <!-- Hero stat -->
+  <div class="impact-hero">
+    <span class="impact-hero__micro">Headline outcome</span>
+    <div class="impact-hero__row">
+      <div class="impact-hero__number stat-number--peach">$2.5<span class="impact-hero__unit">B</span></div>
+      <p class="impact-hero__context">Legal risk mitigated through compliance redesign — across 250M+ SKUs and 600+ vendors.</p>
     </div>
-    <div class="impact-card">
-      <div class="impact-number stat-number--mint">21 hrs</div>
-      <div class="impact-desc">Weekly time saved per merchant</div>
+  </div>
+
+  <!-- Supporting stats -->
+  <div class="impact-support-grid">
+    <div class="impact-support-stat">
+      <div class="impact-support-stat__number">21 hrs</div>
+      <div class="impact-support-stat__label">Weekly time saved per merchant</div>
     </div>
-    <div class="impact-card">
-      <div class="impact-number stat-number--lavender">60%</div>
-      <div class="impact-desc">Component library growth</div>
+    <div class="impact-support-stat">
+      <div class="impact-support-stat__number">72%</div>
+      <div class="impact-support-stat__label">Vendor acceptance rate</div>
     </div>
-    <div class="impact-card">
-      <div class="impact-number stat-number--sky">80%</div>
-      <div class="impact-desc">Albertsons SKUs covered</div>
+    <div class="impact-support-stat">
+      <div class="impact-support-stat__number">80%</div>
+      <div class="impact-support-stat__label">Albertsons SKUs covered</div>
     </div>
-    <div class="impact-card">
-      <div class="impact-number stat-number--lemon">60%</div>
-      <div class="impact-desc">More time-efficient setup</div>
-    </div>
-    <div class="impact-card">
-      <div class="impact-number stat-number--rose">72%</div>
-      <div class="impact-desc">Vendor acceptance rate</div>
+    <div class="impact-support-stat">
+      <div class="impact-support-stat__number">60%</div>
+      <div class="impact-support-stat__label">Design system library growth</div>
     </div>
   </div>
 
