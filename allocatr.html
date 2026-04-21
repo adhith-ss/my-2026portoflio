@@ -1295,6 +1295,26 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+  // Play/pause videos as they enter/leave the viewport
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const vid = entry.target;
+      if (entry.isIntersecting) {
+        if (vid.readyState === 0) {
+          vid.preload = 'auto';
+          vid.load();
+          vid.addEventListener('canplay', () => vid.play().catch(() => {}), { once: true });
+        } else {
+          vid.play().catch(() => {});
+        }
+      } else {
+        vid.pause();
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('video[autoplay]').forEach(v => videoObserver.observe(v));
 </script>
 
 </body>
