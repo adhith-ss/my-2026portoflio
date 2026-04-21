@@ -461,6 +461,32 @@
   .stagger-2 { transition-delay: 0.2s; }
   .stagger-3 { transition-delay: 0.3s; }
 
+  /* ─── HERO TYPEWRITER ─── */
+  .hero-greeting {
+    opacity: 0;
+    animation: heroGreetFade 0.45s ease 0.05s forwards;
+  }
+
+  @keyframes heroGreetFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .type-char {
+    transition: opacity 0.07s ease;
+  }
+
+  .hero-after {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .hero-after.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
@@ -516,8 +542,8 @@
 <header class="hero container">
   <p class="hero-greeting">Hello, I'm Adhith</p>
   <h1>Designing enterprise solutions that drive impact</h1>
-  <p class="hero-description">Transforming complex enterprise workflows into intuitive experiences. 5+ years specializing in B2B and SaaS products with measurable business outcomes.</p>
-  <p class="hero-role"><strong>Senior Product Designer at Albertsons Companies</strong><br>Previously at <strong>Walmart</strong></p>
+  <p class="hero-description hero-after">Transforming complex enterprise workflows into intuitive experiences. 5+ years specializing in B2B and SaaS products with measurable business outcomes.</p>
+  <p class="hero-role hero-after"><strong>Senior Product Designer at Albertsons Companies</strong><br>Previously at <strong>Walmart</strong></p>
 
 
 </header>
@@ -624,6 +650,38 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+  // ── Hero typewriter ──
+  (function () {
+    const h1 = document.querySelector('.hero h1');
+    if (!h1) return;
+    const text = h1.textContent.trim();
+
+    // Wrap every character in a hidden span to preserve layout
+    h1.innerHTML = Array.from(text).map(ch =>
+      `<span class="type-char" style="opacity:0">${ch === '<' ? '&lt;' : ch}</span>`
+    ).join('');
+
+    const chars = h1.querySelectorAll('.type-char');
+    let i = 0;
+
+    function tick() {
+      if (i < chars.length) {
+        if (i > 0) chars[i - 1].style.opacity = '1';   // solidify previous
+        chars[i].style.opacity = '0.25';                // ghost current
+        i++;
+        setTimeout(tick, 32);
+      } else {
+        chars[chars.length - 1].style.opacity = '1';   // solidify last
+        // Stagger-reveal elements below
+        document.querySelectorAll('.hero-after').forEach((el, idx) => {
+          setTimeout(() => el.classList.add('visible'), 60 + idx * 160);
+        });
+      }
+    }
+
+    setTimeout(tick, 200);
+  })();
 </script>
 </body>
 </html>
