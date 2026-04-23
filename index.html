@@ -165,19 +165,85 @@
     color: var(--text-secondary);
     max-width: 560px;
     line-height: 1.7;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
 
-  .hero-role {
+  .brand-logo {
+    height: 1.6em;
+    width: auto;
+    display: inline;
+    vertical-align: -0.45em;
+    margin: 0 5px;
+  }
+
+  .hero-availability {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     font-size: 0.9375rem;
-    color: var(--text-muted);
-    margin-bottom: 56px;
-    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    line-height: 1.6;
+    max-width: 560px;
   }
 
-  .hero-role strong {
+  .hero-avail-avatar {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    overflow: hidden;
+    margin-top: 1px;
+  }
+
+  .hero-avail-avatar img {
+    height: 48px;
+    width: auto;
+    max-width: none;
+    display: block;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 100px;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+  }
+
+  .hero-btn--ghost {
+    background: transparent;
     color: var(--text-primary);
-    font-weight: 600;
+    border: 1px solid var(--border-medium);
+  }
+
+  .hero-btn--ghost:hover {
+    background: var(--bg-card);
+    border-color: #444;
+    transform: translateY(-2px);
+  }
+
+  .hero-btn--primary {
+    background: var(--pastel-lavender);
+    color: #0A0A0A;
+    border: 1px solid transparent;
+  }
+
+  .hero-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(184, 169, 232, 0.3);
   }
 
   /* ─── STATS ─── */
@@ -542,10 +608,15 @@
 <header class="hero container">
   <p class="hero-greeting">Hello, I'm Adhith</p>
   <h1>I design enterprise solutions that drive impact</h1>
-  <p class="hero-description hero-after">Transforming complex enterprise workflows into intuitive experiences. 5+ years specializing in B2B and SaaS products with measurable business outcomes.</p>
-  <p class="hero-role hero-after">Previously <strong>Senior Product Designer</strong> with <strong>Albertsons Companies</strong> &amp; <strong>Walmart</strong></p>
-
-
+  <p class="hero-description hero-after">5+ years making complex B2B and SaaS workflows feel obvious. Shipped to 600+ stores and hundreds of vendor-merchants. Most recently Senior Product Designer at <img src="Alb_Horiz_RGB%201.png" alt="Albertsons" class="brand-logo"> <img src="Walmart-Logo-hero.png" alt="Walmart" class="brand-logo"></p>
+  <div class="hero-availability hero-after">
+    <div class="hero-avail-avatar"><img src="Hero%20Avatar.png" alt="Open to Work"></div>
+    <div>Available immediately for Senior / Mid-level Product Designer roles.<br>Open to relocate or Remote.</div>
+  </div>
+  <div class="hero-ctas hero-after">
+    <a href="#work" class="hero-btn hero-btn--ghost">See selected work ↓</a>
+    <a href="mailto:adhith.shan@gmail.com" class="hero-btn hero-btn--primary">Email me →</a>
+  </div>
 </header>
 
 <!-- WORK -->
