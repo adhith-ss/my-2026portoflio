@@ -466,36 +466,44 @@
     line-height: 1.7;
   }
 
+  .contact-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
   .contact-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 14px 32px;
+    padding: 13px 24px;
     border-radius: 100px;
     background: var(--pastel-lavender);
-    color: #FFFFFF;
+    color: #0A0A0A;
     font-family: 'Geist', sans-serif;
     font-size: 0.9375rem;
     font-weight: 600;
     text-decoration: none;
-    border: none;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .contact-btn--ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-medium);
   }
 
   .contact-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(184, 169, 232, 0.25);
+    box-shadow: 0 8px 24px rgba(184, 169, 232, 0.2);
   }
 
-  .contact-btn svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.25s ease;
-  }
-
-  .contact-btn:hover svg {
-    transform: translateX(3px);
+  .contact-btn--ghost:hover {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+    box-shadow: none;
   }
 
   /* ─── FOOTER ─── */
@@ -712,12 +720,13 @@
 <section class="contact-section">
   <div class="container">
     <div class="contact-inner animate-on-scroll">
-      <h2 class="contact-title">I appreciate you visiting. Let's connect!</h2>
-      <p class="contact-body">Interested in discussing AI, the evolving craft of design, chasing great food and always open to what connects us.</p>
-      <a href="mailto:adhith.shan@gmail.com" class="contact-btn" role="button">
-        Get in Touch
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+      <h2 class="contact-title">Let's talk</h2>
+      <p class="contact-body">I'm actively looking for my next role. Best fit: Senior or Mid-level PD on B2B, AI, or internal-tooling products.<br><br>Fastest way to reach me: email. I reply within 24 hours.</p>
+      <div class="contact-btns">
+        <a href="mailto:adhith.shan@gmail.com" class="contact-btn">📧 adhith.shan@gmail.com</a>
+        <a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost">💼 LinkedIn</a>
+        <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost">📄 Resume</a>
+      </div>
     </div>
   </div>
 </section>
