@@ -165,15 +165,21 @@
     color: var(--text-secondary);
     max-width: 560px;
     line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .hero-logos {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 36px;
+    max-width: 560px;
   }
 
   .brand-logo {
-    height: 1.6em;
+    height: 1.9em;
     width: auto;
-    display: inline;
-    vertical-align: -0.45em;
-    margin: 0 5px;
+    display: block;
   }
 
   .hero-availability {
@@ -617,7 +623,11 @@
 <header class="hero container">
   <p class="hero-greeting">Hello, I'm Adhith</p>
   <h1>I design enterprise solutions that drive impact</h1>
-  <p class="hero-description hero-after">5+ years making complex B2B and SaaS workflows feel obvious. Shipped to 600+ stores and hundreds of vendor-merchants. Most recently Senior Product Designer at <img src="Alb_Horiz_RGB%201.png" alt="Albertsons" class="brand-logo"> <img src="Walmart-Logo-hero.png" alt="Walmart" class="brand-logo"></p>
+  <p class="hero-description hero-after">5+ years making complex B2B and SaaS workflows feel obvious. Shipped to 600+ stores and hundreds of vendor-merchants. Most recently Senior Product Designer at</p>
+  <div class="hero-logos hero-after">
+    <img src="Alb_Horiz_RGB%201.png" alt="Albertsons" class="brand-logo">
+    <img src="Walmart-Logo-hero.png" alt="Walmart" class="brand-logo">
+  </div>
   <div class="hero-availability hero-after">
     <div class="hero-avail-avatar"><img src="Hero%20Avatar.png" alt="Open to Work"></div>
     <div>Available immediately for Senior / Mid-level Product Designer roles.<br>Open to relocate or Remote.</div>
