@@ -620,7 +620,7 @@
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume</a></li>
   </ul>
 </nav>
 
@@ -642,7 +642,7 @@
       <p>At the age of 14, I sketched construction machinery for <strong>JCB Equipments India</strong>, earning praise from their leadership. Their encouragement fueled my passion for design, leading me to pursue a career focused on solving usability issues across various objects.</p>
       <p>At work, I like to shape strategic decisions of stakeholders to transform virtual data concepts into useful, simple, and beautiful visual elements.</p>
       <p>I am also keen on working with design systems, as it helps in developing the product growth and development. I believe that great design is not just about aesthetics — it's about creating systems that empower teams and scale with the business.</p>
-      <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" class="story-btn">
+      <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" class="story-btn" onclick="va('event', { name: 'resume_clicked', data: { source: 'story' } })">
         View My Resume
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -739,7 +739,7 @@
     <div class="contact-inner animate-on-scroll">
       <h2 class="contact-title">I appreciate you visiting. Let's connect!</h2>
       <p class="contact-body">Interested in discussing AI, the evolving craft of design, chasing great food and always open to what connects us.</p>
-      <a href="mailto:adhith.shan@gmail.com" class="contact-btn" role="button">
+      <a href="mailto:adhith.shan@gmail.com" class="contact-btn" role="button" onclick="va('event', { name: 'email_clicked', data: { source: 'contact' } })">
         Get in Touch
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -750,8 +750,8 @@
 <!-- FOOTER -->
 <footer>
   <ul class="footer-links">
-    <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
-    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="mailto:adhith.shan@gmail.com" onclick="va('event', { name: 'email_clicked', data: { source: 'footer' } })">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })">LinkedIn</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
   <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care.</p>

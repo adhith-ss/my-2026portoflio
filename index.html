@@ -623,7 +623,7 @@
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume</a></li>
   </ul>
 </nav>
 
@@ -642,7 +642,7 @@
   </div>
   <div class="hero-ctas hero-after">
     <a href="#work" class="hero-btn hero-btn--ghost">See selected work ↓</a>
-    <a href="mailto:adhith.shan@gmail.com" class="hero-btn hero-btn--primary">Email me →</a>
+    <a href="mailto:adhith.shan@gmail.com" class="hero-btn hero-btn--primary" onclick="va('event', { name: 'email_clicked', data: { source: 'hero' } })">Email me →</a>
   </div>
 </header>
 
@@ -654,7 +654,7 @@
   <div class="project-list">
 
     <!-- PROJECT 1 — RxToGo -->
-    <a class="project-card animate-on-scroll stagger-1" href="rxtogo.html">
+    <a class="project-card animate-on-scroll stagger-1" href="rxtogo.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'rxtogo' } })">
       <div class="project-image">
         <img src="RxToGo_TN_ptf.png" alt="RxToGo Product Suite project preview" loading="lazy">
       </div>
@@ -674,7 +674,7 @@
     </a>
 
     <!-- PROJECT 2 — Item Management -->
-    <a class="project-card animate-on-scroll stagger-2" href="item-management.html">
+    <a class="project-card animate-on-scroll stagger-2" href="item-management.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'item_management' } })">
       <div class="project-image">
         <img src="Item_Index_ptf.png" alt="Item Management project preview" loading="lazy">
       </div>
@@ -694,7 +694,7 @@
     </a>
 
     <!-- PROJECT 3 — Allocatr -->
-    <a class="project-card animate-on-scroll stagger-3" href="allocatr.html">
+    <a class="project-card animate-on-scroll stagger-3" href="allocatr.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'allocatr' } })">
       <div class="project-image">
         <img src="AIlocatr_Index_ptf.png" alt="Allocatr Insights project preview" loading="lazy">
       </div>
@@ -723,15 +723,15 @@
       <h2 class="contact-title">Let's talk</h2>
       <p class="contact-body">I'm actively looking for my next role. Best fit: Senior or Mid-level PD on B2B, AI, or internal-tooling products.<br><br>Fastest way to reach me: email. I reply within 24 hours.</p>
       <div class="contact-btns">
-        <a href="mailto:adhith.shan@gmail.com" class="contact-btn">
+        <a href="mailto:adhith.shan@gmail.com" class="contact-btn" onclick="va('event', { name: 'email_clicked', data: { source: 'contact' } })">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
           adhith.shan@gmail.com
         </a>
-        <a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost">
+        <a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'contact' } })">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn
         </a>
-        <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost">
+        <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost" onclick="va('event', { name: 'resume_clicked', data: { source: 'contact' } })">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
           Resume
         </a>
@@ -743,8 +743,8 @@
 <!-- FOOTER -->
 <footer>
   <ul class="footer-links">
-    <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
-    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="mailto:adhith.shan@gmail.com" onclick="va('event', { name: 'email_clicked', data: { source: 'footer' } })">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })">LinkedIn</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
   <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care.</p>
