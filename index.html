@@ -613,6 +613,86 @@
       gap: 16px;
     }
   }
+
+  /* ─── MORE WORK ─── */
+  .more-work-section {
+    padding-top: 8px;
+    padding-bottom: var(--section-gap, 80px);
+  }
+
+  .more-work-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .more-work-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 24px 28px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    background: var(--bg-card);
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .more-work-card:hover {
+    border-color: var(--pastel-lemon);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+  }
+
+  .more-work-meta {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    min-width: 180px;
+  }
+
+  .more-work-body {
+    flex: 1;
+  }
+
+  .more-work-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .more-work-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .more-work-cta {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--pastel-lemon);
+    white-space: nowrap;
+    opacity: 0.65;
+    transition: opacity 0.2s ease;
+  }
+
+  .more-work-card:hover .more-work-cta {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .more-work-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .more-work-meta { min-width: unset; }
+    .more-work-cta { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -714,6 +794,23 @@
     </a>
 
   </div>
+</section>
+
+<!-- MORE WORK -->
+<section class="more-work-section container animate-on-scroll">
+  <h3 class="more-work-label">More work</h3>
+  <a class="more-work-card" href="abc-fire.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'abc-fire', source: 'more-work' } })">
+    <div class="more-work-meta">
+      <span class="project-tag">Personal Project</span>
+      <span class="project-tag">Consumer App</span>
+      <span class="project-tag">Gamification</span>
+    </div>
+    <div class="more-work-body">
+      <div class="more-work-title">ABC Fire — Consumer App Redesign</div>
+      <div class="more-work-desc">Consumer-facing gamified app redesign with AI as a design collaborator. Explores growth mechanics, behavioral design, and engagement loops.</div>
+    </div>
+    <span class="more-work-cta">View project →</span>
+  </a>
 </section>
 
 <!-- CONTACT -->
