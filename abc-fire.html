@@ -266,34 +266,68 @@
     line-height: 1.75;
   }
 
-  /* ─── IMAGE PLACEHOLDERS ─── */
-  .image-placeholders {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+  /* ─── SPLIT LAYOUT (text left, images right) ─── */
+  .split-layout {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
     margin-top: 40px;
   }
 
-  .image-placeholder {
-    aspect-ratio: 16 / 10;
+  .split-layout__text {
+    flex: 1;
+    min-width: 0;
+    padding-top: 4px;
+  }
+
+  .split-layout__text p {
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .split-layout__visual {
+    flex: 1.1;
+    min-width: 0;
+  }
+
+  .split-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .split-image-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .split-image-placeholder {
+    aspect-ratio: 9 / 16;
     border-radius: 14px;
     background: var(--bg-card);
     overflow: hidden;
   }
 
-  .image-caption {
+  .split-image-label {
     text-align: center;
-    font-size: 0.875rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    margin-top: 12px;
-    line-height: 1.5;
+  }
+
+  .split-image-label--lemon {
+    color: var(--pastel-lemon);
   }
 
   /* ─── IMPACT GRID ─── */
   .impact-grid {
     display: grid;
     gap: 16px;
-    margin-top: 40px;
+    margin-top: 32px;
     margin-bottom: 20px;
   }
 
@@ -403,7 +437,7 @@
     .nav-links a { font-size: 0.8125rem; }
     .hero { padding-top: 120px; }
     .meta-row { grid-template-columns: 1fr 1fr; }
-    .image-placeholders { grid-template-columns: 1fr; }
+    .split-layout { flex-direction: column; gap: 32px; }
     .impact-grid { grid-template-columns: 1fr !important; }
   }
 
@@ -429,9 +463,9 @@
 
 <!-- ─── HERO ─── -->
 <header id="hero" class="hero container">
-  <span class="hero-tag">Personal Project · Consumer App · 2024</span>
-  <h1>ABC Fire — Consumer App Redesign</h1>
-  <p class="hero-description">Revisiting an early design with fresh eyes: consumer-facing gamification, growth loops, and AI as a collaborative design tool.</p>
+  <span class="hero-tag">Personal Project · Consumer App</span>
+  <h1>ABC Fire App Redesign</h1>
+  <p class="hero-description">Exploratory work from a past project (Dec 2020 to June 2021)</p>
   <div class="hero-image">
     <video
       src="ABC_Ptf_Vid.mp4"
@@ -450,8 +484,8 @@
       <div class="meta-value">Personal Project</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">App</div>
-      <div class="meta-value">ABC Fire</div>
+      <div class="meta-label">Timeline</div>
+      <div class="meta-value">Dec 2020 to June 2021</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Role</div>
@@ -464,97 +498,81 @@
   </div>
 </div>
 
-<!-- ─── BLOCK 1: THE BRIEF ─── -->
+<!-- ─── THE PROBLEM ─── -->
 <div class="container">
   <section class="section animate-on-scroll">
-    <span class="section-label section-label--peach">The Brief</span>
-    <h2 class="section-title">What the app needed to do</h2>
-    <p class="section-body">ABC Fire was built to activate passive users and create a revenue path through task completion. The original app solved the core task-tracking problem but left growth mechanics and user motivation untouched — users arrived, completed a task, and left with no reason to return.</p>
+    <span class="section-label section-label--peach">The Problem</span>
+    <h2 class="section-title">The Problem</h2>
+    <p class="section-body">ABC Fire, a private fire equipment manufacturer, was running short of staff to scale their market for expanding fire hydrant products to new clients.</p>
   </section>
 </div>
 
-<!-- ─── BLOCK 2: AI COLLABORATION ─── -->
+<!-- ─── THE GAMIFICATION CONCEPT ─── -->
 <div class="container">
   <section class="section animate-on-scroll">
-    <span class="section-label section-label--lemon">AI Collaboration</span>
-    <h2 class="section-title">Using Claude to pressure-test, not to generate</h2>
-    <p class="section-body">I used Claude to stress-test the information architecture, surface gamification frameworks I hadn't considered, and challenge the monetization logic. It helped me move faster through exploration — but every structural decision, every hierarchy call, every interaction pattern came from my own judgment. The AI accelerated the thinking; it didn't replace it.</p>
+    <span class="section-label section-label--lemon">The Gamification Concept</span>
+    <h2 class="section-title">The Gamification Concept</h2>
+    <p class="section-body">As a user, one can add a new extinguisher photo through this app which captures the expiry of the hydrant. At the back end, the team processes a new entry to their prospective inventory and rewards the user for their activity.</p>
   </section>
 </div>
 
-<!-- ─── BLOCK 3: DESIGN DECISIONS ─── -->
+<!-- ─── AI AS A DESIGN COLLABORATOR ─── -->
 <div class="container">
   <section class="section animate-on-scroll">
-    <span class="section-label section-label--sky">Design Decisions</span>
-    <h2 class="section-title">Making motivation visible</h2>
-    <p class="section-body">The core redesign decision was surfacing progress as a first-class UI element. Points, streaks, and milestone markers aren't decorations — they're feedback loops that answer "why should I come back?" The gamification layer was designed to feel earned, not bolted on: every mechanic tied directly to a real user action.</p>
+    <span class="section-label section-label--sky">AI as a Design Collaborator</span>
+    <h2 class="section-title">AI as a Design Collaborator</h2>
+    <p class="section-body">As this project was conceived in 2020, I wanted to retake it and use Claude to redesign the application with an enhanced UI without losing the core functionality and USP of the app.</p>
   </section>
 </div>
 
-<!-- ─── BLOCK 4: PILOT OUTCOMES ─── -->
+<!-- ─── WHAT CHANGED AND WHY ─── -->
 <div class="container">
   <section class="section animate-on-scroll">
-    <span class="section-label section-label--mint">Pilot Outcomes</span>
-    <h2 class="section-title">What the pilot showed</h2>
-    <p class="section-body">140 new clientele were acquired by 60 users during the pilot period — suggesting the flow's ability to lower acquisition friction. These results are from the original design; the redesign doesn't change the outcome, it builds on the validated mechanic to make it more legible and repeatable at scale.</p>
-  </section>
-</div>
+    <span class="section-label section-label--mint">What Changed and Why</span>
+    <h2 class="section-title">What changed and why?</h2>
 
-<!-- ─── BEFORE / AFTER ─── -->
-<div class="container">
-  <section class="section animate-on-scroll">
-    <span class="section-label section-label--lemon">Before &amp; After</span>
-    <h2 class="section-title">The redesign at a glance</h2>
-
-    <div class="image-placeholders">
-      <!-- BEFORE -->
-      <div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:12px;">
-          <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-            color:var(--text-muted);background:rgba(136,136,136,0.1);padding:3px 10px;border-radius:20px;">
-            Before
-          </span>
-        </div>
-        <div class="image-placeholder">
-          <img
-            src="ABCFire_Before.png"
-            alt="ABC Fire original home screen — task-tracking without engagement mechanics"
-            class="section-img"
-            style="background:var(--bg-card);"
-            loading="lazy"
-          >
-        </div>
-        <p class="image-caption">Original home screen — task-tracking without engagement mechanics</p>
+    <div class="split-layout">
+      <div class="split-layout__text">
+        <p>I used Claude as a design collaborator to pressure-test the original information architecture. Every structural decision was mine; the AI accelerated the exploration given the gamification framework I had prompted from the original product.</p>
       </div>
-
-      <!-- AFTER -->
-      <div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:12px;">
-          <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-            color:var(--pastel-lemon);background:rgba(232,216,138,0.1);padding:3px 10px;border-radius:20px;">
-            After
-          </span>
+      <div class="split-layout__visual">
+        <div class="split-images">
+          <div class="split-image-wrap">
+            <div class="split-image-placeholder">
+              <img
+                src="ABCFire_Before.png"
+                alt="ABC Fire original home screen"
+                class="section-img"
+                style="background:var(--bg-card);"
+                loading="lazy"
+              >
+            </div>
+            <span class="split-image-label">Before</span>
+          </div>
+          <div class="split-image-wrap">
+            <div class="split-image-placeholder">
+              <img
+                src="ABCFire_After.png"
+                alt="ABC Fire redesigned home screen with gamification"
+                class="section-img"
+                style="background:var(--bg-card);"
+                loading="lazy"
+              >
+            </div>
+            <span class="split-image-label split-image-label--lemon">After</span>
+          </div>
         </div>
-        <div class="image-placeholder">
-          <img
-            src="ABCFire_After.png"
-            alt="ABC Fire redesigned home screen with gamification layer"
-            class="section-img"
-            style="background:var(--bg-card);"
-            loading="lazy"
-          >
-        </div>
-        <p class="image-caption">Redesigned — progress surfaced as a first-class UI element</p>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ─── RESULTS ─── -->
+<!-- ─── PILOT RESULTS ─── -->
 <div class="container">
   <section class="section animate-on-scroll">
-    <span class="section-label section-label--lemon">Results</span>
-    <h2 class="section-title">Pilot numbers</h2>
+    <span class="section-label section-label--lemon">Pilot Results</span>
+    <h2 class="section-title">Pilot Results</h2>
+    <p class="section-body">The product acquired 60 unique users who were benefited by earning rewards through this gamified strategy. ABC Fire was able to maintain new prospective inventory that made them add 140+ new clientele into their customer base.</p>
 
     <div class="impact-grid stagger-1" style="grid-template-columns: repeat(2, 1fr);">
       <div class="impact-card">
@@ -562,13 +580,13 @@
         <div class="impact-desc">Unique users in pilot cohort</div>
       </div>
       <div class="impact-card">
-        <div class="impact-number">140</div>
-        <div class="impact-desc">New clientele acquired by 60 users during the pilot period</div>
+        <div class="impact-number">140+</div>
+        <div class="impact-desc">New clientele added to customer base</div>
       </div>
     </div>
 
     <p style="text-align:center;font-size:0.8125rem;color:var(--text-muted);margin-top:20px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;">
-      Results from the original design's pilot — suggesting the flow's ability to lower acquisition friction. The redesign builds on this validated baseline.
+      Results from the original design's pilot. The redesign builds on this validated baseline.
     </p>
   </section>
 </div>
