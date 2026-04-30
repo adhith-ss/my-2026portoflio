@@ -177,9 +177,21 @@
   }
 
   .brand-logo {
-    height: 1.9em;
     width: auto;
     display: block;
+  }
+
+  .hero-logos img:first-child {
+    height: 22px; /* Albertsons — tight crop, text fills full height */
+  }
+
+  .hero-logos img:last-child {
+    height: 36px; /* Walmart — spark adds whitespace, needs taller container for same visual text size */
+  }
+
+  @media (max-width: 600px) {
+    .hero-logos img:first-child { height: 18px; }
+    .hero-logos img:last-child  { height: 28px; }
   }
 
   .hero-availability {
