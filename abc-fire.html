@@ -172,7 +172,7 @@
     margin: 0 auto;
     border-radius: 16px;
     overflow: hidden;
-    background: var(--bg-card);
+    background: #000000;
     aspect-ratio: 16 / 8;
     display: flex;
     align-items: center;
@@ -186,7 +186,7 @@
     object-fit: contain;
     display: block;
     border-radius: 12px;
-    background: var(--bg-card);
+    background: #000000;
   }
 
   .section-img {
@@ -323,16 +323,96 @@
     color: var(--pastel-lemon);
   }
 
-  /* ─── IMPACT GRID ─── */
-  .impact-grid {
-    display: grid;
-    gap: 16px;
+  /* ─── IMPACT ─── */
+  .stat-number--lemon { color: var(--pastel-lemon); }
+
+  .impact-hero {
+    background: rgba(232, 216, 138, 0.07);
+    border: 1px solid rgba(232, 216, 138, 0.18);
+    border-radius: 14px;
+    padding: 28px 28px 24px;
     margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  .impact-hero__micro {
+    display: block;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .impact-hero__row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .impact-hero__number {
+    font-size: clamp(3rem, 6vw, 3.75rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .impact-hero__unit {
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    font-weight: 400;
+    opacity: 0.6;
+  }
+
+  .impact-hero__context {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    max-width: 380px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .impact-support-grid {
+    display: grid;
+    gap: 12px;
     margin-bottom: 20px;
   }
 
+  .impact-support-stat {
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    transition: border-color 0.25s ease;
+  }
+
+  .impact-support-stat:hover { border-color: var(--border-medium); }
+
+  .impact-support-stat__number {
+    font-size: 1.375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .impact-support-stat__label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ─── IMPACT GRID ─── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+
   .impact-card {
-    padding: 40px 24px;
+    padding: 32px 24px;
     text-align: center;
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
@@ -341,24 +421,22 @@
   }
 
   .impact-card:hover {
-    border-color: rgba(232, 216, 138, 0.3);
+    border-color: var(--border-medium);
     transform: translateY(-2px);
   }
 
   .impact-number {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: 800;
     letter-spacing: -0.03em;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     color: var(--pastel-lemon);
   }
 
   .impact-desc {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--text-muted);
     line-height: 1.5;
-    max-width: 200px;
-    margin: 0 auto;
   }
 
   /* ─── BACK LINK ─── */
@@ -456,6 +534,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="abc-fire.html">More Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume</a></li>
   </ul>
@@ -463,7 +542,7 @@
 
 <!-- ─── HERO ─── -->
 <header id="hero" class="hero container">
-  <span class="hero-tag">Personal Project · Consumer App</span>
+  <span class="hero-tag">Revised Industry Project · Consumer App</span>
   <h1>ABC Fire App Redesign</h1>
   <p class="hero-description">Exploratory work from a past project (Dec 2020 to June 2021)</p>
   <div class="hero-image">
@@ -481,7 +560,7 @@
   <div class="meta-row">
     <div class="meta-item">
       <div class="meta-label">Type</div>
-      <div class="meta-value">Personal Project</div>
+      <div class="meta-value">Revised Industry Project</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Timeline</div>
@@ -502,7 +581,7 @@
 <div class="container">
   <section class="section animate-on-scroll">
     <span class="section-label section-label--peach">The Problem</span>
-    <h2 class="section-title">The Problem</h2>
+    <h2 class="section-title">Short-staffed in a growing market</h2>
     <p class="section-body">ABC Fire, a private fire equipment manufacturer, was running short of staff to scale their market for expanding fire hydrant products to new clients.</p>
   </section>
 </div>
@@ -511,7 +590,7 @@
 <div class="container">
   <section class="section animate-on-scroll">
     <span class="section-label section-label--lemon">The Gamification Concept</span>
-    <h2 class="section-title">The Gamification Concept</h2>
+    <h2 class="section-title">Community photos fuel inventory growth</h2>
     <p class="section-body">As a user, one can add a new extinguisher photo through this app which captures the expiry of the hydrant. At the back end, the team processes a new entry to their prospective inventory and rewards the user for their activity.</p>
   </section>
 </div>
@@ -520,7 +599,7 @@
 <div class="container">
   <section class="section animate-on-scroll">
     <span class="section-label section-label--sky">AI as a Design Collaborator</span>
-    <h2 class="section-title">AI as a Design Collaborator</h2>
+    <h2 class="section-title">Revisiting a 2020 project with Claude</h2>
     <p class="section-body">As this project was conceived in 2020, I wanted to retake it and use Claude to redesign the application with an enhanced UI without losing the core functionality and USP of the app.</p>
   </section>
 </div>
@@ -529,7 +608,7 @@
 <div class="container">
   <section class="section animate-on-scroll">
     <span class="section-label section-label--mint">What Changed and Why</span>
-    <h2 class="section-title">What changed and why?</h2>
+    <h2 class="section-title">Pressure-testing the architecture with AI</h2>
 
     <div class="split-layout">
       <div class="split-layout__text">
@@ -540,10 +619,10 @@
           <div class="split-image-wrap">
             <div class="split-image-placeholder">
               <img
-                src="ABCFire_Before.png"
+                src="ABCFire_HomeScreen_OldDesign_Before%20image.png"
                 alt="ABC Fire original home screen"
                 class="section-img"
-                style="background:var(--bg-card);"
+                style="background:var(--bg-card);object-fit:cover;"
                 loading="lazy"
               >
             </div>
@@ -552,7 +631,7 @@
           <div class="split-image-wrap">
             <div class="split-image-placeholder">
               <img
-                src="ABCFire_After.png"
+                src="ABC_New%20design_After%20image.png"
                 alt="ABC Fire redesigned home screen with gamification"
                 class="section-img"
                 style="background:var(--bg-card);"
@@ -571,21 +650,25 @@
 <div class="container">
   <section class="section animate-on-scroll">
     <span class="section-label section-label--lemon">Pilot Results</span>
-    <h2 class="section-title">Pilot Results</h2>
+    <h2 class="section-title">A gamified loop proven in the field</h2>
     <p class="section-body">The product acquired 60 unique users who were benefited by earning rewards through this gamified strategy. ABC Fire was able to maintain new prospective inventory that made them add 140+ new clientele into their customer base.</p>
 
-    <div class="impact-grid stagger-1" style="grid-template-columns: repeat(2, 1fr);">
-      <div class="impact-card">
-        <div class="impact-number">60</div>
-        <div class="impact-desc">Unique users in pilot cohort</div>
-      </div>
-      <div class="impact-card">
-        <div class="impact-number">140+</div>
-        <div class="impact-desc">New clientele added to customer base</div>
+    <div class="impact-hero">
+      <span class="impact-hero__micro">Key outcome</span>
+      <div class="impact-hero__row">
+        <div class="impact-hero__number stat-number--lemon">140<span class="impact-hero__unit">+</span></div>
+        <p class="impact-hero__context">New clientele added to ABC Fire's customer base through community-powered inventory capture.</p>
       </div>
     </div>
 
-    <p style="text-align:center;font-size:0.8125rem;color:var(--text-muted);margin-top:20px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;">
+    <div class="impact-support-grid">
+      <div class="impact-support-stat">
+        <div class="impact-support-stat__number">60</div>
+        <div class="impact-support-stat__label">Unique users in the pilot cohort</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.8125rem;color:var(--text-muted);margin-top:8px;line-height:1.6;">
       Results from the original design's pilot. The redesign builds on this validated baseline.
     </p>
   </section>
