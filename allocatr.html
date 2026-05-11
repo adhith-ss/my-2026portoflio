@@ -1034,11 +1034,42 @@
     .project-nav-buttons { flex-direction: column; }
     .nav-btn { width: 100%; justify-content: center; }
   }
+
+  /* ─── SKIP LINK & SR-ONLY ─── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 12px 24px;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus { top: 0; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
+<header role="banner">
 <nav role="navigation" aria-label="Main navigation">
   <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
   <ul class="nav-links">
@@ -1048,6 +1079,9 @@
     <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
   </ul>
 </nav>
+</header>
+
+<main id="main-content" role="main">
 
 <!-- HERO -->
 <header id="hero" class="hero container">
@@ -1372,8 +1406,10 @@
   </div>
 </nav>
 
+</main>
+
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <ul class="footer-links">
     <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
     <li><a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener">LinkedIn</a></li>
