@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
+<link rel="shortcut icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
+<link rel="apple-touch-icon" href="AS_Logo_PtfTab_b.png">
+<title>Accessibility Statement — Adhith Shanmuga Sundaram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<style>
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --border-subtle: #222222;
+    --border-medium: #2A2A2A;
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-muted: #AAAAAA;
+    --pastel-lavender: #B8A9E8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 1rem; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo-img { height: 48px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    padding: 11px 4px;
+    display: inline-block;
+    min-height: 44px;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 720px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .page-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pastel-lavender);
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .page-header .subtitle {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  /* ─── CONTENT SECTIONS ─── */
+  .content-section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .content-section:last-of-type { border-bottom: none; }
+
+  .content-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+  }
+  .content-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    margin-top: 24px;
+  }
+  .content-section p {
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    font-size: 0.9375rem;
+  }
+  .content-section p:last-child { margin-bottom: 0; }
+
+  /* ─── STATUS BADGE ─── */
+  .conformance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(184,169,232,0.1);
+    border: 1px solid rgba(184,169,232,0.25);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+  }
+  .conformance-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pastel-lavender);
+    flex-shrink: 0;
+  }
+  .conformance-badge span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--pastel-lavender);
+  }
+
+  /* ─── CHECKLIST TABLE ─── */
+  .checklist {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin-top: 8px;
+  }
+  .checklist thead th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-medium);
+  }
+  .checklist tbody tr { border-bottom: 1px solid var(--border-subtle); }
+  .checklist tbody tr:last-child { border-bottom: none; }
+  .checklist tbody td {
+    padding: 10px 12px;
+    color: var(--text-secondary);
+    vertical-align: top;
+  }
+  .checklist .pass {
+    color: #8ED8B0;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .checklist .na {
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ─── TEST RESULTS ─── */
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .test-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .test-card .test-page {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .test-card .test-result {
+    font-size: 0.875rem;
+    color: #8ED8B0;
+    font-weight: 600;
+  }
+  .test-card .test-tool {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── CONTACT BLOCK ─── */
+  .contact-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 8px;
+  }
+  .contact-block p {
+    margin-bottom: 16px;
+  }
+  .contact-block a {
+    color: var(--pastel-lavender);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .contact-block a:hover { color: var(--text-primary); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 32px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; justify-content: center; }
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+  .footer-links a:hover { color: var(--text-primary); }
+  .footer-copy { font-size: 0.8125rem; color: var(--text-muted); text-align: center; }
+
+  /* ─── SKIP LINK & SR-ONLY ─── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 12px 24px;
+    background: #000;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus { top: 0; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ─── FOCUS INDICATOR (WCAG 2.4.7) ─── */
+  *:focus-visible {
+    outline: 3px solid #8ab4f8;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* ─── REDUCED MOTION (WCAG 2.2.3, 2.2.4) ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<header role="banner">
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="abc-fire.html">AI Playground</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume<span class="sr-only"> (opens in new tab)</span></a></li>
+  </ul>
+</nav>
+</header>
+
+<main id="main-content" role="main">
+<div class="container">
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <p class="page-label">Legal &amp; Accessibility</p>
+    <h1>Accessibility Statement</h1>
+    <p class="subtitle">Last updated: May 11, 2026 &nbsp;·&nbsp; Site: adhith-s.com</p>
+  </header>
+
+  <!-- CONFORMANCE -->
+  <section class="content-section" aria-labelledby="conformance-heading">
+    <h2 id="conformance-heading">Conformance status</h2>
+    <div class="conformance-badge" role="status">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Targeting <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0 Level AAA</span>
+    </div>
+    <p>This portfolio strives to conform to the <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0 Level AAA standard, the most comprehensive level of web accessibility defined by the <abbr title="World Wide Web Consortium">W3C</abbr>. All 61 success criteria were addressed through a structured three-phase remediation completed on May 11, 2026.</p>
+    <p>Automated testing with axe-core 4.11.4 (against <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2A / 2AA / 2AAA rule sets) returned <strong style="color: #8ED8B0;">0 violations</strong> across all six pages. Manual review covered keyboard navigation, screen reader announcements, colour contrast, motion, and link purpose.</p>
+  </section>
+
+  <!-- WHAT WAS DONE -->
+  <section class="content-section" aria-labelledby="remediation-heading">
+    <h2 id="remediation-heading">Remediation summary</h2>
+
+    <h3>Phase 1 — Level A</h3>
+    <p>Added <code>lang="en"</code> to every page, skip-navigation link, semantic landmark elements (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code> with ARIA roles), proper heading hierarchy (<abbr title="Heading level 1">H1</abbr>–<abbr title="Heading level 3">H3</abbr>), descriptive alt text on all images, and screen-reader-only labels for decorative emoji on the About page.</p>
+
+    <h3>Phase 2 — Level AA</h3>
+    <p>Verified all text colours pass 4.5:1 contrast on dark backgrounds (range 5–16:1). Added <code>*:focus-visible</code> keyboard focus indicators (3 px solid blue outline), converted remaining pixel font sizes to <code>rem</code> units for 200 % zoom support, added <code>sr-only "(opens in new tab)"</code> labels to all external links, descriptive <code>aria-label</code> attributes to footer links, and a minimum 44 × 44 px touch target on all navigation and footer links.</p>
+
+    <h3>Phase 3 — Level AAA</h3>
+    <p>Raised muted text colour from #888888 to #AAAAAA (7.6–8.5:1 contrast on all dark backgrounds). Added a <code>prefers-reduced-motion</code> media query disabling all animations and transitions. Added visually-hidden section headings in every footer. Added descriptive <code>aria-label</code> attributes to all ambiguous links ("Email me", project navigation arrows, "Back to all work"). Marked first occurrences of abbreviations (<abbr title="Business-to-Business">B2B</abbr>, <abbr title="Software as a Service">SaaS</abbr>, <abbr title="Stock Keeping Units">SKUs</abbr>, <abbr title="User Experience">UX</abbr>, <abbr title="Artificial Intelligence">AI</abbr>) with <code>&lt;abbr&gt;</code> elements.</p>
+  </section>
+
+  <!-- AUTOMATED TEST RESULTS -->
+  <section class="content-section" aria-labelledby="tests-heading">
+    <h2 id="tests-heading">Automated test results</h2>
+    <p>Tool: <strong>axe-core 4.11.4</strong> via <code>@axe-core/cli</code>, run against <code>localhost:8000</code> with tags <code>wcag2a, wcag2aa, wcag2aaa</code>. Date: May 11, 2026.</p>
+    <div class="test-grid" role="list">
+      <div class="test-card" role="listitem">
+        <div class="test-page">index.html</div>
+        <div class="test-result">0 violations</div>
+        <div class="test-tool">axe-core 4.11.4</div>
+      </div>
+      <div class="test-card" role="listitem">
+        <div class="test-page">about.html</div>
+        <div class="test-result">0 violations</div>
+        <div class="test-tool">axe-core 4.11.4</div>
+      </div>
+      <div class="test-card" role="listitem">
+        <div class="test-page">rxtogo.html</div>
+        <div class="test-result">0 violations</div>
+        <div class="test-tool">axe-core 4.11.4</div>
+      </div>
+      <div class="test-card" role="listitem">
+        <div class="test-page">item-management.html</div>
+        <div class="test-result">0 violations</div>
+        <div class="test-tool">axe-core 4.11.4</div>
+      </div>
+      <div class="test-card" role="listitem">
+        <div class="test-page">allocatr.html</div>
+        <div class="test-result">0 violations</div>
+        <div class="test-tool">axe-core 4.11.4</div>
+      </div>
+      <div class="test-card" role="listitem">
+        <div class="test-page">abc-fire.html</div>
+        <div class="test-result">0 violations</div>
+        <div class="test-tool">axe-core 4.11.4</div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-size: 0.875rem; color: var(--text-muted);">Note: automated tools detect 20–50% of accessibility issues. Manual testing was also performed for keyboard navigation, screen reader announcements, colour contrast, zoom, and reduced-motion behaviour.</p>
+  </section>
+
+  <!-- MANUAL CHECKLIST -->
+  <section class="content-section" aria-labelledby="manual-heading">
+    <h2 id="manual-heading">Manual testing checklist</h2>
+    <table class="checklist">
+      <thead>
+        <tr>
+          <th scope="col">Test</th>
+          <th scope="col">Method</th>
+          <th scope="col">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Keyboard navigation — all interactive elements reachable in logical order</td>
+          <td>Tab key traversal</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>No keyboard trap — focus never locked on any element</td>
+          <td>Tab / Shift+Tab</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Skip-to-content link visible on focus, targets main content</td>
+          <td>Tab from address bar</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Focus indicator visible on every focused element (3 px blue outline)</td>
+          <td>Keyboard tab traversal</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>All text colour contrast ≥ 7:1 (AAA) on dark backgrounds</td>
+          <td>WebAIM Contrast Checker</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Page reflow at 200% zoom — no horizontal scroll, no content clipped</td>
+          <td>Browser zoom</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Animations and transitions disabled with OS reduce-motion setting</td>
+          <td>macOS reduce-motion + <code>prefers-reduced-motion</code></td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Landmark regions announced (<code>banner</code>, <code>navigation</code>, <code>main</code>, <code>contentinfo</code>)</td>
+          <td>Accessibility tree inspection</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Every link unambiguous when read in isolation (link-only context)</td>
+          <td>Accessibility tree link list</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>All images have appropriate alt text; decorative images are hidden</td>
+          <td>Accessibility tree + axe</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Abbreviations expanded on first use via <code>&lt;abbr&gt;</code></td>
+          <td>Source review</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>External links warn user they open in a new tab</td>
+          <td>Screen reader / sr-only text</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Sign language interpretation for video content</td>
+          <td><abbr title="Not Applicable">N/A</abbr> — no video</td>
+          <td class="na">N/A</td>
+        </tr>
+        <tr>
+          <td>Error prevention for form inputs</td>
+          <td><abbr title="Not Applicable">N/A</abbr> — no forms</td>
+          <td class="na">N/A</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- KNOWN LIMITATIONS -->
+  <section class="content-section" aria-labelledby="limits-heading">
+    <h2 id="limits-heading">Known limitations</h2>
+    <p>This is a static portfolio with no user-generated content, no forms, no video, and no timed interactions. The following AAA criteria are not applicable to the current site:</p>
+    <p><strong>1.2.6 Sign Language</strong> — no video content present.<br>
+    <strong>1.2.7 Extended Audio Description</strong> — no video content present.<br>
+    <strong>3.3.4 / 3.3.6 Error Prevention</strong> — no form inputs present.<br>
+    <strong>3.3.5 Help</strong> — a persistent contact link (Email) appears in every footer.</p>
+    <p>If video content or forms are added in the future, these criteria will be addressed before publishing.</p>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section class="content-section" aria-labelledby="feedback-heading">
+    <h2 id="feedback-heading">Report an accessibility issue</h2>
+    <div class="contact-block">
+      <p>If you encounter any barrier while using this site — difficulty navigating with a keyboard or screen reader, insufficient contrast, or anything else — please get in touch. I aim to respond within two business days.</p>
+      <p><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith to report an accessibility issue">adhith.shan@gmail.com</a></p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <h2 class="sr-only">Site footer and contact links</h2>
+  <ul class="footer-links">
+    <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'footer' } })">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>
+    <li><a href="about.html" aria-label="About Adhith">About</a></li>
+    <li><a href="accessibility.html" aria-label="Accessibility statement for this site">Accessibility</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed &amp; built with care.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
