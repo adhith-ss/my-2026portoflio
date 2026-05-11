@@ -27,7 +27,7 @@
 
     --text-primary: #E8E8E8;
     --text-secondary: #B0B0B0;
-    --text-muted: #888888;
+    --text-muted: #AAAAAA;
 
     --pastel-peach: #F4A89A;
     --pastel-mint: #8ED8B0;
@@ -1076,6 +1076,16 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
+
+/* ─── REDUCED MOTION (WCAG 2.2.3, 2.2.4) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1101,7 +1111,7 @@
 <header id="hero" class="hero container">
   <span class="hero-tag">Albertsons Companies · Enterprise Finance Platform · 2025–2026</span>
   <h1>From Excel to real-time forecast planning</h1>
-  <p class="hero-description">Designed an integrated dashboard and worksheet system that brought audit trails, accountability, and AI-powered allocation to financial forecast planning.</p>
+  <p class="hero-description">Designed an integrated dashboard and worksheet system that brought audit trails, accountability, and <abbr title="Artificial Intelligence">AI</abbr>-powered allocation to financial forecast planning.</p>
 
   <div class="hero-image">
     <img src="Allocatr_Ptf_Cover.png" alt="Allocatr Insights — Cover" style="width:100%;height:100%;object-fit:cover;">
@@ -1414,9 +1424,9 @@
 <!-- PROJECT NAVIGATION -->
 <nav class="project-nav container animate-on-scroll" aria-label="Project navigation">
   <div class="project-nav-buttons">
-    <a href="rxtogo.html" class="nav-btn nav-btn--prev">← View Previous Project</a>
-    <a href="#hero" class="nav-btn nav-btn--top">↑ Back to Top</a>
-    <a href="item-management.html" class="nav-btn nav-btn--next">View Next Project →</a>
+    <a href="rxtogo.html" class="nav-btn nav-btn--prev" aria-label="View previous project: RxToGo">← View Previous Project</a>
+    <a href="#hero" class="nav-btn nav-btn--top" aria-label="Back to top of page">↑ Back to Top</a>
+    <a href="item-management.html" class="nav-btn nav-btn--next" aria-label="View next project: Item Management">View Next Project →</a>
   </div>
 </nav>
 
@@ -1424,6 +1434,7 @@
 
 <!-- FOOTER -->
 <footer role="contentinfo">
+  <h2 class="sr-only">Site footer and contact links</h2>
   <ul class="footer-links">
     <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith">Email</a></li>
     <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>

@@ -27,7 +27,7 @@
 
     --text-primary: #E8E8E8;
     --text-secondary: #B0B0B0;
-    --text-muted: #888888;
+    --text-muted: #AAAAAA;
 
     --pastel-peach: #F4A89A;
     --pastel-mint: #8ED8B0;
@@ -1494,6 +1494,16 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
+
+/* ─── REDUCED MOTION (WCAG 2.2.3, 2.2.4) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1517,7 +1527,7 @@
 
 <!-- HERO -->
 <header id="hero" class="hero container">
-  <span class="hero-tag">Albertsons Companies · Enterprise B2B Platform · 2024–2025</span>
+  <span class="hero-tag">Albertsons Companies · Enterprise <abbr title="Business-to-Business">B2B</abbr> Platform · 2024–2025</span>
   <h1>Streamlined item onboarding for 600+ vendors in the Albertsons Partner Portal</h1>
   <p class="hero-description">I led the redesign of an enterprise item lifecycle management platform that reduced product setup from 6 days to 4, saving merchants 21 hours weekly, and mitigating $2.5B in compliance risk through real-time data validation.</p>
 
@@ -1543,7 +1553,7 @@
     </div>
     <div class="impact-cell">
       <div class="impact-number">250M+</div>
-      <div class="impact-label">SKUs managed</div>
+      <div class="impact-label"><abbr title="Stock Keeping Units">SKUs</abbr> managed</div>
     </div>
   </div>
 </div>
@@ -1589,7 +1599,7 @@
       <span class="role-tag">Information architecture</span>
       <span class="role-tag">Form design</span>
       <span class="role-tag">Design systems (UDS)</span>
-      <span class="role-tag">Data validation UX</span>
+      <span class="role-tag">Data validation <abbr title="User Experience">UX</abbr></span>
       <span class="role-tag">A/B testing</span>
     </div>
   </div>
@@ -1932,9 +1942,9 @@
 <!-- PROJECT NAVIGATION -->
 <nav class="project-nav container animate-on-scroll" aria-label="Project navigation">
   <div class="project-nav-buttons">
-    <a href="allocatr.html" class="nav-btn nav-btn--prev">← View Previous Project</a>
-    <a href="#hero" class="nav-btn nav-btn--top">↑ Back to Top</a>
-    <a href="rxtogo.html" class="nav-btn nav-btn--next">View Next Project →</a>
+    <a href="allocatr.html" class="nav-btn nav-btn--prev" aria-label="View previous project: Allocatr Insights">← View Previous Project</a>
+    <a href="#hero" class="nav-btn nav-btn--top" aria-label="Back to top of page">↑ Back to Top</a>
+    <a href="rxtogo.html" class="nav-btn nav-btn--next" aria-label="View next project: RxToGo">View Next Project →</a>
   </div>
 </nav>
 
@@ -1942,6 +1952,7 @@
 
 <!-- FOOTER -->
 <footer role="contentinfo">
+  <h2 class="sr-only">Site footer and contact links</h2>
   <ul class="footer-links">
     <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith">Email</a></li>
     <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>

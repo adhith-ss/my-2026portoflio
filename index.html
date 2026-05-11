@@ -29,7 +29,7 @@
 
     --text-primary: #E8E8E8;
     --text-secondary: #B0B0B0;
-    --text-muted: #888888;
+    --text-muted: #AAAAAA;
 
     --pastel-peach: #F4A89A;
     --pastel-mint: #8ED8B0;
@@ -783,6 +783,16 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
+
+/* ─── REDUCED MOTION (WCAG 2.2.3, 2.2.4) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -808,7 +818,7 @@
 <header class="hero container">
   <p class="hero-greeting">Hello, I'm Adhith</p>
   <h1>I design enterprise solutions that drive impact</h1>
-  <p class="hero-description hero-after">5+ years making complex B2B and SaaS workflows feel obvious. Shipped to 600+ stores and hundreds of vendor-merchants. Most recently Senior Product Designer at</p>
+  <p class="hero-description hero-after">5+ years making complex <abbr title="Business-to-Business">B2B</abbr> and <abbr title="Software as a Service">SaaS</abbr> workflows feel obvious. Shipped to 600+ stores and hundreds of vendor-merchants. Most recently Senior Product Designer at</p>
   <div class="hero-logos hero-after">
     <img src="Alb_Horiz_RGB%201.png" alt="Albertsons" class="brand-logo">
     <img src="Walmart-Logo-hero.png" alt="Walmart" class="brand-logo">
@@ -819,7 +829,7 @@
   </div>
   <div class="hero-ctas hero-after">
     <a href="#work" class="hero-btn hero-btn--ghost">See selected work ↓</a>
-    <a href="mailto:adhith.shan@gmail.com" class="hero-btn hero-btn--primary" onclick="va('event', { name: 'email_clicked', data: { source: 'hero' } })">Email me →</a>
+    <a href="mailto:adhith.shan@gmail.com" class="hero-btn hero-btn--primary" aria-label="Send email to Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'hero' } })">Email me →</a>
   </div>
 </header>
 
@@ -976,6 +986,7 @@
 
 <!-- FOOTER -->
 <footer role="contentinfo">
+  <h2 class="sr-only">Site footer and contact links</h2>
   <ul class="footer-links">
     <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'footer' } })">Email</a></li>
     <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>

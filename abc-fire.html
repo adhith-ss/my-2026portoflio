@@ -25,7 +25,7 @@
 
     --text-primary: #E8E8E8;
     --text-secondary: #B0B0B0;
-    --text-muted: #888888;
+    --text-muted: #AAAAAA;
 
     --pastel-peach: #F4A89A;
     --pastel-mint: #8ED8B0;
@@ -565,6 +565,16 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
+
+/* ─── REDUCED MOTION (WCAG 2.2.3, 2.2.4) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -724,13 +734,14 @@
 
 <!-- ─── BACK LINK ─── -->
 <div class="container back-link-wrap animate-on-scroll">
-  <a href="index.html" class="back-link">← Back to all work</a>
+  <a href="index.html" class="back-link" aria-label="Back to all work on homepage">← Back to all work</a>
 </div>
 
 </main>
 
 <!-- ─── FOOTER ─── -->
 <footer role="contentinfo">
+  <h2 class="sr-only">Site footer and contact links</h2>
   <ul class="footer-links">
     <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'footer' } })">Email</a></li>
     <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>
