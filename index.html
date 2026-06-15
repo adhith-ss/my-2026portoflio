@@ -687,13 +687,20 @@
   .stagger-3 { transition-delay: 0.3s; }
   .stagger-4 { transition-delay: 0.4s; }
 
-  .tools-line {
-    font-size: 0.85rem;
-    opacity: 0.55;
+  .tools-logos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
     margin-top: 20px;
-    letter-spacing: 0.02em;
-    color: var(--text-muted);
   }
+  .tool-logo {
+    height: 20px;
+    width: auto;
+    opacity: 0.45;
+    transition: opacity 0.2s ease;
+  }
+  .tool-logo:hover { opacity: 0.8; }
 
   /* ─── HERO TYPEWRITER ─── */
   .hero-greeting {
@@ -841,7 +848,14 @@
     <a href="#work" class="hero-btn hero-btn--ghost">See selected work ↓</a>
     <a href="mailto:adhith.shan@gmail.com" class="hero-btn hero-btn--primary" aria-label="Send email to Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'hero' } })">Email me →</a>
   </div>
-  <p class="tools-line hero-after">Working in Figma · Claude · Cursor · Maze · Dovetail · WCAG accessibility standards</p>
+  <div class="tools-logos hero-after" aria-label="Tools: Figma, Claude, Cursor, Maze, Dovetail, WCAG">
+    <img src="https://cdn.simpleicons.org/figma/888888" alt="Figma" title="Figma" class="tool-logo">
+    <img src="https://cdn.simpleicons.org/anthropic/888888" alt="Claude" title="Claude" class="tool-logo">
+    <img src="https://cdn.simpleicons.org/cursor/888888" alt="Cursor" title="Cursor" class="tool-logo">
+    <img src="https://cdn.simpleicons.org/maze/888888" alt="Maze" title="Maze" class="tool-logo">
+    <img src="https://cdn.simpleicons.org/dovetail/888888" alt="Dovetail" title="Dovetail" class="tool-logo">
+    <img src="https://cdn.simpleicons.org/w3c/888888" alt="WCAG" title="WCAG Accessibility Standards" class="tool-logo">
+  </div>
 </header>
 
 <!-- WORK -->
