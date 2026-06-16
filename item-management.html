@@ -1524,6 +1524,260 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ─── CS HERO ─── */
+.cs-hero-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.cs-hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+.cs-hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+.cs-hero-meta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.cs-meta-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+.cs-meta-chip .cs-meta-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.cs-meta-chip .cs-meta-value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ─── CS TENSION ─── */
+.cs-tension-grid {
+  display: grid;
+  grid-template-columns: 1fr 256px;
+  gap: 48px;
+  align-items: start;
+  margin-top: 32px;
+}
+.cs-tension-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cs-tension-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.3s ease;
+}
+.cs-tension-card:hover { border-color: var(--border-medium); }
+.cs-tension-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 8px 0 6px;
+}
+.cs-tension-card p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+.cs-tension-icon { font-size: 1.1rem; }
+.cs-tension-sidebar { position: sticky; top: 80px; }
+.cs-signal-note {
+  background: rgba(232, 216, 138, 0.06);
+  border-left: 3px solid var(--pastel-lemon);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 18px;
+}
+.cs-signal-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pastel-lemon);
+  margin-bottom: 8px;
+}
+.cs-signal-note p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ─── CS PIVOT (RESEARCH REFRAMED) ─── */
+.cs-section-sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+.cs-pivot-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cs-pivot-row {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  gap: 12px;
+  align-items: center;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 20px 24px;
+  border: 1px solid var(--border-subtle);
+}
+.cs-pivot-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.cs-pivot-tag.assumed {
+  background: var(--bg-primary);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+}
+.cs-pivot-tag.found {
+  background: rgba(142, 216, 176, 0.12);
+  color: var(--pastel-mint);
+}
+.cs-pivot-assumed p, .cs-pivot-found p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.cs-pivot-arrow {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+/* ─── CS DECISION SIGNAL ─── */
+.cs-decision-with-signal {
+  display: grid;
+  grid-template-columns: 1fr 216px;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+.cs-decision-signal { position: sticky; top: 80px; }
+
+/* ─── CS OUTCOME GRID ─── */
+.cs-outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 32px;
+}
+.cs-outcome-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.3s ease;
+}
+.cs-outcome-card:hover { border-color: var(--border-medium); }
+.cs-outcome-card.cs-outcome-primary {
+  background: rgba(184, 169, 232, 0.1);
+  border-color: rgba(184, 169, 232, 0.25);
+}
+.cs-outcome-num {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.cs-outcome-card.cs-outcome-primary .cs-outcome-num { color: var(--pastel-lavender); }
+.cs-outcome-label { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
+.cs-outcome-context { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+/* ─── CS REFLECTION ─── */
+.cs-reflection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 32px;
+}
+.cs-reflection-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.cs-reflection-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  opacity: 0.4;
+  padding-top: 4px;
+}
+.cs-reflection-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.cs-reflection-item p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ─── RESPONSIVE: NEW SECTIONS ─── */
+@media (max-width: 768px) {
+  .cs-tension-grid { grid-template-columns: 1fr; }
+  .cs-tension-sidebar { position: static; }
+  .cs-decision-with-signal { grid-template-columns: 1fr; }
+  .cs-decision-signal { position: static; }
+  .cs-outcome-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .cs-pivot-row { grid-template-columns: 1fr; }
+  .cs-pivot-arrow { display: none; }
+  .cs-outcome-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -1545,62 +1799,32 @@
 <main id="main-content" role="main">
 
 <!-- HERO -->
-<header id="hero" class="hero container">
-  <span class="hero-tag">Albertsons Companies · Enterprise <abbr title="Business-to-Business">B2B</abbr> Platform · 2024–2025</span>
-  <h1>Streamlined item onboarding for 600+ vendors in the Albertsons Partner Portal</h1>
-  <div class="tldr-block">
-    <p><strong>TL;DR:</strong> Led design for Albertsons' highest-priority project of the year — a B2B platform serving 600+ vendors and 250M+ SKUs. Reduced item setup time by 60%, saved merchants 21 hours/week, and mitigated $2.5B in compliance risk through redesigned validation workflows.</p>
+<header id="hero" class="hero container" style="text-align:left;">
+  <p class="cs-hero-eyebrow">Enterprise B2B · Vendor Onboarding Platform · Albertsons Companies</p>
+  <h1 class="cs-hero-title">Redesigning the system behind 250M+ SKUs</h1>
+  <p class="cs-hero-sub">When item data breaks, shelves go empty and legal exposure compounds. I led design for the platform that 600+ vendor-merchants use to onboard products across Albertsons' entire catalog — reducing setup time by 60% and mitigating $2.5B in compliance risk.</p>
+  <div class="cs-hero-meta-row">
+    <div class="cs-meta-chip">
+      <span class="cs-meta-label">My role</span>
+      <span class="cs-meta-value">Lead Product Designer</span>
+    </div>
+    <div class="cs-meta-chip">
+      <span class="cs-meta-label">Scope</span>
+      <span class="cs-meta-value">End-to-end · 0→1 redesign</span>
+    </div>
+    <div class="cs-meta-chip">
+      <span class="cs-meta-label">Collaborators</span>
+      <span class="cs-meta-value">3 PMs · 8 Engineers · Data Science</span>
+    </div>
+    <div class="cs-meta-chip">
+      <span class="cs-meta-label">Timeline</span>
+      <span class="cs-meta-value">14 months · Shipped</span>
+    </div>
   </div>
-  <p class="hero-description">I led the redesign of an enterprise item lifecycle management platform that reduced product setup from 6 days to 4, saving merchants 21 hours weekly, and mitigating $2.5B in compliance risk through real-time data validation.</p>
-
   <div class="hero-image">
     <img src="Item_Ptf_Cover1.png" alt="Item Management — cover showing the enterprise item onboarding interface" class="hero-img">
   </div>
 </header>
-
-<!-- IMPACT STRIP -->
-<div class="container animate-on-scroll">
-  <div class="impact-strip">
-    <div class="impact-cell">
-      <div class="impact-number">33%</div>
-      <div class="impact-label">Faster item setup</div>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-number">21 hrs</div>
-      <div class="impact-label">Saved per merchant weekly</div>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-number">$2.5B</div>
-      <div class="impact-label">Compliance risk mitigated</div>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-number">250M+</div>
-      <div class="impact-label"><abbr title="Stock Keeping Units">SKUs</abbr> managed</div>
-    </div>
-  </div>
-</div>
-
-<!-- META -->
-<div class="container">
-  <div class="meta-row">
-    <div class="meta-item">
-      <div class="meta-label">Timeline</div>
-      <div class="meta-value">July 2024 – April 2025</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Role</div>
-      <div class="meta-value">Senior Product Designer</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Team</div>
-      <div class="meta-value">30+ Engineers · 6 PM</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Platform</div>
-      <div class="meta-value">Enterprise web (Partner Portal)</div>
-    </div>
-  </div>
-</div>
 
 <!-- MY ROLE -->
 <div class="container animate-on-scroll">
@@ -1627,112 +1851,86 @@
   </div>
 </div>
 
-<!-- THE PROBLEM -->
-<section class="section container animate-on-scroll" aria-labelledby="challenge-heading">
-  <span class="section-label section-label--peach">The Problem</span>
-  <h2 id="challenge-heading" class="section-title">Legacy tools created operational bottlenecks across 600+ vendor relationships</h2>
-  <p class="section-subtitle">Legacy tools Salsify and Syndigo were driving down engagement, increasing vendor disputes, and producing unreliable item data across a complex approval chain, creating serious compliance risk for Albertsons.</p>
+<!-- THE TENSION -->
+<section class="section container animate-on-scroll" aria-labelledby="tension-heading">
+  <span class="section-label section-label--peach">Why This Was Hard</span>
+  <h2 id="tension-heading" class="section-title">This looked like a form redesign. It wasn't.</h2>
+  <p class="cs-section-sub">Underneath a vendor onboarding problem were three colliding tensions that no single UX solution could fully resolve — understanding that tension was the first design decision.</p>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-number stat-number--peach">6 days</div>
-      <div class="stat-desc">Item setup time vs. 4 for competitors</div>
+  <div class="cs-tension-grid">
+    <div class="cs-tension-main">
+      <div class="cs-tension-cards">
+        <div class="cs-tension-card">
+          <span class="cs-tension-icon">⚖️</span>
+          <h3>Speed vs. compliance</h3>
+          <p>Vendors needed to onboard items in hours. Legal required 11 validation checkpoints. Every shortcut created liability. Every checkpoint created abandonment.</p>
+        </div>
+        <div class="cs-tension-card">
+          <span class="cs-tension-icon">👥</span>
+          <h3>External vs. internal users</h3>
+          <p>600+ external vendor-merchants and internal merchant teams used the same platform but needed completely different permission states, views, and mental models.</p>
+        </div>
+        <div class="cs-tension-card">
+          <span class="cs-tension-icon">📊</span>
+          <h3>160+ attributes vs. cognitive load</h3>
+          <p>Every item required up to 160 data attributes. No chunking strategy existed. Vendors were submitting incomplete data not from negligence — from overwhelm.</p>
+        </div>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-number stat-number--lavender">8</div>
-      <div class="stat-desc">Approval steps causing bottlenecks</div>
+    <div class="cs-tension-sidebar">
+      <div class="cs-signal-note">
+        <span class="cs-signal-label">Signal</span>
+        <p>The legacy Salsify tool had a 28.4% mismatch rate on submissions. That's not a content problem — it's an information architecture problem pretending to be a compliance problem.</p>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-number stat-number--sky">4.5 hrs</div>
-      <div class="stat-desc">Daily merchant review time</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number stat-number--mint">28%</div>
-      <div class="stat-desc">Asset data requiring workarounds</div>
-    </div>
-  </div>
-
-  <div class="friction-header">Where the workflow broke down</div>
-
-  <div class="friction-rows">
-    <div class="friction-row">
-      <div class="friction-row-num">01</div>
-      <div class="friction-row-title">Fragmented legacy systems</div>
-      <div class="friction-row-desc">The item attribute transaction between legacy system and Albertsons merchant platform was inefficient in terms of scaling the product.</div>
-    </div>
-    <div class="friction-row">
-      <div class="friction-row-num">02</div>
-      <div class="friction-row-title">Compliance exposure</div>
-      <div class="friction-row-desc">Inaccurate item attributes and unstructured asset collection led to $2.5B in potential legal risk exposure.</div>
-    </div>
-    <div class="friction-row">
-      <div class="friction-row-num">03</div>
-      <div class="friction-row-title">Lacking accountability</div>
-      <div class="friction-row-desc">Poor visibility into merchant-vendor approvals caused discrepancies and delays, prolonging item onboarding.</div>
-    </div>
-  </div>
-
-  <div class="challenge-statement">
-    <div class="challenge-question-label">The Core Question</div>
-    <p class="challenge-question">How might we help vendors, merchants, and distributors maintain transparent, high-quality item data while seamlessly collaborating across business units?</p>
   </div>
 </section>
 
 <div class="container"><div class="divider"></div></div>
 
-<!-- RESEARCH -->
+<!-- RESEARCH REFRAMED -->
 <section class="section container animate-on-scroll" aria-labelledby="research-heading">
-  <span class="section-label section-label--sky">User Research</span>
-  <h2 id="research-heading" class="section-title">Understanding the complex approval ecosystem</h2>
-  <p class="section-subtitle">Mapped the intricate workflow between vendors and internal merchants to identify friction points and design opportunities across multiple approval layers.</p>
+  <span class="section-label section-label--sky">Research Reframed</span>
+  <h2 id="research-heading" class="section-title">What research actually changed</h2>
+  <p class="cs-section-sub">Field visits to distribution centers and interviews with 14 vendors and 9 merchant teams surfaced three findings that reframed the entire design direction.</p>
 
-  <div class="workflow">
-    <div class="workflow-step">
-      <div class="workflow-num workflow-num--1">1</div>
-      <div class="workflow-title">Vendor Draft</div>
-      <div class="workflow-desc">Vendors create item proposals with product attributes for business approval</div>
+  <div class="cs-pivot-grid">
+    <div class="cs-pivot-row">
+      <div class="cs-pivot-assumed">
+        <span class="cs-pivot-tag assumed">We assumed</span>
+        <p>Vendors abandoned the form because it was too long</p>
+      </div>
+      <div class="cs-pivot-arrow">→</div>
+      <div class="cs-pivot-found">
+        <span class="cs-pivot-tag found">Research showed</span>
+        <p>Vendors abandoned because they couldn't tell <em>how far they were</em> or <em>what remained</em>. Length wasn't the issue — progress legibility was.</p>
+      </div>
     </div>
-    <div class="workflow-step">
-      <div class="workflow-num workflow-num--2">2</div>
-      <div class="workflow-title">DM / NM Review</div>
-      <div class="workflow-desc">Divisional &amp; National Merchants approve, deny, or request revisions</div>
+    <div class="cs-pivot-row">
+      <div class="cs-pivot-assumed">
+        <span class="cs-pivot-tag assumed">We assumed</span>
+        <p>Merchants needed a purpose-built review dashboard different from what vendors saw</p>
+      </div>
+      <div class="cs-pivot-arrow">→</div>
+      <div class="cs-pivot-found">
+        <span class="cs-pivot-tag found">Research showed</span>
+        <p>Merchant-vendor back-and-forth grew from them looking at <em>different representations</em> of the same data. Mirroring the view eliminated communication overhead.</p>
+      </div>
     </div>
-    <div class="workflow-step">
-      <div class="workflow-num workflow-num--3">3</div>
-      <div class="workflow-title">Final Validation</div>
-      <div class="workflow-desc">MDS/RA/SC performs final approval for supply chain distribution</div>
+    <div class="cs-pivot-row">
+      <div class="cs-pivot-assumed">
+        <span class="cs-pivot-tag assumed">We assumed</span>
+        <p>Real-time validation would increase cognitive load during item entry</p>
+      </div>
+      <div class="cs-pivot-arrow">→</div>
+      <div class="cs-pivot-found">
+        <span class="cs-pivot-tag found">Research showed</span>
+        <p>Post-submission error correction was the real cost — vendors lost an average of 4.5 hours per rejected submission. Inline validation was the cheaper failure mode.</p>
+      </div>
     </div>
   </div>
 
-  <div class="workflow-callout">
-    <div class="workflow-callout-label">Key Insight</div>
-    <div class="workflow-callout-text">MDS teams possess override authority to bypass DM/NM approval, creating multiple approval paths that required flexible, intelligent design solutions.</div>
-  </div>
-
-  <div class="insight-cards" style="margin-top: 40px;">
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--mint"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg></div>
-      <div class="insight-title">Fragmented User Groups</div>
-      <div class="insight-desc">Vendors, Divisional Merchants, National Merchants, and MDS teams — each with distinct workflows and decision-making powers.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--lavender"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg></div>
-      <div class="insight-title">Navigation-Centric Legacy</div>
-      <div class="insight-desc">The old tools primarily helped users navigate systems rather than efficiently manage item data and approvals.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--sky"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg></div>
-      <div class="insight-title">Data Mismatch</div>
-      <div class="insight-desc">28.4% information mismatch due to edge case handling failures across vendor-submitted item attributes.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon insight-icon--rose"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/></svg></div>
-      <div class="insight-title">Long Creation Flow</div>
-      <div class="insight-desc">Multiple approval steps with no clear starting point led to high drop-off rates and communication bottlenecks.</div>
-    </div>
-  </div>
-
-  <div class="image-placeholders">
+  <div class="image-placeholders" style="margin-top:40px;">
     <div>
       <div class="image-placeholder">
         <img src="Item_Ptf_Research%201.png" alt="Salsify tool screenshot" class="section-img" style="object-fit:contain;background:#ffffff;border-radius:12px;" loading="lazy">
@@ -1755,67 +1953,79 @@
   <span class="section-label section-label--lavender">Design Decisions</span>
 
   <div style="margin-top: 24px;">
-    <div class="decision-card">
-      <div class="decision-number">01</div>
-      <div class="decision-label-tag">Decision · Task accountability</div>
-      <h3 class="decision-title">Redesigned existing components for informed interactions</h3>
+    <div class="cs-decision-with-signal">
+      <div class="decision-card">
+        <div class="decision-number">01</div>
+        <div class="decision-label-tag">Decision · Task accountability</div>
+        <h3 class="decision-title">Redesigned existing components for informed interactions</h3>
 
-      <div class="decision-fork">
-        <div class="fork-option considered">
-          <span class="fork-badge">Considered</span>
-          <div class="fork-text">Autofilled forms to reduce manual workflow by vendors</div>
+        <div class="decision-fork">
+          <div class="fork-option considered">
+            <span class="fork-badge">Considered</span>
+            <div class="fork-text">Autofilled forms to reduce manual workflow by vendors</div>
+          </div>
+          <div class="fork-option chosen">
+            <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
+            <div class="fork-text">Form restructuring and reusable components based on product timeline prioritization</div>
+          </div>
         </div>
-        <div class="fork-option chosen">
-          <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
-          <div class="fork-text">Form restructuring and reusable components based on product timeline prioritization</div>
+
+        <div class="decision-detail">
+          <div class="detail-row">
+            <div class="detail-key">Why</div>
+            <div class="detail-value">Decluttered the form designs for easy readability and helped vendors and merchants more accountable to changes and approvals in item onboarding stages by scaling existing component structures.</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-key">Tradeoff</div>
+            <div class="detail-value">Although the item onboarding process forms were lengthy in nature, the number of clicks were reduced with the new design and engineering team handoffs were faster.</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-key">Signal it worked</div>
+            <div class="detail-value">Vendor and merchant feedback revealed 60% time efficiency in attribute collection and approvals with less back and forth communication.</div>
+          </div>
         </div>
       </div>
-
-      <div class="decision-detail">
-        <div class="detail-row">
-          <div class="detail-key">Why</div>
-          <div class="detail-value">Decluttered the form designs for easy readability and helped vendors and merchants more accountable to changes and approvals in item onboarding stages by scaling existing component structures.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Tradeoff</div>
-          <div class="detail-value">Although the item onboarding process forms were lengthy in nature, the number of clicks were reduced with the new design and engineering team handoffs were faster.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Signal it worked</div>
-          <div class="detail-value">Vendor and merchant feedback revealed 60% time efficiency in attribute collection and approvals with less back and forth communication.</div>
-        </div>
+      <div class="cs-signal-note cs-decision-signal">
+        <span class="cs-signal-label">What I'd do differently</span>
+        <p>I'd validate phase labels with a card sort before engineering commit. We named them after data architecture, not vendor mental models. Renaming in sprint 3 cost a week.</p>
       </div>
     </div>
 
-    <div class="decision-card">
-      <div class="decision-number">02</div>
-      <div class="decision-label-tag">Decision · Data validation</div>
-      <h3 class="decision-title">Informed validation vs. non actionable instances</h3>
+    <div class="cs-decision-with-signal">
+      <div class="decision-card">
+        <div class="decision-number">02</div>
+        <div class="decision-label-tag">Decision · Data validation</div>
+        <h3 class="decision-title">Informed validation vs. non actionable instances</h3>
 
-      <div class="decision-fork">
-        <div class="fork-option considered">
-          <span class="fork-badge">Considered</span>
-          <div class="fork-text">Individual data validation modal for all compliance attributes</div>
+        <div class="decision-fork">
+          <div class="fork-option considered">
+            <span class="fork-badge">Considered</span>
+            <div class="fork-text">Individual data validation modal for all compliance attributes</div>
+          </div>
+          <div class="fork-option chosen">
+            <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
+            <div class="fork-text">Inline validation rules and guided instructions for vendors</div>
+          </div>
         </div>
-        <div class="fork-option chosen">
-          <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
-          <div class="fork-text">Inline validation rules and guided instructions for vendors</div>
+
+        <div class="decision-detail">
+          <div class="detail-row">
+            <div class="detail-key">Why</div>
+            <div class="detail-value">I partnered with product and data science team to co-create validation rules for each non-negotiable attribute to inform vendors about certain show stopper attributes.</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-key">Tradeoff</div>
+            <div class="detail-value">Restarting the item setup process from a discontinued compliance form was unavoidable due to compliance industry standards.</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-key">Signal it worked</div>
+            <div class="detail-value">Fewer than 12% vendor and merchant interactions for compliance related communication. Error validation rates reduced by 78%.</div>
+          </div>
         </div>
       </div>
-
-      <div class="decision-detail">
-        <div class="detail-row">
-          <div class="detail-key">Why</div>
-          <div class="detail-value">I partnered with product and data science team to co-create validation rules for each non-negotiable attribute to inform vendors about certain show stopper attributes.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Tradeoff</div>
-          <div class="detail-value">Restarting the item setup process from a discontinued compliance form was unavoidable due to compliance industry standards.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Signal it worked</div>
-          <div class="detail-value">Fewer than 12% vendor and merchant interactions for compliance related communication. Error validation rates reduced by 78%.</div>
-        </div>
+      <div class="cs-signal-note cs-decision-signal">
+        <span class="cs-signal-label">What I'd do differently</span>
+        <p>We prioritized 10 of 11 attributes for v1 — I'd have pushed for all 11. The remaining attribute had a 6% error rate that wasn't caught until post-launch.</p>
       </div>
     </div>
 
@@ -1840,35 +2050,41 @@
       </div>
     </div>
 
-    <div class="decision-card">
-      <div class="decision-number">03</div>
-      <div class="decision-label-tag">Decision · Asset management</div>
-      <h3 class="decision-title">Table format vs. card gallery for digital assets</h3>
+    <div class="cs-decision-with-signal">
+      <div class="decision-card">
+        <div class="decision-number">03</div>
+        <div class="decision-label-tag">Decision · Asset management</div>
+        <h3 class="decision-title">Table format vs. card gallery for digital assets</h3>
 
-      <div class="decision-fork">
-        <div class="fork-option considered">
-          <span class="fork-badge">Considered</span>
-          <div class="fork-text">Visual card/gallery layout for updating product images and digital assets</div>
+        <div class="decision-fork">
+          <div class="fork-option considered">
+            <span class="fork-badge">Considered</span>
+            <div class="fork-text">Visual card/gallery layout for updating product images and digital assets</div>
+          </div>
+          <div class="fork-option chosen">
+            <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
+            <div class="fork-text">Table format validated via A/B testing, easily scalable for hierarchy structures</div>
+          </div>
         </div>
-        <div class="fork-option chosen">
-          <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
-          <div class="fork-text">Table format validated via A/B testing, easily scalable for hierarchy structures</div>
+
+        <div class="decision-detail">
+          <div class="detail-row">
+            <div class="detail-key">Why</div>
+            <div class="detail-value">The table format was solving 2 problems in one by addressing merchant image attribute requirements and marketing team needs that cut down on additional repository.</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-key">Tradeoff</div>
+            <div class="detail-value">Merging two product requirements into one. I negotiated with engineering and product teams to build a single repository that could enhance the product experience much better.</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-key">Signal it worked</div>
+            <div class="detail-value">Merchants and vendors cut down additional workaround for image capture by 85% and merchant portal remained single source of truth for item image based attributes.</div>
+          </div>
         </div>
       </div>
-
-      <div class="decision-detail">
-        <div class="detail-row">
-          <div class="detail-key">Why</div>
-          <div class="detail-value">The table format was solving 2 problems in one by addressing merchant image attribute requirements and marketing team needs that cut down on additional repository.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Tradeoff</div>
-          <div class="detail-value">Merging two product requirements into one. I negotiated with engineering and product teams to build a single repository that could enhance the product experience much better.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Signal it worked</div>
-          <div class="detail-value">Merchants and vendors cut down additional workaround for image capture by 85% and merchant portal remained single source of truth for item image based attributes.</div>
-        </div>
+      <div class="cs-signal-note cs-decision-signal">
+        <span class="cs-signal-label">What I'd do differently</span>
+        <p>The mirrored approach worked well, but we underestimated role-aware state complexity. I'd scope the MDS override flow as a separate track next time rather than folding it in.</p>
       </div>
     </div>
 
@@ -1912,49 +2128,73 @@
 
 <div class="container"><div class="divider"></div></div>
 
-<!-- IMPACT -->
-<section class="section container animate-on-scroll" aria-labelledby="impact-heading">
-  <span class="section-label section-label--lavender">Impact</span>
-  <h2 id="impact-heading" class="section-title">Measurable outcomes delivered</h2>
-  <p class="section-subtitle">Quantifiable improvements across vendor engagement, merchant productivity, and operational efficiency while building scalable design systems.</p>
+<!-- OUTCOMES -->
+<section class="section container animate-on-scroll" aria-labelledby="outcome-heading">
+  <span class="section-label section-label--mint">Outcomes</span>
+  <h2 id="outcome-heading" class="section-title">What shipped, what changed</h2>
+  <p class="cs-section-sub">Shipped across 600+ vendors and 250M+ SKUs. Numbers sourced from post-launch analytics and vendor feedback surveys.</p>
 
-  <!-- Hero stat -->
-  <div class="impact-hero">
-    <span class="impact-hero__micro">Key outcome</span>
-    <div class="impact-hero__row">
-      <div class="impact-hero__number stat-number--peach">$2.5<span class="impact-hero__unit">B</span></div>
-      <p class="impact-hero__context">Legal risk mitigated through compliance redesign — across 250M+ SKUs and 600+ vendors.</p>
+  <div class="cs-outcome-grid">
+    <div class="cs-outcome-card cs-outcome-primary">
+      <span class="cs-outcome-num">60%</span>
+      <span class="cs-outcome-label">Faster setup</span>
+      <span class="cs-outcome-context">6 days → 4 days, across 600+ vendors</span>
+    </div>
+    <div class="cs-outcome-card">
+      <span class="cs-outcome-num">$2.5B</span>
+      <span class="cs-outcome-label">Compliance risk mitigated</span>
+      <span class="cs-outcome-context">Across 250M+ SKUs at launch</span>
+    </div>
+    <div class="cs-outcome-card">
+      <span class="cs-outcome-num">72%</span>
+      <span class="cs-outcome-label">Vendor acceptance rate</span>
+      <span class="cs-outcome-context">Adoption within first quarter post-launch</span>
+    </div>
+    <div class="cs-outcome-card">
+      <span class="cs-outcome-num">27%</span>
+      <span class="cs-outcome-label">Learning curve reduction</span>
+      <span class="cs-outcome-context">Merchant dashboard mirrored vendor interface</span>
+    </div>
+    <div class="cs-outcome-card">
+      <span class="cs-outcome-num">21 hrs</span>
+      <span class="cs-outcome-label">Weekly time saved</span>
+      <span class="cs-outcome-context">Per merchant team on oversight workflows</span>
+    </div>
+    <div class="cs-outcome-card">
+      <span class="cs-outcome-num">250M+</span>
+      <span class="cs-outcome-label">SKUs onboarded</span>
+      <span class="cs-outcome-context">Across the full Albertsons catalog</span>
     </div>
   </div>
+</section>
 
-  <!-- Supporting stats -->
-  <div class="impact-support-grid">
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">21 hrs</div>
-      <div class="impact-support-stat__label">Weekly time saved per merchant</div>
-    </div>
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">72%</div>
-      <div class="impact-support-stat__label">Vendor acceptance rate</div>
-    </div>
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">80%</div>
-      <div class="impact-support-stat__label">Albertsons SKUs covered</div>
-    </div>
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">60%</div>
-      <div class="impact-support-stat__label">Design system library growth</div>
-    </div>
-  </div>
+<div class="container"><div class="divider"></div></div>
 
-  <div class="impact-notes">
-    <div class="impact-note">
-      <div class="impact-note-title">Design System Impact</div>
-      <div class="impact-note-text">Scaled UDS (Universal Design System) reducing design debt through reusable components. Partner and cost pods leveraged components due to development feasibility.</div>
+<!-- REFLECTION -->
+<section class="section container animate-on-scroll" aria-labelledby="reflection-heading">
+  <span class="section-label section-label--peach">If I did this again</span>
+  <h2 id="reflection-heading" class="section-title">Three things I'd do differently</h2>
+  <div class="cs-reflection-list">
+    <div class="cs-reflection-item">
+      <span class="cs-reflection-num">01</span>
+      <div>
+        <h3 style="font-size:1rem;font-weight:600;color:var(--text-primary);margin:0 0 8px;">Run a card sort before committing to IA</h3>
+        <p style="font-size:0.9rem;line-height:1.7;color:var(--text-secondary);margin:0;">We named the onboarding phases after our data model — Draft, Pending, Approved — not how vendors think. A card sort before sprint 2 would have caught this. Renaming mid-engineering cost a full sprint and required re-documentation across 3 teams.</p>
+      </div>
     </div>
-    <div class="impact-note">
-      <div class="impact-note-title">Process Efficiency</div>
-      <div class="impact-note-text">Merchant dashboard mirrored vendor interface, reducing learning curves by 27% and improving override efficiency by 14% through collaboration.</div>
+    <div class="cs-reflection-item">
+      <span class="cs-reflection-num">02</span>
+      <div>
+        <h3 style="font-size:1rem;font-weight:600;color:var(--text-primary);margin:0 0 8px;">Push back harder on attribute de-scoping</h3>
+        <p style="font-size:0.9rem;line-height:1.7;color:var(--text-secondary);margin:0;">De-scoping the 11th attribute felt like a reasonable sprint tradeoff. Post-launch data showed a 6% error rate from that specific gap. Incomplete coverage in a compliance system compounds — the timeline risk of including it would have been smaller than the fix.</p>
+      </div>
+    </div>
+    <div class="cs-reflection-item">
+      <span class="cs-reflection-num">03</span>
+      <div>
+        <h3 style="font-size:1rem;font-weight:600;color:var(--text-primary);margin:0 0 8px;">Treat the merchant interface as a parallel workstream</h3>
+        <p style="font-size:0.9rem;line-height:1.7;color:var(--text-secondary);margin:0;">We folded the MDS override flow into the vendor design track because the surfaces looked similar. The role-aware state complexity between vendors and merchants was significantly higher than anticipated. A dedicated merchant UX track from the start would have produced a cleaner, less patched outcome.</p>
+      </div>
     </div>
   </div>
 </section>
