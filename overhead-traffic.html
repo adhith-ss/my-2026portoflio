@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
+<link rel="shortcut icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
+<link rel="apple-touch-icon" href="AS_Logo_PtfTab_b.png">
+<title>Overhead Traffic — Adhith Shanmuga Sundaram</title>
+<meta name="description" content="A live flight radar widget for portfolio visitors — IP-estimated location, ADS-B aircraft data, and a radar scope that tells the truth about precision.">
+<meta property="og:title" content="Overhead Traffic — AI Playground">
+<meta property="og:description" content="A consent-first, zero-backend widget showing live aircraft overhead, rendered as a radar scope.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --bg-card-hover: #1C1C1C;
+    --border-subtle: #222222;
+    --border-medium: #2A2A2A;
+
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-muted: #AAAAAA;
+
+    --pastel-peach: #F4A89A;
+    --pastel-mint: #8ED8B0;
+    --pastel-lavender: #B8A9E8;
+    --pastel-sky: #8AC4E8;
+    --pastel-lemon: #E8D88A;
+    --pastel-rose: #E89AB8;
+
+    /* Overhead Traffic accent — phosphor mint to echo radar screens */
+    --accent: var(--pastel-mint);
+
+    --section-gap: clamp(80px, 10vw, 140px);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--pastel-mint);
+    color: var(--bg-primary);
+  }
+
+  /* ─── SKIP / SR ─── */
+  .skip-link {
+    position: absolute; top: -100%; left: 16px; z-index: 10000;
+    padding: 12px 24px; background: #000; color: #fff;
+    font-size: 1rem; font-weight: 600; text-decoration: none;
+    border-radius: 0 0 8px 8px; transition: top 0.2s ease;
+  }
+  .skip-link:focus { top: 0; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0;
+    margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
+  *:focus-visible {
+    outline: 3px solid #8ab4f8;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ─── NAV ─── */
+  nav[role="navigation"] {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; }
+  .nav-logo-img { height: 48px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 500; color: var(--text-secondary);
+    text-decoration: none; transition: color 0.25s ease;
+    padding: 11px 4px; display: inline-block; min-height: 44px;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ─── CONTAINER ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes radarSweep {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes blipPulse {
+    0%, 100% { opacity: 0.9; r: 4; }
+    50%       { opacity: 0.5; r: 5.5; }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: 160px;
+    padding-bottom: var(--section-gap);
+    text-align: center;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(142,216,176,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border-medium);
+    font-size: 0.8125rem; font-weight: 500;
+    color: var(--text-muted); margin-bottom: 28px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.035em; margin-bottom: 28px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-description {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 400; color: var(--text-secondary);
+    max-width: 680px; margin: 0 auto 48px; line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  /* ─── HERO RADAR VISUAL ─── */
+  .hero-image {
+    width: 100%; max-width: 960px; margin: 0 auto;
+    border-radius: 16px; overflow: hidden;
+    background: #010804;
+    border: 1px solid #1A3B1E;
+    aspect-ratio: 16 / 8;
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+    position: relative;
+  }
+
+  .radar-scope {
+    position: relative;
+    width: min(400px, 90%);
+    aspect-ratio: 1;
+    flex-shrink: 0;
+  }
+
+  .radar-scope svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* Sweep group rotates */
+  .radar-sweep-group {
+    transform-origin: 200px 200px;
+    animation: radarSweep 6s linear infinite;
+  }
+
+  /* Blips pulse */
+  .radar-blip { animation: blipPulse 2s ease-in-out infinite; }
+  .radar-blip:nth-child(2) { animation-delay: 0.4s; }
+  .radar-blip:nth-child(3) { animation-delay: 0.9s; }
+  .radar-blip:nth-child(4) { animation-delay: 1.5s; }
+  .radar-blip:nth-child(5) { animation-delay: 0.2s; }
+
+  /* Annotations panel beside radar */
+  .hero-radar-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 32px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-annotations {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 240px;
+  }
+  .hero-annotation {
+    padding: 12px 14px;
+    background: rgba(142,216,176,0.05);
+    border: 1px solid rgba(142,216,176,0.12);
+    border-radius: 10px;
+  }
+  .hero-ann-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pastel-mint);
+    margin-bottom: 4px;
+    font-family: 'Geist', sans-serif;
+  }
+  .hero-ann-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-family: 'Geist', sans-serif;
+  }
+  .hero-ann-stat {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--pastel-mint);
+    letter-spacing: -0.03em;
+    margin-bottom: 2px;
+    font-family: 'Geist', sans-serif;
+  }
+
+  /* ─── META ROW ─── */
+  .meta-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border-subtle);
+    border-radius: 12px; overflow: hidden;
+    margin-bottom: var(--section-gap);
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .meta-item { background: var(--bg-card); padding: 28px 24px; text-align: center; }
+  .meta-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px; }
+  .meta-value { font-size: 0.95rem; font-weight: 500; color: var(--text-primary); }
+
+  /* ─── SECTION SHARED ─── */
+  .section { margin-bottom: var(--section-gap); }
+
+  .section-label {
+    display: inline-block; font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 20px; padding: 5px 12px; border-radius: 6px;
+  }
+  .section-label--mint   { color: var(--pastel-mint);    background: rgba(142,216,176,0.1); }
+  .section-label--peach  { color: var(--pastel-peach);   background: rgba(244,168,154,0.1); }
+  .section-label--lemon  { color: var(--pastel-lemon);   background: rgba(232,216,138,0.1); }
+  .section-label--sky    { color: var(--pastel-sky);     background: rgba(138,196,232,0.1); }
+  .section-label--lavender { color: var(--pastel-lavender); background: rgba(184,169,232,0.1); }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700; letter-spacing: -0.03em;
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-body {
+    font-size: clamp(1rem, 1.6vw, 1.0625rem);
+    color: var(--text-secondary); max-width: 640px; line-height: 1.75;
+  }
+
+  /* ─── LEAD STATEMENT ─── */
+  .lead-statement {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.65;
+    padding: 28px 32px;
+    background: rgba(142,216,176,0.05);
+    border-left: 3px solid var(--pastel-mint);
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 48px;
+  }
+
+  /* ─── HOW IT WORKS STEPS ─── */
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 48px;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    align-items: start;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(142,216,176,0.08);
+    border: 1px solid rgba(142,216,176,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.875rem; font-weight: 700;
+    color: var(--pastel-mint);
+    flex-shrink: 0;
+  }
+  .step-content {}
+  .step-title { font-size: 1.0625rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+  .step-body { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.75; }
+  .step-body code {
+    font-family: 'Geist Mono', 'Courier New', monospace;
+    font-size: 0.875em;
+    background: rgba(142,216,176,0.08);
+    color: var(--pastel-mint);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  /* ─── DATA FLOW DIAGRAM ─── */
+  .flow-diagram {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 28px 24px;
+    margin-bottom: 48px;
+  }
+  .flow-diagram__label {
+    font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px;
+  }
+  .flow-nodes {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .flow-node {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-medium);
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-node__icon { font-size: 1.25rem; margin-bottom: 6px; }
+  .flow-node__label { font-size: 0.75rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+  .flow-node__sub { font-size: 0.6875rem; color: var(--text-muted); line-height: 1.3; }
+  .flow-arrow {
+    flex-shrink: 0;
+    width: 28px;
+    color: var(--pastel-mint);
+    opacity: 0.5;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .flow-node--accent {
+    border-color: rgba(142,216,176,0.3);
+    background: rgba(142,216,176,0.05);
+  }
+
+  /* ─── DESIGN DECISIONS CARDS ─── */
+  .decision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .decision-card {
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+  }
+  .decision-card__icon {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  .decision-card__title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+  .decision-card__body { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+  /* ─── RADAR SCOPE VISUAL (section) ─── */
+  .radar-visual-block {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #010804;
+    border: 1px solid #1A3B1E;
+    padding: 32px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+  .radar-visual-block svg {
+    flex-shrink: 0;
+    width: 220px;
+    height: 220px;
+  }
+  .radar-visual-block__copy {}
+  .radar-visual-block__title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+  .radar-visual-block__body { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+  /* ─── STACK CHIPS ─── */
+  .stack-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .stack-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .stack-chip__dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ─── LESSON BLOCKS ─── */
+  .lesson-block {
+    padding: 24px 28px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 16px;
+  }
+  .lesson-block__num {
+    font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--pastel-mint);
+    margin-bottom: 8px;
+  }
+  .lesson-block__title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+  .lesson-block__body { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.75; }
+  .lesson-block__body code {
+    font-family: 'Geist Mono', 'Courier New', monospace;
+    font-size: 0.875em;
+    background: rgba(142,216,176,0.08);
+    color: var(--pastel-mint);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  /* ─── NEXT STEPS LIST ─── */
+  .next-steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .next-steps-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .next-step-bullet {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--pastel-mint);
+    flex-shrink: 0;
+    margin-top: 9px;
+    opacity: 0.7;
+  }
+
+  /* ─── BACK LINK ─── */
+  .back-section {
+    padding: 64px 0 80px;
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.9375rem; font-weight: 500;
+    color: var(--pastel-mint);
+    text-decoration: none;
+    transition: gap 0.2s ease, opacity 0.2s ease;
+  }
+  .back-link:hover { gap: 12px; opacity: 0.8; }
+  .back-link svg { width: 16px; height: 16px; transition: transform 0.2s ease; }
+  .back-link:hover svg { transform: translateX(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; list-style: none; }
+  .footer-links a {
+    font-size: 0.875rem; color: var(--text-muted); text-decoration: none;
+    transition: color 0.25s ease; display: inline-flex; align-items: center;
+    min-height: 44px; padding: 0 8px;
+  }
+  .footer-links a:hover { color: var(--text-secondary); }
+  .footer-copy { font-size: 0.8125rem; color: var(--text-muted); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav[role="navigation"] { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .hero { padding-top: 120px; }
+    .meta-row { grid-template-columns: repeat(2, 1fr); }
+    .decision-grid { grid-template-columns: 1fr; }
+    .radar-visual-block { flex-direction: column; }
+    .hero-radar-wrap { flex-direction: column; gap: 20px; }
+    .hero-annotations { max-width: 100%; flex-direction: row; flex-wrap: wrap; }
+    .hero-annotation { flex: 1; min-width: 140px; }
+    .flow-nodes { justify-content: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .meta-row { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.25rem; }
+    .hero-annotations { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ─── NAV ─── -->
+<header role="banner">
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Adhith Shanmuga Sundaram — Home">
+    <img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram logo" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume<span class="sr-only"> (opens in new tab)</span></a></li>
+  </ul>
+</nav>
+</header>
+
+<main id="main-content" role="main">
+
+<!-- ─── HERO ─── -->
+<header id="hero" class="hero container">
+  <span class="hero-tag">AI Playground · Live Data · Vanilla JS</span>
+  <h1>Overhead Traffic</h1>
+  <p class="hero-description">A self-contained widget that estimates a visitor's location from their IP, then shows live aircraft within a 25-mile radius — rendered as a rotating radar scope, consent-first, zero backend.</p>
+
+  <div class="hero-image" role="img" aria-label="Animated radar scope showing 5 aircraft blips within a 25-mile radius, with a rotating sweep arm and altitude-coded colors">
+    <div class="hero-radar-wrap">
+      <!-- Animated radar scope -->
+      <div class="radar-scope">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Background -->
+          <rect width="400" height="400" fill="#010804"/>
+
+          <!-- Range rings -->
+          <circle cx="200" cy="200" r="180" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+          <circle cx="200" cy="200" r="144" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+          <circle cx="200" cy="200" r="108" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+          <circle cx="200" cy="200" r="72" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+          <circle cx="200" cy="200" r="36" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+          <!-- Centre dot -->
+          <circle cx="200" cy="200" r="3" fill="#2A8B3A"/>
+
+          <!-- Crosshairs -->
+          <line x1="20" y1="200" x2="380" y2="200" stroke="#1A3B1E" stroke-width="0.75"/>
+          <line x1="200" y1="20" x2="200" y2="380" stroke="#1A3B1E" stroke-width="0.75"/>
+
+          <!-- Diagonals (lighter) -->
+          <line x1="73" y1="73" x2="327" y2="327" stroke="#111E13" stroke-width="0.5"/>
+          <line x1="327" y1="73" x2="73" y2="327" stroke="#111E13" stroke-width="0.5"/>
+
+          <!-- Sweep (animated group rotates around 200,200) -->
+          <g class="radar-sweep-group">
+            <!-- Sweep trail wedge (fades out ~90° behind the arm) -->
+            <defs>
+              <radialGradient id="sweepFade" cx="200" cy="200" r="180" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#4DFF6E" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#4DFF6E" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <!-- ~70° wedge ahead of 12 o'clock line -->
+            <path d="M200,200 L200,20 A180,180 0 0,1 369,262 Z" fill="url(#sweepFade)" opacity="0.7"/>
+            <!-- Sweep arm -->
+            <line x1="200" y1="200" x2="200" y2="20" stroke="#4DFF6E" stroke-width="1.5" stroke-opacity="0.85"/>
+          </g>
+
+          <!-- Aircraft blips (positions at bearings / distances) -->
+          <!-- Aircraft A: NNE ~105mi equiv = ring 3 area (r~108) -->
+          <circle class="radar-blip" cx="232" cy="99" r="4" fill="#4DFF6E" fill-opacity="0.9"/>
+          <circle cx="232" cy="99" r="9" fill="none" stroke="#4DFF6E" stroke-width="0.75" stroke-opacity="0.3"/>
+
+          <!-- Aircraft B: ESE ~ring 4 (r~130) -->
+          <circle class="radar-blip" cx="320" cy="218" r="4" fill="#4DFF6E" fill-opacity="0.75"/>
+          <circle cx="320" cy="218" r="9" fill="none" stroke="#4DFF6E" stroke-width="0.75" stroke-opacity="0.25"/>
+
+          <!-- Aircraft C: SW ~ring 2 (r~72) -->
+          <circle class="radar-blip" cx="154" cy="248" r="4" fill="#4DFF6E" fill-opacity="0.85"/>
+          <circle cx="154" cy="248" r="9" fill="none" stroke="#4DFF6E" stroke-width="0.75" stroke-opacity="0.3"/>
+
+          <!-- Aircraft D: NW outer (r~150) -->
+          <circle class="radar-blip" cx="96" cy="106" r="3.5" fill="#8ED8B0" fill-opacity="0.65"/>
+          <circle cx="96" cy="106" r="8" fill="none" stroke="#8ED8B0" stroke-width="0.75" stroke-opacity="0.2"/>
+
+          <!-- Aircraft E: SSE outer (r~155) -->
+          <circle class="radar-blip" cx="228" cy="344" r="3" fill="#8ED8B0" fill-opacity="0.55"/>
+
+          <!-- Range labels -->
+          <text x="204" y="169" font-family="monospace" font-size="9" fill="#2A8B3A">5</text>
+          <text x="204" y="133" font-family="monospace" font-size="9" fill="#2A8B3A">10</text>
+          <text x="204" y="97" font-family="monospace" font-size="9" fill="#2A8B3A">15</text>
+          <text x="204" y="61" font-family="monospace" font-size="9" fill="#2A8B3A">20</text>
+          <text x="204" y="25" font-family="monospace" font-size="9" fill="#2A8B3A">25</text>
+
+          <!-- Cardinal labels -->
+          <text x="196" y="15" font-family="monospace" font-size="10" font-weight="700" fill="#3AB850" text-anchor="middle">N</text>
+          <text x="388" y="204" font-family="monospace" font-size="10" font-weight="700" fill="#3AB850" text-anchor="middle">E</text>
+          <text x="196" y="398" font-family="monospace" font-size="10" font-weight="700" fill="#3AB850" text-anchor="middle">S</text>
+          <text x="8" y="204" font-family="monospace" font-size="10" font-weight="700" fill="#3AB850" text-anchor="middle">W</text>
+        </svg>
+      </div>
+
+      <!-- Annotations panel -->
+      <div class="hero-annotations" aria-hidden="true">
+        <div class="hero-annotation">
+          <div class="hero-ann-label">Consent-first</div>
+          <div class="hero-ann-text">No IP lookup, no API call until the visitor explicitly clicks "Show nearby flights."</div>
+        </div>
+        <div class="hero-annotation">
+          <div class="hero-ann-stat">25 mi</div>
+          <div class="hero-ann-label">Radius · live ADS-B</div>
+          <div class="hero-ann-text">Real aircraft from OpenSky Network's global feed, updated every 30 seconds.</div>
+        </div>
+        <div class="hero-annotation">
+          <div class="hero-ann-label">Honest about precision</div>
+          <div class="hero-ann-text">Radar scope instead of a street map — avoids implying exact location from an IP estimate.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── META ROW ─── -->
+<div class="container">
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="meta-label">Type</div>
+      <div class="meta-value">AI Playground Project</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Stack</div>
+      <div class="meta-value">Vanilla HTML · CSS · JS</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">APIs</div>
+      <div class="meta-value">OpenSky Network · ipapi.co</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Status</div>
+      <div class="meta-value">Embeddable Widget</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── THE IDEA ─── -->
+<div class="container">
+  <section class="section animate-on-scroll" aria-labelledby="idea-heading">
+    <span class="section-label section-label--mint">The Idea</span>
+    <h2 class="section-title" id="idea-heading">Most "live data" portfolio widgets stop at generic. This one is personal.</h2>
+
+    <blockquote class="lead-statement">
+      Take a visitor's own location — estimated, not tracked — and show them something genuinely live and specific to them: what's flying overhead, right now, within 25 miles.
+    </blockquote>
+
+    <p class="section-body">
+      The brief was simple: build a small piece of live-data functionality that's worth doing carefully. It touches geolocation without consent fatigue, a real-time public API with real rate limits, and a visual that communicates uncertainty rather than overstating precision. Three things that are easy to get wrong.
+    </p>
+  </section>
+</div>
+
+<!-- ─── HOW IT WORKS ─── -->
+<div class="container">
+  <section class="section animate-on-scroll" aria-labelledby="how-heading">
+    <span class="section-label section-label--sky">How It Works</span>
+    <h2 class="section-title" id="how-heading">Six decisions, each worth doing carefully.</h2>
+
+    <!-- Data flow diagram -->
+    <div class="flow-diagram">
+      <p class="flow-diagram__label">Data flow</p>
+      <div class="flow-nodes" aria-label="Data flow: Visitor click triggers IP lookup, which produces coordinates, sent to OpenSky Network, filtered to aircraft in range, then rendered as a radar scope">
+        <div class="flow-node">
+          <div class="flow-node__icon">🖱️</div>
+          <div class="flow-node__label">Visitor click</div>
+          <div class="flow-node__sub">Explicit consent gate</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-node__icon">🌐</div>
+          <div class="flow-node__label">IP lookup</div>
+          <div class="flow-node__sub">ipapi.co / ipwho.is</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-node__icon">📍</div>
+          <div class="flow-node__label">Bounding box</div>
+          <div class="flow-node__sub">25 mi → lat/lon</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node flow-node--accent">
+          <div class="flow-node__icon">✈️</div>
+          <div class="flow-node__label">OpenSky ADS-B</div>
+          <div class="flow-node__sub">Live aircraft states</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-node__icon">📡</div>
+          <div class="flow-node__label">Radar scope</div>
+          <div class="flow-node__sub">SVG · 30s poll</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Consent first, always</div>
+          <p class="step-body">Nothing happens — no IP lookup, no API call — until the visitor explicitly clicks "Show nearby flights." The gate explains in plain language that location is estimated from IP (typically city-level, not an exact address), that the lookup goes straight from the browser to a third-party service, and that nothing is stored. A "Stop tracking" control lets anyone back out at any point. A manual coordinates field lets visitors skip IP lookup entirely.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">IP → approximate coordinates</div>
+          <p class="step-body">On consent, the browser calls <code>ipapi.co/json/</code> for a <code>{latitude, longitude, city}</code> estimate, falling back to <code>ipwho.is</code> if the first call fails. Both are free, keyless, and called directly from the client — no server in the loop.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Coordinates → bounding box</div>
+          <p class="step-body">A 25-mile radius is converted to a lat/lon bounding box (<code>miles / 69</code> for latitude, adjusted by <code>cos(latitude)</code> for longitude) and sent to OpenSky Network's free <code>states/all</code> endpoint — which returns every aircraft currently inside that box from its global ADS-B feed.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Filter and project</div>
+          <p class="step-body">Grounded aircraft are dropped. Each remaining aircraft's great-circle distance and bearing from the visitor's estimated position is computed (haversine + initial bearing formula). Anything outside the true 25-mile circle is discarded — the bounding box is rectangular, so this second pass keeps the radius honest.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Render as a radar scope, not a map</div>
+          <p class="step-body">Aircraft are plotted by bearing and distance on an SVG scope with range rings at 5/10/15/20/25 miles, color-coded by altitude band, with a rotating sweep animation. An IP-based estimate is genuinely fuzzy — a real map with a pin implies more precision than the data has. A radar scope tells the truth about what's known (direction and rough distance) without pretending to know where someone actually is.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Poll, don't hammer</div>
+          <p class="step-body">The OpenSky request repeats every 30 seconds while the tab is visible, paused via the Page Visibility API when it isn't — well clear of the anonymous tier's rate limit. A manual refresh button has its own 15-second cooldown.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ─── DESIGN DECISIONS ─── -->
+<div class="container">
+  <section class="section animate-on-scroll" aria-labelledby="decisions-heading">
+    <span class="section-label section-label--lemon">Design Decisions</span>
+    <h2 class="section-title" id="decisions-heading">Four things worth calling out explicitly.</h2>
+
+    <div class="decision-grid">
+      <div class="decision-card">
+        <div class="decision-card__icon">🔒</div>
+        <div class="decision-card__title">Opt-in over opt-out</div>
+        <p class="decision-card__body">The default state does nothing. Location data, even coarse IP-based location, shouldn't be collected silently on page load. This was non-negotiable from the first version.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card__icon">📡</div>
+        <div class="decision-card__title">Honesty about precision</div>
+        <p class="decision-card__body">The consent copy and the radar-scope visual both work to avoid implying the widget knows more than it does. IP geolocation is a city-level estimate; VPNs and corporate networks shift it further still.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card__icon">🗑️</div>
+        <div class="decision-card__title">No backend, no persistence</div>
+        <p class="decision-card__body">Every value lives in memory for the current page view. Closing the tab clears everything. This also keeps the widget trivially embeddable: copy four blocks of markup into an existing page and it works.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card__icon">✈️</div>
+        <div class="decision-card__title">A logo from the same system</div>
+        <p class="decision-card__body">The consent screen's mark is a small plane orbiting a ring, animated in CSS. It's a miniature of the main radar scope — brand and feature are visually the same idea at two sizes, not an unrelated glyph.</p>
+      </div>
+    </div>
+
+    <!-- Radar scope explanation visual -->
+    <div class="radar-visual-block">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="220" height="220" fill="#010804"/>
+        <circle cx="110" cy="110" r="100" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+        <circle cx="110" cy="110" r="80" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+        <circle cx="110" cy="110" r="60" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+        <circle cx="110" cy="110" r="40" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+        <circle cx="110" cy="110" r="20" fill="none" stroke="#1A3B1E" stroke-width="1"/>
+        <line x1="10" y1="110" x2="210" y2="110" stroke="#1A3B1E" stroke-width="0.75"/>
+        <line x1="110" y1="10" x2="110" y2="210" stroke="#1A3B1E" stroke-width="0.75"/>
+        <circle cx="110" cy="110" r="2.5" fill="#2A8B3A"/>
+        <!-- A few blips -->
+        <circle cx="132" cy="62" r="4" fill="#4DFF6E" fill-opacity="0.9"/>
+        <circle cx="132" cy="62" r="8" fill="none" stroke="#4DFF6E" stroke-width="0.75" stroke-opacity="0.3"/>
+        <circle cx="168" cy="122" r="3.5" fill="#4DFF6E" fill-opacity="0.75"/>
+        <circle cx="80" cy="142" r="3.5" fill="#8ED8B0" fill-opacity="0.65"/>
+        <circle cx="62" cy="78" r="3" fill="#8ED8B0" fill-opacity="0.55"/>
+        <!-- Sweep arm at ~30° -->
+        <line x1="110" y1="110" x2="160" y2="23" stroke="#4DFF6E" stroke-width="1.5" stroke-opacity="0.8"/>
+        <!-- Altitude legend -->
+        <circle cx="16" cy="194" r="4" fill="#4DFF6E" fill-opacity="0.9"/>
+        <text x="24" y="197" font-family="monospace" font-size="8" fill="#4DFF6E">&gt;30k ft</text>
+        <circle cx="16" cy="208" r="4" fill="#8ED8B0" fill-opacity="0.65"/>
+        <text x="24" y="211" font-family="monospace" font-size="8" fill="#8ED8B0">10–30k ft</text>
+      </svg>
+      <div class="radar-visual-block__copy">
+        <div class="radar-visual-block__title">Why a radar scope instead of a map</div>
+        <p class="radar-visual-block__body">A street map with a location pin communicates false precision — it implies the system knows exactly where you are. A radar scope is truthful: it shows direction and rough distance relative to an estimated centre. Visitors understand they're getting an approximation. The visual and the data tell the same story.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ─── STACK ─── -->
+<div class="container">
+  <section class="section animate-on-scroll" aria-labelledby="stack-heading">
+    <span class="section-label section-label--lavender">Stack</span>
+    <h2 class="section-title" id="stack-heading">No framework. No build step. One file.</h2>
+    <p class="section-body" style="margin-bottom: 32px;">Vanilla HTML, CSS, and JavaScript with zero dependencies beyond two free public APIs and three Google Fonts weights. Everything — markup, styles, and script — lives in one file, broken into four clearly labeled copy-pasteable blocks.</p>
+
+    <div class="stack-chips">
+      <div class="stack-chip">
+        <div class="stack-chip__dot" style="background: #E44D26;"></div>
+        HTML5
+      </div>
+      <div class="stack-chip">
+        <div class="stack-chip__dot" style="background: #264DE4;"></div>
+        CSS3 (inline)
+      </div>
+      <div class="stack-chip">
+        <div class="stack-chip__dot" style="background: #F7DF1E;"></div>
+        Vanilla JavaScript
+      </div>
+      <div class="stack-chip">
+        <div class="stack-chip__dot" style="background: #4DFF6E;"></div>
+        SVG (radar scope)
+      </div>
+      <div class="stack-chip">
+        <div class="stack-chip__dot" style="background: #8AC4E8;"></div>
+        OpenSky Network API
+      </div>
+      <div class="stack-chip">
+        <div class="stack-chip__dot" style="background: #8ED8B0;"></div>
+        ipapi.co / ipwho.is
+      </div>
+      <div class="stack-chip">
+        <div class="stack-chip__dot" style="background: #B8A9E8;"></div>
+        Page Visibility API
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ─── LESSONS LEARNED ─── -->
+<div class="container">
+  <section class="section animate-on-scroll" aria-labelledby="lessons-heading">
+    <span class="section-label section-label--peach">Lessons Learned</span>
+    <h2 class="section-title" id="lessons-heading">Two bugs worth writing down.</h2>
+
+    <div class="lesson-block">
+      <div class="lesson-block__num">Lesson 01</div>
+      <div class="lesson-block__title">An absolutely positioned element can only fill a parent that has size from something else</div>
+      <p class="lesson-block__body">The most instructive bug wasn't the API integration — it was layout. The consent screen used <code>position: absolute; inset: 0</code> to overlay on top of the initially hidden main interface. The container had no explicit width or height, and every one of its children was either absolutely positioned or <code>hidden</code>, meaning nothing remained in normal document flow to give the container any size to fill. The result: a container that collapsed to zero height, then zero width, rendering as a blank panel and then a single vertical sliver before the actual cause was found. Fix: give the container an explicit <code>width</code> and <code>min-height</code>. Easy to miss any time you build a consent gate, modal, or "cover the whole card until X happens" pattern.</p>
+    </div>
+
+    <div class="lesson-block">
+      <div class="lesson-block__num">Lesson 02</div>
+      <div class="lesson-block__title">AI chat artifact previews sandbox outbound fetch — that's correct behaviour, not a bug</div>
+      <p class="lesson-block__body">Testing inside an AI chat tool's artifact preview isn't the same as testing in a real browser tab. Artifact previews commonly sandbox outbound <code>fetch()</code> calls via CSP — which is correct and important for security. That means "the geolocation lookup is failing" can mean either a real bug or just the preview environment doing its job. Always confirm against the actual hosted file before chasing a phantom bug in the API integration.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ─── POSSIBLE NEXT STEPS ─── -->
+<div class="container">
+  <section class="section animate-on-scroll" aria-labelledby="nextsteps-heading">
+    <span class="section-label section-label--sky">Possible Next Steps</span>
+    <h2 class="section-title" id="nextsteps-heading">Where it could go next.</h2>
+
+    <ul class="next-steps-list">
+      <li>
+        <div class="next-step-bullet"></div>
+        Cache the visitor's IP-based location for the session so a manual refresh doesn't redo the geolocation lookup.
+      </li>
+      <li>
+        <div class="next-step-bullet"></div>
+        Add a unit toggle (imperial / metric) for an international audience.
+      </li>
+      <li>
+        <div class="next-step-bullet"></div>
+        Surface aircraft type and operator — OpenSky's metadata endpoints support this, at the cost of one extra request per aircraft.
+      </li>
+      <li>
+        <div class="next-step-bullet"></div>
+        Swap in the Flightradar24 API for richer flight metadata if the project ever needs commercial-grade reliability and is willing to pay for it.
+      </li>
+    </ul>
+  </section>
+</div>
+
+<!-- ─── BACK LINK ─── -->
+<div class="container">
+  <div class="back-section animate-on-scroll">
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+      Back to all work
+    </a>
+  </div>
+</div>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer role="contentinfo">
+  <h2 class="sr-only">Site footer and contact links</h2>
+  <ul class="footer-links">
+    <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'footer' } })">Email</a></li>
+    <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>
+    <li><a href="about.html" aria-label="About Adhith">About</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care on Claude.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
