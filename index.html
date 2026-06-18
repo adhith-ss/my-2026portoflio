@@ -468,8 +468,20 @@
     letter-spacing: -0.02em;
   }
 
+  .more-work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
   .more-work-card {
-    max-width: 640px;
+    max-width: none;
+  }
+
+  @media (max-width: 640px) {
+    .more-work-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* ─── TESTIMONIALS SECTION ─── */
@@ -949,6 +961,7 @@
     <span class="more-work-eyebrow">Side Project</span>
     <h2 class="more-work-heading">AI Playground</h2>
   </div>
+  <div class="more-work-grid">
   <a class="project-card more-work-card animate-on-scroll stagger-1" href="abc-fire.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'abc_fire' } })">
     <div class="project-image">
       <img src="ABCFire_Home_NewDes%201.png" alt="ABC Fire App — redesigned home screen" loading="lazy" style="object-fit:contain;background:#050505;">
@@ -1042,6 +1055,7 @@
       <span class="project-cta">View Project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
     </div>
   </a>
+  </div>
 
 </section>
 
