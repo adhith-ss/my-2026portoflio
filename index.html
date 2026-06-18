@@ -21,7 +21,6 @@
 <link rel="prefetch" href="rxtogo.html">
 <link rel="prefetch" href="allocatr.html">
 <link rel="prefetch" href="about.html">
-<link rel="prefetch" href="overhead-traffic.html">
 <style>
   :root {
     --bg-primary: #0A0A0A;
@@ -468,20 +467,8 @@
     letter-spacing: -0.02em;
   }
 
-  .more-work-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
   .more-work-card {
-    max-width: none;
-  }
-
-  @media (max-width: 640px) {
-    .more-work-grid {
-      grid-template-columns: 1fr;
-    }
+    max-width: 640px;
   }
 
   /* ─── TESTIMONIALS SECTION ─── */
@@ -961,7 +948,6 @@
     <span class="more-work-eyebrow">Side Project</span>
     <h2 class="more-work-heading">AI Playground</h2>
   </div>
-  <div class="more-work-grid">
   <a class="project-card more-work-card animate-on-scroll stagger-1" href="abc-fire.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'abc_fire' } })">
     <div class="project-image">
       <img src="ABCFire_Home_NewDes%201.png" alt="ABC Fire App — redesigned home screen" loading="lazy" style="object-fit:contain;background:#050505;">
@@ -980,82 +966,6 @@
     </div>
   </a>
 
-  <a class="project-card more-work-card animate-on-scroll stagger-2" href="overhead-traffic.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'overhead_traffic' } })">
-    <div class="project-image" style="background:#020A04;">
-      <svg viewBox="0 0 640 360" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-        <rect width="640" height="360" fill="#020A04"/>
-        <!-- Range rings -->
-        <circle cx="320" cy="180" r="144" fill="none" stroke="#1A3B1E" stroke-width="1"/>
-        <circle cx="320" cy="180" r="108" fill="none" stroke="#1A3B1E" stroke-width="1"/>
-        <circle cx="320" cy="180" r="72" fill="none" stroke="#1A3B1E" stroke-width="1"/>
-        <circle cx="320" cy="180" r="36" fill="none" stroke="#1A3B1E" stroke-width="1"/>
-        <circle cx="320" cy="180" r="3" fill="#2A6B32"/>
-        <!-- Crosshairs -->
-        <line x1="176" y1="180" x2="464" y2="180" stroke="#1A3B1E" stroke-width="0.75"/>
-        <line x1="320" y1="36" x2="320" y2="324" stroke="#1A3B1E" stroke-width="0.75"/>
-        <!-- Sweep (frozen at ~50°) -->
-        <defs>
-          <radialGradient id="sweepGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#4DFF6E" stop-opacity="0.22"/>
-            <stop offset="100%" stop-color="#4DFF6E" stop-opacity="0"/>
-          </radialGradient>
-          <mask id="sweepMask">
-            <path d="M320,180 L320,36 A144,144 0 0,1 440.2,104.3 Z" fill="white"/>
-          </mask>
-        </defs>
-        <circle cx="320" cy="180" r="144" fill="#4DFF6E" fill-opacity="0.07" mask="url(#sweepMask)"/>
-        <line x1="320" y1="180" x2="440.2" y2="104.3" stroke="#4DFF6E" stroke-width="1.5" stroke-opacity="0.8"/>
-        <!-- Aircraft blips -->
-        <!-- Aircraft 1 — NNE bearing, ~60mi ring equivalent (ring 3) -->
-        <circle cx="354" cy="110" r="3.5" fill="#4DFF6E" fill-opacity="0.9"/>
-        <circle cx="354" cy="110" r="7" fill="none" stroke="#4DFF6E" stroke-width="0.75" stroke-opacity="0.4"/>
-        <!-- Aircraft 2 — ESE bearing, ~ring 4 -->
-        <circle cx="432" cy="196" r="3.5" fill="#4DFF6E" fill-opacity="0.7"/>
-        <circle cx="432" cy="196" r="7" fill="none" stroke="#4DFF6E" stroke-width="0.75" stroke-opacity="0.3"/>
-        <!-- Aircraft 3 — WSW bearing, ~ring 2 -->
-        <circle cx="280" cy="215" r="3.5" fill="#4DFF6E" fill-opacity="0.85"/>
-        <circle cx="280" cy="215" r="7" fill="none" stroke="#4DFF6E" stroke-width="0.75" stroke-opacity="0.35"/>
-        <!-- Aircraft 4 — NW bearing, ~ring 3 -->
-        <circle cx="248" cy="129" r="3" fill="#4DFF6E" fill-opacity="0.6"/>
-        <!-- Aircraft 5 — S bearing, outer ring -->
-        <circle cx="336" cy="302" r="2.5" fill="#4DFF6E" fill-opacity="0.5"/>
-        <!-- Range ring labels -->
-        <text x="324" y="149" font-family="system-ui,monospace" font-size="8" fill="#2A6B32">5</text>
-        <text x="324" y="113" font-family="system-ui,monospace" font-size="8" fill="#2A6B32">10</text>
-        <text x="324" y="77" font-family="system-ui,monospace" font-size="8" fill="#2A6B32">15</text>
-        <text x="324" y="41" font-family="system-ui,monospace" font-size="8" fill="#2A6B32">25</text>
-        <!-- Title overlay -->
-        <rect x="16" y="16" width="180" height="50" rx="6" fill="rgba(0,0,0,0.6)"/>
-        <text x="28" y="36" font-family="system-ui,monospace" font-size="9" font-weight="700" fill="#4DFF6E" letter-spacing="0.08em">OVERHEAD TRAFFIC</text>
-        <text x="28" y="52" font-family="system-ui,monospace" font-size="8" fill="#2A8B32">5 aircraft · 25 mi radius</text>
-        <text x="28" y="64" font-family="system-ui,monospace" font-size="7.5" fill="#1A6B22">IP-estimated · live ADS-B</text>
-        <!-- Consent gate hint -->
-        <rect x="448" y="16" width="176" height="34" rx="6" fill="rgba(0,0,0,0.55)"/>
-        <text x="536" y="30" font-family="system-ui,monospace" font-size="8" fill="#4DFF6E" text-anchor="middle">● LIVE</text>
-        <text x="536" y="43" font-family="system-ui,monospace" font-size="7" fill="#2A6B32" text-anchor="middle">OpenSky · 30s poll</text>
-        <!-- Altitude legend bottom right -->
-        <rect x="448" y="290" width="176" height="56" rx="6" fill="rgba(0,0,0,0.55)"/>
-        <text x="460" y="306" font-family="system-ui,monospace" font-size="7.5" fill="#2A8B32" letter-spacing="0.05em">ALTITUDE</text>
-        <circle cx="464" cy="319" r="3.5" fill="#4DFF6E" fill-opacity="0.9"/>
-        <text x="472" y="322" font-family="system-ui,monospace" font-size="7" fill="#B0B0B0">&gt; 30,000 ft</text>
-        <circle cx="464" cy="333" r="3.5" fill="#B8D8C0" fill-opacity="0.75"/>
-        <text x="472" y="336" font-family="system-ui,monospace" font-size="7" fill="#B0B0B0">10k – 30k ft</text>
-      </svg>
-    </div>
-    <div class="project-body">
-      <div class="project-meta-row">
-        <div class="project-tags">
-          <span class="project-tag">AI Playground</span>
-          <span class="project-tag">Live Data Widget</span>
-          <span class="project-tag">Vanilla JS</span>
-        </div>
-      </div>
-      <h3 class="project-title">Overhead Traffic — Live Flight Radar for Portfolio Visitors</h3>
-      <p class="project-desc">A self-contained HTML/JS widget that estimates a visitor's location from their IP, then renders live aircraft overhead as a rotating radar scope — consent-first, zero backend, honest about precision.</p>
-      <span class="project-cta">View Project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-    </div>
-  </a>
-  </div>
 
 </section>
 
