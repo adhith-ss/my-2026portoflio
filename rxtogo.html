@@ -16,6 +16,8 @@
 </head>
 <body class="page-rxtogo">
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="index.html" class="nav-brand">
@@ -33,7 +35,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
   <nav class="cs-toc" aria-label="Sections on this page">
     <a href="#result">Result</a>
@@ -66,7 +68,7 @@
       </div>
     </div>
 
-    <h4 class="cs-subhead" style="margin-top:var(--sp-16)">Sam's Club - Walmart</h4>
+    <h2 class="cs-subhead" style="margin-top:var(--sp-16)">Sam's Club - Walmart</h2>
     <p class="cs-summary">Nearly half a million Sam's Club members benefit through the delivery order fulfillment, where thousands of pharmacy associates work through multiple process in receiving, validating, bagging and dispatching the orders at the stores. I was sole designer responsible for the complete discovery to end product delivery, which was executed in collaboration with 15 engineers and one product owner.</p>
 
     <div class="cs-cover">
@@ -75,7 +77,7 @@
   </section>
 
   <section class="cs-section content" id="result">
-    <h3 class="cs-section-label">Result</h3>
+    <h2 class="cs-section-label">Result</h2>
     <p class="cs-section-body">The delivery fulfillment application redefined the member - associate experience across 5 pilot states.</p>
 
     <div class="cs-stat-row">
@@ -92,14 +94,14 @@
   </section>
 
   <section class="cs-section content" id="context">
-    <h3 class="cs-section-label">Context</h3>
+    <h2 class="cs-section-label">Context</h2>
     <p class="cs-section-body">Growing demand for delivery orders and operational challenges forced Sam's Club Health &amp; Wellness team to rethink the delivery order fulfillment process through an application called RxToGo.</p>
 
     <div class="cs-callout">
       <p>The RxToGo application is a newer version of the Walmart-Sam's Club's legacy application: Connexus</p>
     </div>
 
-    <h4 class="cs-subhead">The Previous Platform</h4>
+    <h3 class="cs-subhead">The Previous Platform</h3>
     <p class="cs-subbody">Connexus is a legacy web application used by pharmacies across Sam's Club and Walmart. All dispense types are processed through this platform, and with respect to delivery - GoLocal is third party platform for performing delivery orders through Connexus.</p>
 
     <div class="cs-callout">
@@ -114,7 +116,7 @@
     </ol>
 
     <div class="cs-image cs-image--connexus">
-      <h5 class="cs-image-heading">Connexus - The Pharmacy Command Centre</h5>
+      <h3 class="cs-image-heading">Connexus - The Pharmacy Command Centre</h3>
       <p class="cs-image-caption">Pharmacists and technicians utilize this web application to view all the pharmacy fulfillment orders</p>
       <div class="cs-connexus-frame">
         <img src="assets/rxtogo/connexus.png" alt="Connexus pharmacy command centre web application">
@@ -127,7 +129,7 @@
   </section>
 
   <section class="cs-section content" id="problems-identified">
-    <h3 class="cs-section-label">Problems identified</h3>
+    <h2 class="cs-section-label">Problems identified</h2>
     <p class="cs-section-body">I spent first few weeks in learning about the problem space. I analyzed the end-to-end journey of order processing by pharmacy associates on both the physical and digital ends.</p>
 
     <div class="cs-callout">
@@ -136,7 +138,7 @@
 
     <div class="cs-image cs-image--problems">
       <div class="cs-image-block">
-        <h5 class="cs-image-heading">Strenuous Navigation</h5>
+        <h3 class="cs-image-heading">Strenuous Navigation</h3>
         <p class="cs-image-caption">The Connexus portal carries a heavy cognitive load making associates interact with multiple sections with prescription and patient details. No room for error is acceptable when dealing with sensitive information.</p>
         <div class="cs-annotated-frame" style="flex-direction:column; align-items:stretch; justify-content:flex-start">
           <div style="display:flex; align-items:center; gap:var(--sp-4)">
@@ -152,7 +154,7 @@
       </div>
 
       <div class="cs-image-block">
-        <h5 class="cs-image-heading">Switching Between Tabs</h5>
+        <h3 class="cs-image-heading">Switching Between Tabs</h3>
         <p class="cs-image-caption">The Connexus-POS-GoLocal applications need to be used in different times throughout an order fulfillment and also having the customer in call for order validation.</p>
         <div class="cs-image-row cs-tabs-row" style="justify-content:space-between">
           <div class="cs-tabs-group">
@@ -167,7 +169,7 @@
       </div>
 
       <div class="cs-image-block">
-        <h5 class="cs-image-heading">Laborious Task</h5>
+        <h3 class="cs-image-heading">Laborious Task</h3>
         <p class="cs-image-caption">The overall process requires associates to move back and forth between main work-desk to staging areas with interactions of scanners, computers, printers, telephones and hand-held devices.</p>
         <img src="assets/rxtogo/laborious-task.png" alt="Five-stage workflow filmstrip: start delivery order, review and print label, verify order and schedule payment, schedule pickup, print label and pack the prescription">
       </div>
@@ -175,7 +177,7 @@
   </section>
 
   <section class="cs-section content" id="design-approach">
-    <h3 class="cs-section-label">Design Approach</h3>
+    <h2 class="cs-section-label">Design Approach</h2>
     <p class="cs-section-body">After identifying problems with the overall fulfillment process, I outlined three areas for a new design to innovate in:</p>
 
     <ol class="cs-list cs-list--numbered">
@@ -188,38 +190,38 @@
       <p>As pharmacy associates, they need accessible delivery fulfillment to efficiently complete orders and spend more time with customers.</p>
     </div>
 
-    <h4 class="cs-subhead">Order Maintenance Dashboard</h4>
+    <h3 class="cs-subhead">Order Maintenance Dashboard</h3>
     <p class="cs-subbody">I simplified prescription order management with a clear dashboard to view orders and delivery updates.</p>
     <div class="cs-image">
-      <h5 class="cs-image-heading">Order Maintenance Dashboard</h5>
+      <h3 class="cs-image-heading">Order Maintenance Dashboard</h3>
       <p class="cs-image-caption">A linear action navbar makes it easier to navigate orders in queue and their statuses. The table is laid out by Name, Rx Count, Cost, Status, Bag and Origination, giving associates ample information to process an order, with all tertiary actions related to tech support kept accessible.</p>
       <img src="assets/rxtogo/dashboard-1.png" alt="Order maintenance dashboard">
     </div>
 
-    <h4 class="cs-subhead">Processing Delivery Order</h4>
+    <h3 class="cs-subhead">Processing Delivery Order</h3>
     <p class="cs-subbody">To streamline order processing, the previous hardware-software interactions were translated into a single linear layout for quick and easier processing.</p>
 
-    <h4 class="cs-subhead">Mobile Checkout</h4>
+    <h3 class="cs-subhead">Mobile Checkout</h3>
     <p class="cs-subbody">Post delivery scheduling, there is a need for scanning the prescription for checkout. The scanning and printing tasks are performed through this mobile app that reduces mobility and the POS dependancy.</p>
     <div class="cs-image">
-      <h5 class="cs-image-heading">Mobile Checkout</h5>
+      <h3 class="cs-image-heading">Mobile Checkout</h3>
       <p class="cs-image-caption">The prescription is prioritized for validation by pharmacists and doctors, with updates possible in one place without external navigation. Color coded bags identify prescriptions in staging when ready to checkout, payments can be viewed and updated without POS interaction, and the schedule is split by date and time based on GoLocal driver data, showing upfront available times to communicate with customers.</p>
       <img src="assets/rxtogo/dashboard-2.png" alt="Mobile checkout screens">
     </div>
   </section>
 
   <section class="cs-section content" id="systems-thinking">
-    <h3 class="cs-section-label">Systems Thinking</h3>
+    <h2 class="cs-section-label">Systems Thinking</h2>
     <p class="cs-section-body">A mobile checkout product diversification was needed to perform the scanning and printing tasks that bypass the POS interaction and reduce associate mobility within the store.</p>
 
-    <h4 class="cs-subhead">1 · Leveraging An Existing App</h4>
+    <h3 class="cs-subhead">1 · Leveraging An Existing App</h3>
     <p class="cs-subbody">A Walmart fulfillment app was redefined for order checkout to reduce engineering effort and ease user adaptation.</p>
 
-    <h4 class="cs-subhead">2 · Designing For Familiarity</h4>
+    <h3 class="cs-subhead">2 · Designing For Familiarity</h3>
     <p class="cs-subbody">Using a cohesive design system between Walmart and Sam's Club DLS, the app was designed around a unified brand guideline.</p>
 
     <div class="cs-image cs-image--primary-tasks">
-      <h5 class="cs-image-heading">Primary Tasks</h5>
+      <h3 class="cs-image-heading">Primary Tasks</h3>
       <p class="cs-image-caption">Finding an order through the app was straightforward with bag and prescription scan as primary tasks followed by printing receipts.</p>
       <div class="cs-annotated-frame" style="gap:var(--sp-4)">
         <div class="cs-doc-pointer-col cs-doc-pointer-col--narrow">
@@ -236,7 +238,7 @@
   </section>
 
   <section class="cs-section content" id="usability-testing">
-    <h3 class="cs-section-label">Usability Testing</h3>
+    <h2 class="cs-section-label">Usability Testing</h2>
     <p class="cs-section-body">I brought back the apps to validate with pharmacy associates using an interactive prototype.</p>
 
     <div class="cs-callout">
@@ -246,14 +248,14 @@
       <p>The mobile app is more handy for checkout and finish tasks promptly.</p>
     </div>
 
-    <h4 class="cs-subhead">Strengths</h4>
+    <h3 class="cs-subhead">Strengths</h3>
     <ul class="cs-list cs-list--bulleted">
       <li>Skimming order details for a customer is easy with a linear step by step process.</li>
       <li>Pre and post checkout details were clear.</li>
       <li>The checkout app required less learning curve.</li>
     </ul>
 
-    <h4 class="cs-subhead">Opportunities</h4>
+    <h3 class="cs-subhead">Opportunities</h3>
     <ul class="cs-list cs-list--bulleted">
       <li>Reiterate content flow on the web app order queue with concise actionable items.</li>
       <li>Refine the checkout order list on mobile app.</li>
@@ -262,12 +264,12 @@
   </section>
 
   <section class="cs-section content" id="refinements">
-    <h3 class="cs-section-label">Refinements</h3>
+    <h2 class="cs-section-label">Refinements</h2>
     <p class="cs-section-body">The feedbacks were addressed on prioritization, that led to the following product development framework, driven by a continuous feedback loop between associates and a close partnership with engineering and product teams for quicker rollout with less design debt.</p>
 
     <div class="cs-image">
       <div class="cs-image-block">
-        <h5 class="cs-image-heading">Web Order Que Iteration</h5>
+        <h3 class="cs-image-heading">Web Order Que Iteration</h3>
         <p class="cs-image-caption">Keeping action items and order details visible reduced clutter, while fine-tuning the brand color ensured consistent experience across both the apps.</p>
         <div class="cs-image-row">
           <div>
@@ -282,7 +284,7 @@
       </div>
 
       <div class="cs-image-block">
-        <h5 class="cs-image-heading">Order Page Iteration</h5>
+        <h3 class="cs-image-heading">Order Page Iteration</h3>
         <p class="cs-image-caption">Focusing on secondary information like payments and scheduling helped associates make informed decisions</p>
         <div class="cs-annotated-frame">
           <div class="cs-doc-pointer-col">
@@ -299,7 +301,7 @@
       </div>
 
       <div class="cs-image-block">
-        <h5 class="cs-image-heading">Mobile Checkout Que Iteration</h5>
+        <h3 class="cs-image-heading">Mobile Checkout Que Iteration</h3>
         <p class="cs-image-caption">The card component evolved through iterations using user micro-copy validation and functional visual cues.</p>
         <img src="assets/rxtogo/iteration-mobile-checkout.png" alt="Mobile checkout queue iterations from initial design to final design">
         <div class="cs-stage-labels">
@@ -314,10 +316,10 @@
   </section>
 
   <section class="cs-section content" id="new-visual-elements">
-    <h3 class="cs-section-label">New Visual Elements</h3>
+    <h2 class="cs-section-label">New Visual Elements</h2>
     <p class="cs-section-body">The web portal interface was designed from scratch with minimal ties to the parent DLS used internally at Sam's Club. The mobile version combines elements from both Sam's Club and Walmart.</p>
 
-    <h4 class="cs-subhead">BlueSteel DLS For Web Tool</h4>
+    <h3 class="cs-subhead">BlueSteel DLS For Web Tool</h3>
     <p class="cs-subbody">Drawing patterns from core DLS, these components were tokenized and published officially for future web tool references.</p>
     <div class="cs-image">
       <img src="assets/rxtogo/dls-tool.png" alt="BlueSteel DLS for web tool components">
@@ -325,25 +327,35 @@
   </section>
 
   <section class="cs-section content" id="handoff-and-launch">
-    <h3 class="cs-section-label">Handoff and Launch</h3>
+    <h2 class="cs-section-label">Handoff and Launch</h2>
     <p class="cs-section-body">Towards the final phases of this project, I documented the complete flow including possible edge cases based on end user recommendation and business scenarios that helped the engineering team to develop the product.</p>
 
     <div class="cs-callout">
       <p>RxToGo was rolled out across 6 pilot states that fulfilled 800+ orders.</p>
     </div>
 
-    <h4 class="cs-subhead">Launch Ready-Design</h4>
+    <h3 class="cs-subhead">Launch Ready-Design</h3>
     <p class="cs-subbody">The shipped product was presented in the Health &amp; Wellness product event, a Quarterly org. wide meeting that showcased new product launches across Sam's Club.</p>
     <div class="cs-image">
       <div class="cs-video-col">
-        <video src="assets/rxtogo/launch-video-om.mp4" class="cs-video-om" autoplay loop muted playsinline></video>
-        <video src="assets/rxtogo/launch-video-checkout.mp4" class="cs-video-checkout" autoplay loop muted playsinline></video>
+        <div class="cs-video-wrap">
+          <video src="assets/rxtogo/launch-video-om.mp4" class="cs-video-om" autoplay loop muted playsinline></video>
+          <button type="button" class="cs-video-toggle" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
+          </button>
+        </div>
+        <div class="cs-video-wrap">
+          <video src="assets/rxtogo/launch-video-checkout.mp4" class="cs-video-checkout" autoplay loop muted playsinline></video>
+          <button type="button" class="cs-video-toggle" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="cs-section content" id="next-steps">
-    <h3 class="cs-section-label">Next Steps</h3>
+    <h2 class="cs-section-label">Next Steps</h2>
 
     <div class="cs-callout">
       <p>Collect post-launch user feedback</p>
@@ -357,20 +369,20 @@
   </section>
 
   <section class="cs-section content" id="reflection">
-    <h3 class="cs-section-label">Reflection</h3>
+    <h2 class="cs-section-label">Reflection</h2>
 
-    <h4 class="cs-subhead">Design Thinking</h4>
+    <h3 class="cs-subhead">Design Thinking</h3>
     <p class="cs-subbody">Leading design thinking workshops with cross functional partners enabled taking informed design decisions for shaping the product. It helped in bringing the team to a common alignment for solving problems and build together by meeting prompt timelines.</p>
 
-    <h4 class="cs-subhead">Trust In Research</h4>
+    <h3 class="cs-subhead">Trust In Research</h3>
     <p class="cs-subbody">I set the foundation strong through research and connected the dots in the process to justify the user requirements and craft the product requirements along with product team.</p>
 
-    <h4 class="cs-subhead">Strategic Pushbacks</h4>
+    <h3 class="cs-subhead">Strategic Pushbacks</h3>
     <p class="cs-subbody">Acknowledged business decisions when needed and negotiating with different stakeholders became a crucial learning through this project. Strong communication skills helped in overcoming barriers.</p>
   </section>
 
   <section class="cs-closing content">
-    <h3>Thank you for reading!</h3>
+    <h2>Thank you for reading!</h2>
     <a href="index.html" class="cs-closing-link">Check out more of my work ↓</a>
     <div class="cs-other-projects">
       <a href="item-management.html">Item Management</a>
@@ -404,6 +416,27 @@
       });
     }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
     sections.forEach(function(section){ observer.observe(section); });
+  })();
+
+  (function(){
+    var pauseIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>';
+    var playIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7V5z"></path></svg>';
+    document.querySelectorAll('.cs-video-wrap').forEach(function(wrap){
+      var video = wrap.querySelector('video');
+      var toggle = wrap.querySelector('.cs-video-toggle');
+      if (!video || !toggle) return;
+      toggle.addEventListener('click', function(){
+        if (video.paused) { video.play(); } else { video.pause(); }
+      });
+      video.addEventListener('play', function(){
+        toggle.setAttribute('aria-label', 'Pause background video');
+        toggle.innerHTML = pauseIcon;
+      });
+      video.addEventListener('pause', function(){
+        toggle.setAttribute('aria-label', 'Play background video');
+        toggle.innerHTML = playIcon;
+      });
+    });
   })();
 </script>
 

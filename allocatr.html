@@ -19,6 +19,8 @@
 </head>
 <body class="page-allocatr">
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="index.html" class="nav-brand">
@@ -36,7 +38,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
   <nav class="cs-toc" aria-label="Sections on this page">
     <a href="#result">Result</a>
@@ -66,7 +68,7 @@
       </div>
     </div>
 
-    <h3 class="cs-subhead" style="margin-top:var(--sp-16)">TL;DR Summary</h3>
+    <h2 class="cs-subhead" style="margin-top:var(--sp-16)">TL;DR Summary</h2>
     <p class="cs-summary">Led UX strategy for an AI-powered forecasting platform replacing manual Excel workflows across Albertsons' merchant and finance teams. I partnered with a global engineering team, product partners and business partners based in the US to deliver this project.</p>
 
     <div class="cs-cover">
@@ -75,7 +77,7 @@
   </section>
 
   <section class="cs-section content" id="result">
-    <h3 class="cs-section-label">Result</h3>
+    <h2 class="cs-section-label">Result</h2>
     <p class="cs-section-body">Quantifiable improvements across planning efficiency, data visibility, accountability, and digital transformation of manual workflows.</p>
 
     <div class="cs-stat-row">
@@ -99,7 +101,7 @@
   </section>
 
   <section class="cs-section content" id="business-challenge">
-    <h3 class="cs-section-label">Business Challenge</h3>
+    <h2 class="cs-section-label">Business Challenge</h2>
     <p class="cs-section-body">Merchant and financial teams printed forecast documents weekly, with teams constantly communicating back and forth. Managing adjustments in offline Excel sheets lacked audit trails, causing teams to lose track of adjustments and undermining data accuracy.</p>
 
     <div class="cs-callout">
@@ -114,7 +116,7 @@
   </section>
 
   <section class="cs-section content" id="user-research">
-    <h3 class="cs-section-label">User Research</h3>
+    <h2 class="cs-section-label">User Research</h2>
     <p class="cs-section-body">Through design workshops with merchants, finance teams, and leadership, we mapped the intricate approval hierarchy and identified critical friction points in forecast management.</p>
 
     <ul class="cs-list cs-list--bulleted">
@@ -143,14 +145,14 @@
   </section>
 
   <section class="cs-section content" id="design-strategy">
-    <h3 class="cs-section-label">Design Strategy</h3>
+    <h2 class="cs-section-label">Design Strategy</h2>
     <p class="cs-section-body">Established a strategic approach focusing on interfaces familiar to Excel users, while introducing audit trails, validation in real time, and collaboration across functions.</p>
 
     <div class="cs-callout"><p><strong>Dashboard</strong>: Data visualization with insights available to view only, enabling quick decisions across all hierarchy levels.</p></div>
     <div class="cs-callout"><p><strong>Worksheet</strong>: Editable forecast adjustments with full audit history and reasoning capture per line item.</p></div>
     <div class="cs-callout"><p><strong>Familiarity</strong>: A format styled like Excel based on user feedback, maintaining comfort while following UDS guidelines.</p></div>
 
-    <h4 class="cs-subhead">Strategic Decisions</h4>
+    <h3 class="cs-subhead">Strategic Decisions</h3>
     <ol class="cs-list cs-list--numbered">
       <li>Retained a format styled like Excel based on user feedback while following UDS Design guidelines.</li>
       <li>Created a system with two tables: a Dashboard viewable only by leadership, and an editable Worksheet with a full audit trail for operators.</li>
@@ -159,22 +161,22 @@
   </section>
 
   <section class="cs-section content" id="design-decisions">
-    <h3 class="cs-section-label">Design Decisions</h3>
+    <h2 class="cs-section-label">Design Decisions</h2>
     <p class="cs-section-body">3 decisions that shaped the outcome, covering key tradeoffs made during the design process: where I went, what I considered, and why it worked.</p>
 
-    <h4 class="cs-subhead">01 · Familiarity vs. Modernity</h4>
+    <h3 class="cs-subhead">01 · Familiarity vs. Modernity</h3>
     <p class="cs-subbody"><strong>Native data platform UI vs. an interface styled like Excel.</strong> I considered building a modern data dashboard following UDS design guidelines without Excel conventions, but chose a grid interface styled like Excel, built with UDS core components.</p>
     <p class="cs-subbody">Teams had used Excel for forecast adjustments for years. Switching to a foreign UI would have created resistance and a steep adoption curve. By matching the mental model they already trusted, while adding audit trails, inline reasoning capture, and approval flows that Excel could never offer, we got adoption without a behavioral change battle.</p>
     <p class="cs-subbody">Tradeoff: this required building a table component styled like Excel that had never existed before within the UDS ecosystem. I designed hybrid components tailored to forecasting needs with AI assistance, which became reusable across the APP ecosystem.</p>
     <div class="cs-callout"><p>Signal it worked: 50% of manual workflows replaced; planning cycle time reduced by 24%.</p></div>
 
-    <h4 class="cs-subhead">02 · Permissions Architecture</h4>
+    <h3 class="cs-subhead">02 · Permissions Architecture</h3>
     <p class="cs-subbody"><strong>Single worksheet view vs. dual Dashboard + Worksheet system.</strong> I considered one editable interface accessible to all roles, but chose a system with two tables instead: a Dashboard viewable only by leadership, and an editable Worksheet with a full audit trail for operators.</p>
     <p class="cs-subbody">The approval hierarchy (ASM → SM → VPMM → NM → NVPMM) meant that giving edit access to all roles created accountability gaps and version conflicts. Leadership needed to trust the numbers they were looking at; operators needed freedom to adjust with context. Separating these surfaces eliminated both problems.</p>
     <p class="cs-subbody">Tradeoff: two surfaces to maintain, and a risk of data drift between dashboard and worksheet views. This was solved with synchronization in real time and clear timestamps on every adjustment.</p>
     <div class="cs-callout"><p>Signal it worked: capturing reasons increased by 38%, directly addressing the accountability gap that motivated the project.</p></div>
 
-    <h4 class="cs-subhead">03 · AI Scope</h4>
+    <h3 class="cs-subhead">03 · AI Scope</h3>
     <p class="cs-subbody"><strong>Forecasts generated by AI vs. AI as decision support.</strong> I considered using AI to automatically generate forecast allocations, replacing manual adjustment entirely, but chose AI as a suggestion layer that surfaces historical trends and predicted adjustment reasons, with humans making the final call.</p>
     <p class="cs-subbody">Finance and merchant teams had deep institutional knowledge about seasonal patterns, promotions, and vendor relationships that a model couldn't capture in v1. Removing human judgment would have killed trust in the tool. Positioning AI as a trusted collaborator, one that says "here's what history suggests, you decide," matched how these users already thought about their work.</p>
     <p class="cs-subbody">Tradeoff: slower ROI on AI investment in the short term, offset by higher adoption confidence and a clear roadmap to increase AI autonomy as the model proves itself over time.</p>
@@ -182,7 +184,7 @@
   </section>
 
   <section class="cs-section content" id="solution-overview">
-    <h3 class="cs-section-label">Solution Overview</h3>
+    <h2 class="cs-section-label">Solution Overview</h2>
     <p class="cs-section-body">Designed an integrated dashboard and worksheet system addressing transparency, accountability, and future optimization powered by AI.</p>
 
     <ul class="cs-list">
@@ -198,14 +200,19 @@
         <p class="cs-image-caption">Allocatr Insights dashboard and adjustment worksheet for forecast planning</p>
       </div>
       <div class="cs-image-block">
-        <video src="assets/allocatr/Alloctar_AI_Ptf_video.mp4" autoplay loop muted playsinline></video>
+        <div class="cs-video-wrap">
+          <video src="assets/allocatr/Alloctar_AI_Ptf_video.mp4" autoplay loop muted playsinline></video>
+          <button type="button" class="cs-video-toggle" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
+          </button>
+        </div>
         <p class="cs-image-caption">Budget allocation powered by AI, with trend prediction exploration</p>
       </div>
     </div>
   </section>
 
   <section class="cs-section content" id="impact">
-    <h3 class="cs-section-label">Impact</h3>
+    <h2 class="cs-section-label">Impact</h2>
     <p class="cs-section-body">Quantifiable improvements across planning efficiency, data visibility, accountability, and digital transformation of manual workflows.</p>
 
     <ol class="cs-list cs-list--numbered">
@@ -215,7 +222,7 @@
   </section>
 
   <section class="cs-closing content">
-    <h3>Thank you for reading!</h3>
+    <h2>Thank you for reading!</h2>
     <a href="index.html" class="cs-closing-link">Check out more of my work ↓</a>
     <div class="cs-other-projects">
       <a href="rxtogo.html">RxToGo</a>
@@ -249,6 +256,27 @@
       });
     }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
     sections.forEach(function(section){ observer.observe(section); });
+  })();
+
+  (function(){
+    var pauseIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>';
+    var playIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7V5z"></path></svg>';
+    document.querySelectorAll('.cs-video-wrap').forEach(function(wrap){
+      var video = wrap.querySelector('video');
+      var toggle = wrap.querySelector('.cs-video-toggle');
+      if (!video || !toggle) return;
+      toggle.addEventListener('click', function(){
+        if (video.paused) { video.play(); } else { video.pause(); }
+      });
+      video.addEventListener('play', function(){
+        toggle.setAttribute('aria-label', 'Pause background video');
+        toggle.innerHTML = pauseIcon;
+      });
+      video.addEventListener('pause', function(){
+        toggle.setAttribute('aria-label', 'Play background video');
+        toggle.innerHTML = playIcon;
+      });
+    });
   })();
 </script>
 
