@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
-<link rel="shortcut icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
-<link rel="apple-touch-icon" href="AS_Logo_PtfTab_b.png">
+<link rel="icon" type="image/png" href="assets/shared/AS_Logo_PtfTab_b.png?v=1">
+<link rel="shortcut icon" type="image/png" href="assets/shared/AS_Logo_PtfTab_b.png?v=1">
+<link rel="apple-touch-icon" href="assets/shared/AS_Logo_PtfTab_b.png">
 <title>Adhith Shanmuga Sundaram — Senior Product Designer</title>
 <meta name="description" content="Senior Product Designer with 5+ years designing enterprise B2B and SaaS products at Walmart and Albertsons. Shipped to 600+ locations. Available for Senior Product Designer roles.">
 <meta property="og:title" content="Adhith Shanmuga Sundaram — Senior Product Designer">
 <meta property="og:description" content="Enterprise UX at scale. Shipped to 600+ Walmart and Albertsons locations. 5+ years in B2B, SaaS, and AI-assisted product design.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/cgy1qed.css">
+<link rel="stylesheet" href="styles.css">
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
@@ -21,1066 +20,174 @@
 <link rel="prefetch" href="rxtogo.html">
 <link rel="prefetch" href="allocatr.html">
 <link rel="prefetch" href="about.html">
-<style>
-  :root {
-    --bg-primary: #0A0A0A;
-    --bg-secondary: #111111;
-    --bg-card: #161616;
-    --bg-card-hover: #1C1C1C;
-    --border-subtle: #222222;
-    --border-medium: #2A2A2A;
-
-    --text-primary: #E8E8E8;
-    --text-secondary: #B0B0B0;
-    --text-muted: #AAAAAA;
-
-    --pastel-peach: #F4A89A;
-    --pastel-mint: #8ED8B0;
-    --pastel-lavender: #B8A9E8;
-    --pastel-sky: #8AC4E8;
-    --pastel-lemon: #E8D88A;
-    --pastel-rose: #E89AB8;
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    font-family: 'Geist', sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  ::selection {
-    background: var(--pastel-lavender);
-    color: var(--bg-primary);
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .nav-logo {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo-img {
-    height: 48px;
-    width: auto;
-    display: block;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.25s ease;
-    padding: 11px 4px;
-    display: inline-block;
-    min-height: 44px;
-  }
-
-  .nav-links a:hover { color: var(--text-primary); }
-
-  /* ─── CONTAINER ─── */
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    padding-top: 160px;
-    padding-bottom: 48px;
-    position: relative;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 60px;
-    left: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(184, 169, 232, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 200px;
-    right: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(138, 196, 232, 0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-greeting {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--pastel-lavender);
-    margin-bottom: 16px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2rem, 3.75vw, 3rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: 24px;
-    max-width: 100%;
-  }
-
-  .hero-description {
-    font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
-    font-weight: 400;
-    color: var(--text-secondary);
-    max-width: 560px;
-    line-height: 1.7;
-    margin-bottom: 14px;
-  }
-
-  .hero-logos {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 36px;
-    max-width: 560px;
-  }
-
-  .brand-logo {
-    width: auto;
-    display: block;
-  }
-
-  .hero-logos .brand-logo {
-    height: 32px;
-  }
-
-  @media (max-width: 600px) {
-    .hero-logos .brand-logo { height: 24px; }
-  }
-
-  .hero-availability {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    margin-bottom: 36px;
-    line-height: 1.6;
-    max-width: 560px;
-  }
-
-  .hero-avail-avatar {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
-    overflow: hidden;
-    margin-top: 1px;
-  }
-
-  .hero-avail-avatar img {
-    height: 48px;
-    width: auto;
-    max-width: none;
-    display: block;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 56px;
-  }
-
-  .hero-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 26px;
-    border-radius: 100px;
-    font-family: 'Geist', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-    cursor: pointer;
-  }
-
-  .hero-btn--ghost {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border-medium);
-  }
-
-  .hero-btn--ghost:hover {
-    background: var(--bg-card);
-    border-color: #444;
-    transform: translateY(-2px);
-  }
-
-  .hero-btn--primary {
-    background: var(--pastel-lavender);
-    color: #0A0A0A;
-    border: 1px solid transparent;
-  }
-
-  .hero-btn--primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(184, 169, 232, 0.3);
-  }
-
-  /* ─── STATS ─── */
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border-subtle);
-    border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 64px;
-  }
-
-  .hero-stat {
-    background: var(--bg-card);
-    padding: 32px 28px;
-    text-align: center;
-  }
-
-  .hero-stat-number {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 4px;
-  }
-
-  .hero-stat-desc {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-
-  /* ─── WORK SECTION ─── */
-  .work-section {
-    padding-bottom: 120px;
-  }
-
-  .work-title-centered {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-
-  .work-framing {
-    text-align: center;
-    font-size: 1rem;
-    color: var(--text-muted);
-    max-width: 520px;
-    margin: 0 auto 48px;
-    line-height: 1.7;
-  }
-
-  /* ─── PROJECT CARDS ─── */
-  .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  .project-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 0.5px solid var(--border-subtle);
-    background: var(--bg-card);
-    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-  }
-
-  .project-card:hover {
-    background: #1a1a1a;
-    border-color: var(--border-medium);
-    transform: translateY(-2px);
-  }
-
-  .project-image {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: #050505;
-  }
-
-  .project-image img {
-    width: 100%;
-    display: block;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  .project-card:hover .project-image img {
-    transform: scale(1.02);
-  }
-
-  .project-body {
-    padding: 1.75rem 2rem 2rem;
-  }
-
-  .project-meta-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .project-num {
-    font-family: 'Geist', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 300;
-    color: var(--text-primary);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .project-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .project-tag {
-    font-size: 0.6875rem;
-    letter-spacing: 0.03em;
-    padding: 4px 11px;
-    background: rgba(255, 255, 255, 0.04);
-    color: #FFFFFF;
-    border-radius: 100px;
-    border: 0.5px solid #FFFFFF;
-    white-space: nowrap;
-  }
-
-  .project-title {
-    font-family: 'Geist', sans-serif;
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    font-weight: 500;
-    line-height: 1.3;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-  }
-
-  .project-desc {
-    font-size: 0.9375rem;
-    line-height: 1.65;
-    color: var(--text-secondary);
-    max-width: 620px;
-    margin-bottom: 1.25rem;
-  }
-
-  .project-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.8125rem;
-    color: var(--text-primary);
-    letter-spacing: 0.02em;
-    transition: gap 0.2s;
-  }
-
-  .project-card:hover .project-cta {
-    gap: 11px;
-  }
-
-  .project-cta svg {
-    width: 14px;
-    height: 14px;
-    transition: transform 0.2s;
-  }
-
-  .project-card:hover .project-cta svg {
-    transform: translateX(2px);
-  }
-
-  /* ─── MORE WORK SECTION ─── */
-  .more-work-section {
-    padding-top: 64px;
-    padding-bottom: 80px;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .more-work-header {
-    margin-bottom: 32px;
-  }
-
-  .more-work-eyebrow {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-
-  .more-work-heading {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  .more-work-card {
-    max-width: 640px;
-  }
-
-  /* ─── TESTIMONIALS SECTION ─── */
-  .testimonials-section {
-    padding: 80px 0;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .testimonials-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 52px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .testimonials-title {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-    margin: 0;
-  }
-
-  .testimonials-link {
-    font-size: 0.8125rem;
-    color: var(--pastel-lavender);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: opacity 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .testimonials-link:hover { opacity: 0.65; }
-
-  .testimonials-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 44px;
-  }
-
-  .testimonial-item {
-    padding-left: 20px;
-    border-left: 2px solid var(--pastel-lavender);
-  }
-
-  .testimonial-item__quote {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: var(--text-secondary);
-    margin: 0 0 14px 0;
-    font-style: italic;
-  }
-
-  .testimonial-item__author {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .testimonial-item__name {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
-  .testimonial-item__role {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .testimonial-highlight {
-    background: rgba(184, 169, 232, 0.45);
-    color: var(--text-primary);
-    border-radius: 3px;
-    padding: 1px 4px;
-    font-style: italic;
-  }
-
-  @media (max-width: 600px) {
-    .testimonials-header {
-      flex-direction: column;
-      gap: 10px;
-    }
-  }
-
-  /* ─── CONTACT SECTION ─── */
-  .contact-section {
-    padding: 80px 0;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .contact-inner {
-    text-align: center;
-    padding: 64px 40px;
-    border-radius: 20px;
-    border: 1px solid var(--border-medium);
-    background: var(--bg-secondary);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-inner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, rgba(184, 169, 232, 0.04), rgba(138, 196, 232, 0.03), transparent 60%);
-    pointer-events: none;
-  }
-
-  .contact-title {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-
-  .contact-body {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    max-width: 540px;
-    margin: 0 auto 32px;
-    line-height: 1.7;
-  }
-
-  .contact-btns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .contact-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 24px;
-    border-radius: 100px;
-    background: var(--pastel-lavender);
-    color: #0A0A0A;
-    font-family: 'Geist', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .contact-btn--ghost {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-medium);
-  }
-
-  .contact-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(184, 169, 232, 0.2);
-  }
-
-  .contact-btn--ghost:hover {
-    border-color: var(--text-muted);
-    color: var(--text-primary);
-    box-shadow: none;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    padding: 40px 0;
-    border-top: 1px solid var(--border-subtle);
-    text-align: center;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-bottom: 20px;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0 8px;
-  }
-
-  .footer-links a:hover { color: var(--text-secondary); }
-
-  .footer-copy {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-  }
-
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .stagger-1 { transition-delay: 0.1s; }
-  .stagger-2 { transition-delay: 0.2s; }
-  .stagger-3 { transition-delay: 0.3s; }
-  .stagger-4 { transition-delay: 0.4s; }
-
-  .tools-logos {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  .tools-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    white-space: nowrap;
-    margin-right: 4px;
-  }
-  .tool-logo {
-    height: 20px;
-    width: auto;
-    opacity: 0.85;
-    transition: opacity 0.2s ease;
-  }
-  .tool-logo:hover { opacity: 1; }
-  .tool-text-badge {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #B0B0B0;
-    letter-spacing: 0.06em;
-  }
-
-  /* ─── HERO TYPEWRITER ─── */
-  .hero-greeting {
-    opacity: 0;
-    animation: heroGreetFade 0.45s ease 0.05s forwards;
-  }
-
-  @keyframes heroGreetFade {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .type-char {
-    transition: opacity 0.07s ease;
-  }
-
-  .hero-after {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
-
-  .hero-after.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .nav-links { gap: 20px; }
-    .nav-links a { font-size: 0.8125rem; }
-    .hero { padding-top: 120px; }
-
-    .hero-stats {
-      grid-template-columns: 1fr;
-    }
-
-    .project-body {
-      padding: 1.25rem 1.25rem 1.5rem;
-    }
-
-    .project-meta-row {
-      gap: 0.75rem;
-    }
-
-    .project-num {
-      font-size: 1.375rem;
-    }
-
-    .contact-inner {
-      padding: 48px 24px;
-    }
-
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 2.25rem; }
-
-    .footer-links {
-      flex-direction: column;
-      gap: 16px;
-    }
-  }
-
-
-  /* ─── SKIP LINK & SR-ONLY ─── */
-  .skip-link {
-    position: absolute;
-    top: -100%;
-    left: 16px;
-    z-index: 10000;
-    padding: 12px 24px;
-    background: #000;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 0 0 8px 8px;
-    transition: top 0.2s ease;
-  }
-  .skip-link:focus { top: 0; }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  /* ─── FOCUS INDICATOR (WCAG 2.4.7) ─── */
-  *:focus-visible {
-    outline: 3px solid #8ab4f8;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-
-/* ─── REDUCED MOTION (WCAG 2.2.3, 2.2.4) ─── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-</style>
 </head>
 <body>
 
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<!-- NAV -->
-<header role="banner">
-<nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume<span class="sr-only"> (opens in new tab)</span></a></li>
-  </ul>
-</nav>
-</header>
-
-<main id="main-content" role="main">
-
-<!-- HERO -->
-<header class="hero container">
-  <p class="hero-greeting">Hello, I'm Adhith</p>
-  <h1>Senior Product Designer shaping enterprise decisions that people trust - at scale, with AI as a collaborator.</h1>
-  <p class="hero-description hero-after">5+ years shipping enterprise UX that moves billions in revenue. Senior Product Designer at</p>
-  <div class="hero-logos hero-after">
-    <img src="Alb_Horiz_RGB%201.png" alt="Albertsons" class="brand-logo">
-    <img src="Walmart-Logo-hero.png" alt="Walmart" class="brand-logo">
-  </div>
-  <div class="hero-ctas hero-after">
-    <a href="#work" class="hero-btn hero-btn--ghost">See selected work ↓</a>
-    <a href="mailto:adhith.shan@gmail.com" class="hero-btn hero-btn--primary" aria-label="Send email to Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'hero' } })">Email me →</a>
-  </div>
-  <div class="tools-logos hero-after" aria-label="Working with Figma, Claude, Cursor, Maze, Dovetail, and WCAG accessibility standards">
-    <span class="tools-label">Working with</span>
-    <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" title="Figma" class="tool-logo">
-    <img src="https://cdn.simpleicons.org/anthropic/CC9966" alt="Claude" title="Claude" class="tool-logo">
-    <img src="https://cdn.simpleicons.org/cursor/A8BFFF" alt="Cursor" title="Cursor" class="tool-logo">
-    <img src="https://cdn.simpleicons.org/maze/FF4F00" alt="Maze" title="Maze" class="tool-logo">
-    <img src="https://cdn.simpleicons.org/dovetail/6B47ED" alt="Dovetail" title="Dovetail" class="tool-logo">
-    <span class="tool-text-badge" title="WCAG Accessibility Standards">WCAG</span>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/shared/AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram">
+      Adhith Shanmuga Sundaram
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume</a></li>
+        <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<!-- WORK -->
-<section id="work" class="work-section container">
-  <h2 class="work-title-centered">Selected work</h2>
-  <p class="work-framing">Three projects from my time at Albertsons and Walmart in enterprise tooling, healthcare workflows, and AI-assisted decisions. Each shipped to production at scale.</p>
+<main>
 
-  <div class="project-list">
+  <section class="hero content">
+    <h1 id="hero-greeting">G'd morning, I'm Adhith.</h1>
+    <p class="hero-sub">I design products that <strong>people trust at scale</strong>, with <strong>AI as collaborator</strong>.</p>
 
-    <!-- PROJECT 1 — RxToGo -->
-    <a class="project-card animate-on-scroll stagger-1" href="rxtogo.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'rxtogo' } })">
-      <div class="project-image">
-        <img src="RxToGo_TN_ptf.png" alt="RxToGo Product Suite project preview" loading="lazy">
+    <p class="hero-eyebrow">Design at</p>
+    <div class="hero-logos">
+      <span class="has-tooltip" data-tooltip="Walmart"><img src="assets/shared/walmart-logo.png" alt="Walmart"></span>
+      <span class="has-tooltip" data-tooltip="Albertsons"><img src="assets/shared/albertsons-logo.png" alt="Albertsons"></span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">See Selected Work ↓</a>
+      <a class="btn btn-ghost" href="mailto:adhith.shan@gmail.com" onclick="va('event', { name: 'email_clicked', data: { source: 'hero' } })">Email me</a>
+    </div>
+
+    <div class="hero-tools">
+      <span class="hero-tools-label">Working with</span>
+      <div class="hero-tools-icons">
+        <span class="has-tooltip" data-tooltip="Figma"><img src="https://cdn.simpleicons.org/figma/000000" alt="Figma"></span>
+        <span class="has-tooltip" data-tooltip="Claude"><img src="https://cdn.simpleicons.org/anthropic/000000" alt="Claude"></span>
+        <span class="has-tooltip" data-tooltip="Cursor"><img src="https://cdn.simpleicons.org/cursor/000000" alt="Cursor"></span>
       </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <span class="project-num">01</span>
-          <div class="project-tags">
-            <span class="project-tag">Healthcare</span>
-            <span class="project-tag">Mobile &amp; Web</span>
-            <span class="project-tag">Retail</span>
+    </div>
+  </section>
+
+  <section class="work content" id="work">
+    <div class="section-head">
+      <h2>Three projects from my time at Albertsons and Walmart in enterprise tooling, healthcare workflows, and AI-assisted decisions.</h2>
+    </div>
+
+    <article class="project">
+      <div class="project-grid">
+        <a class="project-media" href="rxtogo.html" aria-label="Preview RxToGo project" onclick="va('event', { name: 'case_study_clicked', data: { project: 'rxtogo' } })">
+          <img src="assets/home/rxtogo-card.png" alt="RxToGo product preview">
+        </a>
+        <div>
+          <h3 class="project-title">Crafted Pharmacy Fulfillment Experience at Sam's Club</h3>
+          <p class="project-desc">Spearheaded the pharmacy delivery workflow, cutting checkout time from 15 to 7 minutes. Automated 40% of tasks and reduced process steps from 18 to 12, deployed across 600+ locations nationwide.</p>
+          <a class="project-cta" href="rxtogo.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'rxtogo' } })">
+            Preview project
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-grid">
+        <a class="project-media" href="item-management.html" aria-label="Preview Item Management project" onclick="va('event', { name: 'case_study_clicked', data: { project: 'item_management' } })">
+          <img src="assets/home/item-management-card.png" alt="Item Management product preview">
+        </a>
+        <div>
+          <h3 class="project-title">Enhanced Item onboarding Experience at Albertsons Merchandising &amp; SupplyChain</h3>
+          <p class="project-desc">Led design enhancements for enterprise web platform, reducing vendor-to-store onboarding from 6 days to 4. Streamlined workflows saved merchants 21 hours weekly across the organization.</p>
+          <a class="project-cta" href="item-management.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'item_management' } })">
+            Preview project
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-grid">
+        <a class="project-media" href="allocatr.html" aria-label="Preview Allocatr Insights project" onclick="va('event', { name: 'case_study_clicked', data: { project: 'allocatr' } })">
+          <img src="assets/home/allocatr-card.png" alt="Allocatr product preview">
+        </a>
+        <div>
+          <h3 class="project-title">Empowering Merchants with Growth Intelligence at Albertsons</h3>
+          <p class="project-desc">Led UX strategy and design for enterprise forecasting, identifying critical workflows and prioritizing high-impact actions. Streamlined decisions flows, empowering teams to make faster, data-informed adjustments.</p>
+          <a class="project-cta" href="allocatr.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'allocatr' } })">
+            Preview project
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="testimonials">
+    <div class="content">
+      <div class="section-head">
+        <h2>What people say after working with me.</h2>
+      </div>
+      <div class="t-grid">
+        <div class="t-card">
+          <p class="t-quote">"Adhith is a thoughtful designer with strong strengths in research, systems thinking, and strategic problem-solving. He thinks beyond immediate feature needs toward a clear North Star vision."</p>
+          <div class="t-meta">
+            <p class="t-name">Priya Duraikannu</p>
+            <p class="t-role">Design Leader, Sam's Club</p>
           </div>
         </div>
-        <h3 class="project-title">Crafted Pharmacy Fulfillment Experience at Sam's Club</h3>
-        <p class="project-desc">Spearheaded the pharmacy delivery workflow redesign, cutting checkout time from 15 to 7 minutes. Automated 40% of tasks and reduced process steps from 18 to 12, deployed across 600+ locations nationwide.</p>
-        <span class="project-cta">Preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-
-    <!-- PROJECT 2 — Item Management -->
-    <a class="project-card animate-on-scroll stagger-2" href="item-management.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'item_management' } })">
-      <div class="project-image">
-        <img src="Item_Index_ptf.png" alt="Item Management project preview" loading="lazy">
-      </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <span class="project-num">02</span>
-          <div class="project-tags">
-            <span class="project-tag">Enterprise Web</span>
-            <span class="project-tag">B2B Platform</span>
-            <span class="project-tag">Retail</span>
+        <div class="t-card">
+          <p class="t-quote">"Adhith consistently elevated the product to new levels of design excellence. I've seen him leverage powerful design tools that create ideal mockups on the fly, making life as a product leader easier than ever."</p>
+          <div class="t-meta">
+            <p class="t-name">Scott Mumbauer</p>
+            <p class="t-role">Senior Product Manager, Albertsons</p>
           </div>
         </div>
-        <h3 class="project-title">Enhanced Item Onboarding Experience at Albertsons Merchandising</h3>
-        <p class="project-desc">Led design enhancements for enterprise web platform, reducing vendor-to-store onboarding from 6 days to 4. Streamlined workflows saved merchants 21 hours weekly across the organization.</p>
-        <span class="project-cta">Preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-
-    <!-- PROJECT 3 — Allocatr -->
-    <a class="project-card animate-on-scroll stagger-3" href="allocatr.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'allocatr' } })">
-      <div class="project-image">
-        <img src="AIlocatr_Index_ptf.png" alt="Allocatr Insights project preview" loading="lazy">
-      </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <span class="project-num">03</span>
-          <div class="project-tags">
-            <span class="project-tag">AI-Powered</span>
-            <span class="project-tag">Web Data Platform</span>
-            <span class="project-tag">Retail</span>
+        <div class="t-card">
+          <p class="t-quote">"Adhith approached end-to-end journey mapping with precision and diligence. His keen eye for detail led to insightful contributions, balancing functionality with sleek, user friendly design."</p>
+          <div class="t-meta">
+            <p class="t-name">Kristina Algrim</p>
+            <p class="t-role">Senior Project Manager, Sam's Club</p>
           </div>
         </div>
-        <h3 class="project-title">Empowering Merchants with Growth Intelligence at Albertsons</h3>
-        <p class="project-desc">Led UX strategy and design for enterprise forecasting platform, identifying critical workflows and prioritizing high-impact actions. Streamlined decision flows, empowering teams to make faster, data-informed adjustments.</p>
-        <span class="project-cta">Preview <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-
-<!-- MORE WORK -->
-<section class="more-work-section container">
-  <div class="more-work-header animate-on-scroll">
-    <span class="more-work-eyebrow">Side Project</span>
-    <h2 class="more-work-heading">AI Playground</h2>
-  </div>
-  <a class="project-card more-work-card animate-on-scroll stagger-1" href="abc-fire.html" onclick="va('event', { name: 'case_study_clicked', data: { project: 'abc_fire' } })">
-    <div class="project-image">
-      <img src="ABCFire_Home_NewDes%201.png" alt="ABC Fire App — redesigned home screen" loading="lazy" style="object-fit:contain;background:#050505;">
-    </div>
-    <div class="project-body">
-      <div class="project-meta-row">
-        <div class="project-tags">
-          <span class="project-tag">Personal Project</span>
-          <span class="project-tag">Consumer App</span>
-          <span class="project-tag">AI-Assisted Design</span>
-        </div>
-      </div>
-      <h3 class="project-title">ABC Fire App Redesign</h3>
-      <p class="project-desc">A gamified fire equipment app, redesigned with a fresh UI using AI as a design collaborator, without changing a single function.</p>
-      <span class="project-cta">View Project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-    </div>
-  </a>
-
-
-</section>
-
-
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="container">
-    <div class="testimonials-header animate-on-scroll">
-      <h2 class="testimonials-title">Working Together</h2>
-    </div>
-    <ul class="testimonials-list">
-
-      <li class="testimonial-item animate-on-scroll stagger-1">
-        <blockquote class="testimonial-item__quote">I had the opportunity to manage Adhith and work closely with him across multiple initiatives. Adhith is a thoughtful designer with strong strengths in research, systems thinking, and strategic problem-solving. <span class="testimonial-highlight">What stands out most about Adhith is his ability to think beyond immediate feature needs and contribute toward a clear North Star vision.</span></blockquote>
-        <div class="testimonial-item__author">
-          <strong class="testimonial-item__name">Priya Duraikannu</strong>
-          <span class="testimonial-item__role">Design Leader, Sam's Club</span>
-        </div>
-      </li>
-
-      <li class="testimonial-item animate-on-scroll stagger-2">
-        <blockquote class="testimonial-item__quote">Adhith joined my product team and together we built Albertsons' highest priority project of the year. <span class="testimonial-highlight">During this time Adhith consistently elevated the product to new levels of design excellence that our early adopters described as "refreshing and efficient".</span> I've seen Adhith leverage powerful design tools that create ideal mockups on the fly that made life as a product leader easier than ever before.</blockquote>
-        <div class="testimonial-item__author">
-          <strong class="testimonial-item__name">Scott Mumbauer</strong>
-          <span class="testimonial-item__role">Senior Product Manager, Albertsons</span>
-        </div>
-      </li>
-
-      <li class="testimonial-item animate-on-scroll stagger-3">
-        <blockquote class="testimonial-item__quote"><span class="testimonial-highlight">Adhith has been instrumental in conducting end-to-end journey mapping, a task he approached with precision and diligence.</span> His keen eye for detail and understanding of user behaviors led to insightful and valuable contributions to our projects. His designs were user-friendly and aesthetically pleasing, proving his ability to balance functionality with sleek design. The pharmacy associate apps have since increased user engagement and satisfaction, a testament to Adhith's design prowess.</blockquote>
-        <div class="testimonial-item__author">
-          <strong class="testimonial-item__name">Christina Algrim</strong>
-          <span class="testimonial-item__role">Senior Project Manager, Sam's Club Health &amp; Wellness</span>
-        </div>
-      </li>
-
-    </ul>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section">
-  <div class="container">
-    <div class="contact-inner animate-on-scroll">
-      <h2 class="contact-title">Let's talk</h2>
-      <p class="contact-body">I'm actively looking for my next role. Best fit: Senior or Mid-level PD on B2B, AI, or internal-tooling products.<br><br>Fastest way to reach me: email. I reply within 24 hours.</p>
-      <div class="contact-btns">
-        <a href="mailto:adhith.shan@gmail.com" class="contact-btn" onclick="va('event', { name: 'email_clicked', data: { source: 'contact' } })">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-          adhith.shan@gmail.com
-        </a>
-        <a href="https://linkedin.com/in/adhith-s" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'contact' } })">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost" onclick="va('event', { name: 'resume_clicked', data: { source: 'contact' } })">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-          Resume
-        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="contact content">
+    <div class="contact-inner">
+      <div>
+        <h2>Fastest way to reach me is email - I reply within 24 hours</h2>
+      </div>
+      <div class="contact-right">
+        <a class="contact-email" href="mailto:adhith.shan@gmail.com" onclick="va('event', { name: 'email_clicked', data: { source: 'contact' } })">adhith.shan@gmail.com</a>
+        <div class="contact-links">
+          <a href="https://linkedin.com/in/adhith-s" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'contact' } })">LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'contact' } })">Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer role="contentinfo">
-  <h2 class="sr-only">Site footer and contact links</h2>
-  <ul class="footer-links">
-    <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith" onclick="va('event', { name: 'email_clicked', data: { source: 'footer' } })">Email</a></li>
-    <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>
-    <li><a href="about.html" aria-label="About Adhith">About</a></li>
-    <li><a href="accessibility.html" aria-label="Accessibility statement for this site">Accessibility</a></li>
-  </ul>
-  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care on Claude.</p>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; Shipped through Claude (- tokens)</p>
+    <div class="footer-meta">
+      <span class="footer-a11y">Reviewed against WCAG 2.1 AA guidelines</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-  // ─── SCROLL ANIMATIONS ───
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-  // ── Hero typewriter ──
-  (function () {
-    const h1 = document.querySelector('.hero h1');
-    if (!h1) return;
-    const text = h1.textContent.trim();
-
-    // Wrap every character in a hidden span to preserve layout
-    h1.innerHTML = Array.from(text).map(ch =>
-      `<span class="type-char" style="opacity:0">${ch === '<' ? '&lt;' : ch}</span>`
-    ).join('');
-
-    const chars = h1.querySelectorAll('.type-char');
-    let i = 0;
-
-    function tick() {
-      if (i < chars.length) {
-        if (i > 0) chars[i - 1].style.opacity = '1';   // solidify previous
-        chars[i].style.opacity = '0.25';                // ghost current
-        i++;
-        setTimeout(tick, 32);
-      } else {
-        chars[chars.length - 1].style.opacity = '1';   // solidify last
-        // Stagger-reveal elements below
-        document.querySelectorAll('.hero-after').forEach((el, idx) => {
-          setTimeout(() => el.classList.add('visible'), 60 + idx * 160);
-        });
-      }
-    }
-
-    setTimeout(tick, 200);
+  (function(){
+    var hour = new Date().getHours();
+    var greeting = "G'd morning";
+    if (hour >= 12 && hour < 17) greeting = "G'd afternoon";
+    else if (hour >= 17 || hour < 5) greeting = "G'd evening";
+    var el = document.getElementById('hero-greeting');
+    if (el) el.textContent = greeting + ", I'm Adhith.";
   })();
 </script>
+
 </body>
 </html>

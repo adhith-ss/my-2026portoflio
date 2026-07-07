@@ -1,12 +1,12 @@
 # Adhith Shanmuga Sundaram — Portfolio
 
-A dark-themed UX design portfolio built with vanilla HTML, CSS, and JavaScript. Features the Geist typeface and pastel accent colors.
+A light-themed UX design portfolio built with vanilla HTML, CSS, and JavaScript.
 
 ## Pages
 
 | File | Page | Description |
 |---|---|---|
-| `index.html` | Homepage | Project showcase with animated cards |
+| `index.html` | Homepage | Project showcase |
 | `item-management.html` | Item Management | Enterprise B2B platform case study |
 | `rxtogo.html` | RxToGo | Pharmacy delivery product suite case study |
 | `allocatr.html` | Allocatr Insights | Enterprise finance platform case study |
@@ -20,7 +20,7 @@ This is a static site with no build step or dependencies required.
 
 Double-click `index.html` to open it in your default browser.
 
-> **Note:** Videos (`.mov` files) may not play when opened directly via `file://`. Use one of the server options below for full functionality.
+> **Note:** Videos (`.mp4` files) may not play when opened directly via `file://`. Use one of the server options below for full functionality.
 
 ### Option 2 — Python (built into macOS/Linux)
 
@@ -53,16 +53,22 @@ My portfolio/
   index.html              # Homepage
   item-management.html    # Item Management case study
   rxtogo.html             # RxToGo case study
-  allocatr.html           # Allocatr Insights case study
-  about.html              # About Me page
-  AS_Logo_PtfTab_b.png    # Navigation logo (shared across all pages)
-  *.png / *.jpg            # Project and about page images
-  *.mov                    # Solution walkthrough videos
-  README.md               # This file
+  allocatr.html            # Allocatr Insights case study
+  about.html               # About Me page
+  styles.css               # Shared stylesheet for all pages
+  assets/
+    shared/                # Nav logo, Walmart/Albertsons logos
+    home/                  # Homepage project-card thumbnails
+    About/                 # About page gallery images
+    allocatr/              # Allocatr case study images/video
+    item-management/       # Item Management case study images
+    rxtogo/                # RxToGo case study images/video
+  README.md                # This file
 ```
 
 ## Tech Stack
 
 - **HTML/CSS/JS** — No frameworks or build tools
-- **Google Fonts** — Geist typeface
-- **IntersectionObserver** — Scroll-triggered animations
+- **Adobe Fonts (Typekit)** — loaded via `use.typekit.net`
+- **Vercel Web Analytics** — page-view + custom click event tracking
+- **IntersectionObserver** — scroll-spy table of contents on case study pages
