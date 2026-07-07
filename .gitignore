@@ -2,3 +2,4 @@
 *.HEIC
 *.heic
 _originals/
+backup-production-*/

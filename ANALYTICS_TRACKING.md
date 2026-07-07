@@ -1,8 +1,14 @@
 # Analytics Event Tracking Plan
 
 ## Overview
-Custom event tracking via Vercel Web Analytics `va('event', ...)` added to `index.html` and `about.html`.
-Vercel Insights script is already present on both pages (`/_vercel/insights/script.js`).
+Custom event tracking via Vercel Web Analytics `va('event', ...)` on `index.html` and `about.html`.
+Vercel Insights script (`/_vercel/insights/script.js`) is present on all 5 pages.
+
+> **Updated 2026-07-07** after the V5 UI migration. The homepage no longer has footer email/LinkedIn
+> links, and the about page no longer has a story resume button or contact section — so the
+> `footer`/`story`/`contact` variants tied to those removed elements no longer apply. Line numbers
+> are intentionally omitted below since they drift with edits; search each file for `va('event'` to
+> find current locations.
 
 ---
 
@@ -10,39 +16,10 @@ Vercel Insights script is already present on both pages (`/_vercel/insights/scri
 
 | Event Name | `data` properties | Triggers |
 |---|---|---|
-| `resume_clicked` | `source: 'nav' \| 'contact' \| 'story'` | Nav resume link, contact section resume btn, about page story resume btn |
-| `email_clicked` | `source: 'hero' \| 'contact' \| 'footer'` | Hero "Email me →" btn, contact section email btn, footer email link |
-| `linkedin_clicked` | `source: 'contact' \| 'footer'` | Contact section LinkedIn btn, footer LinkedIn link |
-| `case_study_clicked` | `project: 'rxtogo' \| 'item_management' \| 'allocatr'` | Project cards on homepage |
-
----
-
-## Implementation
-
-### index.html (10 handlers)
-
-| Line | Element | Event call |
-|---|---|---|
-| 626 | Nav → Resume | `va('event', { name: 'resume_clicked', data: { source: 'nav' } })` |
-| 645 | Hero → Email me → | `va('event', { name: 'email_clicked', data: { source: 'hero' } })` |
-| 657 | Project card → RxToGo | `va('event', { name: 'case_study_clicked', data: { project: 'rxtogo' } })` |
-| 677 | Project card → Item Management | `va('event', { name: 'case_study_clicked', data: { project: 'item_management' } })` |
-| 697 | Project card → Allocatr | `va('event', { name: 'case_study_clicked', data: { project: 'allocatr' } })` |
-| 726 | Contact → Email btn | `va('event', { name: 'email_clicked', data: { source: 'contact' } })` |
-| 730 | Contact → LinkedIn btn | `va('event', { name: 'linkedin_clicked', data: { source: 'contact' } })` |
-| 734 | Contact → Resume btn | `va('event', { name: 'resume_clicked', data: { source: 'contact' } })` |
-| 746 | Footer → Email link | `va('event', { name: 'email_clicked', data: { source: 'footer' } })` |
-| 747 | Footer → LinkedIn link | `va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })` |
-
-### about.html (5 handlers)
-
-| Line | Element | Event call |
-|---|---|---|
-| 623 | Nav → Resume | `va('event', { name: 'resume_clicked', data: { source: 'nav' } })` |
-| 645 | Story → View My Resume btn | `va('event', { name: 'resume_clicked', data: { source: 'story' } })` |
-| 742 | Contact → Get in Touch btn | `va('event', { name: 'email_clicked', data: { source: 'contact' } })` |
-| 753 | Footer → Email link | `va('event', { name: 'email_clicked', data: { source: 'footer' } })` |
-| 754 | Footer → LinkedIn link | `va('event', { name: 'linkedin_clicked', data: { source: 'footer' } })` |
+| `resume_clicked` | `source: 'nav'` | Nav resume link (index.html, about.html) |
+| `email_clicked` | `source: 'hero' \| 'contact'` | Hero "Email me" btn, contact section email link (index.html only) |
+| `linkedin_clicked` | `source: 'contact'` | Contact section LinkedIn link (index.html only) |
+| `case_study_clicked` | `project: 'rxtogo' \| 'item_management' \| 'allocatr'` | Project card image + "Preview project" link, homepage |
 
 ---
 

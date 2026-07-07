@@ -3,1823 +3,409 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
-<link rel="shortcut icon" type="image/png" href="AS_Logo_PtfTab_b.png?v=1">
-<link rel="apple-touch-icon" href="AS_Logo_PtfTab_b.png">
-<title>RxToGo Product Suite — Adhith Shanmuga Sundaram</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/shared/AS_Logo_PtfTab_b.png?v=1">
+<link rel="shortcut icon" type="image/png" href="assets/shared/AS_Logo_PtfTab_b.png?v=1">
+<link rel="apple-touch-icon" href="assets/shared/AS_Logo_PtfTab_b.png">
+<title>Rx - Delivery Order Fulfillment — Adhith Shanmuga Sundaram</title>
+<link rel="stylesheet" href="https://use.typekit.net/cgy1qed.css">
+<link rel="stylesheet" href="styles.css">
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
-<link rel="prefetch" href="item-management.html">
-<link rel="prefetch" href="allocatr.html">
-<style>
-  :root {
-    --bg-primary: #0A0A0A;
-    --bg-secondary: #111111;
-    --bg-card: #161616;
-    --bg-card-hover: #1C1C1C;
-    --border-subtle: #222222;
-    --border-medium: #2A2A2A;
-
-    --text-primary: #E8E8E8;
-    --text-secondary: #B0B0B0;
-    --text-muted: #AAAAAA;
-
-    --pastel-peach: #F4A89A;
-    --pastel-mint: #8ED8B0;
-    --pastel-lavender: #B8A9E8;
-    --pastel-sky: #8AC4E8;
-    --pastel-lemon: #E8D88A;
-    --pastel-rose: #E89AB8;
-
-    --section-gap: clamp(80px, 10vw, 140px);
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    font-family: 'Geist', sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  ::selection {
-    background: var(--pastel-mint);
-    color: var(--bg-primary);
-  }
-
-  /* ─── NAV ─── */
-  nav[role="navigation"] {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-subtle);
-    transition: all 0.3s ease;
-  }
-
-  .nav-logo {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo-img {
-    height: 48px;
-    width: auto;
-    display: block;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.25s ease;
-    padding: 11px 4px;
-    display: inline-block;
-    min-height: 44px;
-  }
-
-  .nav-links a:hover { color: var(--text-primary); }
-
-  /* ─── CONTAINER ─── */
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    padding-top: 160px;
-    padding-bottom: var(--section-gap);
-    text-align: center;
-    position: relative;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(142, 216, 176, 0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-tag {
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 100px;
-    border: 1px solid var(--border-medium);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    margin-bottom: 28px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.5rem, 5.5vw, 4rem);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-    margin-bottom: 28px;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  .hero-description {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    font-weight: 400;
-    color: var(--text-secondary);
-    max-width: 680px;
-    margin: 0 auto 48px;
-    line-height: 1.7;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-image {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--bg-card);
-    aspect-ratio: 16 / 8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .section-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-  }
-
-  .section-video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    border-radius: 12px;
-    background: var(--bg-card);
-  }
-
-  .image-placeholders--single {
-    grid-template-columns: 1fr;
-  }
-
-  .image-placeholder--full {
-    aspect-ratio: 16 / 9;
-  }
-
-  /* ─── IMPACT STRIP ─── */
-  .impact-strip {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border-subtle);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 24px;
-  }
-
-  .impact-cell {
-    background: var(--bg-card);
-    padding: 28px 24px;
-    text-align: center;
-  }
-
-  .impact-cell .impact-number {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-    line-height: 1.1;
-    margin-bottom: 6px;
-  }
-
-  .impact-cell .impact-label {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-
-  /* ─── META ROW ─── */
-  .meta-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border-subtle);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-
-  .meta-item {
-    background: var(--bg-card);
-    padding: 28px 24px;
-    text-align: center;
-  }
-
-  .meta-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-
-  .meta-value {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  /* ─── MY ROLE ─── */
-  .role-section {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 32px 36px;
-    margin-bottom: var(--section-gap);
-  }
-
-  .role-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-
-  .role-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .role-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-  }
-
-  .role-body {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: var(--text-secondary);
-    max-width: 720px;
-  }
-
-  .role-body strong {
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-
-  .role-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
-  }
-
-  .role-tag {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    padding: 5px 12px;
-    border-radius: 100px;
-    border: 2px solid var(--border-medium);
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-  }
-
-
-  /* ─── SECTION SHARED ─── */
-  .section {
-    margin-bottom: var(--section-gap);
-  }
-
-  .section-label {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-    padding: 5px 12px;
-    border-radius: 6px;
-  }
-
-  .section-label--peach { color: var(--pastel-peach); background: rgba(244, 168, 154, 0.1); }
-  .section-label--mint { color: var(--pastel-mint); background: rgba(142, 216, 176, 0.1); }
-  .section-label--lavender { color: var(--pastel-lavender); background: rgba(184, 169, 232, 0.1); }
-  .section-label--sky { color: var(--pastel-sky); background: rgba(138, 196, 232, 0.1); }
-  .section-label--lemon { color: var(--pastel-lemon); background: rgba(232, 216, 138, 0.1); }
-  .section-label--rose { color: var(--pastel-rose); background: rgba(232, 154, 184, 0.1); }
-
-  .section-title {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-
-  .section-subtitle {
-    font-size: clamp(1rem, 1.6vw, 1.125rem);
-    color: var(--text-secondary);
-    max-width: 640px;
-    line-height: 1.7;
-  }
-
-  /* ─── CHALLENGE ─── */
-  .challenge-statement {
-    text-align: center;
-    padding: 56px 32px;
-    border-radius: 16px;
-    border: 1px solid var(--border-medium);
-    background: var(--bg-secondary);
-    margin-top: 40px;
-    margin-bottom: 48px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .challenge-statement::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(142, 216, 176, 0.04), rgba(138, 196, 232, 0.04));
-    pointer-events: none;
-  }
-
-  .challenge-question-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--pastel-mint);
-    margin-bottom: 16px;
-  }
-
-  .challenge-question {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: -0.02em;
-    max-width: 600px;
-    margin: 0 auto;
-    color: var(--text-primary);
-  }
-
-  /* ─── STATS GRID ─── */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  .stat-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    padding: 28px 20px;
-    text-align: center;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-  }
-
-  .stat-card:hover {
-    border-color: var(--border-medium);
-    transform: translateY(-2px);
-  }
-
-  .stat-number {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 6px;
-  }
-
-  .stat-number--peach { color: var(--pastel-peach); }
-  .stat-number--mint { color: var(--pastel-mint); }
-  .stat-number--lavender { color: var(--pastel-lavender); }
-  .stat-number--sky { color: var(--pastel-sky); }
-  .stat-number--lemon { color: var(--pastel-lemon); }
-  .stat-number--rose { color: var(--pastel-rose); }
-
-  .stat-desc {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  /* ─── PAIN POINTS ─── */
-  .pain-points {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 40px;
-  }
-
-  .pain-point {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 20px 24px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    transition: border-color 0.3s ease;
-  }
-
-  .pain-point:hover { border-color: var(--border-medium); }
-
-  .pain-index {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--bg-primary);
-    background: var(--pastel-mint);
-  }
-
-  .pain-text {
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    padding-top: 4px;
-  }
-
-  /* ─── IMAGE PLACEHOLDERS ─── */
-  .image-placeholders {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  .image-placeholder {
-    aspect-ratio: 16 / 10;
-    border-radius: 14px;
-    background: var(--bg-card);
-    overflow: hidden;
-  }
-
-  .image-caption {
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    margin-top: 12px;
-    line-height: 1.5;
-  }
-
-  .placeholder-inner {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: var(--text-muted);
-  }
-
-  .placeholder-inner svg {
-    opacity: 0.35;
-  }
-
-  .placeholder-label {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    opacity: 0.6;
-  }
-
-  /* ─── WORKFLOW ─── */
-  .workflow {
-    display: flex;
-    gap: 0;
-    margin-top: 48px;
-    position: relative;
-    align-items: stretch;
-  }
-
-  .workflow::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--border-medium);
-    z-index: 0;
-  }
-
-  .workflow-step {
-    flex: 1;
-    padding: 24px 20px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .workflow-step:first-child { border-radius: 14px 0 0 14px; }
-  .workflow-step:last-child { border-radius: 0 14px 14px 0; }
-
-  .workflow-num {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin: 0 auto 12px;
-    color: var(--bg-primary);
-  }
-
-  .workflow-num--1 { background: var(--pastel-mint); }
-  .workflow-num--2 { background: var(--pastel-sky); }
-  .workflow-num--3 { background: var(--pastel-lavender); }
-
-  .workflow-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-  }
-
-  .workflow-desc {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  /* ─── INSIGHT CARDS ─── */
-  .insight-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  .insight-card {
-    padding: 28px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    transition: border-color 0.3s ease;
-  }
-
-  .insight-card:hover { border-color: var(--border-medium); }
-
-  .insight-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-  }
-
-  .insight-icon--mint { background: rgba(142, 216, 176, 0.12); color: var(--pastel-mint); }
-  .insight-icon--lavender { background: rgba(184, 169, 232, 0.12); color: var(--pastel-lavender); }
-  .insight-icon--sky { background: rgba(138, 196, 232, 0.12); color: var(--pastel-sky); }
-  .insight-icon--rose { background: rgba(232, 154, 184, 0.12); color: var(--pastel-rose); }
-
-  .insight-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-  }
-
-  .insight-desc {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* ─── SOLUTIONS GRID ─── */
-  .solutions-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  .solution-card {
-    padding: 32px 28px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    transition: border-color 0.3s ease, transform 0.25s ease;
-  }
-
-  .solution-card:hover {
-    border-color: var(--border-medium);
-    transform: translateY(-2px);
-  }
-
-  .solution-tag {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 4px 10px;
-    border-radius: 6px;
-    display: inline-block;
-    margin-bottom: 14px;
-  }
-
-  .solution-tag--peach { color: var(--pastel-peach); background: rgba(244, 168, 154, 0.1); }
-  .solution-tag--mint { color: var(--pastel-mint); background: rgba(142, 216, 176, 0.1); }
-  .solution-tag--lavender { color: var(--pastel-lavender); background: rgba(184, 169, 232, 0.1); }
-  .solution-tag--sky { color: var(--pastel-sky); background: rgba(138, 196, 232, 0.1); }
-
-  .solution-name {
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-  }
-
-  .solution-problem {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-
-  .solution-impact {
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .solution-impact strong { color: var(--text-primary); }
-
-  /* ─── IMPACT ─── */
-  .impact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-    margin-bottom: 32px;
-  }
-
-  .impact-card {
-    padding: 32px 24px;
-    text-align: center;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    transition: border-color 0.3s ease, transform 0.25s ease;
-  }
-
-  .impact-card:hover {
-    border-color: var(--border-medium);
-    transform: translateY(-2px);
-  }
-
-  .impact-number {
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 6px;
-  }
-
-  .impact-desc {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  .impact-notes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .impact-note {
-    padding: 24px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-  }
-
-  .impact-note-title {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-  }
-
-  .impact-note-text {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* ── Impact hero stat hierarchy ── */
-  .impact-hero {
-    background: rgba(142, 216, 176, 0.07);
-    border: 1px solid rgba(142, 216, 176, 0.18);
-    border-radius: 14px;
-    padding: 1.5rem 1.75rem;
-    margin-top: 40px;
-    margin-bottom: 12px;
-  }
-
-  .impact-hero__micro {
-    display: block;
-    font-size: 0.6875rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-  }
-
-  .impact-hero__row {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .impact-hero__number {
-    font-size: clamp(3rem, 6vw, 3.75rem);
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.03em;
-  }
-
-  .impact-hero__unit {
-    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-    font-weight: 400;
-    opacity: 0.6;
-  }
-
-  .impact-hero__context {
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    max-width: 380px;
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .impact-support-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-
-  .impact-support-stat {
-    padding: 16px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 10px;
-    transition: border-color 0.25s ease;
-  }
-
-  .impact-support-stat:hover { border-color: var(--border-medium); }
-
-  .impact-support-stat__number {
-    font-size: 1.375rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-  }
-
-  .impact-support-stat__label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-
-  @media (max-width: 640px) {
-    .impact-support-grid { grid-template-columns: repeat(2, 1fr); }
-    .impact-hero__row { gap: 12px; }
-  }
-
-  /* ─── TAKEAWAYS ─── */
-  .takeaway-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 40px;
-    margin-bottom: 32px;
-  }
-
-  .takeaway-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 24px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    transition: border-color 0.3s ease;
-  }
-
-  .takeaway-card:hover { border-color: var(--border-medium); }
-
-  .takeaway-index {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--bg-primary);
-  }
-
-  .takeaway-index--1 { background: var(--pastel-sky); }
-  .takeaway-index--2 { background: var(--pastel-lavender); }
-  .takeaway-index--3 { background: var(--pastel-lemon); }
-
-  .takeaway-content { padding-top: 2px; }
-
-  .takeaway-title {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-  }
-
-  .takeaway-text {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .takeaway-notes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .takeaway-note {
-    padding: 24px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-  }
-
-  .takeaway-note-title {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-  }
-
-  .takeaway-note-text {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* ─── DIVIDER ─── */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border-subtle);
-    margin: var(--section-gap) 0;
-  }
-
-  /* ─── PROJECT NAVIGATION ─── */
-  .project-nav {
-    padding: 0 0 40px;
-    text-align: center;
-  }
-
-  .project-nav-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .nav-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-family: 'Geist', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .nav-btn--prev,
-  .nav-btn--next {
-    background: var(--bg-card);
-    border: 1px solid var(--border-medium);
-    color: var(--text-primary);
-  }
-
-  .nav-btn--prev:hover,
-  .nav-btn--next:hover {
-    border-color: var(--pastel-mint);
-    box-shadow: 0 4px 16px rgba(142, 216, 176, 0.15);
-  }
-
-  .nav-btn--top {
-    background: transparent;
-    border: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
-  }
-
-  .nav-btn--top:hover {
-    border-color: var(--border-medium);
-    color: var(--text-primary);
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    padding: 40px 0;
-    border-top: 1px solid var(--border-subtle);
-    text-align: center;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-bottom: 20px;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0 8px;
-  }
-
-  .footer-links a:hover { color: var(--text-secondary); }
-
-  .footer-copy {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    nav[role="navigation"] { padding: 16px 20px; }
-    .nav-links { gap: 20px; }
-    .nav-links a { font-size: 0.8125rem; }
-    .hero { padding-top: 120px; }
-    .meta-row { grid-template-columns: 1fr 1fr; }
-    .impact-strip { grid-template-columns: 1fr 1fr; }
-    .role-section { padding: 24px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .insight-cards { grid-template-columns: 1fr; }
-    .workflow { flex-direction: column; gap: 12px; }
-    .workflow::before { display: none; }
-    .workflow-step { border-radius: 12px !important; }
-    .solutions-grid { grid-template-columns: 1fr; }
-    .image-placeholders { grid-template-columns: 1fr; }
-    .impact-grid { grid-template-columns: repeat(2, 1fr); }
-    .impact-notes { grid-template-columns: 1fr; }
-    .takeaway-notes { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 480px) {
-    .stats-grid { grid-template-columns: 1fr; }
-    .impact-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2rem; }
-    .footer-links { flex-direction: column; gap: 16px; }
-    .project-nav-buttons { flex-direction: column; }
-    .nav-btn { width: 100%; justify-content: center; }
-  }
-
-  .inline-stat {
-    color: var(--pastel-peach);
-    font-weight: 600;
-    background: rgba(244, 168, 154, 0.1);
-    padding: 1px 8px;
-    border-radius: 4px;
-  }
-
-  .friction-header {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 40px;
-    margin-bottom: 16px;
-  }
-
-  .friction-rows {
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    overflow: hidden;
-  }
-
-  .friction-row {
-    display: grid;
-    grid-template-columns: 48px 200px 1fr;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .friction-row:last-child { border-bottom: none; }
-
-  .friction-row-num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-secondary);
-    border-right: 1px solid var(--border-subtle);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-  }
-
-  .friction-row-title {
-    padding: 18px 20px;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    border-right: 1px solid var(--border-subtle);
-    display: flex;
-    align-items: center;
-  }
-
-  .friction-row-desc {
-    padding: 18px 24px;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    display: flex;
-    align-items: center;
-  }
-
-  /* ─── DESIGN DECISIONS ─── */
-  .decision-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 36px 40px;
-    margin-bottom: 16px;
-    position: relative;
-    transition: border-color 0.3s ease;
-  }
-
-  .decision-card:hover { border-color: var(--border-medium); }
-
-  .decision-card:last-child { margin-bottom: 0; }
-
-  .decision-number {
-    position: absolute;
-    top: 32px;
-    right: 36px;
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--border-medium);
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-
-  .decision-label-tag {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-
-  .decision-title {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.3;
-    margin-bottom: 24px;
-    max-width: 600px;
-    color: var(--text-primary);
-  }
-
-  .decision-fork {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .fork-option {
-    padding: 16px 20px;
-    border-radius: 12px;
-  }
-
-  .fork-option.considered {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-subtle);
-    opacity: 0.75;
-  }
-
-  .fork-option.chosen {
-    background: rgba(142, 216, 176, 0.06);
-    border: 1px solid rgba(142, 216, 176, 0.2);
-  }
-
-  .fork-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 100px;
-    margin-bottom: 10px;
-  }
-
-  .considered .fork-badge {
-    background: var(--bg-primary);
-    color: var(--text-muted);
-    border: 2px solid var(--border-subtle);
-  }
-
-  .chosen .fork-badge {
-    background: var(--pastel-mint);
-    color: var(--bg-primary);
-  }
-
-  .fork-text {
-    font-size: 0.9375rem;
-    color: var(--text-primary);
-    font-weight: 500;
-    line-height: 1.5;
-  }
-
-  .decision-detail { margin-top: 8px; }
-
-  .detail-row {
-    padding: 14px 0;
-    border-top: 1px solid var(--border-subtle);
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 20px;
-  }
-
-  .detail-key {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding-top: 2px;
-  }
-
-  .detail-value {
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-
-  @media (max-width: 768px) {
-    .friction-row { grid-template-columns: 40px 1fr; }
-    .friction-row-num { grid-row: 1 / 3; }
-    .friction-row-title { border-right: none; border-bottom: 1px solid var(--border-subtle); }
-    .friction-row-desc { align-items: flex-start; padding-top: 12px; }
-    .decision-fork { grid-template-columns: 1fr; }
-    .detail-row { grid-template-columns: 1fr; gap: 4px; }
-    .decision-number { font-size: 2.25rem; top: 24px; right: 24px; }
-    .decision-card { padding: 28px 24px; }
-  }
-
-  /* ─── SKIP LINK & SR-ONLY ─── */
-  .skip-link {
-    position: absolute;
-    top: -100%;
-    left: 16px;
-    z-index: 10000;
-    padding: 12px 24px;
-    background: #000;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 0 0 8px 8px;
-    transition: top 0.2s ease;
-  }
-  .skip-link:focus { top: 0; }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  /* ─── FOCUS INDICATOR (WCAG 2.4.7) ─── */
-  *:focus-visible {
-    outline: 3px solid #8ab4f8;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-
-/* ─── REDUCED MOTION (WCAG 2.2.3, 2.2.4) ─── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-</style>
 </head>
-<body>
+<body class="page-rxtogo">
 
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<!-- NAV -->
-<header role="banner">
-<nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo"><img src="AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram" class="nav-logo-img"></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume<span class="sr-only"> (opens in new tab)</span></a></li>
-  </ul>
-</nav>
-</header>
-
-<main id="main-content" role="main">
-
-<!-- HERO -->
-<header id="hero" class="hero container">
-  <span class="hero-tag">Sam's Club Health &amp; Wellness · Pharmacy Associate Tool · 2023–2024</span>
-  <h1>Transformed pharmacy delivery for 600+ Sam's Club stores</h1>
-  <p class="hero-description">I led the end-to-end design of a web + mobile product suite that replaced a fragmented 18-step dispensing workflow that cut delivery time by 55% and automated 40% of checkout for pharmacy associates.</p>
-
-  <div class="hero-image">
-    <img src="RxToGo_TN_ptf.png" alt="RxToGo Product Suite — cover showing the pharmacy fulfillment interface" class="hero-img">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/shared/AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram">
+      Adhith Shanmuga Sundaram
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="https://drive.google.com/file/d/1Zbhe6SL_r7kkBT54a1ZyxjZSY7W02idK/view" target="_blank" rel="noopener">Resume</a></li>
+        <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<!-- IMPACT STRIP -->
-<div class="container animate-on-scroll">
-  <div class="impact-strip">
-    <div class="impact-cell">
-      <div class="impact-number">55%</div>
-      <div class="impact-label">Faster delivery dispense</div>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-number">800+</div>
-      <div class="impact-label">Orders fulfilled in Q4 '23</div>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-number">40%</div>
-      <div class="impact-label">Checkout automated</div>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-number">92%</div>
-      <div class="impact-label">Associate satisfaction</div>
-    </div>
-  </div>
-</div>
+<main>
 
-<!-- META -->
-<div class="container">
-  <div class="meta-row">
-    <div class="meta-item">
-      <div class="meta-label">Timeline</div>
-      <div class="meta-value">2023 – 2024</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Role</div>
-      <div class="meta-value">Senior Product Designer</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Team</div>
-      <div class="meta-value">20+ Engineers · 1 PM</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Platform</div>
-      <div class="meta-value">Web + Mobile</div>
-    </div>
-  </div>
-</div>
+  <nav class="cs-toc" aria-label="Sections on this page">
+    <a href="#result">Result</a>
+    <a href="#context">Context</a>
+    <a href="#problems-identified">Problems</a>
+    <a href="#design-approach">Design Approach</a>
+    <a href="#systems-thinking">Systems Thinking</a>
+    <a href="#usability-testing">Usability Testing</a>
+    <a href="#refinements">Refinements</a>
+    <a href="#handoff-and-launch">Handoff</a>
+    <a href="#next-steps">Next Steps</a>
+    <a href="#reflection">Reflection</a>
+  </nav>
 
-<!-- MY ROLE -->
-<div class="container animate-on-scroll">
-  <div class="role-section">
-    <div class="role-header">
-      <div class="role-icon" style="background: rgba(142, 216, 176, 0.12);">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8ED8B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  <section class="cs-hero content">
+    <h1>Rx - Delivery Order Fulfillment</h1>
+
+    <div class="cs-meta">
+      <div class="cs-meta-item">
+        <p class="cs-meta-label">Role</p>
+        <p class="cs-meta-value">Senior UX Designer</p>
       </div>
-      <div class="role-title">My role</div>
-    </div>
-    <p class="role-body">
-      I was the <strong>lead designer on the Checkout mobile app</strong> and Order Maintenance web dashboard. My scope included <strong>field research with pharmacy technicians</strong> at multiple Sam's Club locations, journey mapping the existing 18-step fulfillment flow, and redefining the interaction patterns for the TC53 handheld device.
-    </p>
-    <div class="role-tags">
-      <span class="role-tag">Field research</span>
-      <span class="role-tag">Journey mapping</span>
-      <span class="role-tag">Interaction design</span>
-      <span class="role-tag">Mobile (TC53)</span>
-      <span class="role-tag">Stakeholder facilitation</span>
-      <span class="role-tag">Design system</span>
-    </div>
-  </div>
-</div>
-
-<!-- THE PROBLEM -->
-<section class="section container animate-on-scroll" aria-labelledby="problem-heading">
-  <span class="section-label section-label--peach">The Problem</span>
-  <h2 id="problem-heading" class="section-title">A 10–15 minute dispensing process kept technicians off the pharmacy floor</h2>
-  <p class="section-subtitle">Sam's Club pharmacy technicians like Amy were spending most of their shift on prescription dispensing rather than serving customers. The legacy process took <span class="inline-stat">10–15 minutes per delivery order</span> across <strong>18 manual steps</strong> — spread across two disconnected applications and a handheld device, with <span class="inline-stat">46% of pharmacy revenue</span> depending on a workflow that was the most broken.</p>
-
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-number stat-number--peach">56%</div>
-      <div class="stat-desc">Customers are 55+ age group</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number stat-number--peach">70%</div>
-      <div class="stat-desc">Of revenue comes from this age group</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number stat-number--peach">21%</div>
-      <div class="stat-desc">Not enrolled on auto-refill</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number stat-number--peach">46%</div>
-      <div class="stat-desc">Pharmacy revenue from delivery orders</div>
-    </div>
-  </div>
-
-  <div class="friction-header">Where the workflow broke down <span style="font-weight:400;font-size:0.75rem;text-transform:none;letter-spacing:0;color:var(--text-muted)">(Based on pharmacy user study)</span></div>
-
-  <div class="friction-rows">
-    <div class="friction-row">
-      <div class="friction-row-num">01</div>
-      <div class="friction-row-title">Hardware fragmentation</div>
-      <div class="friction-row-desc">Associates switched between Connexus – GoLocal desktop applications and the TC53 handheld device, losing context at every transition.</div>
-    </div>
-    <div class="friction-row">
-      <div class="friction-row-num">02</div>
-      <div class="friction-row-title">Dual-user handoff</div>
-      <div class="friction-row-desc">Technicians and pharmacists had disconnected workflows, requiring manual coordination for verification and payment.</div>
-    </div>
-    <div class="friction-row">
-      <div class="friction-row-num">03</div>
-      <div class="friction-row-title">Additional third-party tools</div>
-      <div class="friction-row-desc">The GoLocal delivery application and TasCo POS were additional layers for the associate workflow, forcing workarounds.</div>
-    </div>
-    <div class="friction-row">
-      <div class="friction-row-num">04</div>
-      <div class="friction-row-title">Error-prone legacy system</div>
-      <div class="friction-row-desc">Manual work on label printing, Rx checks, and bag scanning across multiple systems increased error rates.</div>
-    </div>
-  </div>
-
-  <div class="challenge-statement">
-    <div class="challenge-question-label">The Core Question</div>
-    <p class="challenge-question">How might we help pharmacy associates recognize, schedule, and fulfill delivery orders within a unified workflow?</p>
-  </div>
-</section>
-
-<div class="container"><div class="divider"></div></div>
-
-<!-- RESEARCH -->
-<section class="section container animate-on-scroll" aria-labelledby="research-heading">
-  <span class="section-label section-label--mint">User Research</span>
-  <h2 id="research-heading" class="section-title">Mapping the InClub order fulfillment journey</h2>
-  <p class="section-subtitle">Documented the complete delivery order process from creation through fulfillment, identifying key friction points across three major stages involving pharmacy technicians and pharmacists.</p>
-
-  <div class="workflow">
-    <div class="workflow-step">
-      <div class="workflow-num workflow-num--1">1</div>
-      <div class="workflow-title">Create Order</div>
-      <div class="workflow-desc">Technicians select and review orders for delivery using the legacy Connexus application</div>
-    </div>
-    <div class="workflow-step">
-      <div class="workflow-num workflow-num--2">2</div>
-      <div class="workflow-title">Fulfill RX Order</div>
-      <div class="workflow-desc">Scan items, fill orders manually, print labels, and drop bags in Will Call rack</div>
-    </div>
-    <div class="workflow-step">
-      <div class="workflow-num workflow-num--3">3</div>
-      <div class="workflow-title">Schedule Payment</div>
-      <div class="workflow-desc">Pharmacist verifies order, schedules payment via GoLocal, completes checkout on TC53</div>
-    </div>
-  </div>
-
-  <div class="image-placeholders" style="grid-template-columns: 1fr;">
-    <div class="image-placeholder">
-      <img src="RxToGo_Research1.png" alt="User journey map showing the InClub order fulfillment process" class="section-img" loading="lazy">
-    </div>
-    <div class="image-placeholder">
-      <img src="RxToGo_Research_2.png" alt="Research artifact documenting pharmacy workflow findings" class="section-img" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<div class="container"><div class="divider"></div></div>
-
-<!-- DESIGN DECISIONS -->
-<section class="section container animate-on-scroll" aria-labelledby="decisions-heading">
-  <span class="section-label section-label--lavender">Design Decisions</span>
-  <h2 id="decisions-heading" class="section-title">3 decisions that shaped the outcome</h2>
-  <p class="section-subtitle">Key tradeoffs made during the design process - where I went, what I considered, and why it worked.</p>
-
-  <div style="margin-top: 40px;">
-    <div class="decision-card">
-      <div class="decision-number">01</div>
-      <div class="decision-label-tag">Decision · Architecture</div>
-      <h3 class="decision-title">Two apps or one?</h3>
-
-      <div class="decision-fork">
-        <div class="fork-option considered">
-          <span class="fork-badge">Considered</span>
-          <div class="fork-text">Single unified app running on both desktop and TC53 handheld</div>
-        </div>
-        <div class="fork-option chosen">
-          <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
-          <div class="fork-text">Two purpose-built apps: Web dashboard + mobile checkout</div>
-        </div>
+      <div class="cs-meta-item">
+        <p class="cs-meta-label">Platform</p>
+        <p class="cs-meta-value">Mobile-Web</p>
       </div>
-
-      <div class="decision-detail">
-        <div class="detail-row">
-          <div class="detail-key">Why</div>
-          <div class="detail-value">Pharmacists and technicians had fundamentally different jobs. Pharmacists needed a multi-order overview for prescription and patient verification; technicians needed a guided, single-order flow for fulfilling orders on the pharmacy floor. Forcing both into one responsive app would have compromised both.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Tradeoff</div>
-          <div class="detail-value">Higher engineering cost and two codebases to maintain. I mitigated this by reutilizing a Walmart pharmacy app for mobile for less engineering effort and a common data model across both apps.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Signal it worked</div>
-          <div class="detail-value">Through usability testing done across multiple clubs, 92% of associates preferred the new portal and the single-purpose flow reduced cognitive load on the floor.</div>
-        </div>
+      <div class="cs-meta-item">
+        <p class="cs-meta-label">Duration</p>
+        <p class="cs-meta-value">10 months</p>
       </div>
     </div>
 
-    <!-- Decision 01 mockups -->
-    <div style="display:grid; grid-template-columns:1.6fr 1fr; gap:24px; align-items:end; margin-top:24px; margin-bottom:16px;">
-      <!-- Web app — full natural width, no height crop -->
-      <div>
-        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border-subtle); background:var(--bg-card);">
-          <img src="RxToGo_Decision1_2.png" alt="Order Maintenance web dashboard" style="width:100%; display:block; object-fit:contain;">
-        </div>
-        <p class="image-caption" style="margin-top:10px;">Order Maintenance — web dashboard</p>
+    <h4 class="cs-subhead" style="margin-top:var(--sp-16)">Sam's Club - Walmart</h4>
+    <p class="cs-summary">Nearly half a million Sam's Club members benefit through the delivery order fulfillment, where thousands of pharmacy associates work through multiple process in receiving, validating, bagging and dispatching the orders at the stores. I was sole designer responsible for the complete discovery to end product delivery, which was executed in collaboration with 15 engineers and one product owner.</p>
+
+    <div class="cs-cover">
+      <img src="assets/rxtogo/cover.png" alt="RxToGo delivery order fulfillment cover screen">
+    </div>
+  </section>
+
+  <section class="cs-section content" id="result">
+    <h3 class="cs-section-label">Result</h3>
+    <p class="cs-section-body">The delivery fulfillment application redefined the member - associate experience across 5 pilot states.</p>
+
+    <div class="cs-stat-row">
+      <div class="cs-stat">
+        <p class="cs-stat-number">55%</p>
+        <p class="cs-stat-label">reduction in associate delivery dispense time</p>
       </div>
-      <!-- Mobile app — smaller -->
-      <div style="display:flex; flex-direction:column; align-items:center;">
-        <img src="RxToGoDecision1_1.png" alt="RxToGo Checkout mobile app" style="height:349px; width:auto; display:block; object-fit:contain;">
-        <p class="image-caption" style="margin-top:10px;">Checkout — mobile app (TC53)</p>
+      <div class="cs-stat">
+        <p class="cs-stat-number">800+</p>
+        <p class="cs-stat-label">orders fulfilled</p>
       </div>
     </div>
 
-    <div class="decision-card">
-      <div class="decision-number">02</div>
-      <div class="decision-label-tag">Decision · Automation</div>
-      <h3 class="decision-title">What to automate vs. keep manual in checkout</h3>
+  </section>
 
-      <div class="decision-fork">
-        <div class="fork-option considered">
-          <span class="fork-badge">Considered</span>
-          <div class="fork-text">Automate end-to-end associate customer interaction</div>
-        </div>
-        <div class="fork-option chosen">
-          <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
-          <div class="fork-text">Integrated delivery scheduling and payment processing in the new application flow</div>
-        </div>
-      </div>
+  <section class="cs-section content" id="context">
+    <h3 class="cs-section-label">Context</h3>
+    <p class="cs-section-body">Growing demand for delivery orders and operational challenges forced Sam's Club Health &amp; Wellness team to rethink the delivery order fulfillment process through an application called RxToGo.</p>
 
-      <div class="decision-detail">
-        <div class="detail-row">
-          <div class="detail-key">Why</div>
-          <div class="detail-value">Integrating TasCo POS and GoLocal delivery scheduling eliminated phone-based friction, streamlined associate workflows by consolidating multi-app and hardware juggling, saved time for both customers and associates, all while maintaining strict HIPAA compliance.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Tradeoff</div>
-          <div class="detail-value">Engineering workarounds for replacing legacy payment and GoLocal integration. I provided a clear and intuitive component for these specific actions saving development time.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Signal it worked</div>
-          <div class="detail-value">This reduced 18 steps to 12 steps, automating 40% of the checkout process — giving back more time to associates in-store and customers felt confident sharing details through SMS.</div>
-        </div>
-      </div>
+    <div class="cs-callout">
+      <p>The RxToGo application is a newer version of the Walmart-Sam's Club's legacy application: Connexus</p>
     </div>
 
-    <div class="decision-card">
-      <div class="decision-number">03</div>
-      <div class="decision-label-tag">Decision · Less learning curve</div>
-      <h3 class="decision-title">Walmart Mail Order native patterns vs. custom design language</h3>
+    <h4 class="cs-subhead">The Previous Platform</h4>
+    <p class="cs-subbody">Connexus is a legacy web application used by pharmacies across Sam's Club and Walmart. All dispense types are processed through this platform, and with respect to delivery - GoLocal is third party platform for performing delivery orders through Connexus.</p>
 
-      <div class="decision-fork">
-        <div class="fork-option considered">
-          <span class="fork-badge">Considered</span>
-          <div class="fork-text">Recreate a brand new checkout app with Sam's Club DLS</div>
-        </div>
-        <div class="fork-option chosen">
-          <span class="fork-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:12px;height:12px;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Chose</span>
-          <div class="fork-text">Reutilized the Walmart checkout app</div>
-        </div>
-      </div>
+    <div class="cs-callout">
+      <p>GoLocal is used by associates to manually schedule delivery date and time</p>
+    </div>
 
-      <div class="decision-detail">
-        <div class="detail-row">
-          <div class="detail-key">Why</div>
-          <div class="detail-value">To support the MVP timeframe, adopting Walmart checkout highly solved the end user and business needs, including minimal engineering efforts.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Tradeoff</div>
-          <div class="detail-value">Design system mismatch and lack of heuristics. As this was a Sam's Club only app, I solved this by adapting Sam's Club BlueSteel DLS without compromising the key design components and actions through heuristic evaluation.</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-key">Signal it worked</div>
-          <div class="detail-value">Familiarity in the tasks and brand design guideline alignment echoed instant familiarity among pharmacy associates with less learning curve.</div>
+    <p class="cs-subbody">Through the Connexus application, a pharmacist will verify the prescription details with doctor's office and stage for medication fill, followed by:</p>
+    <ol class="cs-list cs-list--numbered" style="margin-bottom:var(--sp-8)">
+      <li>A pharmacy technician will scan the prescription, and process payment on the in-store POS device by contacting customer.</li>
+      <li>Post payment the order will be scheduled upon available delivery time.</li>
+      <li>On the last leg, they will print the documents and stage for delivery driver pickup.</li>
+    </ol>
+
+    <div class="cs-image cs-image--connexus">
+      <h5 class="cs-image-heading">Connexus - The Pharmacy Command Centre</h5>
+      <p class="cs-image-caption">Pharmacists and technicians utilize this web application to view all the pharmacy fulfillment orders</p>
+      <div class="cs-connexus-frame">
+        <img src="assets/rxtogo/connexus.png" alt="Connexus pharmacy command centre web application">
+        <div class="cs-doc-pointer">
+          <span class="cs-doc-pointer-line"></span>
+          <p>Entry point for Delivery Orders</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Decision 03 mockup -->
-    <div style="margin-top:24px; margin-bottom:16px;">
-      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border-subtle); background:var(--bg-primary);">
-        <img src="RxToGo_Decision3_1.png" alt="Walmart Mail Order app adapted for Sam's Club RxToGo" style="width:100%; display:block; object-fit:contain;">
+  <section class="cs-section content" id="problems-identified" style="border-top:none">
+    <h3 class="cs-section-label">Problems identified</h3>
+    <p class="cs-section-body">I spent first few weeks in learning about the problem space. I analyzed the end-to-end journey of order processing by pharmacy associates on both the physical and digital ends.</p>
+
+    <div class="cs-callout">
+      <p>Associates said the process is tedious and delays in-store customer service.</p>
+    </div>
+
+    <div class="cs-image cs-image--problems">
+      <div class="cs-image-block">
+        <h5 class="cs-image-heading">Strenuous Navigation</h5>
+        <p class="cs-image-caption">The Connexus portal carries a heavy cognitive load making associates interact with multiple sections with prescription and patient details. No room for error is acceptable when dealing with sensitive information.</p>
+        <div class="cs-annotated-frame" style="flex-direction:column; align-items:stretch; justify-content:flex-start">
+          <div style="display:flex; align-items:center; gap:var(--sp-4)">
+            <div class="cs-doc-pointer" style="flex-shrink:0; width:120px"><p>Top Navbar</p><span class="cs-doc-pointer-line"></span></div>
+            <img src="assets/rxtogo/navigation-top-navbar.png" alt="Top navbar close-up" style="flex:1; min-width:0; width:auto; display:block; border-radius:4px">
+          </div>
+          <div style="display:flex; align-items:center; gap:var(--sp-4); margin-top:var(--sp-4)">
+            <div class="cs-doc-pointer" style="flex-shrink:0; width:120px"><p>Main Navbar</p><span class="cs-doc-pointer-line"></span></div>
+            <img src="assets/rxtogo/navigation-main-navbar.png" alt="Main navbar close-up" style="height:260px; width:auto; flex-shrink:0; display:block; border-radius:4px">
+            <img src="assets/rxtogo/navigation-full-screen.png" alt="Connexus screen showing the main and top navigation bars" style="height:260px; width:auto; max-width:none; display:block; border-radius:4px">
+          </div>
+        </div>
       </div>
-      <p class="image-caption" style="margin-top:10px;">Walmart checkout app adapted for Sam's Club RxToGo</p>
-    </div>
-  </div>
-</section>
 
-<div class="container"><div class="divider"></div></div>
-
-<!-- SOLUTION OVERVIEW -->
-<section class="section container animate-on-scroll" aria-labelledby="solutions-heading">
-  <span class="section-label section-label--sky">Solution Overview</span>
-  <h2 id="solutions-heading" class="section-title">Integrated web &amp; mobile product suite</h2>
-  <p class="section-subtitle">Designed a cohesive two-part system - Order Maintenance web app for order management and a Checkout mobile app for in-store fulfillment-unifying workflows.</p>
-
-  <div class="image-placeholders" style="grid-template-columns:1fr;">
-    <div>
-      <div class="image-placeholder">
-        <img src="RxToGo_Solution_1.png" alt="RxToGo solution screen showing the integrated web and mobile product suite" class="section-img" loading="lazy" style="object-fit:contain;background:var(--bg-card);">
+      <div class="cs-image-block">
+        <h5 class="cs-image-heading">Switching Between Tabs</h5>
+        <p class="cs-image-caption">The Connexus-POS-GoLocal applications need to be used in different times throughout an order fulfillment and also having the customer in call for order validation.</p>
+        <div class="cs-image-row cs-tabs-row" style="justify-content:space-between">
+          <div class="cs-tabs-group">
+            <div class="cs-doc-pointer" style="flex-shrink:0"><p>POS</p><span class="cs-doc-pointer-line"></span></div>
+            <img class="cs-tabs-img" src="assets/rxtogo/laborious-task-2.png" alt="POS keypad screen used for order payment">
+          </div>
+          <div class="cs-tabs-group">
+            <img class="cs-tabs-img" src="assets/rxtogo/laborious-task-1.png" alt="GoLocal booking screen on desktop monitor">
+            <div class="cs-doc-pointer" style="flex-shrink:0"><span class="cs-doc-pointer-line"></span><p>GoLocal</p></div>
+          </div>
+        </div>
       </div>
-      <p class="image-caption">Order Maintenance web app for pharmacy order management</p>
-    </div>
-    <div>
-      <div class="image-placeholder" style="background:#000000;">
-        <video src="Ptf_RxToGo_Solution2.mp4" autoplay loop muted playsinline preload="none" class="section-video" style="background:#000000;" aria-label="RxToGo solution walkthrough video"></video>
-      </div>
-      <p class="image-caption">Checkout mobile app for in-store prescription fulfillment</p>
-    </div>
-  </div>
-</section>
 
-<div class="container"><div class="divider"></div></div>
-
-<!-- IMPACT -->
-<section class="section container animate-on-scroll" aria-labelledby="impact-heading">
-  <span class="section-label section-label--mint">Impact</span>
-  <h2 id="impact-heading" class="section-title">Measurable outcomes delivered</h2>
-  <p class="section-subtitle">Quantifiable improvements across associate efficiency, customer satisfaction, and operational workflows through integrated web and mobile solutions.</p>
-
-  <!-- Hero stat -->
-  <div class="impact-hero">
-    <span class="impact-hero__micro">Key outcome</span>
-    <div class="impact-hero__row">
-      <div class="impact-hero__number stat-number--mint">55<span class="impact-hero__unit">%</span></div>
-      <p class="impact-hero__context">Reduction in delivery dispense time from 10–15 min down to 5–7 min per order.</p>
-    </div>
-  </div>
-
-  <!-- Supporting stats -->
-  <div class="impact-support-grid">
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">40%</div>
-      <div class="impact-support-stat__label">Checkout process automated</div>
-    </div>
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">92%</div>
-      <div class="impact-support-stat__label">Associates prefer this portal</div>
-    </div>
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">84%</div>
-      <div class="impact-support-stat__label">Customers comfortable with delivery</div>
-    </div>
-    <div class="impact-support-stat">
-      <div class="impact-support-stat__number">800+</div>
-      <div class="impact-support-stat__label">Orders fulfilled in Q4 2023</div>
-    </div>
-  </div>
-
-  <div class="impact-notes">
-    <div class="impact-note">
-      <div class="impact-note-title">Process Efficiency</div>
-      <div class="impact-note-text">Reduced 6 steps from overall 18-step delivery dispense process. MVP delivery checkout workflow was time-efficient, allowing associates to focus on in-store customers.</div>
-    </div>
-    <div class="impact-note">
-      <div class="impact-note-title">Future Expansion</div>
-      <div class="impact-note-text">Explored expedited counter pickup and curbside opportunities through vision workshops. Dynamic checkout product enabled quick turnaround for other dispensing methods.</div>
-    </div>
-  </div>
-</section>
-
-<div class="container"><div class="divider"></div></div>
-
-<!-- KEY TAKEAWAYS -->
-<section class="section container animate-on-scroll" aria-labelledby="takeaways-heading">
-  <span class="section-label section-label--rose">Key Takeaways</span>
-  <h2 id="takeaways-heading" class="section-title">Lessons gained from the journey</h2>
-  <p class="section-subtitle">Insights on collaboration, research foundations, and product language that shaped the design process and outcomes.</p>
-
-  <div class="takeaway-cards">
-    <div class="takeaway-card">
-      <div class="takeaway-index takeaway-index--1">1</div>
-      <div class="takeaway-content">
-        <div class="takeaway-title">Transparency &amp; Communication</div>
-        <div class="takeaway-text">Each partner has unique approaches. Maintaining transparency throughout product development proved beneficial for cross-functional alignment.</div>
+      <div class="cs-image-block">
+        <h5 class="cs-image-heading">Laborious Task</h5>
+        <p class="cs-image-caption">The overall process requires associates to move back and forth between main work-desk to staging areas with interactions of scanners, computers, printers, telephones and hand-held devices.</p>
+        <img src="assets/rxtogo/laborious-task.png" alt="Five-stage workflow filmstrip: start delivery order, review and print label, verify order and schedule payment, schedule pickup, print label and pack the prescription">
       </div>
     </div>
-    <div class="takeaway-card">
-      <div class="takeaway-index takeaway-index--2">2</div>
-      <div class="takeaway-content">
-        <div class="takeaway-title">Research Foundation</div>
-        <div class="takeaway-text">Set a strong foundation through research and connect the dots of the process to justify product requirements with stakeholders and engineering teams.</div>
+  </section>
+
+  <section class="cs-section content" id="design-approach">
+    <h3 class="cs-section-label">Design Approach</h3>
+    <p class="cs-section-body">After identifying problems with the overall fulfillment process, I outlined three areas for a new design to innovate in:</p>
+
+    <ol class="cs-list cs-list--numbered">
+      <li><strong>Transparency</strong> — Bringing all the delivery order information upfront in a single dashboard.</li>
+      <li><strong>Integrated</strong> — Combine the delivery scheduling and checkout into a unified flow.</li>
+      <li><strong>Acquaintance</strong> — The tone and design system of the app is reflected around working language familiarity.</li>
+    </ol>
+
+    <div class="cs-callout">
+      <p>As pharmacy associates, they need accessible delivery fulfillment to efficiently complete orders and spend more time with customers.</p>
+    </div>
+
+    <h4 class="cs-subhead">Order Maintenance Dashboard</h4>
+    <p class="cs-subbody">I simplified prescription order management with a clear dashboard to view orders and delivery updates.</p>
+    <div class="cs-image">
+      <h5 class="cs-image-heading">Order Maintenance Dashboard</h5>
+      <p class="cs-image-caption">A linear action navbar makes it easier to navigate orders in queue and their statuses. The table is laid out by Name, Rx Count, Cost, Status, Bag and Origination, giving associates ample information to process an order, with all tertiary actions related to tech support kept accessible.</p>
+      <img src="assets/rxtogo/dashboard-1.png" alt="Order maintenance dashboard">
+    </div>
+
+    <h4 class="cs-subhead">Processing Delivery Order</h4>
+    <p class="cs-subbody">To streamline order processing, the previous hardware-software interactions were translated into a single linear layout for quick and easier processing.</p>
+
+    <h4 class="cs-subhead">Mobile Checkout</h4>
+    <p class="cs-subbody">Post delivery scheduling, there is a need for scanning the prescription for checkout. The scanning and printing tasks are performed through this mobile app that reduces mobility and the POS dependancy.</p>
+    <div class="cs-image">
+      <h5 class="cs-image-heading">Mobile Checkout</h5>
+      <p class="cs-image-caption">The prescription is prioritized for validation by pharmacists and doctors, with updates possible in one place without external navigation. Color coded bags identify prescriptions in staging when ready to checkout, payments can be viewed and updated without POS interaction, and the schedule is split by date and time based on GoLocal driver data, showing upfront available times to communicate with customers.</p>
+      <img src="assets/rxtogo/dashboard-2.png" alt="Mobile checkout screens">
+    </div>
+  </section>
+
+  <section class="cs-section content" id="systems-thinking">
+    <h3 class="cs-section-label">Systems Thinking</h3>
+    <p class="cs-section-body">A mobile checkout product diversification was needed to perform the scanning and printing tasks that bypass the POS interaction and reduce associate mobility within the store.</p>
+
+    <h4 class="cs-subhead">1 · Leveraging An Existing App</h4>
+    <p class="cs-subbody">A Walmart fulfillment app was redefined for order checkout to reduce engineering effort and ease user adaptation.</p>
+
+    <h4 class="cs-subhead">2 · Designing For Familiarity</h4>
+    <p class="cs-subbody">Using a cohesive design system between Walmart and Sam's Club DLS, the app was designed around a unified brand guideline.</p>
+
+    <div class="cs-image cs-image--primary-tasks">
+      <h5 class="cs-image-heading">Primary Tasks</h5>
+      <p class="cs-image-caption">Finding an order through the app was straightforward with bag and prescription scan as primary tasks followed by printing receipts.</p>
+      <div class="cs-annotated-frame" style="gap:var(--sp-4)">
+        <div class="cs-doc-pointer-col cs-doc-pointer-col--narrow">
+          <div class="cs-doc-pointer"><p style="text-align:right">Order card with bag code, prescription count and time</p><span class="cs-doc-pointer-line"></span></div>
+        </div>
+        <img src="assets/rxtogo/primary-task-2.png" alt="RxToGo Checkout order list screen" style="height:320px; width:180px; max-width:none; flex-shrink:0; object-fit:cover">
+        <div class="cs-doc-pointer-col cs-doc-pointer-col--narrow">
+          <div class="cs-doc-pointer"><span class="cs-doc-pointer-line"></span><p>The scan action can be accessed via digital touch and physical buttons.</p></div>
+          <div class="cs-doc-pointer"><p>The mobile scanner UI follows hardware guidelines.</p><span class="cs-doc-pointer-line"></span></div>
+        </div>
+        <img src="assets/rxtogo/primary-task-1.png" alt="Scan will call bag screen with barcode scanner" style="height:320px; width:180px; max-width:none; flex-shrink:0; object-fit:cover">
       </div>
     </div>
-    <div class="takeaway-card">
-      <div class="takeaway-index takeaway-index--3">3</div>
-      <div class="takeaway-content">
-        <div class="takeaway-title">Product Language</div>
-        <div class="takeaway-text">Resonating the product's language with field associates is important. Setting the right tone throughout their journey can alleviate chances of making errors.</div>
+  </section>
+
+  <section class="cs-section content" id="usability-testing">
+    <h3 class="cs-section-label">Usability Testing</h3>
+    <p class="cs-section-body">I brought back the apps to validate with pharmacy associates using an interactive prototype.</p>
+
+    <div class="cs-callout">
+      <p>Associates appreciated the web portal for delivery orders, reducing clicks and dependency on GoLocal.</p>
+    </div>
+    <div class="cs-callout">
+      <p>The mobile app is more handy for checkout and finish tasks promptly.</p>
+    </div>
+
+    <h4 class="cs-subhead">Strengths</h4>
+    <ul class="cs-list cs-list--bulleted">
+      <li>Skimming order details for a customer is easy with a linear step by step process.</li>
+      <li>Pre and post checkout details were clear.</li>
+      <li>The checkout app required less learning curve.</li>
+    </ul>
+
+    <h4 class="cs-subhead">Opportunities</h4>
+    <ul class="cs-list cs-list--bulleted">
+      <li>Reiterate content flow on the web app order queue with concise actionable items.</li>
+      <li>Refine the checkout order list on mobile app.</li>
+      <li>Hardware interruptions use case required attention.</li>
+    </ul>
+  </section>
+
+  <section class="cs-section content" id="refinements">
+    <h3 class="cs-section-label">Refinements</h3>
+    <p class="cs-section-body">The feedbacks were addressed on prioritization, that led to the following product development framework, driven by a continuous feedback loop between associates and a close partnership with engineering and product teams for quicker rollout with less design debt.</p>
+
+    <div class="cs-image">
+      <div class="cs-image-block">
+        <h5 class="cs-image-heading">Web Order Que Iteration</h5>
+        <p class="cs-image-caption">Keeping action items and order details visible reduced clutter, while fine-tuning the brand color ensured consistent experience across both the apps.</p>
+        <div class="cs-image-row">
+          <div>
+            <img src="assets/rxtogo/iteration-web-1.png" alt="Web order queue iteration 1">
+            <p class="cs-image-row-caption">Iteration 1</p>
+          </div>
+          <div>
+            <img src="assets/rxtogo/iteration-web-2.png" alt="Web order queue iteration 2">
+            <p class="cs-image-row-caption">Iteration 2</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-image-block">
+        <h5 class="cs-image-heading">Order Page Iteration</h5>
+        <p class="cs-image-caption">Focusing on secondary information like payments and scheduling helped associates make informed decisions</p>
+        <div class="cs-annotated-frame">
+          <div class="cs-doc-pointer-col">
+            <div class="cs-doc-pointer"><p style="text-align:right">Added depth to the pricing structure</p><span class="cs-doc-pointer-line"></span></div>
+            <div class="cs-doc-pointer"><p style="text-align:right">Limiting the status only by order, removing the bag code from the previous version</p><span class="cs-doc-pointer-line"></span></div>
+          </div>
+          <img src="assets/rxtogo/iteration-order-page.png" alt="Order page iteration">
+          <div class="cs-doc-pointer-col">
+            <div class="cs-doc-pointer"><span class="cs-doc-pointer-line"></span><p>Restructured content for Medicaid orders and patient out-of-pocket costs</p></div>
+            <div class="cs-doc-pointer"><span class="cs-doc-pointer-line"></span><p>Operational feedback iteration for changing payment terms</p></div>
+            <div class="cs-doc-pointer"><span class="cs-doc-pointer-line"></span><p>Order comment captured based on both associate and customer feedback</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-image-block">
+        <h5 class="cs-image-heading">Mobile Checkout Que Iteration</h5>
+        <p class="cs-image-caption">The card component evolved through iterations using user micro-copy validation and functional visual cues.</p>
+        <img src="assets/rxtogo/iteration-mobile-checkout.png" alt="Mobile checkout queue iterations from initial design to final design">
+        <div class="cs-stage-labels">
+          <p>Initial Design</p>
+          <p>Iteration 1</p>
+          <p>Iteration 2</p>
+          <p>Iteration 3</p>
+          <p>Final Design</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="takeaway-notes">
-    <div class="takeaway-note">
-      <div class="takeaway-note-title">MVP Approach Success</div>
-      <div class="takeaway-note-text">Time constraints led to smart prioritization. Focused on primary workflow enabled rapid delivery while maintaining quality and gathering feedback for future iterations.</div>
+  <section class="cs-section content" id="new-visual-elements">
+    <h3 class="cs-section-label">New Visual Elements</h3>
+    <p class="cs-section-body">The web portal interface was designed from scratch with minimal ties to the parent DLS used internally at Sam's Club. The mobile version combines elements from both Sam's Club and Walmart.</p>
+
+    <h4 class="cs-subhead">BlueSteel DLS For Web Tool</h4>
+    <p class="cs-subbody">Drawing patterns from core DLS, these components were tokenized and published officially for future web tool references.</p>
+    <div class="cs-image">
+      <img src="assets/rxtogo/dls-tool.png" alt="BlueSteel DLS for web tool components">
     </div>
-    <div class="takeaway-note">
-      <div class="takeaway-note-title">System Integration</div>
-      <div class="takeaway-note-text">Leveraging existing platforms (Connexus, Walmart Mail Order app) provided familiar touchpoints while introducing improved workflows and modern design patterns.</div>
+  </section>
+
+  <section class="cs-section content" id="handoff-and-launch">
+    <h3 class="cs-section-label">Handoff and Launch</h3>
+    <p class="cs-section-body">Towards the final phases of this project, I documented the complete flow including possible edge cases based on end user recommendation and business scenarios that helped the engineering team to develop the product.</p>
+
+    <div class="cs-callout">
+      <p>RxToGo was rolled out across 6 pilot states that fulfilled 800+ orders.</p>
     </div>
-  </div>
-</section>
 
-<div class="container"><div class="divider" style="margin-bottom:32px;"></div></div>
+    <h4 class="cs-subhead">Launch Ready-Design</h4>
+    <p class="cs-subbody">The shipped product was presented in the Health &amp; Wellness product event, a Quarterly org. wide meeting that showcased new product launches across Sam's Club.</p>
+    <div class="cs-image">
+      <div class="cs-video-col">
+        <video src="assets/rxtogo/launch-video-om.mp4" class="cs-video-om" autoplay loop muted playsinline></video>
+        <video src="assets/rxtogo/launch-video-checkout.mp4" class="cs-video-checkout" autoplay loop muted playsinline></video>
+      </div>
+    </div>
+  </section>
 
-<!-- PROJECT NAVIGATION -->
-<nav class="project-nav container animate-on-scroll" aria-label="Project navigation">
-  <div class="project-nav-buttons">
-    <a href="item-management.html" class="nav-btn nav-btn--prev" aria-label="View previous project: Item Management">← View Previous Project</a>
-    <a href="#hero" class="nav-btn nav-btn--top" aria-label="Back to top of page">↑ Back to Top</a>
-    <a href="allocatr.html" class="nav-btn nav-btn--next" aria-label="View next project: Allocatr Insights">View Next Project →</a>
-  </div>
-</nav>
+  <section class="cs-section content" id="next-steps">
+    <h3 class="cs-section-label">Next Steps</h3>
+
+    <div class="cs-callout">
+      <p>Collect post-launch user feedback</p>
+    </div>
+    <p class="cs-section-body">Although many possible use cases were captured and rolled out in production, certain use cases arise that requires operational alternative or rethink product strategies. Likewise as a team, we had to wait on a periodic feedback collection for next steps.</p>
+
+    <div class="cs-callout">
+      <p>Expand further on more fulfillment options</p>
+    </div>
+    <p class="cs-section-body">This new delivery fulfillment process gained confidence among business and pharmacy associates to encourage designing for other fulfillment options that can be integrated into this app.</p>
+  </section>
+
+  <section class="cs-section content" id="reflection">
+    <h3 class="cs-section-label">Reflection</h3>
+
+    <h4 class="cs-subhead">Design Thinking</h4>
+    <p class="cs-subbody">Leading design thinking workshops with cross functional partners enabled taking informed design decisions for shaping the product. It helped in bringing the team to a common alignment for solving problems and build together by meeting prompt timelines.</p>
+
+    <h4 class="cs-subhead">Trust In Research</h4>
+    <p class="cs-subbody">I set the foundation strong through research and connected the dots in the process to justify the user requirements and craft the product requirements along with product team.</p>
+
+    <h4 class="cs-subhead">Strategic Pushbacks</h4>
+    <p class="cs-subbody">Acknowledged business decisions when needed and negotiating with different stakeholders became a crucial learning through this project. Strong communication skills helped in overcoming barriers.</p>
+  </section>
+
+  <section class="cs-closing content">
+    <h3>Thank you for reading!</h3>
+    <a href="index.html" class="cs-closing-link">Check out more of my work ↓</a>
+    <div class="cs-other-projects">
+      <a href="item-management.html">Item Management</a>
+      <a href="allocatr.html">Allocatr Insights</a>
+    </div>
+  </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer role="contentinfo">
-  <h2 class="sr-only">Site footer and contact links</h2>
-  <ul class="footer-links">
-    <li><a href="mailto:adhith.shan@gmail.com" aria-label="Email Adhith">Email</a></li>
-    <li><a href="https://linkedin.com/in/adhith-s" aria-label="Adhith's LinkedIn profile" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>
-    <li><a href="about.html" aria-label="About Adhith">About</a></li>
-    <li><a href="accessibility.html" aria-label="Accessibility statement for this site">Accessibility</a></li>
-  </ul>
-  <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram. Designed & built with care on Claude.</p>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; Shipped through Claude (- tokens)</p>
+    <div class="footer-meta">
+      <span class="footer-a11y">Reviewed against WCAG 2.1 AA guidelines</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-  // Play/pause videos as they enter/leave the viewport
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const vid = entry.target;
-      if (entry.isIntersecting) {
-        if (vid.readyState === 0) {
-          vid.preload = 'auto';
-          vid.load();
-          vid.addEventListener('canplay', () => vid.play().catch(() => {}), { once: true });
-        } else {
-          vid.play().catch(() => {});
+  (function(){
+    var tocLinks = document.querySelectorAll('.cs-toc a');
+    var sections = document.querySelectorAll('.cs-section[id]');
+    if (!tocLinks.length || !sections.length) return;
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function(link){
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
         }
-      } else {
-        vid.pause();
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('video[autoplay]').forEach(v => videoObserver.observe(v));
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(section){ observer.observe(section); });
+  })();
 </script>
+
 </body>
 </html>
