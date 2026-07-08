@@ -157,7 +157,7 @@
 
       <h3 style="margin-top:var(--sp-8); margin-bottom:var(--sp-2); font-size:var(--fs-h5); font-weight:400; line-height:1.3;">Final design</h3>
       <div class="cs-frame-img">
-        <img src="assets/item-management/final-design.png" alt="Final restructured layout design">
+        <video src="assets/item-management/final-design.mp4" autoplay loop muted playsinline aria-label="Final restructured layout design"></video>
       </div>
 
       <h3 class="cs-subhead">Component Segmentations</h3>
@@ -240,6 +240,73 @@
       });
     }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
     sections.forEach(function(section){ observer.observe(section); });
+  })();
+</script>
+<script>
+  (function(){
+    var row = document.querySelector('.cs-iterations-row');
+    var col = document.querySelector('.cs-iterations-col');
+    var tall = document.querySelector('.cs-iterations-tall');
+    var tallImg = tall ? tall.querySelector('img') : null;
+    var colImgs = col ? col.querySelectorAll('img') : [];
+    if (!row || !col || !tall || !tallImg || colImgs.length !== 2) return;
+    var resizeTimer;
+
+    function sync(){
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        col.style.flex = '';
+        tall.style.flex = '';
+        return;
+      }
+      var img1 = colImgs[0], img3 = colImgs[1];
+      if (!img1.naturalWidth || !img3.naturalWidth || !tallImg.naturalWidth) return;
+
+      // Solve analytically (no iteration/circular feedback) for the two
+      // outer widths (X = col, Y = tall) such that:
+      //   X + rowGap + Y = rowWidth
+      //   tall's outer height === col's outer (stacked) height
+      var rowWidth = row.getBoundingClientRect().width;
+      var rowGap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      var colGap = parseFloat(getComputedStyle(col).rowGap) || 0;
+      var pad = parseFloat(getComputedStyle(tall).paddingLeft) || 0; // uniform on all frame-img boxes
+
+      var ar1 = img1.naturalWidth / img1.naturalHeight;
+      var ar3 = img3.naturalWidth / img3.naturalHeight;
+      var arT = tallImg.naturalWidth / tallImg.naturalHeight;
+      var k = 1 / ar1 + 1 / ar3; // col: two stacked images, height per unit content-width
+      var m = 1 / arT;           // tall: single image, height per unit content-width
+
+      // (rowWidth - rowGap - X - pad) * m + pad  ===  (X - pad) * k + 2*pad + colGap
+      var X = (m * rowWidth - m * rowGap - m * pad + pad - k * pad - 2 * pad - colGap) / (m + k);
+      var Y = rowWidth - rowGap - X;
+      if (X <= 0 || Y <= 0) return;
+
+      // Set flex-basis directly (not width) since col/tall have flex-grow/
+      // shrink in their base CSS — an explicit width alone would be ignored
+      // by the flex sizing algorithm when flex-basis isn't "auto".
+      col.style.flex = '0 0 ' + X + 'px';
+      tall.style.flex = '0 0 ' + Y + 'px';
+    }
+
+    function whenLoaded(imgs, cb){
+      var remaining = imgs.filter(function(img){ return !(img.complete && img.naturalWidth); }).length;
+      if (remaining === 0) { cb(); return; }
+      imgs.forEach(function(img){
+        if (!(img.complete && img.naturalWidth)) {
+          img.addEventListener('load', function(){
+            remaining--;
+            if (remaining === 0) cb();
+          }, { once: true });
+        }
+      });
+    }
+
+    whenLoaded([tallImg, colImgs[0], colImgs[1]], sync);
+    window.addEventListener('load', sync);
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(sync, 150);
+    });
   })();
 </script>
 
