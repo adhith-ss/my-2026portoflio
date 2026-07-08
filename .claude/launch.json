@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "-l", "8000"],
       "port": 8000
+    },
+    {
+      "name": "ux-portfolio-v5",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "8001", "/Users/adhith/Documents/UX_Portfolio_V5"],
+      "port": 8001
     }
   ]
 }
