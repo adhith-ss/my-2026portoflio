@@ -542,20 +542,6 @@ p{ font-size: var(--fs-body); font-weight:400; line-height:1.3; }
 .cs-doc-pointer-line{ width:20px; height:1px; background: var(--color-text-faint); flex-shrink:0; }
 .cs-doc-pointer p{ font-size: var(--fs-caption); color: var(--color-text-soft); line-height:1.3; margin:0; }
 
-/* Overlay variant: annotation sits directly on top of the image it references,
-   matching the Figma callout pattern (rather than floating beside the image). */
-.cs-pointer-target{ position:relative; display:block; }
-.cs-doc-pointer.is-overlay{
-  position:absolute;
-  z-index:2;
-  background: rgba(255,255,255,0.94);
-  padding: 4px 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
-  max-width:200px;
-}
-.cs-doc-pointer.is-overlay .cs-doc-pointer-line{ background: var(--color-text-soft); }
-
 .cs-annotated-frame{ display:flex; align-items:center; justify-content:center; gap: var(--sp-10); }
 .cs-annotated-frame img{ max-width:280px; flex-shrink:0; width:auto; }
 .cs-doc-pointer-col{ display:flex; flex-direction:column; justify-content:center; gap: var(--sp-10); flex:1; max-width:220px; }
@@ -597,38 +583,20 @@ p{ font-size: var(--fs-body); font-weight:400; line-height:1.3; }
 .page-rxtogo .cs-image--connexus{ padding: var(--sp-10) var(--sp-16); }
 .page-rxtogo .cs-image--problems{ padding: var(--sp-10) var(--sp-16); }
 .page-rxtogo .cs-image--primary-tasks{ padding: var(--sp-10) var(--sp-16); }
-.page-rxtogo .cs-tabs-row{ align-items:flex-start; justify-content:center; gap: var(--sp-10); }
-.page-rxtogo .cs-tabs-group{ display:block; flex:0 0 auto; }
+.page-rxtogo .cs-doc-pointer-col--narrow{ flex:0 0 auto; width:110px; max-width:110px; }
+.page-rxtogo .cs-tabs-row{ align-items:center; }
+.page-rxtogo .cs-tabs-group{ display:flex; align-items:center; gap:var(--sp-4); flex:0 0 auto; }
 .page-rxtogo .cs-tabs-img{ height:200px; width:auto; max-width:none; display:block; border-radius:0; }
 .page-rxtogo .cs-image--connexus .cs-image-caption{ margin-bottom: var(--sp-6); }
 .page-rxtogo .cs-connexus-note{ margin-top: var(--sp-4); margin-bottom:0; }
-.page-rxtogo .cs-connexus-frame{ position:relative; display:block; max-width:640px; margin:0 auto; }
-.page-rxtogo .cs-connexus-frame img{ width:100%; display:block; }
+.page-rxtogo .cs-connexus-frame{ display:flex; align-items:flex-start; gap: var(--sp-8); }
+.page-rxtogo .cs-connexus-frame img{ width:66%; }
+.page-rxtogo .cs-connexus-frame .cs-doc-pointer{ flex:0 1 auto; max-width:200px; }
 
-/* Overlay pointers anchored to specific coordinates on top of their image */
-.page-rxtogo .cs-connexus-frame .cs-doc-pointer{ top:6%; right:4%; flex-direction:row-reverse; text-align:right; }
-.page-rxtogo .cs-tabs-group .cs-doc-pointer{ top:var(--sp-3); left:var(--sp-3); }
-.page-rxtogo .cs-tabs-group:last-child .cs-doc-pointer{ left:auto; right:var(--sp-3); flex-direction:row-reverse; text-align:right; }
-.page-rxtogo .cs-nav-strip .cs-doc-pointer{ top:50%; left:var(--sp-3); transform:translateY(-50%); }
-
-.page-rxtogo .cs-nav-compare-row{ display:flex; align-items:flex-start; gap: var(--sp-4); }
-.page-rxtogo .cs-nav-compare-item{ flex-shrink:0; height:260px; width:auto; max-width:none; }
-.page-rxtogo .cs-nav-compare-item img{ height:100%; width:auto; max-width:none; display:block; border-radius:8px; }
-
-.page-rxtogo .cs-annotated-frame--order-page{ position:relative; display:block; max-width:600px; margin:0 auto; }
-.page-rxtogo .cs-annotated-frame--order-page img{ width:100%; max-width:none; display:block; }
-.page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col{ position:absolute; top:0; bottom:0; width:220px; max-width:220px; gap:0; }
-.page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col:first-of-type{ left:var(--sp-3); }
-.page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col:last-of-type{ right:var(--sp-3); }
+.page-rxtogo .cs-annotated-frame--order-page{ align-items:stretch; gap: var(--sp-6); }
+.page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col{ position:relative; width:190px; max-width:190px; flex:0 0 190px; gap:0; }
 .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer{ position:absolute; left:0; right:0; transform:translateY(-50%); }
-.page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-line{ width:20px; flex:0 0 20px; }
-
-.page-rxtogo .cs-primary-tasks-frame{ display:flex; align-items:center; justify-content:center; gap: var(--sp-8); }
-.page-rxtogo .cs-primary-tasks-frame img{ height:320px; width:180px; max-width:none; flex-shrink:0; object-fit:cover; display:block; }
-.page-rxtogo .cs-primary-tasks-frame .cs-doc-pointer{ max-width:170px; }
-.page-rxtogo .cs-primary-tasks-frame .cs-pointer-target:first-child .cs-doc-pointer{ top:30%; left:var(--sp-2); }
-.page-rxtogo .cs-primary-tasks-frame .cs-pointer-target:last-child .cs-doc-pointer--scan{ top:6%; right:var(--sp-2); flex-direction:row-reverse; text-align:right; }
-.page-rxtogo .cs-primary-tasks-frame .cs-pointer-target:last-child .cs-doc-pointer--hardware{ top:38%; right:var(--sp-2); flex-direction:row-reverse; text-align:right; }
+.page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-line{ width:28px; flex:0 0 28px; }
 
 .page-rxtogo .cs-image img,
 .page-rxtogo .cs-image video,
@@ -743,19 +711,15 @@ p{ font-size: var(--fs-body); font-weight:400; line-height:1.3; }
   .cs-image-row{ flex-direction:column; }
   .cs-meta{ gap: var(--sp-8); flex-wrap: wrap; }
   .page-allocatr #result .cs-stat-row{ grid-template-columns: 1fr; }
+  .page-rxtogo .cs-connexus-frame{ flex-direction:column; }
+  .page-rxtogo .cs-connexus-frame img{ width:100%; }
   .cs-annotated-frame{ flex-direction:column; }
   .cs-doc-pointer-col{ max-width:none; width:100%; }
-  .page-rxtogo .cs-annotated-frame--order-page{ max-width:360px; }
-  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col{ width:150px; max-width:150px; }
-  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer{ max-width:150px; }
-  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer p{ font-size:10px; }
-  .page-rxtogo .cs-tabs-row{ flex-direction:column; align-items:center; gap: var(--sp-8); }
+  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col{ position:static; width:100%; flex:none; gap:var(--sp-6); }
+  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer{ position:static; transform:none; }
+  .page-rxtogo .cs-tabs-row{ gap: var(--sp-8); }
+  .page-rxtogo .cs-tabs-group{ flex-direction:column; align-items:center; gap:var(--sp-2); }
   .page-rxtogo .cs-tabs-img{ height:auto; width:100%; max-width:280px; }
-  .page-rxtogo .cs-primary-tasks-frame{ flex-direction:column; }
-  .page-rxtogo .cs-primary-tasks-frame img{ width:220px; height:auto; }
-  .page-rxtogo .cs-nav-compare-row{ flex-direction:column; align-items:stretch; }
-  .page-rxtogo .cs-nav-compare-item{ height:auto; width:100%; }
-  .page-rxtogo .cs-nav-compare-item img{ height:auto; width:100%; }
   .cs-iterations-row{ flex-direction:column; }
   .cs-iterations-col{ flex:none; }
   .cs-iterations-tall{ flex:none; width:100%; height:auto; }

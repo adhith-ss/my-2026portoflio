@@ -120,7 +120,7 @@
       <p class="cs-image-caption">Pharmacists and technicians utilize this web application to view all the pharmacy fulfillment orders</p>
       <div class="cs-connexus-frame">
         <img src="assets/rxtogo/connexus.png" alt="Connexus pharmacy command centre web application">
-        <div class="cs-doc-pointer is-overlay">
+        <div class="cs-doc-pointer">
           <span class="cs-doc-pointer-line"></span>
           <p>Entry point for Delivery Orders</p>
         </div>
@@ -141,17 +141,15 @@
       <div class="cs-image-block">
         <h3 class="cs-image-heading">Strenuous Navigation</h3>
         <p class="cs-image-caption">The Connexus portal carries a heavy cognitive load making associates interact with multiple sections with prescription and patient details. No room for error is acceptable when dealing with sensitive information.</p>
-        <div class="cs-annotated-frame" style="flex-direction:column; align-items:stretch; justify-content:flex-start; gap:var(--sp-4)">
-          <div class="cs-pointer-target cs-nav-strip">
-            <img src="assets/rxtogo/navigation-top-navbar.png" alt="Top navbar close-up" style="width:100%; display:block; border-radius:8px">
-            <div class="cs-doc-pointer is-overlay"><span class="cs-doc-pointer-line"></span><p>Top Navbar</p></div>
+        <div class="cs-annotated-frame" style="flex-direction:column; align-items:stretch; justify-content:flex-start">
+          <div style="display:flex; align-items:center; gap:var(--sp-4)">
+            <div class="cs-doc-pointer" style="flex-shrink:0; width:120px"><p>Top Navbar</p><span class="cs-doc-pointer-line"></span></div>
+            <img src="assets/rxtogo/navigation-top-navbar.png" alt="Top navbar close-up" style="flex:1; min-width:0; width:auto; max-width:none; display:block; border-radius:8px">
           </div>
-          <div class="cs-nav-compare-row">
-            <div class="cs-pointer-target cs-nav-compare-item">
-              <img src="assets/rxtogo/navigation-main-navbar.png" alt="Main navbar close-up" style="display:block; border-radius:8px">
-              <div class="cs-doc-pointer is-overlay" style="top:50%; left:var(--sp-3); transform:translateY(-50%)"><span class="cs-doc-pointer-line"></span><p>Main Navbar</p></div>
-            </div>
-            <img class="cs-nav-compare-item" src="assets/rxtogo/navigation-full-screen.png" alt="Connexus screen showing the main and top navigation bars" style="display:block; border-radius:8px">
+          <div style="display:flex; align-items:center; gap:var(--sp-4); margin-top:var(--sp-4)">
+            <div class="cs-doc-pointer" style="flex-shrink:0; width:120px"><p>Main Navbar</p><span class="cs-doc-pointer-line"></span></div>
+            <img src="assets/rxtogo/navigation-main-navbar.png" alt="Main navbar close-up" style="height:260px; width:auto; flex-shrink:0; display:block; border-radius:8px">
+            <img src="assets/rxtogo/navigation-full-screen.png" alt="Connexus screen showing the main and top navigation bars" style="height:260px; width:auto; max-width:none; display:block; border-radius:8px">
           </div>
         </div>
       </div>
@@ -159,14 +157,14 @@
       <div class="cs-image-block">
         <h3 class="cs-image-heading">Switching Between Tabs</h3>
         <p class="cs-image-caption">The Connexus-POS-GoLocal applications need to be used in different times throughout an order fulfillment and also having the customer in call for order validation.</p>
-        <div class="cs-image-row cs-tabs-row">
-          <div class="cs-pointer-target cs-tabs-group">
+        <div class="cs-image-row cs-tabs-row" style="justify-content:space-between">
+          <div class="cs-tabs-group">
+            <div class="cs-doc-pointer" style="flex-shrink:0"><p>POS</p><span class="cs-doc-pointer-line"></span></div>
             <img class="cs-tabs-img" src="assets/rxtogo/laborious-task-2.png" alt="POS keypad screen used for order payment">
-            <div class="cs-doc-pointer is-overlay"><span class="cs-doc-pointer-line"></span><p>POS</p></div>
           </div>
-          <div class="cs-pointer-target cs-tabs-group">
+          <div class="cs-tabs-group">
             <img class="cs-tabs-img" src="assets/rxtogo/laborious-task-1.png" alt="GoLocal booking screen on desktop monitor">
-            <div class="cs-doc-pointer is-overlay"><span class="cs-doc-pointer-line"></span><p>GoLocal</p></div>
+            <div class="cs-doc-pointer" style="flex-shrink:0"><span class="cs-doc-pointer-line"></span><p>GoLocal</p></div>
           </div>
         </div>
       </div>
@@ -226,16 +224,16 @@
     <div class="cs-image cs-image--primary-tasks">
       <h3 class="cs-image-heading">Primary Tasks</h3>
       <p class="cs-image-caption">Finding an order through the app was straightforward with bag and prescription scan as primary tasks followed by printing receipts.</p>
-      <div class="cs-primary-tasks-frame">
-        <div class="cs-pointer-target">
-          <img src="assets/rxtogo/primary-task-2.png" alt="RxToGo Checkout order list screen">
-          <div class="cs-doc-pointer is-overlay"><span class="cs-doc-pointer-line"></span><p>Order card with bag code, prescription count and time</p></div>
+      <div class="cs-annotated-frame" style="gap:var(--sp-4)">
+        <div class="cs-doc-pointer-col cs-doc-pointer-col--narrow">
+          <div class="cs-doc-pointer"><p style="text-align:right">Order card with bag code, prescription count and time</p><span class="cs-doc-pointer-line"></span></div>
         </div>
-        <div class="cs-pointer-target">
-          <img src="assets/rxtogo/primary-task-1.png" alt="Scan will call bag screen with barcode scanner">
-          <div class="cs-doc-pointer is-overlay cs-doc-pointer--scan"><span class="cs-doc-pointer-line"></span><p>The scan action can be accessed via digital touch and physical buttons.</p></div>
-          <div class="cs-doc-pointer is-overlay cs-doc-pointer--hardware"><span class="cs-doc-pointer-line"></span><p>The mobile scanner UI follows hardware guidelines.</p></div>
+        <img src="assets/rxtogo/primary-task-2.png" alt="RxToGo Checkout order list screen" style="height:320px; width:180px; max-width:none; flex-shrink:0; object-fit:cover">
+        <div class="cs-doc-pointer-col cs-doc-pointer-col--narrow">
+          <div class="cs-doc-pointer"><span class="cs-doc-pointer-line"></span><p>The scan action can be accessed via digital touch and physical buttons.</p></div>
+          <div class="cs-doc-pointer"><p>The mobile scanner UI follows hardware guidelines.</p><span class="cs-doc-pointer-line"></span></div>
         </div>
+        <img src="assets/rxtogo/primary-task-1.png" alt="Scan will call bag screen with barcode scanner" style="height:320px; width:180px; max-width:none; flex-shrink:0; object-fit:cover">
       </div>
     </div>
   </section>
@@ -290,15 +288,15 @@
         <h3 class="cs-image-heading">Order Page Iteration</h3>
         <p class="cs-image-caption">Focusing on secondary information like payments and scheduling helped associates make informed decisions</p>
         <div class="cs-annotated-frame cs-annotated-frame--order-page">
+          <div class="cs-doc-pointer-col">
+            <div class="cs-doc-pointer" style="top:23%"><p style="text-align:right">Restructured content for Medicaid orders and patient out-of-pocket costs</p><span class="cs-doc-pointer-line"></span></div>
+            <div class="cs-doc-pointer" style="top:74%"><p style="text-align:right">Operational feedback iteration for changing payment terms</p><span class="cs-doc-pointer-line"></span></div>
+            <div class="cs-doc-pointer" style="top:92%"><p style="text-align:right">Order comment captured based on both associate and customer feedback</p><span class="cs-doc-pointer-line"></span></div>
+          </div>
           <img src="assets/rxtogo/iteration-order-page.png" alt="Order page iteration">
           <div class="cs-doc-pointer-col">
-            <div class="cs-doc-pointer is-overlay" style="top:23%"><p style="text-align:right">Restructured content for Medicaid orders and patient out-of-pocket costs</p><span class="cs-doc-pointer-line"></span></div>
-            <div class="cs-doc-pointer is-overlay" style="top:74%"><p style="text-align:right">Operational feedback iteration for changing payment terms</p><span class="cs-doc-pointer-line"></span></div>
-            <div class="cs-doc-pointer is-overlay" style="top:92%"><p style="text-align:right">Order comment captured based on both associate and customer feedback</p><span class="cs-doc-pointer-line"></span></div>
-          </div>
-          <div class="cs-doc-pointer-col">
-            <div class="cs-doc-pointer is-overlay" style="top:4%"><span class="cs-doc-pointer-line"></span><p>Added depth to the pricing structure</p></div>
-            <div class="cs-doc-pointer is-overlay" style="top:21%"><span class="cs-doc-pointer-line"></span><p>Limiting the status only by order, removing the bag code from the previous version</p></div>
+            <div class="cs-doc-pointer" style="top:4%"><span class="cs-doc-pointer-line"></span><p>Added depth to the pricing structure</p></div>
+            <div class="cs-doc-pointer" style="top:21%"><span class="cs-doc-pointer-line"></span><p>Limiting the status only by order, removing the bag code from the previous version</p></div>
           </div>
         </div>
       </div>
