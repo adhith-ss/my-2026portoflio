@@ -63,6 +63,22 @@ html[data-theme="dark"] .btn-ghost:hover{ background: rgba(255,255,255,0.06); }
 html[data-theme="dark"] .hero-logos img{ filter: brightness(0) invert(1); }
 html[data-theme="dark"] .t-card{ background: #1a1a1a; }
 
+/* Project image containers keep their light background in dark mode (see above) —
+   force their text back to a dark color so it stays legible against it. */
+html[data-theme="dark"] .cs-image,
+html[data-theme="dark"] .cs-cover,
+html[data-theme="dark"] .cs-solution-frame{
+  color: #131313;
+}
+html[data-theme="dark"] :is(.cs-image, .cs-cover, .cs-solution-frame) :is(.cs-subbody, .cs-image-heading, .cs-image-caption, .cs-image-row-caption, .cs-doc-pointer p){
+  color: #131313;
+}
+
+/* About page photo captions: keep the caption strip's light background and
+   force its text dark so it stays legible in dark mode. */
+html[data-theme="dark"] .about-image{ background: #f1f0ee; }
+html[data-theme="dark"] .about-image-caption{ color: #131313; }
+
 *{ margin:0; padding:0; box-sizing:border-box; }
 
 html{ scroll-behavior:smooth; font-size:17px; }
