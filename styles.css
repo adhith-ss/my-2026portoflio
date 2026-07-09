@@ -481,6 +481,12 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
   border: 1px solid var(--color-line);
   transition: background-color .15s ease, border-color .15s ease;
 }
+.about-image-large{
+  grid-column: 1 / -1;
+}
+.about-image-large img{
+  aspect-ratio: 16/9;
+}
 .about-image img{
   display:block;
   width:100%;
