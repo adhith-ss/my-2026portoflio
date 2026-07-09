@@ -62,11 +62,6 @@ html[data-theme="dark"] .btn-ghost{ border-color: #fff; }
 html[data-theme="dark"] .btn-ghost:hover{ background: rgba(255,255,255,0.06); }
 html[data-theme="dark"] .hero-logos img{ filter: brightness(0) invert(1); }
 html[data-theme="dark"] .t-card{ background: #1a1a1a; }
-html[data-theme="dark"] .page-rxtogo .cs-image{ background: #26211b; }
-html[data-theme="dark"] .page-allocatr .cs-cover,
-html[data-theme="dark"] .page-allocatr .cs-image{ background: #10191a; }
-html[data-theme="dark"] .page-item-management .cs-image,
-html[data-theme="dark"] .page-item-management .cs-solution-frame{ background: #1a1a1a; }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 
