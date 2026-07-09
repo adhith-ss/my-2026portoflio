@@ -6,6 +6,13 @@
 <link rel="icon" type="image/png" href="assets/shared/AS_Logo_PtfTab_b.png?v=1">
 <link rel="shortcut icon" type="image/png" href="assets/shared/AS_Logo_PtfTab_b.png?v=1">
 <link rel="apple-touch-icon" href="assets/shared/AS_Logo_PtfTab_b.png">
+<script>
+(function(){
+  var t = localStorage.getItem('theme');
+  if(!t){ t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  if(t === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+})();
+</script>
 <title>Allocatr Insights — Adhith Shanmuga Sundaram</title>
 <meta name="description" content="Case study: Led UX strategy for Albertsons' AI-powered forecasting platform. Reduced planning cycle time by 24%, replaced 50% of manual Excel workflows, and introduced the first audit trail in forecasting history.">
 <meta property="og:title" content="Allocatr Insights Case Study — Adhith Shanmuga Sundaram">
@@ -16,6 +23,7 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script src="theme.js" defer></script>
 </head>
 <body class="page-allocatr">
 
@@ -33,6 +41,15 @@
         <li><a href="about.html">About</a></li>
         <li><a href="https://drive.google.com/file/d/1zzyU3-GHDL32F-NzpnU9X8m800awVCjr/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
         <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
+        <li>
+          <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
+            <span class="theme-toggle-track">
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              <span class="theme-toggle-thumb"></span>
+            </span>
+          </button>
+        </li>
       </ul>
     </nav>
   </div>
