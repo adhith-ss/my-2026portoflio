@@ -582,14 +582,24 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
   align-items:start;
 }
 .ai-hero-media{
-  border-radius: 8px;
-  overflow:hidden;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
   transition: background-color .15s ease, border-color .15s ease;
 }
 .ai-hero-media img{ width:100%; display:block; }
 .ai-hero-copy h1{ margin-bottom: var(--sp-8); }
+
+.page-ai-playground .cs-image{
+  background:#fff;
+  border:none;
+  padding:0;
+  border-radius:0;
+}
+.page-ai-playground .cs-image img{ border-radius:0; }
+
+html[data-theme="dark"] .page-ai-playground .ai-hero-media,
+html[data-theme="dark"] .page-ai-playground .cs-image{
+  background:#000;
+  border:1px solid #fff;
+}
 
 .cs-section{
   padding-top: var(--sp-16);
