@@ -739,6 +739,18 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
 .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer{ position:absolute; left:0; right:0; transform:translateY(-50%); }
 .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-line{ width:28px; flex:0 0 28px; }
 
+.page-rxtogo .cs-nav-frame{ flex-direction:column; align-items:stretch; justify-content:flex-start; }
+.page-rxtogo .cs-nav-row{ display:flex; align-items:center; gap: var(--sp-2); }
+.page-rxtogo .cs-nav-row--main{ margin-top: var(--sp-4); }
+.page-rxtogo .cs-nav-label{ flex-shrink:0; width:120px; }
+.page-rxtogo .cs-nav-img{ height:260px; width:auto; flex-shrink:0; display:block; border-radius:8px; }
+.page-rxtogo .cs-nav-img--flex{ height:auto; flex:1; min-width:0; width:auto; max-width:none; }
+.page-rxtogo .cs-nav-img--wide{ max-width:none; }
+
+.page-rxtogo .cs-primary-frame{ gap: var(--sp-2); }
+.page-rxtogo .cs-primary-img{ height:320px; width:180px; max-width:none; flex-shrink:0; object-fit:cover; }
+.page-rxtogo .cs-doc-pointer--right p{ text-align:right; }
+
 .page-rxtogo .cs-image img,
 .page-rxtogo .cs-image video,
 .page-rxtogo .cs-image-row img{ border-radius:0; }
@@ -861,6 +873,16 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
   .page-rxtogo .cs-tabs-row{ gap: var(--sp-8); }
   .page-rxtogo .cs-tabs-group{ flex-direction:column; align-items:center; gap:var(--sp-2); }
   .page-rxtogo .cs-tabs-img{ height:auto; width:100%; max-width:280px; }
+  .page-rxtogo .cs-nav-row{ flex-direction:column; align-items:center; gap: var(--sp-2); }
+  .page-rxtogo .cs-nav-row--main{ margin-top: var(--sp-6); }
+  .page-rxtogo .cs-nav-label{ width:auto; }
+  .page-rxtogo .cs-nav-label p{ text-align:center; }
+  .page-rxtogo .cs-nav-img,
+  .page-rxtogo .cs-nav-img--flex{ height:auto; width:100%; max-width:220px; }
+  .page-rxtogo .cs-primary-frame{ align-items:center; gap: var(--sp-4); }
+  .page-rxtogo .cs-primary-img{ height:220px; width:140px; }
+  .page-rxtogo .cs-doc-pointer-col--narrow{ width:100%; max-width:260px; gap: var(--sp-2); }
+  .page-rxtogo .cs-doc-pointer-col--narrow p{ text-align:center; }
   .cs-iterations-row{ flex-direction:column; }
   .cs-iterations-col{ flex:none; }
   .cs-iterations-tall{ flex:none; width:100%; height:auto; }
