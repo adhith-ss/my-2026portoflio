@@ -588,17 +588,12 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
 .ai-hero-copy h1{ margin-bottom: var(--sp-8); }
 
 .page-ai-playground .cs-image{
-  background:#fff;
+  background: var(--color-bg);
   border:none;
   padding:0;
   border-radius:0;
 }
 .page-ai-playground .cs-image img{ border-radius:0; }
-
-html[data-theme="dark"] .page-ai-playground .ai-hero-media,
-html[data-theme="dark"] .page-ai-playground .cs-image{
-  background:#000;
-}
 
 .cs-section{
   padding-top: var(--sp-16);
