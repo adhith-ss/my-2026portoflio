@@ -414,6 +414,7 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
   font-size: var(--fs-body);
   margin-top: var(--sp-3);
 }
+.ai-playground .project-media{ background: #fff; }
 .platform-label{
   display: inline-block;
   padding: var(--sp-2) var(--sp-4);
