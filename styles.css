@@ -397,6 +397,34 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
 .project-cta svg{ transition: transform .2s ease; }
 .project-cta:hover svg{ transform: translateX(4px); }
 
+/* ============ AI PLAYGROUND (homepage) ============ */
+.ai-playground{
+  padding-top: var(--sp-16);
+  padding-bottom: var(--sp-24);
+  border-top: 1px solid var(--color-line);
+}
+.ai-playground .section-head h2{
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.section-desc{
+  color: var(--color-text-soft);
+  font-size: var(--fs-body);
+  margin-top: var(--sp-3);
+}
+.platform-label{
+  display: inline-block;
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-text-soft);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+}
+
 /* ============ TESTIMONIALS ============ */
 .testimonials{ background: var(--color-footer); padding-top: var(--sp-24); padding-bottom: var(--sp-24); }
 .t-grid{ display:flex; flex-direction:column; gap: var(--sp-4); }
