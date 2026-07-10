@@ -594,6 +594,9 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
   border-radius:0;
 }
 .page-ai-playground .cs-image img{ border-radius:0; }
+.page-ai-playground .cs-image .theme-dark-only{ display:none; }
+html[data-theme="dark"] .page-ai-playground .cs-image .theme-light-only{ display:none; }
+html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:block; }
 
 .cs-section{
   padding-top: var(--sp-16);
