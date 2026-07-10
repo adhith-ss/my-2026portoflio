@@ -598,7 +598,6 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
 html[data-theme="dark"] .page-ai-playground .ai-hero-media,
 html[data-theme="dark"] .page-ai-playground .cs-image{
   background:#000;
-  border:1px solid #fff;
 }
 
 .cs-section{
