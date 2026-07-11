@@ -725,14 +725,53 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
 .page-rxtogo .cs-image--problems{ padding: var(--sp-10) var(--sp-16); }
 .page-rxtogo .cs-image--primary-tasks{ padding: var(--sp-10) var(--sp-16); }
 .page-rxtogo .cs-doc-pointer-col--narrow{ flex:0 0 auto; width:110px; max-width:110px; }
-.page-rxtogo .cs-tabs-row{ align-items:center; }
-.page-rxtogo .cs-tabs-group{ display:flex; align-items:center; gap:var(--sp-2); flex:0 0 auto; }
+.page-rxtogo .cs-tabs-row{ align-items:flex-start; }
+.page-rxtogo .cs-tabs-group{ display:flex; flex-direction:column; align-items:center; gap:var(--sp-2); flex:0 0 auto; }
 .page-rxtogo .cs-tabs-img{ height:200px; width:auto; max-width:none; display:block; border-radius:0; }
 .page-rxtogo .cs-image--connexus .cs-image-caption{ margin-bottom: var(--sp-6); }
 .page-rxtogo .cs-connexus-note{ margin-top: var(--sp-4); margin-bottom:0; }
+
+/* Production (desktop) markup for Connexus / POS-GoLocal, restored for the desktop-only blocks */
 .page-rxtogo .cs-connexus-frame{ display:flex; align-items:flex-start; gap: var(--sp-2); }
 .page-rxtogo .cs-connexus-frame img{ width:66%; }
 .page-rxtogo .cs-connexus-frame .cs-doc-pointer{ flex:0 1 auto; max-width:200px; }
+.page-rxtogo .cs-tabs-row.cs-tabs-row--legacy{ align-items:center; }
+.page-rxtogo .cs-tabs-group.cs-tabs-group--legacy{ flex-direction:row; align-items:center; }
+
+/* Mobile-only vs desktop-only content toggle, matching the site's 900px breakpoint */
+@media (min-width:901px){
+  .page-rxtogo .cs-mobile-only{ display:none; }
+}
+@media (max-width:900px){
+  .page-rxtogo .cs-desktop-only{ display:none; }
+}
+
+.page-rxtogo .cs-carousel-wrap{ position:relative; }
+.page-rxtogo .cs-carousel{ overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scroll-snap-type: x proximity; border-radius:8px; scrollbar-width:none; -ms-overflow-style:none; }
+.page-rxtogo .cs-carousel::-webkit-scrollbar{ display:none; }
+.page-rxtogo .cs-carousel:focus-visible{ outline:2px solid var(--color-text); outline-offset:2px; }
+.page-rxtogo .cs-carousel img{ display:block; width:auto; max-width:none; height:220px; border-radius:0; scroll-snap-align:start; }
+.page-rxtogo .cs-carousel-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:none;
+  border-radius:50%;
+  background: rgba(10,10,10,0.65);
+  color:#fff;
+  cursor:pointer;
+}
+.page-rxtogo .cs-carousel-arrow:hover{ background: rgba(10,10,10,0.85); }
+.page-rxtogo .cs-carousel-arrow svg{ width:14px; height:14px; }
+.page-rxtogo .cs-carousel-arrow--prev{ left: var(--sp-3); }
+.page-rxtogo .cs-carousel-arrow--next{ right: var(--sp-3); }
+.page-rxtogo .cs-carousel-arrow[disabled]{ opacity:0.35; cursor:default; pointer-events:none; }
+.page-rxtogo .cs-carousel-hint{ margin-top: var(--sp-2); }
 
 .page-rxtogo .cs-annotated-frame--order-page{ align-items:stretch; gap: var(--sp-2); }
 .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col{ position:relative; width:190px; max-width:190px; flex:0 0 190px; gap:0; }
@@ -864,15 +903,20 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
   .cs-image-row{ flex-direction:column; }
   .cs-meta{ gap: var(--sp-8); flex-wrap: wrap; }
   .page-allocatr #result .cs-stat-row{ grid-template-columns: 1fr; }
-  .page-rxtogo .cs-connexus-frame{ flex-direction:column; }
-  .page-rxtogo .cs-connexus-frame img{ width:100%; }
   .cs-annotated-frame{ flex-direction:column; }
   .cs-doc-pointer-col{ max-width:none; width:100%; }
-  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col{ position:static; width:100%; flex:none; gap:var(--sp-6); }
-  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer{ position:static; transform:none; }
+  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-col{ position:static; width:100%; flex:none; gap:var(--sp-3); }
+  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer{ position:static; transform:none; flex-direction:row; align-items:flex-start; justify-content:flex-start; }
+  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer-line{ display:none; }
+  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer p{ text-align:left; font-size:0.7rem; }
+  .page-rxtogo .cs-annotated-frame--order-page .cs-doc-pointer p::before{ content:"• "; }
   .page-rxtogo .cs-tabs-row{ gap: var(--sp-8); }
-  .page-rxtogo .cs-tabs-group{ flex-direction:column; align-items:center; gap:var(--sp-2); }
   .page-rxtogo .cs-tabs-img{ height:auto; width:100%; max-width:280px; }
+  .page-rxtogo .cs-carousel img{ height:150px; }
+  .page-rxtogo .cs-carousel-arrow{ width:28px; height:28px; }
+  .page-rxtogo .cs-carousel-arrow svg{ width:12px; height:12px; }
+  .page-rxtogo .cs-carousel-arrow--prev{ left: var(--sp-2); }
+  .page-rxtogo .cs-carousel-arrow--next{ right: var(--sp-2); }
   .page-rxtogo .cs-nav-row{ flex-direction:column; align-items:center; gap: var(--sp-2); }
   .page-rxtogo .cs-nav-row--main{ margin-top: var(--sp-6); }
   .page-rxtogo .cs-nav-label{ width:auto; }
@@ -881,8 +925,14 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
   .page-rxtogo .cs-nav-img--flex{ height:auto; width:100%; max-width:220px; }
   .page-rxtogo .cs-primary-frame{ align-items:center; gap: var(--sp-4); }
   .page-rxtogo .cs-primary-img{ height:220px; width:140px; }
-  .page-rxtogo .cs-doc-pointer-col--narrow{ width:100%; max-width:260px; gap: var(--sp-2); }
-  .page-rxtogo .cs-doc-pointer-col--narrow p{ text-align:center; }
+  .page-rxtogo .cs-doc-pointer-col--narrow{ width:100%; max-width:260px; gap: var(--sp-3); }
+  .page-rxtogo .cs-doc-pointer{ flex-direction:column; align-items:center; gap: var(--sp-2); }
+  .page-rxtogo .cs-primary-frame .cs-doc-pointer{ flex-direction:row; align-items:flex-start; }
+  .page-rxtogo .cs-primary-frame .cs-doc-pointer-line{ display:none; }
+  .page-rxtogo .cs-primary-frame .cs-doc-pointer p{ text-align:left; font-size:0.7rem; }
+  .page-rxtogo .cs-primary-frame .cs-doc-pointer p::before{ content:"• "; }
+  .cs-image video.cs-video-checkout{ width:110px; }
+  .cs-stage-labels p{ font-size:10px; color:#131313; }
   .cs-iterations-row{ flex-direction:column; }
   .cs-iterations-col{ flex:none; }
   .cs-iterations-tall{ flex:none; width:100%; height:auto; }
