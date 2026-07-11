@@ -939,6 +939,9 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
   .cs-iterations-tall img{ width:100%; height:auto; }
   .page-item-management .cs-seg-item{ flex-direction:column; align-items:flex-start; gap: var(--sp-3); }
   .page-item-management .cs-doc-pointer{ flex:0 0 auto; }
+  .page-item-management .cs-doc-pointer-line{ display:none; }
+  .page-item-management .cs-doc-pointer p{ text-align:left; font-size:0.7rem; }
+  .page-item-management .cs-doc-pointer p::before{ content:"• "; }
   .page-item-management .cs-solution-frame{ padding: var(--sp-6); }
 }
 
