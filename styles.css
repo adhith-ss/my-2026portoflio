@@ -981,7 +981,22 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
 }
 .cs-split-text p{ font-size: var(--fs-body); color: var(--color-text-soft); }
 .cs-split-images{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
-.cs-split-image-wrap{ display:flex; flex-direction:column; gap: var(--sp-2); }
+.cs-split-image-wrap{ position:relative; display:flex; flex-direction:column; gap: var(--sp-2); }
+.cs-split-image-wrap::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:85%;
+  height:85%;
+  transform:translate(-50%,-50%);
+  background: radial-gradient(closest-side, rgba(19,19,19,0.14), rgba(19,19,19,0) 70%);
+  filter: blur(32px);
+  z-index:0;
+  pointer-events:none;
+}
+html[data-theme="dark"] .cs-split-image-wrap::before{ display:none; }
+.cs-split-image-wrap img{ position:relative; z-index:1; }
 .cs-split-label{
   text-align:center;
   font-size: var(--fs-caption);
