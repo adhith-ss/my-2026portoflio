@@ -987,7 +987,7 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
   font-size: var(--fs-caption);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-text-soft);
+  color: var(--color-text);
 }
 
 @media (max-width: 900px){
