@@ -437,6 +437,7 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
   font-size: var(--fs-caption);
   font-weight: 600;
 }
+html[data-theme="dark"] .platform-label{ border-color:#fff; color:#fff; }
 
 /* ============ TESTIMONIALS ============ */
 .testimonials{ background: var(--color-footer); padding-top: var(--sp-24); padding-bottom: var(--sp-24); }
