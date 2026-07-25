@@ -396,6 +396,7 @@ html[data-theme="dark"] .hero-tools-icons img[src$=".png"]{ filter: invert(1); }
 }
 .project-cta svg{ transition: transform .2s ease; }
 .project-cta:hover svg{ transform: translateX(4px); }
+.project-footer{ display:flex; align-items:center; gap: var(--sp-4); flex-wrap:wrap; }
 
 /* ============ AI PLAYGROUND (homepage) ============ */
 .ai-playground{
