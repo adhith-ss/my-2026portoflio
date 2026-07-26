@@ -70,7 +70,7 @@ html[data-theme="dark"] .cs-cover,
 html[data-theme="dark"] .cs-solution-frame{
   color: #131313;
 }
-html[data-theme="dark"] :is(.cs-image, .cs-cover, .cs-solution-frame) :is(.cs-subbody, .cs-image-heading, .cs-image-caption, .cs-image-row-caption, .cs-doc-pointer p){
+html[data-theme="dark"] :is(.cs-image, .cs-cover, .cs-solution-frame) :is(.cs-subbody, .cs-image-heading, .cs-image-caption, .cs-image-row-caption, .cs-doc-pointer p, .cs-stage-labels p){
   color: #131313;
 }
 
