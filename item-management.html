@@ -15,8 +15,18 @@
 </script>
 <title>Image Repository Redesign — Adhith Shanmuga Sundaram</title>
 <meta name="description" content="Case study: Led design for Albertsons' B2B item management platform serving 600+ vendors and 250M+ SKUs. Reduced setup time by 60%, saved 21 hrs/week per merchant, mitigated $2.5B compliance risk.">
+<link rel="canonical" href="https://www.adhith-s.com/item-management">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Adhith Shanmuga Sundaram">
+<meta property="og:url" content="https://www.adhith-s.com/item-management">
 <meta property="og:title" content="Item Management Case Study · Adhith Shanmuga Sundaram">
 <meta property="og:description" content="Enterprise B2B redesign at Albertsons. Served 600+ vendors, mitigated $2.5B compliance risk, and saved merchants 21 hours per week.">
+<meta property="og:image" content="https://www.adhith-s.com/assets/home/item-management-card.png">
+<meta property="og:image:alt" content="Image Repository Redesign case study preview">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Item Management Case Study · Adhith Shanmuga Sundaram">
+<meta name="twitter:description" content="Enterprise B2B redesign at Albertsons. Served 600+ vendors, mitigated $2.5B compliance risk, and saved merchants 21 hours per week.">
+<meta name="twitter:image" content="https://www.adhith-s.com/assets/home/item-management-card.png">
 <link rel="stylesheet" href="https://use.typekit.net/cgy1qed.css">
 <link rel="stylesheet" href="styles.css">
 <script>
@@ -36,23 +46,28 @@
       <img src="assets/shared/AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram">
       <span class="nav-brand-name">Adhith Shanmuga Sundaram</span>
     </a>
-    <nav aria-label="Primary">
-      <ul class="nav-links">
+    <div class="nav-actions">
+      <nav aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="https://drive.google.com/file/d/1zzyU3-GHDL32F-NzpnU9X8m800awVCjr/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
         <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
-        <li>
-          <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
-            <span class="theme-toggle-track">
-              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-              <span class="theme-toggle-thumb"></span>
-            </span>
-          </button>
-        </li>
       </ul>
-    </nav>
+      </nav>
+      <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
+        <span class="theme-toggle-track">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span class="theme-toggle-thumb"></span>
+        </span>
+      </button>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -85,10 +100,10 @@
     </div>
 
     <h2 class="cs-subhead" style="margin-top:var(--sp-16)">TL;DR Summary</h2>
-    <p class="cs-summary">Image repository in the Albertsons Merchandising Item-onboarding platform captures the item/product image assets along with the associated information required for publishing in omni channel platforms and item book keeping. This asset management section of the platform enables both merchandising and marketing teams to manage the image data with ease, initially launched as an MVP but after successful adoption by associates this shared pattern paved way for similar explorations in other sections of the product.</p>
+    <p class="cs-summary">The image repository in the Albertsons Merchandising item-onboarding platform captures the item/product image assets along with the associated information required for publishing on omnichannel platforms and for item bookkeeping. This asset management section of the platform enables both merchandising and marketing teams to manage the image data with ease, It initially launched as an MVP, but after successful adoption by associates, this shared pattern paved the way for similar explorations in other sections of the product.</p>
 
     <div class="cs-callout">
-      <p>Note: This case study covers my 2-month contribution to the Image Repository module, one workstream within Albertsons' 11-month Item Onboarding platform redesign. Happy to walk through how this part connected to the broader initiative, please reach out anytime.</p>
+      <p>Note: This case study covers my 2-month contribution to the Image Repository module, one workstream within Albertsons' 11-month Item Onboarding platform redesign. Happy to walk through how this part connected to the broader initiative — please reach out anytime.</p>
     </div>
 
     <div class="cs-cover">
@@ -98,7 +113,7 @@
 
   <section class="cs-section content" id="result">
     <h2 class="cs-section-label">Result</h2>
-    <p class="cs-section-body">The redesigned image repository addressed a hidden gap that served the purpose of two different business cases.</p>
+    <p class="cs-section-body">The redesigned image repository closed a hidden gap and served two different business cases.</p>
 
     <div class="cs-stat-row">
       <div class="cs-stat">
@@ -106,28 +121,29 @@
         <p class="cs-stat-label">Increase in user engagement</p>
       </div>
     </div>
+    <p class="cs-stat-source">Measured via internal analytics, Q4 2025, against the pre-redesign repository baseline.</p>
   </section>
 
   <section class="cs-section content" id="problems">
     <h2 class="cs-section-label">Problems</h2>
-    <p class="cs-section-body">Before the redesign, the image repository captured product images and information based on each individual image(s) of a product for every supply chain hierarchy (Each - Pack - Case - Pallet).</p>
+    <p class="cs-section-body">Before the redesign, the image repository captured product images and information based on each individual image of a product for every supply chain hierarchy (Each - Pack - Case - Pallet).</p>
 
     <div class="cs-callout">
-      <p>The previous design was primarily made for book keeping and could not be scaled for business needs</p>
+      <p>The previous design was primarily made for bookkeeping and could not be scaled for business needs.</p>
     </div>
     <div class="cs-callout">
-      <p>User motivation for this feature was as low as 28%, leading to abandoning this process when setting up the item</p>
+      <p>User motivation for this feature was as low as 28%, leading users to abandon this process when setting up an item.</p>
     </div>
 
     <div class="cs-image">
-      <h3 class="cs-subhead" style="margin-top:0">More images means more Vertical Scroll</h3>
-      <p class="cs-subbody">When vendors try to add more images manually, the card component stretches vertically below leading to vertical scroll. Merchants faced the same issue when reviewing the item image details.</p>
+      <h3 class="cs-subhead" style="margin-top:0">More images mean more vertical scrolling</h3>
+      <p class="cs-subbody">When vendors try to add more images manually, the card component stretches downward, leading to vertical scrolling. Merchants faced the same issue when reviewing the item image details.</p>
       <img src="assets/item-management/problem-scroll.png" alt="Card component stretching vertically with more images">
     </div>
 
     <div class="cs-image">
-      <h3 class="cs-subhead" style="margin-top:0">Disoriented image information</h3>
-      <p class="cs-subbody">The image information tied to each hierarchy felt overwhelming when reviewing images present on the same card, creating disorientation between the main content and image type.</p>
+      <h3 class="cs-subhead" style="margin-top:0">Disorienting image information</h3>
+      <p class="cs-subbody">The image information tied to each hierarchy felt overwhelming when reviewing images present on the same card, blurring the distinction between the main content and the image type.</p>
       <img src="assets/item-management/problem-disoriented.png" alt="Disoriented image information on card">
     </div>
 
@@ -143,28 +159,28 @@
     <ol class="cs-list cs-list--numbered">
       <li><strong>Images easy to identify</strong> — The product images can be seen easily through a gallery view.</li>
       <li><strong>Separate portals to access images</strong> — The merchandising and marketing teams were communicating back and forth with vendors through different channels for image requirements</li>
-      <li><strong>Viewing images across all platforms is consistent</strong> — The images on mobile app, web app, and online commerce channels had a consistent flow of same images</li>
+      <li><strong>Viewing images across all platforms is consistent</strong> — The images on the mobile app, web app, and online commerce channels followed a consistent flow.</li>
     </ol>
 
     <div class="cs-callout">
-      <p>Through active listening, I drafted elements required for image repository redesign and aligning them with user goals and strategic business needs</p>
+      <p>Through active listening, I drafted the elements required for the image repository redesign and aligned them with user goals. and strategic business needs</p>
     </div>
   </section>
 
   <section class="cs-section content" id="design-solution">
     <h2 class="cs-section-label">Design Solution</h2>
-    <p class="cs-section-body">With the help of visual design hierarchy, I was able to create an experience that help users perform the task intuitively and bridge the business needs.</p>
+    <p class="cs-section-body">With the help of visual design hierarchy, I was able to create an experience that helps users perform the task intuitively and meets the business needs.</p>
 
-    <p class="cs-subbody">The new image repository design follows three principles,</p>
+    <p class="cs-subbody">The new image repository design follows three principles:</p>
     <ol class="cs-list cs-list--numbered">
       <li><strong>Scalability</strong> — Expand images across multiple channels.</li>
       <li><strong>Glanceability</strong> — Represent images in a clear modular pattern for easy consumption.</li>
-      <li><strong>Progressive redcution</strong> — Breaking down the main component into smaller chunks</li>
+      <li><strong>Progressive reduction</strong> — Breaking down the main component into smaller chunks.</li>
     </ol>
 
     <div class="cs-solution-frame">
       <h3 class="cs-subhead" style="margin-top:0">Restructured Layout</h3>
-      <p class="cs-subbody">This decision is driven by two aspects, product details and image assets. This segmentation enables vendors to clearly add asset text information and assets separately.</p>
+      <p class="cs-subbody">This decision is driven by two aspects: product details and image assets. This segmentation enables vendors to clearly add asset text information and assets separately.</p>
 
       <h3 style="margin-bottom:var(--sp-2); font-size:var(--fs-h5); font-weight:400; line-height:1.3;">Iterations</h3>
       <div class="cs-iterations-row">
@@ -206,10 +222,10 @@
       </div>
 
       <h3 class="cs-subhead">Shared Platform</h3>
-      <p class="cs-subbody">The image assets collected through the Merchandising Item portal was shared indirectly to the marketing team through an integrated backend gateway developed in partnership with the engineering team that led to significant reduction in back and forth vendor-marketing team communication for assets.</p>
+      <p class="cs-subbody">The image assets collected through the Merchandising Item portal were shared indirectly with the marketing team through an integrated backend gateway developed in partnership with the engineering team which led to a significant reduction in back-and-forth communication between vendors and the marketing team for assets.</p>
 
       <h3 class="cs-subhead">AI Forward Design</h3>
-      <p class="cs-subbody">An exploration was made around AI product title and description generator with a rich text editor format but the team pushed back on this stating vendors and merchants relied heavily on manufacturer or internal proprietary product description, and not trust over the LLM generated product description.</p>
+      <p class="cs-subbody">An exploration was made around AI product title and description generator with a rich text editor format but the team pushed back on this, stating that vendors and merchants relied heavily on manufacturer or internal proprietary product descriptions and did not trust LLM-generated descriptions.</p>
       <div class="cs-frame-img cs-frame-img--last">
         <h3 class="cs-image-heading">AI Title & Description Generator</h3>
         <p class="cs-image-caption">A rich text editor explored generating product titles and descriptions with AI, surfaced as a suggestion alongside manufacturer-provided copy.</p>
@@ -224,7 +240,7 @@
     <div class="cs-callout">
       <p>Extended redesign to similar flows</p>
     </div>
-    <p class="cs-section-body">This design purposed a new business use case and also reduced the visual load for an enhanced data collection. This redesign initiative led to explore similar flows that could benefit from cross-platform utilization across teams.</p>
+    <p class="cs-section-body">This design served a new business use case and reduced the visual load for enhanced data collection. This redesign initiative led us to explore similar flows that could benefit from cross-platform use across teams.</p>
   </section>
 
   <section class="cs-closing content">
@@ -240,7 +256,7 @@
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; Shipped through Claude</p>
+    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; shipped through Claude</p>
     <div class="footer-meta">
       <span class="footer-a11y">Reviewed against WCAG 2.1 AA guidelines</span>
     </div>

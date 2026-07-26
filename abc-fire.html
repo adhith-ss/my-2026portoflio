@@ -14,6 +14,19 @@
 })();
 </script>
 <title>ABC Fire App Redesign — Adhith Shanmuga Sundaram</title>
+<meta name="description" content="A self-initiated exploration: gamified fire equipment marketing app concept, ideated and prototyped with AI tools.">
+<link rel="canonical" href="https://www.adhith-s.com/abc-fire">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Adhith Shanmuga Sundaram">
+<meta property="og:url" content="https://www.adhith-s.com/abc-fire">
+<meta property="og:title" content="ABC Fire App Redesign — Adhith Shanmuga Sundaram">
+<meta property="og:description" content="A self-initiated exploration: gamified fire equipment marketing app concept, ideated and prototyped with AI tools.">
+<meta property="og:image" content="https://www.adhith-s.com/assets/home/ai-playground-abc-fire.png">
+<meta property="og:image:alt" content="ABC Fire app redesign home screen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ABC Fire App Redesign — Adhith Shanmuga Sundaram">
+<meta name="twitter:description" content="A self-initiated exploration: gamified fire equipment marketing app concept, ideated and prototyped with AI tools.">
+<meta name="twitter:image" content="https://www.adhith-s.com/assets/home/ai-playground-abc-fire.png">
 <link rel="stylesheet" href="https://use.typekit.net/cgy1qed.css">
 <link rel="stylesheet" href="styles.css">
 <script>
@@ -33,23 +46,28 @@
       <img src="assets/shared/AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram">
       <span class="nav-brand-name">Adhith Shanmuga Sundaram</span>
     </a>
-    <nav aria-label="Primary">
-      <ul class="nav-links">
+    <div class="nav-actions">
+      <nav aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="https://drive.google.com/file/d/1zzyU3-GHDL32F-NzpnU9X8m800awVCjr/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
         <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
-        <li>
-          <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
-            <span class="theme-toggle-track">
-              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-              <span class="theme-toggle-thumb"></span>
-            </span>
-          </button>
-        </li>
       </ul>
-    </nav>
+      </nav>
+      <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
+        <span class="theme-toggle-track">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span class="theme-toggle-thumb"></span>
+        </span>
+      </button>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -80,7 +98,7 @@
     <div class="cs-split" style="margin-top:0">
       <div class="cs-split-text">
         <h2 class="cs-section-label">AI as a Design Collaborator</h2>
-        <p class="cs-section-body">This project was shipped in 2020. I used Claude to redesign the app's UI, keeping its core features and USP. Claude tested the original structure, preserving all my design choices. The AI sped up UI exploration within the gamification framework from the original product.</p>
+        <p class="cs-section-body">This project was shipped in 2020. I used Claude to redesign the app's UI, keeping its core features and unique selling point. Claude tested the original structure, preserving all my design choices. The AI sped up UI exploration within the gamification framework from the original product.</p>
 
         <h3 class="cs-subhead">What Changed and Why</h3>
         <p>The home screen was restructured to foreground the gamified capture flow, giving the reward loop and inventory progress equal visual weight to the core scanning function — without changing a single underlying feature.</p>
@@ -100,12 +118,12 @@
 
   <section class="cs-section content" id="pilot-results">
     <h2 class="cs-section-label">Pilot Results</h2>
-    <p class="cs-section-body">The results were part of the 2 month pilot launch plan.</p>
+    <p class="cs-section-body">The results were part of the two-month pilot launch plan.</p>
 
     <div class="cs-stat-row">
       <div class="cs-stat">
         <p class="cs-stat-number">140+</p>
-        <p class="cs-stat-label">New clientele added to ABC Fire's customer base</p>
+        <p class="cs-stat-label">New clients added to ABC Fire's customer base</p>
       </div>
       <div class="cs-stat">
         <p class="cs-stat-number">60</p>
@@ -118,9 +136,9 @@
     <h2>Thank you for reading!</h2>
     <span class="cs-closing-link">Check out more of my work ↓</span>
     <div class="cs-other-projects">
-      <a href="rxtogo.html">Order Fulfillment</a>
-      <a href="item-management.html">Merchandise &amp; Supply Chain</a>
-      <a href="allocatr.html">Financial Forecast</a>
+      <a href="rxtogo.html">Rx - Delivery Order Fulfillment</a>
+      <a href="item-management.html">Image Repository Redesign</a>
+      <a href="allocatr.html">Financial Forecast Planner</a>
     </div>
   </section>
 
@@ -128,7 +146,7 @@
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; Shipped through Claude</p>
+    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; shipped through Claude</p>
     <div class="footer-meta">
       <span class="footer-a11y">Reviewed against WCAG 2.1 AA guidelines</span>
     </div>

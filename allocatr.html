@@ -15,8 +15,18 @@
 </script>
 <title>Allocatr Insights — Adhith Shanmuga Sundaram</title>
 <meta name="description" content="Case study: Led UX strategy for Albertsons' AI-powered forecasting platform. Reduced planning cycle time by 24%, replaced 50% of manual Excel workflows, and introduced the first audit trail in forecasting history.">
+<link rel="canonical" href="https://www.adhith-s.com/allocatr">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Adhith Shanmuga Sundaram">
+<meta property="og:url" content="https://www.adhith-s.com/allocatr">
 <meta property="og:title" content="Allocatr Insights Case Study — Adhith Shanmuga Sundaram">
 <meta property="og:description" content="AI-powered forecast planning at Albertsons. Replaced 50% of manual workflows, reduced planning cycles by 24%, introduced organization's first audit trail.">
+<meta property="og:image" content="https://www.adhith-s.com/assets/home/allocatr-card.png">
+<meta property="og:image:alt" content="Allocatr Insights forecast planning case study preview">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Allocatr Insights Case Study — Adhith Shanmuga Sundaram">
+<meta name="twitter:description" content="AI-powered forecast planning at Albertsons. Replaced 50% of manual workflows, reduced planning cycles by 24%, introduced organization's first audit trail.">
+<meta name="twitter:image" content="https://www.adhith-s.com/assets/home/allocatr-card.png">
 <link rel="stylesheet" href="https://use.typekit.net/cgy1qed.css">
 <link rel="stylesheet" href="styles.css">
 <script>
@@ -36,23 +46,28 @@
       <img src="assets/shared/AS_Logo_PtfTab_b.png" alt="Adhith Shanmuga Sundaram">
       <span class="nav-brand-name">Adhith Shanmuga Sundaram</span>
     </a>
-    <nav aria-label="Primary">
-      <ul class="nav-links">
+    <div class="nav-actions">
+      <nav aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="https://drive.google.com/file/d/1zzyU3-GHDL32F-NzpnU9X8m800awVCjr/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
         <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
-        <li>
-          <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
-            <span class="theme-toggle-track">
-              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-              <span class="theme-toggle-thumb"></span>
-            </span>
-          </button>
-        </li>
       </ul>
-    </nav>
+      </nav>
+      <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
+        <span class="theme-toggle-track">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span class="theme-toggle-thumb"></span>
+        </span>
+      </button>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -87,7 +102,7 @@
     </div>
 
     <h2 class="cs-subhead" style="margin-top:var(--sp-16)">TL;DR Summary</h2>
-    <p class="cs-summary">Led UX strategy for an AI-powered forecasting platform replacing manual Excel workflows across Albertsons' merchant and finance teams. I partnered with a global engineering team, product partners and business partners based in the US to deliver this project.</p>
+    <p class="cs-summary">Led UX strategy for an AI-powered forecasting platform replacing manual Excel workflows across Albertsons' merchant and finance teams. I partnered with a global engineering team, product partners, and business partners based in the US to deliver this project.</p>
 
     <div class="cs-cover">
       <img src="assets/allocatr/Allocatr_Ptf_Cover.png" alt="Allocatr Insights cover screen">
@@ -116,11 +131,12 @@
         <p class="cs-stat-label">Better metric visibility</p>
       </div>
     </div>
+    <p class="cs-stat-source">Measured via internal analytics, 2025–2026, against the manual Excel forecasting baseline.</p>
   </section>
 
   <section class="cs-section content" id="business-challenge">
     <h2 class="cs-section-label">Business Challenge</h2>
-    <p class="cs-section-body">Merchant and financial teams printed forecast documents weekly, with teams constantly communicating back and forth. Managing adjustments in offline Excel sheets lacked audit trails, causing teams to lose track of adjustments and undermining data accuracy.</p>
+    <p class="cs-section-body">Merchant and finance teams printed forecast documents weekly, with teams constantly communicating back and forth. Managing adjustments in offline Excel sheets lacked audit trails, causing teams to lose track of adjustments and undermining data accuracy.</p>
 
     <div class="cs-callout">
       <p>The Core Question: How might we empower Category Managers and Finance teams to harness reporting and business intelligence for strategic category growth?</p>
@@ -140,7 +156,7 @@
     <ul class="cs-list cs-list--bulleted">
       <li><strong>Design Workshop</strong>: Collaborative sessions to understand users, processes, and identify product opportunities.</li>
       <li><strong>Journey Mapping</strong>: Mapped existing workflows to identify gaps between reporting and forecast visualization.</li>
-      <li><strong>Key Insights</strong>: Discovered adjustment flow from ASM → SM through VPMM → NM → NVPMM hierarchy.</li>
+      <li><strong>Key Insights</strong>: Discovered the adjustment flow from ASM → SM through the VPMM → NM → NVPMM hierarchy.</li>
     </ul>
 
     <div class="cs-callout">
@@ -148,8 +164,8 @@
     </div>
 
     <ol class="cs-list cs-list--numbered">
-      <li><strong>Dependency on Excel</strong>: Teams relied on offline Excel sheets for forecast adjustments, creating version control nightmares and no source of truth.</li>
-      <li><strong>Approval paths with multiple layers</strong>: Approval spanning multiple layers across divisions required flexible design that could accommodate different organizational structures.</li>
+      <li><strong>Dependency on Excel</strong>: Teams relied on offline Excel sheets for forecast adjustments, creating version-control nightmares and leaving no source of truth.</li>
+      <li><strong>Approval paths with multiple layers</strong>: Approval spanning multiple layers across divisions required a flexible design that could accommodate different organizational structures.</li>
       <li><strong>Missing Accountability</strong>: No mechanism existed to capture reasons behind forecast adjustments, making it impossible to learn from past decisions.</li>
       <li><strong>Gap Between Reporting and Visualization</strong>: Disconnection between reporting data and forecast visualization forced teams to manually bridge insights across tools.</li>
     </ol>
@@ -180,7 +196,7 @@
 
   <section class="cs-section content" id="design-decisions">
     <h2 class="cs-section-label">Design Decisions</h2>
-    <p class="cs-section-body">3 decisions that shaped the outcome, covering key tradeoffs made during the design process: where I went, what I considered, and why it worked.</p>
+    <p class="cs-section-body">3 decisions that shaped the outcome, covering key tradeoffs made during the design process: where I landed, what I considered, and why it worked.</p>
 
     <h3 class="cs-subhead">01 · Familiarity vs. Modernity</h3>
     <p class="cs-subbody"><strong>Native data platform UI vs. an interface styled like Excel.</strong> I considered building a modern data dashboard following UDS design guidelines without Excel conventions, but chose a grid interface styled like Excel, built with UDS core components.</p>
@@ -208,8 +224,8 @@
     <ul class="cs-list">
       <li><strong>Information Architecture (Dashboard)</strong>: Hierarchical view from Quarter to Desk level with timestamp tracking, action bar, and advanced filtering by timeframe, division, department, and desk.</li>
       <li><strong>Forecast Management (Worksheet)</strong>: Adjustment drawer for line item updates with alerts, reason selection, and comments. Forecast adjustments span multiple lines with full audit history.</li>
-      <li><strong>Accountability &amp; Transparency (Audit Trail)</strong>: Comprehensive audit history capturing all divisional changes, clearly highlighting which desks are impacted and which are not, by department.</li>
-      <li><strong>Future State Innovation (AI Exploration)</strong>: An aggregator powered by AI for automatic budget allocation, using historical trends and predicting adjustment reasons from market data.</li>
+      <li><strong>Accountability &amp; Transparency (Audit Trail)</strong>: Comprehensive audit history capturing all divisional changes, clearly highlighting, by department, which desks are impacted and which are not.</li>
+      <li><strong>Future State Innovation (AI Exploration)</strong>: An aggregator powered by AI for automatic budget allocation that uses historical trends and predicts adjustment reasons from market data.</li>
     </ul>
 
     <div class="cs-image" style="margin-top:var(--sp-8)">
@@ -252,7 +268,7 @@
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; Shipped through Claude</p>
+    <p class="footer-copy">© 2026 Adhith Shanmuga Sundaram · Crafted with Figma &amp; shipped through Claude</p>
     <div class="footer-meta">
       <span class="footer-a11y">Reviewed against WCAG 2.1 AA guidelines</span>
     </div>
