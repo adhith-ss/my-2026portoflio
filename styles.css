@@ -897,7 +897,11 @@ html[data-theme="dark"] .page-ai-playground .cs-image .theme-dark-only{ display:
 
 .cs-toc{
   position: fixed;
-  left: var(--sp-8);
+  /* The TOC is viewport-fixed while the body is a centred 840px column, so the
+     gap between them grows without bound on ultrawide screens. max() freezes it:
+     at or below 1920px the original 32px offset wins and nothing changes; above
+     1920px the TOC tracks the content column instead of the viewport edge. */
+  left: max(var(--sp-8), calc(50% - (var(--content) / 2) - 508px));
   top: 50%;
   transform: translateY(-50%);
   display:flex;
