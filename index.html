@@ -307,15 +307,18 @@
     var status = document.querySelector('[data-email-cta-status]');
     var hideTimer = null;
 
+    function hide(){
+      clearTimeout(hideTimer);
+      btn.classList.remove('is-copied');
+      if (status) status.textContent = '';
+    }
+
     function announce(message){
       btn.setAttribute('data-email-toast', message);
       btn.classList.add('is-copied');
       if (status) status.textContent = message;
       clearTimeout(hideTimer);
-      hideTimer = setTimeout(function(){
-        btn.classList.remove('is-copied');
-        if (status) status.textContent = '';
-      }, 3000);
+      hideTimer = setTimeout(hide, 3000);
     }
 
     function legacyCopy(){
@@ -351,10 +354,23 @@
 
     btn.addEventListener('click', function(){
       var handled = false;
-      function markHandled(){ handled = true; }
 
-      window.addEventListener('blur', markHandled, { once: true });
-      document.addEventListener('visibilitychange', markHandled, { once: true });
+      /* A mail client taking over pulls focus away from the page. Cold-starting
+         a desktop app can take seconds, though, so this may well fire after the
+         window below has already elapsed — retract the confirmation if so,
+         otherwise a working mailto: shows a misleading "copied" toast. */
+      function markHandled(){
+        handled = true;
+        hide();
+      }
+
+      function stopWatching(){
+        window.removeEventListener('blur', markHandled);
+        document.removeEventListener('visibilitychange', markHandled);
+      }
+
+      window.addEventListener('blur', markHandled);
+      document.addEventListener('visibilitychange', markHandled);
 
       /* Copy now, while the click's user activation is still valid. Deferring
          this into the timeout below spends the activation and Chrome rejects
@@ -362,13 +378,16 @@
       var copying = writeClipboard();
 
       setTimeout(function(){
-        window.removeEventListener('blur', markHandled);
-        document.removeEventListener('visibilitychange', markHandled);
         if (handled) return;
         copying.then(function(ok){
+          if (handled) return;
           announce(ok ? 'Email address copied — ' + address : address);
         });
-      }, 700);
+      }, 1200);
+
+      /* Keep watching well past the confirmation so a slow app launch can still
+         retract it, then stop so clicks elsewhere don't trip this handler. */
+      setTimeout(stopWatching, 8000);
     });
   })();
 </script>
