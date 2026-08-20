@@ -31,4 +31,17 @@
     defaults: '2026-05-30',
     person_profiles: 'identified_only'
   });
+
+  /* PostHog's bot classification — $virt_is_bot ("Is bot"), $virt_bot_name,
+     $virt_bot_operator — reads $raw_user_agent, falling back to $user_agent,
+     off each event. The JS SDK sends neither; it only sends the parsed
+     $browser / $os / $device_type. With no user agent to read, PostHog treats
+     every event as the "no_user_agent" automation category, so isLikelyBot()
+     returns true for ALL traffic — which is why filtering a dashboard to
+     "Is bot = is false" matched nothing and broke every tile.
+
+     Registering the user agent as a super property attaches it to every event
+     so the classification is meaningful. Only affects events from here on;
+     historical events remain unclassifiable. */
+  posthog.register({ $raw_user_agent: navigator.userAgent });
 })();
