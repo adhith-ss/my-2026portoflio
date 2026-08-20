@@ -35,6 +35,7 @@
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="theme.js" defer></script>
 <script src="posthog.js" defer></script>
+<script src="email-fallback.js" defer></script>
 <link rel="prefetch" href="item-management.html">
 <link rel="prefetch" href="rxtogo.html">
 <link rel="prefetch" href="allocatr.html">
@@ -56,7 +57,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="https://drive.google.com/file/d/1bYsEUkUqA0WT6-HUSMxisTBaqgk99-gL/view?usp=sharing" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'nav' } })">Resume</a></li>
-        <li><a href="mailto:adhith.shan@gmail.com">Email</a></li>
+        <li><a data-email-cta href="mailto:adhith.shan@gmail.com">Email</a></li>
       </ul>
       </nav>
       <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-label="Toggle theme" aria-checked="false">
@@ -92,7 +93,6 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="#work">See Selected Work ↓</a>
           <a class="btn btn-ghost" data-email-cta href="mailto:adhith.shan@gmail.com" onclick="va('event', { name: 'email_clicked', data: { source: 'hero' } })">Email me<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></a>
-          <span class="sr-only" role="status" aria-live="polite" data-email-cta-status></span>
         </div>
       </div>
       <div class="hero-media">
@@ -261,7 +261,7 @@
         <h2>Fastest way to reach me is email — I reply within 24 hours</h2>
       </div>
       <div class="contact-right">
-        <a class="contact-email" href="mailto:adhith.shan@gmail.com" onclick="va('event', { name: 'email_clicked', data: { source: 'contact' } })">adhith.shan@gmail.com</a>
+        <a class="contact-email" data-email-cta href="mailto:adhith.shan@gmail.com" onclick="va('event', { name: 'email_clicked', data: { source: 'contact' } })">adhith.shan@gmail.com</a>
         <div class="contact-links">
           <a href="https://linkedin.com/in/adhith-s" onclick="va('event', { name: 'linkedin_clicked', data: { source: 'contact' } })">LinkedIn</a>
           <a href="https://drive.google.com/file/d/1bYsEUkUqA0WT6-HUSMxisTBaqgk99-gL/view?usp=sharing" target="_blank" rel="noopener" onclick="va('event', { name: 'resume_clicked', data: { source: 'contact' } })">Resume</a>
@@ -291,106 +291,5 @@
     if (el) el.textContent = greeting + ", I'm Adhith.";
   })();
 </script>
-
-<script>
-  /* mailto: links fail silently when the visitor has no mail client registered —
-     the click simply does nothing, with no error. Let the mailto: proceed as
-     normal; if the page never loses focus we know nothing handled it, so copy
-     the address to the clipboard instead so the click is never a dead end. */
-  (function(){
-    var btn = document.querySelector('[data-email-cta]');
-    if (!btn) return;
-
-    var address = (btn.getAttribute('href') || '').replace(/^mailto:/, '').split('?')[0];
-    if (!address) return;
-
-    var status = document.querySelector('[data-email-cta-status]');
-    var hideTimer = null;
-
-    function hide(){
-      clearTimeout(hideTimer);
-      btn.classList.remove('is-copied');
-      if (status) status.textContent = '';
-    }
-
-    function announce(message){
-      btn.setAttribute('data-email-toast', message);
-      btn.classList.add('is-copied');
-      if (status) status.textContent = message;
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(hide, 3000);
-    }
-
-    function legacyCopy(){
-      var field = document.createElement('textarea');
-      field.value = address;
-      field.setAttribute('readonly', '');
-      field.style.position = 'fixed';
-      field.style.top = '-1000px';
-      document.body.appendChild(field);
-      field.select();
-      var ok = false;
-      try { ok = document.execCommand('copy'); } catch (e) {}
-      document.body.removeChild(field);
-      return ok;
-    }
-
-    function writeClipboard(){
-      /* execCommand runs synchronously, so it still holds the click's user
-         activation and needs no permission grant. The async Clipboard API is
-         only reached if that fails — as a promise handler it resolves a
-         microtask later, by which point the activation is already spent. */
-      if (legacyCopy()) return Promise.resolve(true);
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        return navigator.clipboard.writeText(address).then(function(){
-          return true;
-        }, function(){
-          return false;
-        });
-      }
-      return Promise.resolve(false);
-    }
-
-    btn.addEventListener('click', function(){
-      var handled = false;
-
-      /* A mail client taking over pulls focus away from the page. Cold-starting
-         a desktop app can take seconds, though, so this may well fire after the
-         window below has already elapsed — retract the confirmation if so,
-         otherwise a working mailto: shows a misleading "copied" toast. */
-      function markHandled(){
-        handled = true;
-        hide();
-      }
-
-      function stopWatching(){
-        window.removeEventListener('blur', markHandled);
-        document.removeEventListener('visibilitychange', markHandled);
-      }
-
-      window.addEventListener('blur', markHandled);
-      document.addEventListener('visibilitychange', markHandled);
-
-      /* Copy now, while the click's user activation is still valid. Deferring
-         this into the timeout below spends the activation and Chrome rejects
-         the write with NotAllowedError. Only the confirmation is deferred. */
-      var copying = writeClipboard();
-
-      setTimeout(function(){
-        if (handled) return;
-        copying.then(function(ok){
-          if (handled) return;
-          announce(ok ? 'Email address copied — ' + address : address);
-        });
-      }, 1200);
-
-      /* Keep watching well past the confirmation so a slow app launch can still
-         retract it, then stop so clicks elsewhere don't trip this handler. */
-      setTimeout(stopWatching, 8000);
-    });
-  })();
-</script>
-
 </body>
 </html>

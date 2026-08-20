@@ -271,10 +271,10 @@ html[data-theme="dark"] .theme-toggle-thumb{ transform: translateX(20px); }
 .btn-ghost{ border: 1px solid #131313; color: var(--color-text); }
 .btn-ghost:hover{ background: #f6f6f5; }
 
-/* Confirmation shown when the email CTA falls back to copying the address
-   (see the [data-email-cta] script in index.html). Mirrors .has-tooltip. */
-.btn[data-email-cta]{ position: relative; }
-.btn[data-email-cta]::after{
+/* Confirmation shown when an email link falls back to copying the address
+   (see email-fallback.js). Mirrors .has-tooltip. */
+[data-email-cta]{ position: relative; }
+[data-email-cta]::after{
   content: attr(data-email-toast);
   position: absolute;
   bottom: calc(100% + 10px);
@@ -284,6 +284,9 @@ html[data-theme="dark"] .theme-toggle-thumb{ transform: translateX(20px); }
   color: #fff;
   font-size: var(--fs-caption);
   font-weight: 500;
+  /* The nav uppercases its links; an uppercased address reads as a typo. */
+  text-transform: none;
+  letter-spacing: normal;
   white-space: nowrap;
   padding: 6px 12px;
   border-radius: 6px;
@@ -292,12 +295,38 @@ html[data-theme="dark"] .theme-toggle-thumb{ transform: translateX(20px); }
   transition: opacity .18s ease, transform .18s ease;
   z-index: 30;
 }
-.btn[data-email-cta].is-copied::after{
+[data-email-cta].is-copied::after{
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+/* The nav is sticky at top:0, so a confirmation above the link would sit
+   off-screen — drop it below instead. The nav's own background is the same
+   token as the toast, so give it a hairline to stay distinguishable. */
+.nav-links [data-email-cta]::after{
+  bottom: auto;
+  /* Clears the nav's lower padding so the toast sits fully below the bar
+     rather than straddling its edge. */
+  top: calc(100% + 30px);
+  transform: translateX(-50%) translateY(-4px);
+  border: 1px solid rgba(255,255,255,0.22);
+}
+.nav-links [data-email-cta].is-copied::after{
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Right-most nav item — keep a long confirmation inside the viewport. */
+.nav-links li:last-child [data-email-cta]::after{
+  left: auto;
+  right: 0;
+  transform: translateX(0) translateY(-4px);
+}
+.nav-links li:last-child [data-email-cta].is-copied::after{
+  transform: translateX(0) translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce){
-  .btn[data-email-cta]::after{ transition: none; }
+  [data-email-cta]::after{ transition: none; }
 }
 
 /* Screen-reader-only live region for the copy confirmation. */
