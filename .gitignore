@@ -3,3 +3,13 @@
 *.heic
 _originals/
 backup-production-*/
+
+# AI Playground — removed from the production site but kept locally.
+# Vercel deploys straight from git, and .vercelignore is ignored for Git
+# deployments, so untracking is the only way to stop these being served.
+# Recoverable any time with: git show 78dc543:abc-fire.html
+abc-fire.html
+ai-tokenization-fitness.html
+assets/ai-playground/
+assets/home/ai-playground-abc-fire.png
+assets/home/ai-playground-tokenization-fitness.png
