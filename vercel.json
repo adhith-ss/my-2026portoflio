@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/ingest/static/(.*)", "destination": "https://us-assets.i.posthog.com/static/$1" },
     { "source": "/ingest/array/(.*)", "destination": "https://us-assets.i.posthog.com/array/$1" },
